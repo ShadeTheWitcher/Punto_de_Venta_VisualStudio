@@ -1,35 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySqlConnector;
+using System;
 using System.Windows.Forms;
-using Microsoft.EntityFrameworkCore;
-using MySqlConnector;
 
 
 namespace CyberGear
 {
     public partial class Form1 : Form
     {
+        private Form2 form2;
         public Form1()
         {
             InitializeComponent();
-            new Form2();
+
 
         }
 
-        
+
         MySqlConnection con = new MySqlConnection("server=localhost;database=bd_cybergear;Uid=root ");
 
-        MySqlCommand codigo = new MySqlCommand();
-        
-        
-        
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -46,7 +36,7 @@ namespace CyberGear
                 cmd.Parameters.AddWithValue("@usuario", usuario);
                 cmd.Parameters.AddWithValue("@contraseña", contraseña);
 
-               
+
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -55,6 +45,15 @@ namespace CyberGear
                     // Las credenciales son válidas, el usuario ha iniciado sesión
                     MessageBox.Show("Inicio de sesión exitoso");
                     // Puedes abrir otra ventana o realizar acciones adicionales aquí
+
+                    // Crea una instancia del formulario Form2.
+                    form2 = new Form2();
+
+                    // Oculta el formulario actual (Form1).
+                    this.Hide();
+
+                    // Muestra el formulario Form2.
+                    form2.Show();
                 }
                 else
                 {
@@ -80,5 +79,5 @@ namespace CyberGear
 
 
     }
-    }
+}
 
