@@ -1,6 +1,6 @@
 ﻿namespace CyberGear
 {
-    partial class Form1
+    partial class formLogin
     {
         /// <summary>
         /// Variable del diseñador necesaria.

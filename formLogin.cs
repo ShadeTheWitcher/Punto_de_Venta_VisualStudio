@@ -5,10 +5,10 @@ using System.Windows.Forms;
 
 namespace CyberGear
 {
-    public partial class Form1 : Form
+    public partial class formLogin : Form
     {
-        private Form2 form2;
-        public Form1()
+        private GUI_Principal form2;
+        public formLogin()
         {
             InitializeComponent();
 
@@ -47,7 +47,7 @@ namespace CyberGear
                     // Puedes abrir otra ventana o realizar acciones adicionales aquí
 
                     // Crea una instancia del formulario Form2.
-                    form2 = new Form2();
+                    form2 = new GUI_Principal();
 
                     // Oculta el formulario actual (Form1).
                     this.Hide();
@@ -65,7 +65,7 @@ namespace CyberGear
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("Error: " + ex.ToString());
+                MessageBox.Show("Error al intentar conectarse con la base de datos: " + ex.ToString());
             }
             finally
             {

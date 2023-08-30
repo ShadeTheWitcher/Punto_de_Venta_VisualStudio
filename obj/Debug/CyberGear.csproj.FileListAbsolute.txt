@@ -48,11 +48,13 @@ E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_Proyect
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\bin\Debug\System.Threading.Tasks.Extensions.xml
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.csproj.AssemblyReference.cache
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.csproj.SuggestedBindingRedirects.cache
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.Form1.resources
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.Form2.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.Properties.Resources.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.csproj.GenerateResource.cache
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.csproj.CoreCompileInputs.cache
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.csproj.CopyComplete
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.exe
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.pdb
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.GUI_Principal.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.FormInicio.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.formProductos.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Grupo13_ProyectoIntegrador_CyberGear\obj\Debug\CyberGear.formLogin.resources
