@@ -30,7 +30,7 @@ namespace CyberGear
                 string usuario = textBox1.Text;
                 string contraseña = textBox2.Text;
 
-                // Consulta SQL para verificar las credenciales en la base de datos
+                // Consulta SQL para verificar las credenciales en la base de datosH
                 string consulta = "SELECT * FROM usuarios WHERE usuario = @usuario AND pass = @contraseña";
                 MySqlCommand cmd = new MySqlCommand(consulta, con);
                 cmd.Parameters.AddWithValue("@usuario", usuario);
