@@ -28,28 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button button2;
+            System.Windows.Forms.Button button1;
             System.Windows.Forms.Button btnVentas;
             System.Windows.Forms.Button btnProductos;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_Principal));
-            System.Windows.Forms.Button button1;
             this.CabeceraTitulo = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panelContenedor = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnCerrarSesion = new System.Windows.Forms.PictureBox();
+            this.botonSalir = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
             this.btnMax = new System.Windows.Forms.PictureBox();
             this.btnMin = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.PictureBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            button2 = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
             btnVentas = new System.Windows.Forms.Button();
             btnProductos = new System.Windows.Forms.Button();
-            button1 = new System.Windows.Forms.Button();
             this.CabeceraTitulo.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrarSesion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.botonSalir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).BeginInit();
@@ -75,6 +82,10 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panel2.Controls.Add(this.btnCerrarSesion);
+            this.panel2.Controls.Add(this.botonSalir);
+            this.panel2.Controls.Add(this.panel6);
+            this.panel2.Controls.Add(button2);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(button1);
             this.panel2.Controls.Add(this.panel1);
@@ -89,6 +100,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(252, 610);
             this.panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel3.Location = new System.Drawing.Point(0, 409);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(10, 35);
+            this.panel3.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.Location = new System.Drawing.Point(0, 288);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(10, 35);
+            this.panel1.TabIndex = 5;
             // 
             // panel5
             // 
@@ -114,16 +141,76 @@
             this.panelContenedor.Size = new System.Drawing.Size(1048, 610);
             this.panelContenedor.TabIndex = 2;
             // 
-            // panel1
+            // panel6
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel1.Location = new System.Drawing.Point(0, 288);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(10, 35);
-            this.panel1.TabIndex = 5;
+            this.panel6.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel6.Location = new System.Drawing.Point(0, 346);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(10, 35);
+            this.panel6.TabIndex = 9;
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCerrarSesion.Image = global::CyberGear.Properties.Resources._4043198;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(88, 553);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(60, 45);
+            this.btnCerrarSesion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCerrarSesion.TabIndex = 12;
+            this.btnCerrarSesion.TabStop = false;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
+            // botonSalir
+            // 
+            this.botonSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.botonSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.botonSalir.Image = global::CyberGear.Properties.Resources.salir;
+            this.botonSalir.Location = new System.Drawing.Point(0, 539);
+            this.botonSalir.Name = "botonSalir";
+            this.botonSalir.Size = new System.Drawing.Size(82, 68);
+            this.botonSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.botonSalir.TabIndex = 11;
+            this.botonSalir.TabStop = false;
+            this.botonSalir.Click += new System.EventHandler(this.botonSalir_Click);
+            // 
+            // button2
+            // 
+            button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            button2.FlatAppearance.BorderSize = 0;
+            button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
+            button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button2.ForeColor = System.Drawing.Color.White;
+            button2.Image = global::CyberGear.Properties.Resources.clientes;
+            button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            button2.Location = new System.Drawing.Point(3, 346);
+            button2.Name = "button2";
+            button2.Size = new System.Drawing.Size(249, 35);
+            button2.TabIndex = 10;
+            button2.Text = "Clientes";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
+            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            button1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            button1.ForeColor = System.Drawing.Color.White;
+            button1.Image = global::CyberGear.Properties.Resources.reportes;
+            button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            button1.Location = new System.Drawing.Point(3, 409);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(249, 35);
+            button1.TabIndex = 8;
+            button1.Text = "Reportes";
+            button1.UseVisualStyleBackColor = true;
             // 
             // btnVentas
             // 
+            btnVentas.Cursor = System.Windows.Forms.Cursors.Hand;
             btnVentas.FlatAppearance.BorderSize = 0;
             btnVentas.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             btnVentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -151,6 +238,7 @@
             // 
             // btnUsuarios
             // 
+            this.btnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUsuarios.FlatAppearance.BorderSize = 0;
             this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -168,6 +256,7 @@
             // 
             // btnProductos
             // 
+            btnProductos.Cursor = System.Windows.Forms.Cursors.Hand;
             btnProductos.FlatAppearance.BorderSize = 0;
             btnProductos.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
             btnProductos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -240,30 +329,6 @@
             this.btnSalir.TabStop = false;
             this.btnSalir.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
-            this.panel3.Location = new System.Drawing.Point(0, 345);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(10, 35);
-            this.panel3.TabIndex = 7;
-            // 
-            // button1
-            // 
-            button1.FlatAppearance.BorderSize = 0;
-            button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Highlight;
-            button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            button1.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            button1.ForeColor = System.Drawing.Color.White;
-            button1.Image = global::CyberGear.Properties.Resources.reportes;
-            button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            button1.Location = new System.Drawing.Point(3, 345);
-            button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(249, 35);
-            button1.TabIndex = 8;
-            button1.Text = "Reportes";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // GUI_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,6 +343,8 @@
             this.Text = "Menu";
             this.CabeceraTitulo.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrarSesion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.botonSalir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMax)).EndInit();
@@ -302,5 +369,8 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.PictureBox botonSalir;
+        private System.Windows.Forms.PictureBox btnCerrarSesion;
     }
 }

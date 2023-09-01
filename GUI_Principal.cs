@@ -98,5 +98,16 @@ namespace CyberGear
         {
             AbrirFormHija(new formInicio());
         }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void botonSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+            con.Close();
+        }
     }
 }

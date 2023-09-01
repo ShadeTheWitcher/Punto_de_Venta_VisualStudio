@@ -206,6 +206,10 @@
     <None Include="Resources\icono-restaurar1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\salir.png" />
+    <None Include="Resources\clientes.png" />
+    <None Include="Resources\cerrar-sesion.png" />
+    <None Include="Resources\4043198.png" />
     <Content Include="Resources\cybergearlogo.png" />
     <None Include="Resources\reportes.png" />
     <None Include="Resources\venta.png" />
