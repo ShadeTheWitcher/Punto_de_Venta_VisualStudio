@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "81ScXH2fteRlLa7rbxjVQx1kW3uAKbThElSiz+KGHDnowNqC3BZLHxZrtwnqHbUZaCzdjxNM+UCyOyTayhFvUg==",
+  "success": true,
+  "projectFilePath": "E:\\bibliotecas\\Documents\\Programacion Projects\\App escritorio vs\\CyberGear16\\CyberGear16\\CyberGear16.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PC-MSL\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512",
+    "C:\\Users\\PC-MSL\\.nuget\\packages\\winforms.datavisualization\\1.8.0\\winforms.datavisualization.1.8.0.nupkg.sha512"
+  ],
+  "logs": []
+}
