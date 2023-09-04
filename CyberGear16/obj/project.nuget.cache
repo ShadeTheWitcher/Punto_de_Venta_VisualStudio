@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DS4eBgjGj/ayeGprSR0y/fy63H/6B89E4u5pKag25iVFEf9omU7706YF3GulH/uEg8Vtc6pnTcYUDspKvzY6vg==",
+  "dgSpecHash": "AzKBiY6RXyIq2ur9S2ON6aicRN963yppoehrPnF3eoZtCM2f6lZDgaOix7vJ8+nNxVtbHeaY0SYxVMloBnySXA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\matum\\OneDrive\\Documentos\\Proyectos\\Visual Studio\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj",
+  "projectFilePath": "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\matum\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512",
     "C:\\Users\\matum\\.nuget\\packages\\winforms.datavisualization\\1.8.0\\winforms.datavisualization.1.8.0.nupkg.sha512"

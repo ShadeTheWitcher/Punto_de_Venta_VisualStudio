@@ -26,5 +26,20 @@ namespace CyberGear16
         {
 
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LApellido_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

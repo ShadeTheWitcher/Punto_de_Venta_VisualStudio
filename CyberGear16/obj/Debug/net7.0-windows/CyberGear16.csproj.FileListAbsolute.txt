@@ -49,3 +49,29 @@ C:\Users\matum\OneDrive\Documentos\Proyectos\Visual Studio\Grupo15_ProyectoInteg
 C:\Users\matum\OneDrive\Documentos\Proyectos\Visual Studio\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.genruntimeconfig.cache
 C:\Users\matum\OneDrive\Documentos\Proyectos\Visual Studio\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\ref\CyberGear16.dll
 C:\Users\matum\OneDrive\Documentos\Proyectos\Visual Studio\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.adminUsers.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.exe
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.deps.json
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.runtimeconfig.json
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.pdb
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\bin\Debug\net7.0-windows\MySqlConnector.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.Utilities.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.AssemblyReference.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.adminUsers.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formInicio.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formLogin.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formProductos.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.GUI_Principal.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.Properties.Resources.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.GenerateResource.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.AssemblyInfoInputs.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.AssemblyInfo.cs
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CoreCompileInputs.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CopyComplete
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\refint\CyberGear16.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.pdb
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.genruntimeconfig.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\ref\CyberGear16.dll

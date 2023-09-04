@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\matum\\OneDrive\\Documentos\\Proyectos\\Visual Studio\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj": {}
+    "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj": {}
   },
   "projects": {
-    "C:\\Users\\matum\\OneDrive\\Documentos\\Proyectos\\Visual Studio\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj": {
+    "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\matum\\OneDrive\\Documentos\\Proyectos\\Visual Studio\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj",
+        "projectUniqueName": "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj",
         "projectName": "CyberGear16",
-        "projectPath": "C:\\Users\\matum\\OneDrive\\Documentos\\Proyectos\\Visual Studio\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj",
+        "projectPath": "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\CyberGear16.csproj",
         "packagesPath": "C:\\Users\\matum\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\matum\\OneDrive\\Documentos\\Proyectos\\Visual Studio\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\obj\\",
+        "outputPath": "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Grupo15_ProyectoIntegrador_CyberGear\\CyberGear16\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\matum\\AppData\\Roaming\\NuGet\\NuGet.Config",
