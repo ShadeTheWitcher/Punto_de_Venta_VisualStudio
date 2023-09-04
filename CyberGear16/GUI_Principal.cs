@@ -46,7 +46,7 @@ namespace CyberGear16
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new formInicio());
+            AbrirFormHija(new adminUsers());
         }
 
 
