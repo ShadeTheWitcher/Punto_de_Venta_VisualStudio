@@ -75,3 +75,29 @@ C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\C
 C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.pdb
 C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.genruntimeconfig.cache
 C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\ref\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.exe
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.deps.json
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.runtimeconfig.json
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.pdb
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySqlConnector.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.Utilities.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.AssemblyReference.cache
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.adminUsers.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formInicio.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formLogin.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formProductos.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.GUI_Principal.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.Properties.Resources.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.GenerateResource.cache
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.GeneratedMSBuildEditorConfig.editorconfig
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.AssemblyInfoInputs.cache
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.AssemblyInfo.cs
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CoreCompileInputs.cache
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CopyComplete
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\refint\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.pdb
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.genruntimeconfig.cache
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\ref\CyberGear16.dll

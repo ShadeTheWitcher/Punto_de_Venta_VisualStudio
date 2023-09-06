@@ -193,6 +193,16 @@ namespace CyberGear16.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lanzar_nuevo_producto {
+            get {
+                object obj = ResourceManager.GetObject("lanzar-nuevo-producto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pc_icon {
             get {
                 object obj = ResourceManager.GetObject("pc_icon", resourceCulture);
@@ -206,6 +216,16 @@ namespace CyberGear16.Properties {
         internal static System.Drawing.Bitmap producto {
             get {
                 object obj = ResourceManager.GetObject("producto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap producto_nuevo_png_1 {
+            get {
+                object obj = ResourceManager.GetObject("producto-nuevo-png-1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

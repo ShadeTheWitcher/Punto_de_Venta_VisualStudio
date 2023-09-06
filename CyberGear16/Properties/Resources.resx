@@ -142,6 +142,9 @@
   <data name="icono_max" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icono-max.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="producto-nuevo-png-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\producto-nuevo-png-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="venta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\venta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -177,5 +180,8 @@
   </data>
   <data name="res" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\res.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lanzar-nuevo-producto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lanzar-nuevo-producto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
