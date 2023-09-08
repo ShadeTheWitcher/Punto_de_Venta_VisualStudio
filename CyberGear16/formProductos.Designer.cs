@@ -51,6 +51,7 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
@@ -72,7 +73,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.producto_nuevo_png_1;
-            pictureBox1.Location = new Point(726, 38);
+            pictureBox1.Location = new Point(723, 37);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(231, 254);
@@ -139,6 +140,7 @@
             button1.TabIndex = 9;
             button1.Text = "Agregar Producto";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label6
             // 
@@ -230,7 +232,7 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column7, Column6 });
             dataGridView1.Location = new Point(89, 326);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
@@ -267,6 +269,12 @@
             Column5.HeaderText = "descripcion";
             Column5.Name = "Column5";
             Column5.Width = 93;
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "Eliminar";
+            Column7.Name = "Column7";
+            Column7.Width = 75;
             // 
             // Column6
             // 
@@ -319,6 +327,7 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column6;
     }
 }
