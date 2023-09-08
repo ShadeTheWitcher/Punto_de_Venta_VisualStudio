@@ -13,10 +13,11 @@ namespace CyberGear16
 {
     public partial class formProductos : Form
     {
-        
+        private MySqlConnection conexion = new MySqlConnection("server=localhost;database=bd_cybergear;Uid=root");
         public formProductos()
         {
             InitializeComponent();
+            this.Load += new EventHandler(Form1_Load);
 
             comboBoxCategorias.Items.Add("Videjuegos");
             comboBoxCategorias.Items.Add("PC-componentes");
@@ -80,9 +81,9 @@ namespace CyberGear16
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double precio=0;
+            double precio = 0;
             int stock;
-            
+
             if (int.TryParse(textBox3.Text, out stock) && Double.TryParse(textBox2.Text, out precio))
             {
                 // Ahora puedes utilizar valor1 y valor2 como números enteros válidos.
@@ -96,11 +97,11 @@ namespace CyberGear16
 
             string nombre = textBox1.Text;
             int idCategoria = comboBoxCategorias.SelectedIndex;
-            
+
             string descripcion = textBox4.Text;
             //int stock = int.Parse(textBox3.Text);
 
-           
+
 
             try
             {
@@ -109,8 +110,8 @@ namespace CyberGear16
                     InsertarProducto(nombre, precio, descripcion, idCategoria, stock);
                     MessageBox.Show("Producto agregado correctamente");
                 }
-                
-                
+
+
             }
             catch (Exception ex)
             {
@@ -139,7 +140,7 @@ namespace CyberGear16
         {
             string connectionString = "server=localhost;database=bd_cybergear;Uid=root ";
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            using (MySqlConnection connection = new MySqlConnection(connectionString)) //al estar en un "using" la conexion se cierra automaticamente luego de terminar estas sentencias
             {
                 connection.Open();
 
@@ -161,7 +162,56 @@ namespace CyberGear16
         }
 
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
+            // Crea una nueva consulta SQL personalizada
+            string sql = "SELECT nombre_producto, precio_producto, descripcion, cantidad, categoria_id, activo  FROM products";
+
+            // Crea un adaptador de datos para ejecutar la consulta y llenar un DataTable
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conexion);
+            DataTable dataTable = new DataTable();
+
+
+
+            // Abre la conexión y llena el DataTable
+            conexion.Open();
+            adapter.Fill(dataTable);
+
+            // Asigna el DataTable como origen de datos para el DataGridView
+            dataGridView1.DataSource = dataTable;
+
+            // Asigna el color de texto negro como estilo predeterminado
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+
+            // Establece el ancho de las columnas (ajusta los números según sea necesario)
+            dataGridView1.Columns["nombre_producto"].Width = 150;
+            dataGridView1.Columns["precio_producto"].Width = 100;
+            dataGridView1.Columns["descripcion"].Width = 200;
+            dataGridView1.Columns["cantidad"].Width = 100;
+            dataGridView1.Columns["categoria_id"].Width = 100;
+            dataGridView1.Columns["activo"].Width = 100;
+            DataGridViewButtonColumn eliminarButtonColumn = new DataGridViewButtonColumn();
+            eliminarButtonColumn.Name = "Acciones";
+            eliminarButtonColumn.Text = "Eliminar";
+            eliminarButtonColumn.UseColumnTextForButtonValue = true;
+            dataGridView1.Columns.Add(eliminarButtonColumn);
+
+            // Oculta las columnas no deseadas (en este caso, ocultamos todas las demás)
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.Name != "nombre_producto" && column.Name != "precio_producto" && column.Name != "descripcion" && column.Name != "cantidad" && column.Name != "Acciones" && column.Name != "categoria_id" && column.Name != "activo" )
+                {
+                    column.Visible = false;
+
+                }
+
+
+            }
+
+            conexion.Close();
+
+        }
 
 
 
