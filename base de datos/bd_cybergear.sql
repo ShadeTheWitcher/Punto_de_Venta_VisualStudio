@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2023 a las 05:42:06
+-- Tiempo de generación: 09-09-2023 a las 05:21:49
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -82,37 +82,36 @@ CREATE TABLE `products` (
   `descripcion` text DEFAULT NULL,
   `categoria_id` int(2) NOT NULL,
   `cantidad` int(100) NOT NULL,
-  `imagen` varchar(200) NOT NULL,
-  `activo` varchar(2) NOT NULL DEFAULT 'SI',
-  `es_tendencia` varchar(2) NOT NULL DEFAULT 'NO'
+  `activo` varchar(2) NOT NULL DEFAULT 'SI'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `nombre_producto`, `precio_producto`, `descripcion`, `categoria_id`, `cantidad`, `imagen`, `activo`, `es_tendencia`) VALUES
-(8, 'Asseto Corsa', 3000.00, 'carrera', 4, 47, '1685053151_4c6bc46a3e2976c7a22d.jpg', 'SI', 'SI'),
-(9, 'The last of us', 100.00, 'zombies', 2, 53, '1685060454_bb4442de5a191a152208.jpg', 'SI', 'SI'),
-(10, 'Dredge', 5000.00, 'asd', 2, 57, '1685075794_34c4f1891b5ec54cd6a8.jpg', 'SI', 'NO'),
-(11, 'Resident Evil 4 RE', 12000.00, 'el clasico ha vuelto ', 2, 23, '1685109489_781e62756643636c2412.jpg', 'SI', 'NO'),
-(12, 'Sifu', 5000.00, 'sobrevive y cumple tu venganza', 2, 17, '1685109550_ae4d3642844c510aa4c3.jpg', 'SI', 'NO'),
-(13, 'Resident Evil 2 RE', 6000.00, 'el clásico reimaginado', 1, 59, '1685109624_ce9fdcea0d1c391f7305.jpg', 'SI', 'NO'),
-(14, 'Doom Eternal', 6800.00, 'mata demonios', 1, 47, '1685109697_98ad4fa457e05a39e57c.jpg', 'SI', 'NO'),
-(15, 'Doom ', 2000.00, 'un clasico modernizado', 1, 28, '1685109733_84b074711623d59a8448.jpg', 'SI', 'NO'),
-(16, 'Resident Evil Village', 6000.00, 'adentrate en la villa', 2, 18, '1685109799_241b39b646c2572d5aff.jpg', 'SI', 'SI'),
-(17, 'Spiderman Miles Morales', 5900.00, 'spiderman', 2, 8, '1685109847_7a9cd7c61e24d34a7526.jpg', 'SI', 'SI'),
-(18, 'Mortal Kombat X', 2000.00, 'Fatality', 3, 10, '1685128394_31fb045678c9943ae5e7.jpg', 'SI', 'NO'),
-(19, 'Far Cry 6', 12000.00, 'Far Cry ahora en cuba ', 2, 58, '1685455640_a3b6d121f18c37228319.jpg', 'SI', 'SI'),
-(20, 'Grand Theft Auto 6', 20000.00, 'Volvemos a Vice City!', 1, 199, '1685850382_073120cf04d890174d73.jpg', 'SI', 'SI'),
-(25, 'Jedi Survivor', 1230.00, 'asd', 2, 123, '1686427753_30c5a1b93b72c4cd16eb.jpg', 'SI', 'SI'),
-(26, 'Street Fighter V', 12000.00, 'vuelve la saga favorita de luchas a la edad moderna ', 3, 100, '1686428562_386e4b2b4b3fb56249cf.jpg', 'SI', 'SI'),
-(27, 'GTA Triology', 6000.00, 'los clasicos GTA han vuelto', 1, 300, '1686434490_689e0ef21f3740727daa.jpg', 'SI', 'NO'),
-(28, 'GTA 4 Complete Edition', 3000.00, 'Liberty City una ciudad oscura y llena de oportunidades', 1, 200, '1686434567_368cbb5ba4480d94e48f.jpg', 'SI', 'NO'),
-(29, 'Call of Duty Black Ops 3', 1000.00, 'un fps donde la tecnologia es vital', 1, 250, '1686434646_2e2e81d18b33ba17ed2a.jpg', 'SI', 'NO'),
-(30, 'Battlefiel 1 Revolution', 1500.00, 'un shooter lleno de destruccion', 1, 200, '1686434735_85b3d712b27564631b6d.jpg', 'SI', 'NO'),
-(31, 'Dark Souls Remastered', 6000.00, 'Adentrate a esta aventura llena de dificultades', 2, 600, '1686434836_d5756d441c33111b1312.jpg', 'SI', 'NO'),
-(32, 'GTA 5', 1200.00, 'construye tu imperio del crimen', 1, 300, '1686434948_57dd0a3b26996988fd3a.jpg', 'SI', 'NO');
+INSERT INTO `products` (`id`, `nombre_producto`, `precio_producto`, `descripcion`, `categoria_id`, `cantidad`, `activo`) VALUES
+(8, 'Asseto Corsa', 3000.00, 'carrera', 4, 47, 'SI'),
+(9, 'The last of us', 100.00, 'zombies', 2, 53, 'SI'),
+(10, 'Dredge', 5000.00, 'asd', 2, 57, 'SI'),
+(11, 'Resident Evil 4 RE', 12000.00, 'el clasico ha vuelto ', 2, 23, 'SI'),
+(12, 'Sifu', 5000.00, 'sobrevive y cumple tu venganza', 2, 17, 'SI'),
+(13, 'Resident Evil 2 RE', 6000.00, 'el clásico reimaginado', 1, 59, 'SI'),
+(14, 'Doom Eternal', 6800.00, 'mata demonios', 1, 47, 'SI'),
+(15, 'Doom ', 2000.00, 'un clasico modernizado', 1, 28, 'SI'),
+(16, 'Resident Evil Village', 6000.00, 'adentrate en la villa', 2, 18, 'SI'),
+(17, 'Spiderman Miles Morales', 5900.00, 'spiderman', 2, 8, 'SI'),
+(18, 'Mortal Kombat X', 2000.00, 'Fatality', 3, 10, 'SI'),
+(19, 'Far Cry 6', 12000.00, 'Far Cry ahora en cuba ', 2, 58, 'SI'),
+(20, 'Grand Theft Auto 6', 20000.00, 'Volvemos a Vice City!', 1, 199, 'SI'),
+(25, 'Jedi Survivor', 1230.00, 'asd', 2, 123, 'SI'),
+(26, 'Street Fighter V', 12000.00, 'vuelve la saga favorita de luchas a la edad moderna ', 3, 100, 'SI'),
+(27, 'GTA Triology', 6000.00, 'los clasicos GTA han vuelto', 1, 300, 'SI'),
+(28, 'GTA 4 Complete Edition', 3000.00, 'Liberty City una ciudad oscura y llena de oportunidades', 1, 200, 'SI'),
+(29, 'Call of Duty Black Ops 3', 1000.00, 'un fps donde la tecnologia es vital', 1, 250, 'SI'),
+(30, 'Battlefiel 1 Revolution', 1500.00, 'un shooter lleno de destruccion', 1, 200, 'SI'),
+(31, 'Dark Souls Remastered', 6000.00, 'Adentrate a esta aventura llena de dificultades', 2, 600, 'SI'),
+(32, 'GTA 5', 1200.00, 'construye tu imperio del crimen', 1, 300, 'SI'),
+(33, 'pc', 12.00, 'asdasd', 1, 12, 'SI');
 
 -- --------------------------------------------------------
 
@@ -175,7 +174,6 @@ INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `usuario`, `pass`, 
 CREATE TABLE `ventas_cabecera` (
   `id` int(11) NOT NULL,
   `fecha` date NOT NULL,
-  `usuario_id` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `total_venta` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -184,13 +182,13 @@ CREATE TABLE `ventas_cabecera` (
 -- Volcado de datos para la tabla `ventas_cabecera`
 --
 
-INSERT INTO `ventas_cabecera` (`id`, `fecha`, `usuario_id`, `id_cliente`, `total_venta`) VALUES
-(40, '2023-06-10', 37, 0, 16200),
-(41, '2023-06-10', 37, 0, 3100),
-(42, '2023-06-10', 37, 0, 12000),
-(43, '2023-06-10', 37, 0, 100),
-(44, '2023-06-10', 37, 0, 122500),
-(45, '2023-06-10', 41, 0, 5000);
+INSERT INTO `ventas_cabecera` (`id`, `fecha`, `id_cliente`, `total_venta`) VALUES
+(40, '2023-06-10', 0, 16200),
+(41, '2023-06-10', 0, 3100),
+(42, '2023-06-10', 0, 12000),
+(43, '2023-06-10', 0, 100),
+(44, '2023-06-10', 0, 122500),
+(45, '2023-06-10', 0, 5000);
 
 -- --------------------------------------------------------
 
@@ -279,7 +277,6 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `ventas_cabecera`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario_id` (`usuario_id`),
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
@@ -310,7 +307,7 @@ ALTER TABLE `domicilios`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -347,12 +344,6 @@ ALTER TABLE `clientes`
 ALTER TABLE `usuarios`
   ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`perfil_id`) REFERENCES `tipos_usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`domicilio_id`) REFERENCES `domicilios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ventas_cabecera`
---
-ALTER TABLE `ventas_cabecera`
-  ADD CONSTRAINT `ventas_cabecera_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ventas_detalle`
