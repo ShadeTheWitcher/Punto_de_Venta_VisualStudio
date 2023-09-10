@@ -38,6 +38,7 @@
             btnMin = new PictureBox();
             btnSalir = new PictureBox();
             panel2 = new Panel();
+            LTipoUser = new Label();
             LNomUser = new Label();
             btnCerrarSesion = new PictureBox();
             botonSalir = new PictureBox();
@@ -213,6 +214,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(LTipoUser);
             panel2.Controls.Add(LNomUser);
             panel2.Controls.Add(btnCerrarSesion);
             panel2.Controls.Add(botonSalir);
@@ -234,20 +236,36 @@
             panel2.Size = new Size(294, 704);
             panel2.TabIndex = 1;
             // 
+            // LTipoUser
+            // 
+            LTipoUser.AutoSize = true;
+            LTipoUser.BackColor = Color.Transparent;
+            LTipoUser.Font = new Font("Lucida Fax", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            LTipoUser.ForeColor = Color.LightGreen;
+            LTipoUser.Location = new Point(191, 680);
+            LTipoUser.Name = "LTipoUser";
+            LTipoUser.Size = new Size(65, 15);
+            LTipoUser.TabIndex = 14;
+            LTipoUser.Text = "TipoUser";
+            LTipoUser.Click += label1_Click;
+            // 
             // LNomUser
             // 
             LNomUser.AutoSize = true;
-            LNomUser.BackColor = Color.White;
-            LNomUser.Location = new Point(202, 675);
+            LNomUser.BackColor = Color.Transparent;
+            LNomUser.Font = new Font("Lucida Fax", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            LNomUser.ForeColor = SystemColors.ButtonHighlight;
+            LNomUser.Location = new Point(191, 654);
             LNomUser.Name = "LNomUser";
-            LNomUser.Size = new Size(75, 15);
+            LNomUser.Size = new Size(86, 15);
             LNomUser.TabIndex = 13;
-            LNomUser.Text = "NombreUSer";
+            LNomUser.Text = "NombreUser";
             LNomUser.Click += LNomUser_Click;
             // 
             // btnCerrarSesion
             // 
             btnCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnCerrarSesion.Cursor = Cursors.Hand;
             btnCerrarSesion.Image = Properties.Resources._4043198;
             btnCerrarSesion.Location = new Point(104, 638);
             btnCerrarSesion.Margin = new Padding(4, 3, 4, 3);
@@ -406,5 +424,6 @@
         private Button btnVentas;
         private Button btnProductos;
         private Label LNomUser;
+        private Label LTipoUser;
     }
 }

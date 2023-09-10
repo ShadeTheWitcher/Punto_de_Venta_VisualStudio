@@ -200,7 +200,7 @@ namespace CyberGear16
             // Oculta las columnas no deseadas (en este caso, ocultamos todas las demás)
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                if (column.Name != "nombre_producto" && column.Name != "precio_producto" && column.Name != "descripcion" && column.Name != "cantidad" && column.Name != "Acciones" && column.Name != "categoria_id" && column.Name != "activo" )
+                if (column.Name != "nombre_producto" && column.Name != "precio_producto" && column.Name != "descripcion" && column.Name != "cantidad" && column.Name != "Acciones" && column.Name != "categoria_id" && column.Name != "activo")
                 {
                     column.Visible = false;
 

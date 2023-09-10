@@ -28,9 +28,11 @@ namespace CyberGear16
         private void establecerLimitesTipoUser()
         {
             LNomUser.Text = nombreUser;
+            
 
             if (perfil_idUsuario == 1) //admin
             {
+                LTipoUser.Text = "Admin" ;
                 btnVentas.Enabled = false;
                 panel1.BackColor = Color.White;
 
@@ -41,6 +43,7 @@ namespace CyberGear16
 
             if (perfil_idUsuario == 2) //vendedor
             {
+                LTipoUser.Text = "Vendedor";
                 btnProductos.Enabled = false;
                 panel4.BackColor = Color.White;
 
@@ -50,7 +53,7 @@ namespace CyberGear16
 
             if (perfil_idUsuario == 3) //gerente
             {
-
+                LTipoUser.Text = "Gerente";
                 btnVentas.Enabled = false;
                 panel1.BackColor = Color.White;
 
@@ -159,7 +162,7 @@ namespace CyberGear16
 
             // Oculta el formulario actual.
             this.Hide();
-            formL.Show();   
+            formL.Show();
         }
 
         private void botonSalir_Click(object sender, EventArgs e)
@@ -169,6 +172,11 @@ namespace CyberGear16
         }
 
         private void LNomUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

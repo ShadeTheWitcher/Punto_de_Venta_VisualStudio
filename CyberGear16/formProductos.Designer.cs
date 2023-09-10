@@ -106,6 +106,7 @@
             txtFoto.ReadOnly = true;
             txtFoto.Size = new Size(177, 23);
             txtFoto.TabIndex = 12;
+            txtFoto.Visible = false;
             // 
             // comboBoxCategorias
             // 
@@ -125,6 +126,7 @@
             button2.TabIndex = 10;
             button2.Text = "subir foto";
             button2.UseVisualStyleBackColor = true;
+            button2.Visible = false;
             button2.Click += button2_Click;
             // 
             // button1
