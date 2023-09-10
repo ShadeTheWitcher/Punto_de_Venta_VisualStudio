@@ -10,12 +10,14 @@ using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
 
 using MySqlConnector;
+using Microsoft.EntityFrameworkCore;
+using CyberGear16.Models;
 
 namespace CyberGear16
 {
     public partial class formLogin : Form
     {
-        MySqlConnection con = new MySqlConnection("server=localhost;database=bd_cybergear;Uid=root ");
+        
         //private GUI_Principal form2 = new GUI_Principal();
 
         public formLogin()
@@ -33,71 +35,44 @@ namespace CyberGear16
         {
             try
             {
-                con.Open();
-
                 string usuario = textBox1.Text;
                 string contraseña = textBox2.Text;
 
-                // Consulta SQL para verificar las credenciales en la base de datosH
-                string consulta = "SELECT * FROM usuarios WHERE usuario = @usuario AND pass = @contraseña";
-                MySqlCommand cmd = new MySqlCommand(consulta, con);
-                cmd.Parameters.AddWithValue("@usuario", usuario);
-                cmd.Parameters.AddWithValue("@contraseña", contraseña);
-
-
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
+                Task.Run(async () => //hemos envuelto la lógica de inicio de sesión en un Task.Run para ejecutarla en segundo plano y permitir el uso de await
                 {
-                    
-                    
-
-                    while (reader.Read())
+                    using (var context = new BdCybergearContext()) // se instancia el contexto y lo englobamos en un usign para q se cierre auto
                     {
-                        int perfilId = reader.GetInt32("perfil_id"); // Ajusta el nombre de la columna según tu esquema
-                        string nombreUser = reader.GetString("nombre"); // Ajusta el nombre de la columna según tu esquema
+                        var usuarioEncontrado = await context.Usuarios
+                            .FirstOrDefaultAsync(u => u.Usuario1 == usuario && u.Pass == contraseña);
 
+                        if (usuarioEncontrado != null)
+                        {
+                            int perfilId = usuarioEncontrado.PerfilId;
+                            string nombreUser = usuarioEncontrado.Nombre;
 
+                            // Crea una instancia del formulario GUI_Principal
+                            GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser, context);
 
+                            // Las credenciales son válidas, el usuario ha iniciado sesión
+                            MessageBox.Show("Inicio de sesión exitoso, bienvenido " + nombreUser + " tipoUsuario: " + perfilId);
 
-                        //pasaje de datos a GUI_Principal
-                        GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser);
+                            // Oculta el formulario actual (formLogin)
+                            this.Hide();
 
-
-
-
-
-
-                        // Las credenciales son válidas, el usuario ha iniciado sesión
-                        MessageBox.Show("Inicio de sesión exitoso " + "bienvenido " + nombreUser + " tipoUsuario:"+ perfilId);
-                        // Puedes abrir otra ventana o realizar acciones adicionales aquí
-
-                        // Crea una instancia del formulario Form2.
-
-
-                        // Oculta el formulario actual (Form1).
-                        this.Hide();
-
-                        // Muestra el formulario Form2.
-                        form2.Show();
+                            // Muestra el formulario GUI_Principal
+                            form2.Show();
+                        }
+                        else
+                        {
+                            // Las credenciales son incorrectas
+                            MessageBox.Show("Nombre de usuario o contraseña incorrectos");
+                        }
                     }
-                }
-                else
-                {
-                    // Las credenciales son incorrectas
-                    MessageBox.Show("Nombre de usuario o contraseña incorrectos");
-                }
-
-                reader.Close();
+                });
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al intentar conectarse con la base de datos: " + ex.ToString());
-            }
-            finally
-            {
-                con.Close();
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
     }

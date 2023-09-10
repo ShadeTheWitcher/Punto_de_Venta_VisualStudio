@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-09-2023 a las 05:21:49
+-- Tiempo de generación: 10-09-2023 a las 17:44:43
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -163,7 +163,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `usuario`, `pass`, 
 (39, 'Julio Reynaldo', 'Lovato', '1234@hotmail.com', 'julio', '2yG9q7O7s42BI', 2, NULL, NULL, 'NO'),
 (40, 'Enzo', 'Lopez', '124as@gmail.com', 'le1', '2yG9q7O7s42BI', 2, 16, 0, 'NO'),
 (41, 'asd', 'asd', 'asd@gmail.com', '12355', '2yG9q7O7s42BI', 2, 17, 345, 'SI'),
-(42, 'admin2', 'admin2', 'asdasd@hmail-com', 'admin1', 'admin', 1, NULL, NULL, '');
+(42, 'Susana', 'Gimenez', 'asdasd@hmail-com', 'admin1', 'admin', 1, NULL, NULL, '');
 
 -- --------------------------------------------------------
 

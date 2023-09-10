@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using CyberGear16;
 using MySqlConnector;
+using CyberGear16.Models;
 
 namespace CyberGear16
 {
@@ -13,14 +14,17 @@ namespace CyberGear16
         int perfil_idUsuario;
         string nombreUser;
 
-        MySqlConnection con = new MySqlConnection("server=localhost;database=bd_cybergear;Uid=root ");
 
-        public GUI_Principal(int perfilIdUsuario, string nombreUsuario)
+
+        private readonly BdCybergearContext _context;
+
+        public GUI_Principal(int perfilIdUsuario, string nombreUsuario, BdCybergearContext context)
         {
             InitializeComponent();
             AbrirFormHija(new formInicio());
             perfil_idUsuario = perfilIdUsuario;
             nombreUser = nombreUsuario;
+            _context = context; // Guarda el contexto de base de datos
             establecerLimitesTipoUser();
         }
 
@@ -76,7 +80,7 @@ namespace CyberGear16
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Application.Exit();
-            con.Close();
+
         }
 
         private void btnMax_Click(object sender, EventArgs e)

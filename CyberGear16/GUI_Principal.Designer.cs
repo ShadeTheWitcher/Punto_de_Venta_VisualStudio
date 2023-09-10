@@ -330,6 +330,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.ErrorImage = null;
             pictureBox1.Image = Properties.Resources._7be5f80bdd244197bed72c7c0f28e283;
             pictureBox1.Location = new Point(44, 38);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
