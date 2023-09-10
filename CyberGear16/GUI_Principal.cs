@@ -155,7 +155,11 @@ namespace CyberGear16
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
+            formLogin formL = new formLogin();
 
+            // Oculta el formulario actual.
+            this.Hide();
+            formL.Show();   
         }
 
         private void botonSalir_Click(object sender, EventArgs e)
