@@ -16,7 +16,7 @@ namespace CyberGear16
     public partial class formLogin : Form
     {
         MySqlConnection con = new MySqlConnection("server=localhost;database=bd_cybergear;Uid=root ");
-        private GUI_Principal form2 = new GUI_Principal();
+        //private GUI_Principal form2 = new GUI_Principal();
 
         public formLogin()
         {
@@ -50,18 +50,38 @@ namespace CyberGear16
 
                 if (reader.HasRows)
                 {
-                    // Las credenciales son válidas, el usuario ha iniciado sesión
-                    MessageBox.Show("Inicio de sesión exitoso");
-                    // Puedes abrir otra ventana o realizar acciones adicionales aquí
+                    
+                    
 
-                    // Crea una instancia del formulario Form2.
+                    while (reader.Read())
+                    {
+                        int perfilId = reader.GetInt32("perfil_id"); // Ajusta el nombre de la columna según tu esquema
+                        string nombreUser = reader.GetString("nombre"); // Ajusta el nombre de la columna según tu esquema
 
 
-                    // Oculta el formulario actual (Form1).
-                    this.Hide();
 
-                    // Muestra el formulario Form2.
-                    form2.Show();
+
+                        // Puedes pasar los datos del usuario al constructor de GUI_Principal
+                        GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser);
+
+
+
+
+
+
+                        // Las credenciales son válidas, el usuario ha iniciado sesión
+                        MessageBox.Show("Inicio de sesión exitoso " + "bienvenido " + nombreUser + " tipoUsuario:"+ perfilId);
+                        // Puedes abrir otra ventana o realizar acciones adicionales aquí
+
+                        // Crea una instancia del formulario Form2.
+
+
+                        // Oculta el formulario actual (Form1).
+                        this.Hide();
+
+                        // Muestra el formulario Form2.
+                        form2.Show();
+                    }
                 }
                 else
                 {

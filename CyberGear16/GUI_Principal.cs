@@ -1,4 +1,4 @@
-//using MySqlConnector;
+
 using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
@@ -10,13 +10,65 @@ namespace CyberGear16
     public partial class GUI_Principal : Form
     {
 
+        int perfil_idUsuario;
+        string nombreUser;
+
         MySqlConnection con = new MySqlConnection("server=localhost;database=bd_cybergear;Uid=root ");
 
-        public GUI_Principal()
+        public GUI_Principal(int perfilIdUsuario, string nombreUsuario)
         {
             InitializeComponent();
             AbrirFormHija(new formInicio());
+            perfil_idUsuario = perfilIdUsuario;
+            nombreUser = nombreUsuario;
+            establecerLimitesTipoUser();
         }
+
+
+        private void establecerLimitesTipoUser()
+        {
+            LNomUser.Text = nombreUser;
+
+            if (perfil_idUsuario == 1) //admin
+            {
+                btnVentas.Enabled = false;
+                panel1.BackColor = Color.White;
+
+                btnClientes.Enabled = false;
+                panel6.BackColor = Color.White;
+            }
+
+
+            if (perfil_idUsuario == 2) //vendedor
+            {
+                btnProductos.Enabled = false;
+                panel4.BackColor = Color.White;
+
+                btnUsuarios.Enabled = false;
+                panel5.BackColor = Color.White;
+            }
+
+            if (perfil_idUsuario == 3) //gerente
+            {
+
+                btnVentas.Enabled = false;
+                panel1.BackColor = Color.White;
+
+                btnClientes.Enabled = false;
+                panel6.BackColor = Color.White;
+
+                btnProductos.Enabled = false;
+                panel4.BackColor = Color.White;
+
+                btnUsuarios.Enabled = false;
+                panel5.BackColor = Color.White;
+            }
+
+
+        }
+
+
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -93,7 +145,7 @@ namespace CyberGear16
 
         private void button1_Click(object sender, EventArgs e)
         {
-           AbrirFormHija(new formProductos());
+            AbrirFormHija(new formProductos());
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
@@ -110,6 +162,11 @@ namespace CyberGear16
         {
             Application.Exit();
             // con.Close();
+        }
+
+        private void LNomUser_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button2 = new Button();
+            btnClientes = new Button();
             button1 = new Button();
             btnVentas = new Button();
             btnProductos = new Button();
@@ -38,6 +38,7 @@
             btnMin = new PictureBox();
             btnSalir = new PictureBox();
             panel2 = new Panel();
+            LNomUser = new Label();
             btnCerrarSesion = new PictureBox();
             botonSalir = new PictureBox();
             panel6 = new Panel();
@@ -59,23 +60,23 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // button2
+            // btnClientes
             // 
-            button2.Cursor = Cursors.Hand;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatAppearance.MouseOverBackColor = SystemColors.Highlight;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = Color.WhiteSmoke;
-            button2.Image = Properties.Resources.clientes;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(4, 399);
-            button2.Margin = new Padding(4, 3, 4, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(290, 40);
-            button2.TabIndex = 10;
-            button2.Text = "Clientes";
-            button2.UseVisualStyleBackColor = true;
+            btnClientes.Cursor = Cursors.Hand;
+            btnClientes.FlatAppearance.BorderSize = 0;
+            btnClientes.FlatAppearance.MouseOverBackColor = SystemColors.Highlight;
+            btnClientes.FlatStyle = FlatStyle.Flat;
+            btnClientes.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnClientes.ForeColor = Color.WhiteSmoke;
+            btnClientes.Image = Properties.Resources.clientes;
+            btnClientes.ImageAlign = ContentAlignment.MiddleLeft;
+            btnClientes.Location = new Point(4, 399);
+            btnClientes.Margin = new Padding(4, 3, 4, 3);
+            btnClientes.Name = "btnClientes";
+            btnClientes.Size = new Size(290, 40);
+            btnClientes.TabIndex = 10;
+            btnClientes.Text = "Clientes";
+            btnClientes.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -212,10 +213,11 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(LNomUser);
             panel2.Controls.Add(btnCerrarSesion);
             panel2.Controls.Add(botonSalir);
             panel2.Controls.Add(panel6);
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(btnClientes);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(panel1);
@@ -232,11 +234,22 @@
             panel2.Size = new Size(294, 704);
             panel2.TabIndex = 1;
             // 
+            // LNomUser
+            // 
+            LNomUser.AutoSize = true;
+            LNomUser.BackColor = Color.White;
+            LNomUser.Location = new Point(202, 675);
+            LNomUser.Name = "LNomUser";
+            LNomUser.Size = new Size(75, 15);
+            LNomUser.TabIndex = 13;
+            LNomUser.Text = "NombreUSer";
+            LNomUser.Click += LNomUser_Click;
+            // 
             // btnCerrarSesion
             // 
             btnCerrarSesion.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnCerrarSesion.Image = Properties.Resources._4043198;
-            btnCerrarSesion.Location = new Point(103, 638);
+            btnCerrarSesion.Location = new Point(104, 638);
             btnCerrarSesion.Margin = new Padding(4, 3, 4, 3);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(70, 52);
@@ -363,6 +376,7 @@
             ((System.ComponentModel.ISupportInitialize)btnMin).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnSalir).EndInit();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btnCerrarSesion).EndInit();
             ((System.ComponentModel.ISupportInitialize)botonSalir).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -387,9 +401,10 @@
         private Panel panel6;
         private PictureBox botonSalir;
         private PictureBox btnCerrarSesion;
-        private Button button2;
+        private Button btnClientes;
         private Button button1;
         private Button btnVentas;
         private Button btnProductos;
+        private Label LNomUser;
     }
 }
