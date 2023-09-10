@@ -152,7 +152,7 @@ namespace CyberGear16
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new formProductos());
+            AbrirFormHija(new formProductos(_context));
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)

@@ -268,6 +268,7 @@
             Margin = new Padding(4, 3, 4, 3);
             Name = "formProductos";
             Text = "Productos";
+            Load += formProductos_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

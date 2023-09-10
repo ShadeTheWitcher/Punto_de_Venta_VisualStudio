@@ -8,19 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySqlConnector;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using CyberGear16.Models; // importar el espacio de nombres de tus modelos
+
 
 namespace CyberGear16
 {
     public partial class formProductos : Form
     {
         private MySqlConnection conexion = new MySqlConnection("server=localhost;database=bd_cybergear;Uid=root");
-        public formProductos()
+        private readonly BdCybergearContext _context; // DbContext de Entity Framework
+        public formProductos(BdCybergearContext context)
         {
             InitializeComponent();
-            this.Load += new EventHandler(Form1_Load);
+            
 
             comboBoxCategorias.Items.Add("Videjuegos");
             comboBoxCategorias.Items.Add("PC-componentes");
+            _context = context;
         }
 
 
@@ -82,40 +88,48 @@ namespace CyberGear16
         private void button1_Click(object sender, EventArgs e)
         {
             double precio = 0;
-            int stock;
+            int stock = 0;
 
-            if (int.TryParse(textBox3.Text, out stock) && Double.TryParse(textBox2.Text, out precio))
+            if (validarCampos() && double.TryParse(textBox2.Text, out precio) && int.TryParse(textBox3.Text, out stock))
             {
-                // Ahora puedes utilizar valor1 y valor2 como números enteros válidos.
+                string nombre = textBox1.Text;
+                string descripcion = textBox4.Text;
+                int idCategoria = comboBoxCategorias.SelectedIndex;
+
+                try
+                {
+                    using (var context = new BdCybergearContext()) // Crea un nuevo contexto
+                    {
+                        // Crea una nueva instancia de Producto y configura sus propiedades.
+                        Product nuevoProducto = new Product
+                        {
+                            NombreProducto = nombre,
+                            PrecioProducto = precio,
+                            Descripcion = descripcion,
+                            CategoriaId = idCategoria,
+                            Cantidad = stock
+                        };
+
+                        // Agrega el producto al contexto.
+                        context.Products.Add(nuevoProducto);
+
+                        // Guarda los cambios en la base de datos.
+                        context.SaveChanges();
+
+                        MessageBox.Show("Producto agregado correctamente");
+                        LimpiarCampos();
+                        CargarDatosEnDataGridView();
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al agregar el producto: " + ex.Message);
+                }
             }
             else
             {
                 MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos.");
-            }
-
-
-
-            string nombre = textBox1.Text;
-            int idCategoria = comboBoxCategorias.SelectedIndex;
-
-            string descripcion = textBox4.Text;
-            //int stock = int.Parse(textBox3.Text);
-
-
-
-            try
-            {
-                if (validarCampos())
-                {
-                    InsertarProducto(nombre, precio, descripcion, idCategoria, stock);
-                    MessageBox.Show("Producto agregado correctamente");
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al agregar el producto: " + ex.Message);
             }
         }
 
@@ -134,88 +148,126 @@ namespace CyberGear16
             return true;
         }
 
-
-
-        public void InsertarProducto(string nombre, double precio, string descripcion, int categoriaId, int cantidad)
+        private void LimpiarCampos()
         {
-            string connectionString = "server=localhost;database=bd_cybergear;Uid=root ";
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            comboBoxCategorias.SelectedIndex = -1;
+        }
 
-            using (MySqlConnection connection = new MySqlConnection(connectionString)) //al estar en un "using" la conexion se cierra automaticamente luego de terminar estas sentencias
+        private void CargarDatosEnDataGridView()
+        {
+            using (var context = new BdCybergearContext())
             {
-                connection.Open();
-
-                string query = "INSERT INTO products (nombre_producto, precio_producto, descripcion, categoria_id, cantidad) " +
-                               "VALUES (@nombre, @precio, @descripcion, @categoriaId, @cantidad)";
-
-                using (MySqlCommand command = new MySqlCommand(query, connection))
+                // Vuelve a cargar los datos en el DataGridView para reflejar los cambios.
+                var productos = context.Products
+                .Select(p => new
                 {
-                    command.Parameters.AddWithValue("@nombre", nombre);
-                    command.Parameters.AddWithValue("@precio", precio);
-                    command.Parameters.AddWithValue("@descripcion", descripcion);
-                    command.Parameters.AddWithValue("@categoriaId", categoriaId);
-                    command.Parameters.AddWithValue("@cantidad", cantidad);
-                    //command.Parameters.AddWithValue("@imagen", imagen);
+                    p.Id,
+                    p.NombreProducto,
+                    p.PrecioProducto,
+                    p.Descripcion,
+                    p.Cantidad,
+                    p.CategoriaId,
+                    p.Activo
+                })
+                .ToList();
 
-                    command.ExecuteNonQuery();
-                }
+                dataGridView1.DataSource = productos;
             }
         }
 
 
-        private void Form1_Load(object sender, EventArgs e)
+
+
+
+        //public void InsertarProducto(string nombre, double precio, string descripcion, int categoriaId, int cantidad)
+        //{
+        //    string connectionString = "server=localhost;database=bd_cybergear;Uid=root ";
+
+        //    using (MySqlConnection connection = new MySqlConnection(connectionString)) //al estar en un "using" la conexion se cierra automaticamente luego de terminar estas sentencias
+        //    {
+        //        connection.Open();
+
+        //        string query = "INSERT INTO products (nombre_producto, precio_producto, descripcion, categoria_id, cantidad) " +
+        //                       "VALUES (@nombre, @precio, @descripcion, @categoriaId, @cantidad)";
+
+        //        using (MySqlCommand command = new MySqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@nombre", nombre);
+        //            command.Parameters.AddWithValue("@precio", precio);
+        //            command.Parameters.AddWithValue("@descripcion", descripcion);
+        //            command.Parameters.AddWithValue("@categoriaId", categoriaId);
+        //            command.Parameters.AddWithValue("@cantidad", cantidad);
+        //            //command.Parameters.AddWithValue("@imagen", imagen);
+
+        //            command.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
+
+
+
+
+
+
+        
+
+        private void formProductos_Load(object sender, EventArgs e)
         {
-
-            // Crea una nueva consulta SQL personalizada
-            string sql = "SELECT nombre_producto, precio_producto, descripcion, cantidad, categoria_id, activo  FROM products";
-
-            // Crea un adaptador de datos para ejecutar la consulta y llenar un DataTable
-            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conexion);
-            DataTable dataTable = new DataTable();
-
-
-
-            // Abre la conexión y llena el DataTable
-            conexion.Open();
-            adapter.Fill(dataTable);
-
-            // Asigna el DataTable como origen de datos para el DataGridView
-            dataGridView1.DataSource = dataTable;
-
-            // Asigna el color de texto negro como estilo predeterminado
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
-
-            // Establece el ancho de las columnas (ajusta los números según sea necesario)
-            dataGridView1.Columns["nombre_producto"].Width = 150;
-            dataGridView1.Columns["precio_producto"].Width = 100;
-            dataGridView1.Columns["descripcion"].Width = 200;
-            dataGridView1.Columns["cantidad"].Width = 100;
-            dataGridView1.Columns["categoria_id"].Width = 100;
-            dataGridView1.Columns["activo"].Width = 100;
-            DataGridViewButtonColumn eliminarButtonColumn = new DataGridViewButtonColumn();
-            eliminarButtonColumn.Name = "Acciones";
-            eliminarButtonColumn.Text = "Eliminar";
-            eliminarButtonColumn.UseColumnTextForButtonValue = true;
-            dataGridView1.Columns.Add(eliminarButtonColumn);
-
-            // Oculta las columnas no deseadas (en este caso, ocultamos todas las demás)
-            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            using (var context = new BdCybergearContext()) // se lo engloba en un using para q se cierre la conexion
             {
-                if (column.Name != "nombre_producto" && column.Name != "precio_producto" && column.Name != "descripcion" && column.Name != "cantidad" && column.Name != "Acciones" && column.Name != "categoria_id" && column.Name != "activo")
+                // Consulta los productos desde la base de datos
+                var products = context.Products
+                    .Select(p => new
+                    {
+                        p.Id,
+                        p.NombreProducto,
+                        p.PrecioProducto,
+                        p.Descripcion,
+                        p.Cantidad,
+                        p.CategoriaId,
+                        p.Activo
+                    })
+                    .ToList();
+
+                // Asigna los productos a la fuente de datos del DataGridView
+                dataGridView1.DataSource = products;
+
+                // Configura el estilo y columnas del DataGridView
+                // (asegúrate de que las propiedades de Product se correspondan con las columnas)
+
+                dataGridView1.Columns["Id"].Width = 40;
+                dataGridView1.Columns["NombreProducto"].Width = 150;
+                dataGridView1.Columns["PrecioProducto"].Width = 100;
+                dataGridView1.Columns["Descripcion"].Width = 200;
+                dataGridView1.Columns["Cantidad"].Width = 100;
+                dataGridView1.Columns["CategoriaId"].Width = 100;
+                dataGridView1.Columns["Activo"].Width = 100;
+
+                DataGridViewButtonColumn eliminarButtonColumn = new DataGridViewButtonColumn();
+                eliminarButtonColumn.Name = "Acciones";
+                eliminarButtonColumn.Text = "Eliminar";
+                eliminarButtonColumn.UseColumnTextForButtonValue = true;
+                dataGridView1.Columns.Add(eliminarButtonColumn);
+
+
+                // Cambia el color de fuente a negro para todas las celdas del DataGridView
+                dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+
+                // Oculta las columnas no deseadas (en este caso, ocultamos todas las demás)
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
                 {
-                    column.Visible = false;
-
+                    if (column.Name != "Id"  && column.Name != "NombreProducto" && column.Name != "PrecioProducto" && column.Name != "Descripcion" &&
+                        column.Name != "Cantidad" && column.Name != "Acciones" && column.Name != "CategoriaId" &&
+                        column.Name != "Activo")
+                    {
+                        column.Visible = false;
+                    }
                 }
-
-
             }
-
-            conexion.Close();
-
         }
-
-
-
-
-
     }
 }
