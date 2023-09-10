@@ -238,6 +238,7 @@
             // 
             // LTipoUser
             // 
+            LTipoUser.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             LTipoUser.AutoSize = true;
             LTipoUser.BackColor = Color.Transparent;
             LTipoUser.Font = new Font("Lucida Fax", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -251,6 +252,7 @@
             // 
             // LNomUser
             // 
+            LNomUser.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             LNomUser.AutoSize = true;
             LNomUser.BackColor = Color.Transparent;
             LNomUser.Font = new Font("Lucida Fax", 9F, FontStyle.Bold, GraphicsUnit.Point);

@@ -28,11 +28,11 @@ namespace CyberGear16
         private void establecerLimitesTipoUser()
         {
             LNomUser.Text = nombreUser;
-            
+
 
             if (perfil_idUsuario == 1) //admin
             {
-                LTipoUser.Text = "Admin" ;
+                LTipoUser.Text = "Admin";
                 btnVentas.Enabled = false;
                 panel1.BackColor = Color.White;
 

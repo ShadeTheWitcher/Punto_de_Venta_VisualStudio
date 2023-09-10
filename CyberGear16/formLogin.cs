@@ -61,7 +61,7 @@ namespace CyberGear16
 
 
 
-                        // Puedes pasar los datos del usuario al constructor de GUI_Principal
+                        //pasaje de datos a GUI_Principal
                         GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser);
 
 
