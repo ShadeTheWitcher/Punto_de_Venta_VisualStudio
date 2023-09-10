@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2023 a las 17:44:43
+-- Tiempo de generación: 10-09-2023 a las 21:06:25
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -29,15 +29,24 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
-  `nombre` int(11) NOT NULL,
-  `apellido` int(11) NOT NULL,
+  `nombre` varchar(20) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
   `dni` int(11) NOT NULL,
   `domicilio_id` int(11) NOT NULL,
-  `email` int(11) NOT NULL,
+  `email` varchar(40) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `sexo` varchar(20) NOT NULL,
   `telefono` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellido`, `dni`, `domicilio_id`, `email`, `fecha_nacimiento`, `sexo`, `telefono`) VALUES
+(1, 'Jorge', 'Morales', 4464, 14, '12343234asdasd@gmail.com', '2023-09-12', 'masculino', 123345),
+(2, 'asd', 'asd', 446452, 13, '1234asdasd@gmail.com', '2023-09-12', 'masculino', 234234),
+(3, 'Susana', 'Morales', 4464524, 8, '123234asdasd@gmail.com', '2023-09-12', 'masculino', 123);
 
 -- --------------------------------------------------------
 
@@ -183,12 +192,12 @@ CREATE TABLE `ventas_cabecera` (
 --
 
 INSERT INTO `ventas_cabecera` (`id`, `fecha`, `id_cliente`, `total_venta`) VALUES
-(40, '2023-06-10', 0, 16200),
-(41, '2023-06-10', 0, 3100),
-(42, '2023-06-10', 0, 12000),
-(43, '2023-06-10', 0, 100),
-(44, '2023-06-10', 0, 122500),
-(45, '2023-06-10', 0, 5000);
+(40, '2023-06-10', 1, 16200),
+(41, '2023-06-10', 2, 3100),
+(42, '2023-06-10', 1, 12000),
+(43, '2023-06-10', 1, 100),
+(44, '2023-06-10', 2, 122500),
+(45, '2023-06-10', 1, 5000);
 
 -- --------------------------------------------------------
 
@@ -240,9 +249,9 @@ INSERT INTO `ventas_detalle` (`id`, `venta_id`, `producto_id`, `cantidad_venta`,
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id_cliente`),
-  ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `dni` (`dni`),
-  ADD UNIQUE KEY `id_cliente` (`id_cliente`),
+  ADD UNIQUE KEY `dni_2` (`dni`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `domicilio_id` (`domicilio_id`);
 
 --
@@ -295,7 +304,7 @@ ALTER TABLE `ventas_detalle`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `domicilios`
@@ -335,15 +344,20 @@ ALTER TABLE `ventas_detalle`
 -- Filtros para la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `ventas_cabecera` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `clientes_ibfk_2` FOREIGN KEY (`domicilio_id`) REFERENCES `domicilios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`perfil_id`) REFERENCES `tipos_usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`domicilio_id`) REFERENCES `domicilios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`domicilio_id`) REFERENCES `domicilios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuarios_ibfk_3` FOREIGN KEY (`perfil_id`) REFERENCES `tipos_usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `ventas_cabecera`
+--
+ALTER TABLE `ventas_cabecera`
+  ADD CONSTRAINT `ventas_cabecera_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ventas_detalle`
