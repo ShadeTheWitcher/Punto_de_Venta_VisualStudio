@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2023 a las 17:40:03
+-- Tiempo de generación: 11-09-2023 a las 20:32:29
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -121,7 +121,8 @@ INSERT INTO `products` (`id`, `nombre_producto`, `precio_producto`, `descripcion
 (30, 'Battlefiel 1 Revolution', 1500.00, 'un shooter lleno de destruccion', 1, 200, 'SI'),
 (31, 'Dark Souls Remastered', 6000.00, 'Adentrate a esta aventura llena de dificultades', 2, 600, 'SI'),
 (32, 'GTA 5', 1200.00, 'construye tu imperio del crimen', 1, 300, 'SI'),
-(33, 'pc', 12.00, 'asdasd', 1, 12, 'SI');
+(33, 'pc', 12.00, 'asdasd', 1, 12, 'SI'),
+(34, 'ram_16g', 12444.00, 'asd', 1, 12, 'SI');
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,7 @@ CREATE TABLE `usuarios` (
   `tel` int(10) DEFAULT NULL,
   `fecha` date NOT NULL,
   `sexo` varchar(10) NOT NULL,
-  `baja` varchar(2) NOT NULL
+  `baja` varchar(2) NOT NULL DEFAULT 'NO'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -170,7 +171,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `apellido`, `email`, `usuario`, `pass`, `perfil_id`, `domicilio_id`, `tel`, `fecha`, `sexo`, `baja`) VALUES
-(47, 0, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, NULL, NULL, '0000-00-00', '', '');
+(47, 0, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, NULL, NULL, '0000-00-00', '', 'NO');
 
 -- --------------------------------------------------------
 
@@ -314,7 +315,7 @@ ALTER TABLE `domicilios`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
