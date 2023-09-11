@@ -7,6 +7,8 @@ public partial class Usuario
 {
     public int Id { get; set; }
 
+    public int Dni { get; set; }
+
     public string Nombre { get; set; } = null!;
 
     public string Apellido { get; set; } = null!;
@@ -22,6 +24,10 @@ public partial class Usuario
     public int? DomicilioId { get; set; }
 
     public int? Tel { get; set; }
+
+    public DateOnly Fecha { get; set; }
+
+    public string Sexo { get; set; } = null!;
 
     public string Baja { get; set; } = null!;
 

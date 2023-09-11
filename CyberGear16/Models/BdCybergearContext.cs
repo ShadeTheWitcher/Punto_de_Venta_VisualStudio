@@ -164,13 +164,18 @@ public partial class BdCybergearContext : DbContext
                 .HasColumnName("apellido");
             entity.Property(e => e.Baja)
                 .HasMaxLength(2)
+                .HasDefaultValueSql("'NO'")
                 .HasColumnName("baja");
+            entity.Property(e => e.Dni)
+                .HasColumnType("int(30)")
+                .HasColumnName("dni");
             entity.Property(e => e.DomicilioId)
                 .HasColumnType("int(11)")
                 .HasColumnName("domicilio_id");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .HasColumnName("email");
+            entity.Property(e => e.Fecha).HasColumnName("fecha");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(30)
                 .HasColumnName("nombre");
@@ -181,6 +186,9 @@ public partial class BdCybergearContext : DbContext
                 .HasDefaultValueSql("'2'")
                 .HasColumnType("int(11)")
                 .HasColumnName("perfil_id");
+            entity.Property(e => e.Sexo)
+                .HasMaxLength(10)
+                .HasColumnName("sexo");
             entity.Property(e => e.Tel)
                 .HasColumnType("int(10)")
                 .HasColumnName("tel");
