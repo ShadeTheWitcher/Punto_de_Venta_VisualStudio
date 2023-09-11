@@ -17,15 +17,13 @@ namespace CyberGear16
 {
     public partial class formProductos : Form
     {
-        private MySqlConnection conexion = new MySqlConnection("server=localhost;database=bd_cybergear;Uid=root");
         private readonly BdCybergearContext _context; // DbContext de Entity Framework
         public formProductos(BdCybergearContext context)
         {
             InitializeComponent();
             
 
-            comboBoxCategorias.Items.Add("Videjuegos");
-            comboBoxCategorias.Items.Add("PC-componentes");
+            
             _context = context;
         }
 
@@ -82,7 +80,16 @@ namespace CyberGear16
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["Acciones"].Index)
+            {
+                // Obtén el producto seleccionado
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                int productId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
 
+                // Abre el formulario de detalles/editar con el producto seleccionado
+                formEditorProducto editorProducto = new formEditorProducto(productId);
+                editorProducto.ShowDialog();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -217,6 +224,9 @@ namespace CyberGear16
 
         private void formProductos_Load(object sender, EventArgs e)
         {
+            comboBoxCategorias.Items.Add("Videjuegos");
+            comboBoxCategorias.Items.Add("PC-componentes");
+
             using (var context = new BdCybergearContext()) // se lo engloba en un using para q se cierre la conexion
             {
                 // Consulta los productos desde la base de datos
@@ -249,7 +259,7 @@ namespace CyberGear16
 
                 DataGridViewButtonColumn eliminarButtonColumn = new DataGridViewButtonColumn();
                 eliminarButtonColumn.Name = "Acciones";
-                eliminarButtonColumn.Text = "Eliminar";
+                eliminarButtonColumn.Text = "Editar/Baja";
                 eliminarButtonColumn.UseColumnTextForButtonValue = true;
                 dataGridView1.Columns.Add(eliminarButtonColumn);
 

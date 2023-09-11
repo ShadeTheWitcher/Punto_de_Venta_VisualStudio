@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-09-2023 a las 21:06:25
+-- Tiempo de generación: 11-09-2023 a las 17:40:03
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -76,7 +76,8 @@ INSERT INTO `domicilios` (`id`, `direccion`, `cod_postal`) VALUES
 (14, 'barrio quintana123', 3400),
 (15, 'B pirayui', 3400),
 (16, 'barrio chiquita', 3400),
-(17, '245vv asda', 3400);
+(17, '245vv asda', 3400),
+(19, 'dddsssss', 111);
 
 -- --------------------------------------------------------
 
@@ -150,6 +151,7 @@ INSERT INTO `tipos_usuario` (`id`, `tipo`) VALUES
 
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
+  `dni` int(30) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -158,6 +160,8 @@ CREATE TABLE `usuarios` (
   `perfil_id` int(11) NOT NULL DEFAULT 2,
   `domicilio_id` int(11) DEFAULT NULL,
   `tel` int(10) DEFAULT NULL,
+  `fecha` date NOT NULL,
+  `sexo` varchar(10) NOT NULL,
   `baja` varchar(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -165,14 +169,8 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `email`, `usuario`, `pass`, `perfil_id`, `domicilio_id`, `tel`, `baja`) VALUES
-(35, 'Shade', 'Witcher', 'admin@gmail.com', 'admin', '2yn.4fvaTgedM', 1, NULL, NULL, 'NO'),
-(37, 'Jorge', 'Lopez', '21@gmail.com', '123', '2yG9q7O7s42BI', 2, 14, 379451221, 'NO'),
-(38, 'Jose', 'Ralls', 'js@gmail.com', 'js123', '2yG9q7O7s42BI', 2, 15, NULL, 'NO'),
-(39, 'Julio Reynaldo', 'Lovato', '1234@hotmail.com', 'julio', '2yG9q7O7s42BI', 2, NULL, NULL, 'NO'),
-(40, 'Enzo', 'Lopez', '124as@gmail.com', 'le1', '2yG9q7O7s42BI', 2, 16, 0, 'NO'),
-(41, 'asd', 'asd', 'asd@gmail.com', '12355', '2yG9q7O7s42BI', 2, 17, 345, 'SI'),
-(42, 'Susana', 'Gimenez', 'asdasd@hmail-com', 'admin1', 'admin', 1, NULL, NULL, '');
+INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `apellido`, `email`, `usuario`, `pass`, `perfil_id`, `domicilio_id`, `tel`, `fecha`, `sexo`, `baja`) VALUES
+(47, 0, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, NULL, NULL, '0000-00-00', '', '');
 
 -- --------------------------------------------------------
 
@@ -310,7 +308,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `domicilios`
 --
 ALTER TABLE `domicilios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
@@ -322,7 +320,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_cabecera`
