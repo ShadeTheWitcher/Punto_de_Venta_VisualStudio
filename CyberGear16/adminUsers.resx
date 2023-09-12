@@ -117,4 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="BGuardar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
+        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAHYbAAB2GwH1ht6VAAADe0lE
+        QVR4Xu2b3WoTQRiGF2zBC9AT8R78AREKguDVeOA1qDegqYKKoghVr0APBA8U9ECthrZqi1KzaVYJTZtN
+        RBA9Gb93kui6vrs7m+xvdwsPlK+Tme975mdnC7GsxY5lNewzwjPhm6CMuGyrw7e2VNNx1e5gqHpuMqAv
+        UzA2ckAuntx+CevCOWG/YIX/jIr/KHg7iSYFAd3+UK19cXWfYaDNtrTF70TAhO/CeavRipDQsJ+OPxCP
+        hAWgj1Up7MR9Rx2SftE3A39Dm3dfXbUSLgD8EC6GS2jYw3HjeKQg4J8ZDQFtULyBAAAJF4Il8A9FM04k
+        NQFsTBBfAAhZCfwD0ZRLAAiQwBtHUz4BgEjgDaMppwDgk8AbRVNeAQAS5BEp9wRPMB7lFgBwTzhbZQFg
+        reoCflZdgKoF0KAJtYACCJCXp1wFHLjRVs9bfdVPQ0AQl2x1bMlRn7cH6oXd1znoOMvRBBo0ZN+irW6+
+        7anBkBcVBwgweR0+KsXfXdnRY15d7ukcWG7G0KApYh4Jv9pylSsJYSWgkGnBPzkm7/lBYOZR/Mu2q44s
+        dWabfUCDMTl+z1HX3vT0ksQyngVWtBeMgZnXxZNcYkODcZFZmJeliP3Ilm2SYIw5LPtZZ34CDU4LksoC
+        Nva00GCVoMEqQYNVggarBA0GwQ6kIsJyD4IG/Uin81dsdTCDx9ysxH5M0qAX6ejkA0fdbspFR+797PJS
+        JPBugus5bqi0Hj80OGFc/HLH1ddPdn0tGriOI9fXcj3HDTVyJdDgmDlZ9pj5JF52sgbvJrie6+1AavsD
+        DQIxhz2PZQ+zbJAig5WA9wbUELoKaBDIh3CoYF+VUQByRu6ooRZQCyD1TaBBMKWA7q6rujspIX2zMRm5
+        CECC7zfbavVTKxXQt6mEfATILCHR5sZmKqBvjMHG9lMLyEVA1bcAQIL6wEoDw+JBbgKKQi0gawGpLn0/
+        BlshUwFIKM3Dz4/JYZitAJkVJMYeXWmAsTAmy2VCLSBTAVXfAgAJ6QMqCyKKB5kLKBq1gLwFJLolDJa8
+        n1wFIOEkD0WTQ89PvgJk1pA4e4RNA/pCn2ysIGoBuQqo+hYASFgfYEkQs3iQu4C8qQXUAswFDP4LgmoI
+        GEDAE19wRDUEPISA08KGJzhi7wv4ICxY1nUHEk4Jj4W/X5/fuwLwXelHwoJ1p2X9BmGe32bnv8jAAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
 </root>

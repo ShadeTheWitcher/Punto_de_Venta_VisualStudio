@@ -28,50 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminUsers));
             PUsuarios = new Panel();
+            DTPicker = new DateTimePicker();
+            BCancelar = new Button();
+            BGuardar = new Button();
+            CBPerfil = new ComboBox();
+            RBMujer = new RadioButton();
+            RBHombre = new RadioButton();
+            TTelefono = new TextBox();
+            TDireccion = new TextBox();
+            TDni = new TextBox();
+            TEmail = new TextBox();
+            TContraseña = new TextBox();
+            TUsuario = new TextBox();
+            TApellido = new TextBox();
+            TNombre = new TextBox();
+            LSexo = new Label();
+            LEmail = new Label();
+            LPerfil = new Label();
+            LFechaNac = new Label();
+            LDni = new Label();
+            LDireccion = new Label();
             LContraseña = new Label();
             LTelefono = new Label();
             LUsuario = new Label();
             LApellido = new Label();
             LNombre = new Label();
             LUsuarios = new Label();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            LDireccion = new Label();
-            LDni = new Label();
-            LFechaNac = new Label();
-            LPerfil = new Label();
-            LEmail = new Label();
-            LSexo = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
-            textBox9 = new TextBox();
-            textBox10 = new TextBox();
-            RBHombre = new RadioButton();
-            RBMujer = new RadioButton();
+            DGVUsuarios = new DataGridView();
+            BActivos = new Button();
+            BInactivo = new Button();
             PUsuarios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVUsuarios).BeginInit();
             SuspendLayout();
             // 
             // PUsuarios
             // 
             PUsuarios.BackColor = Color.FromArgb(26, 32, 40);
+            PUsuarios.Controls.Add(DTPicker);
+            PUsuarios.Controls.Add(BCancelar);
+            PUsuarios.Controls.Add(BGuardar);
+            PUsuarios.Controls.Add(CBPerfil);
             PUsuarios.Controls.Add(RBMujer);
             PUsuarios.Controls.Add(RBHombre);
-            PUsuarios.Controls.Add(textBox7);
-            PUsuarios.Controls.Add(textBox8);
-            PUsuarios.Controls.Add(textBox9);
-            PUsuarios.Controls.Add(textBox10);
-            PUsuarios.Controls.Add(textBox6);
-            PUsuarios.Controls.Add(textBox5);
-            PUsuarios.Controls.Add(textBox4);
-            PUsuarios.Controls.Add(textBox3);
-            PUsuarios.Controls.Add(textBox2);
-            PUsuarios.Controls.Add(textBox1);
+            PUsuarios.Controls.Add(TTelefono);
+            PUsuarios.Controls.Add(TDireccion);
+            PUsuarios.Controls.Add(TDni);
+            PUsuarios.Controls.Add(TEmail);
+            PUsuarios.Controls.Add(TContraseña);
+            PUsuarios.Controls.Add(TUsuario);
+            PUsuarios.Controls.Add(TApellido);
+            PUsuarios.Controls.Add(TNombre);
             PUsuarios.Controls.Add(LSexo);
             PUsuarios.Controls.Add(LEmail);
             PUsuarios.Controls.Add(LPerfil);
@@ -86,8 +94,195 @@
             PUsuarios.Controls.Add(LUsuarios);
             PUsuarios.Location = new Point(19, 11);
             PUsuarios.Name = "PUsuarios";
-            PUsuarios.Size = new Size(751, 237);
+            PUsuarios.Size = new Size(982, 334);
             PUsuarios.TabIndex = 0;
+            PUsuarios.Paint += PUsuarios_Paint;
+            // 
+            // DTPicker
+            // 
+            DTPicker.Format = DateTimePickerFormat.Short;
+            DTPicker.Location = new Point(459, 102);
+            DTPicker.Name = "DTPicker";
+            DTPicker.Size = new Size(170, 23);
+            DTPicker.TabIndex = 27;
+            // 
+            // BCancelar
+            // 
+            BCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            BCancelar.Image = Properties.Resources.borrar;
+            BCancelar.ImageAlign = ContentAlignment.MiddleLeft;
+            BCancelar.Location = new Point(732, 131);
+            BCancelar.Name = "BCancelar";
+            BCancelar.Size = new Size(137, 70);
+            BCancelar.TabIndex = 26;
+            BCancelar.Text = "Cancelar";
+            BCancelar.TextAlign = ContentAlignment.MiddleRight;
+            BCancelar.UseVisualStyleBackColor = true;
+            BCancelar.Click += BCancelar_Click;
+            // 
+            // BGuardar
+            // 
+            BGuardar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            BGuardar.ForeColor = SystemColors.ControlText;
+            BGuardar.Image = (Image)resources.GetObject("BGuardar.Image");
+            BGuardar.ImageAlign = ContentAlignment.MiddleLeft;
+            BGuardar.Location = new Point(732, 43);
+            BGuardar.Name = "BGuardar";
+            BGuardar.Size = new Size(137, 68);
+            BGuardar.TabIndex = 25;
+            BGuardar.Text = "Guardar";
+            BGuardar.TextAlign = ContentAlignment.MiddleRight;
+            BGuardar.UseVisualStyleBackColor = true;
+            BGuardar.Click += BGuardar_Click;
+            // 
+            // CBPerfil
+            // 
+            CBPerfil.FormattingEnabled = true;
+            CBPerfil.Location = new Point(113, 189);
+            CBPerfil.Name = "CBPerfil";
+            CBPerfil.Size = new Size(170, 23);
+            CBPerfil.TabIndex = 24;
+            // 
+            // RBMujer
+            // 
+            RBMujer.AutoSize = true;
+            RBMujer.ForeColor = Color.White;
+            RBMujer.Location = new Point(562, 164);
+            RBMujer.Name = "RBMujer";
+            RBMujer.Size = new Size(56, 19);
+            RBMujer.TabIndex = 23;
+            RBMujer.TabStop = true;
+            RBMujer.Text = "Mujer";
+            RBMujer.UseVisualStyleBackColor = true;
+            // 
+            // RBHombre
+            // 
+            RBHombre.AutoSize = true;
+            RBHombre.ForeColor = Color.White;
+            RBHombre.Location = new Point(465, 164);
+            RBHombre.Name = "RBHombre";
+            RBHombre.Size = new Size(69, 19);
+            RBHombre.TabIndex = 22;
+            RBHombre.TabStop = true;
+            RBHombre.Text = "Hombre";
+            RBHombre.UseVisualStyleBackColor = true;
+            // 
+            // TTelefono
+            // 
+            TTelefono.Location = new Point(459, 131);
+            TTelefono.Name = "TTelefono";
+            TTelefono.Size = new Size(170, 23);
+            TTelefono.TabIndex = 21;
+            // 
+            // TDireccion
+            // 
+            TDireccion.Location = new Point(459, 72);
+            TDireccion.Name = "TDireccion";
+            TDireccion.Size = new Size(170, 23);
+            TDireccion.TabIndex = 19;
+            // 
+            // TDni
+            // 
+            TDni.Location = new Point(459, 43);
+            TDni.Name = "TDni";
+            TDni.Size = new Size(170, 23);
+            TDni.TabIndex = 18;
+            // 
+            // TEmail
+            // 
+            TEmail.Location = new Point(113, 160);
+            TEmail.Name = "TEmail";
+            TEmail.Size = new Size(170, 23);
+            TEmail.TabIndex = 16;
+            // 
+            // TContraseña
+            // 
+            TContraseña.Location = new Point(113, 131);
+            TContraseña.Name = "TContraseña";
+            TContraseña.Size = new Size(170, 23);
+            TContraseña.TabIndex = 15;
+            // 
+            // TUsuario
+            // 
+            TUsuario.Location = new Point(113, 101);
+            TUsuario.Name = "TUsuario";
+            TUsuario.Size = new Size(170, 23);
+            TUsuario.TabIndex = 14;
+            // 
+            // TApellido
+            // 
+            TApellido.Location = new Point(113, 72);
+            TApellido.Name = "TApellido";
+            TApellido.Size = new Size(170, 23);
+            TApellido.TabIndex = 13;
+            // 
+            // TNombre
+            // 
+            TNombre.Location = new Point(113, 43);
+            TNombre.Name = "TNombre";
+            TNombre.Size = new Size(170, 23);
+            TNombre.TabIndex = 12;
+            // 
+            // LSexo
+            // 
+            LSexo.AutoSize = true;
+            LSexo.ForeColor = Color.White;
+            LSexo.Location = new Point(325, 163);
+            LSexo.Name = "LSexo";
+            LSexo.Size = new Size(35, 15);
+            LSexo.TabIndex = 11;
+            LSexo.Text = "Sexo:";
+            // 
+            // LEmail
+            // 
+            LEmail.AutoSize = true;
+            LEmail.ForeColor = Color.White;
+            LEmail.Location = new Point(38, 163);
+            LEmail.Name = "LEmail";
+            LEmail.Size = new Size(39, 15);
+            LEmail.TabIndex = 10;
+            LEmail.Text = "Email:";
+            // 
+            // LPerfil
+            // 
+            LPerfil.AutoSize = true;
+            LPerfil.ForeColor = Color.White;
+            LPerfil.Location = new Point(40, 189);
+            LPerfil.Name = "LPerfil";
+            LPerfil.Size = new Size(37, 15);
+            LPerfil.TabIndex = 9;
+            LPerfil.Text = "Perfil:";
+            LPerfil.Click += label5_Click_1;
+            // 
+            // LFechaNac
+            // 
+            LFechaNac.AutoSize = true;
+            LFechaNac.ForeColor = Color.White;
+            LFechaNac.Location = new Point(325, 104);
+            LFechaNac.Name = "LFechaNac";
+            LFechaNac.Size = new Size(122, 15);
+            LFechaNac.TabIndex = 8;
+            LFechaNac.Text = "Fecha de Nacimiento:";
+            // 
+            // LDni
+            // 
+            LDni.AutoSize = true;
+            LDni.ForeColor = Color.White;
+            LDni.Location = new Point(325, 51);
+            LDni.Name = "LDni";
+            LDni.Size = new Size(28, 15);
+            LDni.TabIndex = 7;
+            LDni.Text = "Dni:";
+            // 
+            // LDireccion
+            // 
+            LDireccion.AutoSize = true;
+            LDireccion.ForeColor = Color.White;
+            LDireccion.Location = new Point(325, 80);
+            LDireccion.Name = "LDireccion";
+            LDireccion.Size = new Size(60, 15);
+            LDireccion.TabIndex = 6;
+            LDireccion.Text = "Dirección:";
             // 
             // LContraseña
             // 
@@ -154,193 +349,57 @@
             LUsuarios.Text = "Usuarios:";
             LUsuarios.Click += LUsuarios_Click;
             // 
-            // tableLayoutPanel1
+            // DGVUsuarios
             // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Location = new Point(19, 272);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(751, 166);
-            tableLayoutPanel1.TabIndex = 1;
+            DGVUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVUsuarios.Location = new Point(19, 394);
+            DGVUsuarios.Name = "DGVUsuarios";
+            DGVUsuarios.RowTemplate.Height = 25;
+            DGVUsuarios.Size = new Size(982, 213);
+            DGVUsuarios.TabIndex = 1;
+            DGVUsuarios.CellContentClick += DGVUsuarios_CellContentClick;
             // 
-            // LDireccion
+            // BActivos
             // 
-            LDireccion.AutoSize = true;
-            LDireccion.ForeColor = Color.White;
-            LDireccion.Location = new Point(325, 80);
-            LDireccion.Name = "LDireccion";
-            LDireccion.Size = new Size(60, 15);
-            LDireccion.TabIndex = 6;
-            LDireccion.Text = "Dirección:";
+            BActivos.Location = new Point(19, 360);
+            BActivos.Name = "BActivos";
+            BActivos.Size = new Size(113, 28);
+            BActivos.TabIndex = 2;
+            BActivos.Text = "Activos";
+            BActivos.UseVisualStyleBackColor = true;
             // 
-            // LDni
+            // BInactivo
             // 
-            LDni.AutoSize = true;
-            LDni.ForeColor = Color.White;
-            LDni.Location = new Point(325, 51);
-            LDni.Name = "LDni";
-            LDni.Size = new Size(28, 15);
-            LDni.TabIndex = 7;
-            LDni.Text = "Dni:";
-            // 
-            // LFechaNac
-            // 
-            LFechaNac.AutoSize = true;
-            LFechaNac.ForeColor = Color.White;
-            LFechaNac.Location = new Point(325, 104);
-            LFechaNac.Name = "LFechaNac";
-            LFechaNac.Size = new Size(122, 15);
-            LFechaNac.TabIndex = 8;
-            LFechaNac.Text = "Fecha de Nacimiento:";
-            // 
-            // LPerfil
-            // 
-            LPerfil.AutoSize = true;
-            LPerfil.ForeColor = Color.White;
-            LPerfil.Location = new Point(40, 189);
-            LPerfil.Name = "LPerfil";
-            LPerfil.Size = new Size(37, 15);
-            LPerfil.TabIndex = 9;
-            LPerfil.Text = "Perfil:";
-            LPerfil.Click += label5_Click_1;
-            // 
-            // LEmail
-            // 
-            LEmail.AutoSize = true;
-            LEmail.ForeColor = Color.White;
-            LEmail.Location = new Point(38, 163);
-            LEmail.Name = "LEmail";
-            LEmail.Size = new Size(39, 15);
-            LEmail.TabIndex = 10;
-            LEmail.Text = "Email:";
-            // 
-            // LSexo
-            // 
-            LSexo.AutoSize = true;
-            LSexo.ForeColor = Color.White;
-            LSexo.Location = new Point(325, 163);
-            LSexo.Name = "LSexo";
-            LSexo.Size = new Size(35, 15);
-            LSexo.TabIndex = 11;
-            LSexo.Text = "Sexo:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(113, 43);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(170, 23);
-            textBox1.TabIndex = 12;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(113, 72);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(170, 23);
-            textBox2.TabIndex = 13;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(113, 101);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(170, 23);
-            textBox3.TabIndex = 14;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(113, 131);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(170, 23);
-            textBox4.TabIndex = 15;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(113, 160);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(170, 23);
-            textBox5.TabIndex = 16;
-            // 
-            // textBox6
-            // 
-            textBox6.Location = new Point(113, 189);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(170, 23);
-            textBox6.TabIndex = 17;
-            // 
-            // textBox7
-            // 
-            textBox7.Location = new Point(459, 131);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(170, 23);
-            textBox7.TabIndex = 21;
-            // 
-            // textBox8
-            // 
-            textBox8.Location = new Point(459, 101);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(170, 23);
-            textBox8.TabIndex = 20;
-            // 
-            // textBox9
-            // 
-            textBox9.Location = new Point(459, 72);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(170, 23);
-            textBox9.TabIndex = 19;
-            // 
-            // textBox10
-            // 
-            textBox10.Location = new Point(459, 43);
-            textBox10.Name = "textBox10";
-            textBox10.Size = new Size(170, 23);
-            textBox10.TabIndex = 18;
-            // 
-            // RBHombre
-            // 
-            RBHombre.AutoSize = true;
-            RBHombre.ForeColor = Color.White;
-            RBHombre.Location = new Point(465, 164);
-            RBHombre.Name = "RBHombre";
-            RBHombre.Size = new Size(69, 19);
-            RBHombre.TabIndex = 22;
-            RBHombre.TabStop = true;
-            RBHombre.Text = "Hombre";
-            RBHombre.UseVisualStyleBackColor = true;
-            // 
-            // RBMujer
-            // 
-            RBMujer.AutoSize = true;
-            RBMujer.ForeColor = Color.White;
-            RBMujer.Location = new Point(562, 164);
-            RBMujer.Name = "RBMujer";
-            RBMujer.Size = new Size(56, 19);
-            RBMujer.TabIndex = 23;
-            RBMujer.TabStop = true;
-            RBMujer.Text = "Mujer";
-            RBMujer.UseVisualStyleBackColor = true;
+            BInactivo.Location = new Point(157, 360);
+            BInactivo.Name = "BInactivo";
+            BInactivo.Size = new Size(113, 28);
+            BInactivo.TabIndex = 3;
+            BInactivo.Text = "Inactivos";
+            BInactivo.UseVisualStyleBackColor = true;
+            BInactivo.Click += BInactivos_Click;
             // 
             // adminUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(tableLayoutPanel1);
+            ClientSize = new Size(1061, 629);
+            Controls.Add(BInactivo);
+            Controls.Add(BActivos);
+            Controls.Add(DGVUsuarios);
             Controls.Add(PUsuarios);
             FormBorderStyle = FormBorderStyle.None;
             Name = "adminUsers";
             Text = "Form1";
+            Load += adminUsers_Load;
             PUsuarios.ResumeLayout(false);
             PUsuarios.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVUsuarios).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel PUsuarios;
-        private TableLayoutPanel tableLayoutPanel1;
         private Label LUsuarios;
         private Label LContraseña;
         private Label LTelefono;
@@ -353,17 +412,22 @@
         private Label LDni;
         private Label LDireccion;
         private Label LSexo;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
+        private TextBox TUsuario;
+        private TextBox TApellido;
+        private TextBox TNombre;
+        private TextBox TEmail;
+        private TextBox TContraseña;
         private RadioButton RBHombre;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private TextBox textBox9;
-        private TextBox textBox10;
+        private TextBox TTelefono;
+        private TextBox TDireccion;
+        private TextBox TDni;
         private RadioButton RBMujer;
+        private ComboBox CBPerfil;
+        private Button BCancelar;
+        private Button BGuardar;
+        private DateTimePicker DTPicker;
+        private DataGridView DGVUsuarios;
+        private Button BActivos;
+        private Button BInactivo;
     }
 }
