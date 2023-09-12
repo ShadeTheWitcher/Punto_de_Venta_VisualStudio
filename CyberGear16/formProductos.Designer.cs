@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
@@ -49,6 +49,8 @@
             label2 = new Label();
             openFileDialog1 = new OpenFileDialog();
             dataGridView1 = new DataGridView();
+            textBox5 = new TextBox();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -80,6 +82,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(26, 32, 40);
+            panel1.Controls.Add(textBox5);
+            panel1.Controls.Add(label7);
             panel1.Controls.Add(txtFoto);
             panel1.Controls.Add(comboBoxCategorias);
             panel1.Controls.Add(label1);
@@ -96,8 +100,9 @@
             panel1.Controls.Add(label2);
             panel1.Location = new Point(89, 37);
             panel1.Name = "panel1";
-            panel1.Size = new Size(630, 255);
+            panel1.Size = new Size(630, 292);
             panel1.TabIndex = 2;
+            panel1.Paint += panel1_Paint;
             // 
             // txtFoto
             // 
@@ -112,7 +117,7 @@
             // 
             comboBoxCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCategorias.FormattingEnabled = true;
-            comboBoxCategorias.Location = new Point(130, 148);
+            comboBoxCategorias.Location = new Point(130, 193);
             comboBoxCategorias.Name = "comboBoxCategorias";
             comboBoxCategorias.Size = new Size(167, 23);
             comboBoxCategorias.TabIndex = 11;
@@ -132,7 +137,7 @@
             // button1
             // 
             button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(74, 213);
+            button1.Location = new Point(99, 235);
             button1.Name = "button1";
             button1.Size = new Size(131, 30);
             button1.TabIndex = 9;
@@ -144,7 +149,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = SystemColors.ButtonFace;
-            label6.Location = new Point(28, 156);
+            label6.Location = new Point(28, 193);
             label6.Name = "label6";
             label6.Size = new Size(56, 15);
             label6.TabIndex = 8;
@@ -228,32 +233,49 @@
             // 
             dataGridView1.AccessibleRole = AccessibleRole.None;
             dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.Location = new Point(89, 312);
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Window;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridView1.Location = new Point(79, 352);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(865, 244);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(130, 138);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(75, 23);
+            textBox5.TabIndex = 14;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = SystemColors.ButtonFace;
+            label7.Location = new Point(28, 146);
+            label7.Name = "label7";
+            label7.Size = new Size(80, 15);
+            label7.TabIndex = 13;
+            label7.Text = "stock minimo";
             // 
             // formProductos
             // 
@@ -296,5 +318,7 @@
         private OpenFileDialog openFileDialog1;
         private TextBox txtFoto;
         private DataGridView dataGridView1;
+        private TextBox textBox5;
+        private Label label7;
     }
 }
