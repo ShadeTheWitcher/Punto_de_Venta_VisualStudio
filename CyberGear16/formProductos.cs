@@ -21,9 +21,9 @@ namespace CyberGear16
         public formProductos(BdCybergearContext context)
         {
             InitializeComponent();
-            
 
-            
+
+
             _context = context;
         }
 
@@ -220,7 +220,7 @@ namespace CyberGear16
 
 
 
-        
+
 
         private void formProductos_Load(object sender, EventArgs e)
         {
@@ -270,7 +270,7 @@ namespace CyberGear16
                 // Oculta las columnas no deseadas (en este caso, ocultamos todas las demás)
                 foreach (DataGridViewColumn column in dataGridView1.Columns)
                 {
-                    if (column.Name != "Id"  && column.Name != "NombreProducto" && column.Name != "PrecioProducto" && column.Name != "Descripcion" &&
+                    if (column.Name != "Id" && column.Name != "NombreProducto" && column.Name != "PrecioProducto" && column.Name != "Descripcion" &&
                         column.Name != "Cantidad" && column.Name != "Acciones" && column.Name != "CategoriaId" &&
                         column.Name != "Activo")
                     {
@@ -278,6 +278,11 @@ namespace CyberGear16
                     }
                 }
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
