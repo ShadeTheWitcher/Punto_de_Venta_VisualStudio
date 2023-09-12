@@ -135,3 +135,4 @@ E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integra
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.Data.EntityFrameworkCore.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formEditorProducto.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormBackUp.resources

@@ -153,6 +153,16 @@ namespace CyberGear16.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_backup_negro {
+            get {
+                object obj = ResourceManager.GetObject("icon_backup_negro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_backup1 {
             get {
                 object obj = ResourceManager.GetObject("icon_backup1", resourceCulture);
@@ -166,6 +176,16 @@ namespace CyberGear16.Properties {
         internal static System.Drawing.Bitmap icon_backup2 {
             get {
                 object obj = ResourceManager.GetObject("icon_backup2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_subir_negro {
+            get {
+                object obj = ResourceManager.GetObject("icon_subir_negro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

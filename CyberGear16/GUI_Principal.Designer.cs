@@ -266,6 +266,7 @@
             btnBackUp.TabIndex = 16;
             btnBackUp.Text = "BackUp ";
             btnBackUp.UseVisualStyleBackColor = true;
+            btnBackUp.Click += btnBackUp_Click;
             // 
             // LTipoUser
             // 
