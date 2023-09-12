@@ -38,6 +38,8 @@
             btnMin = new PictureBox();
             btnSalir = new PictureBox();
             panel2 = new Panel();
+            panel7 = new Panel();
+            btnBackUp = new Button();
             LTipoUser = new Label();
             LNomUser = new Label();
             btnCerrarSesion = new PictureBox();
@@ -71,7 +73,7 @@
             btnClientes.ForeColor = Color.WhiteSmoke;
             btnClientes.Image = Properties.Resources.clientes;
             btnClientes.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClientes.Location = new Point(4, 399);
+            btnClientes.Location = new Point(4, 475);
             btnClientes.Margin = new Padding(4, 3, 4, 3);
             btnClientes.Name = "btnClientes";
             btnClientes.Size = new Size(290, 40);
@@ -89,7 +91,7 @@
             button1.ForeColor = Color.White;
             button1.Image = Properties.Resources.reportes;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(4, 472);
+            button1.Location = new Point(4, 548);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new Size(290, 40);
@@ -107,7 +109,7 @@
             btnVentas.ForeColor = Color.White;
             btnVentas.Image = Properties.Resources.venta;
             btnVentas.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVentas.Location = new Point(4, 332);
+            btnVentas.Location = new Point(4, 408);
             btnVentas.Margin = new Padding(4, 3, 4, 3);
             btnVentas.Name = "btnVentas";
             btnVentas.Size = new Size(290, 40);
@@ -125,7 +127,7 @@
             btnProductos.ForeColor = Color.White;
             btnProductos.Image = Properties.Resources.producto;
             btnProductos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProductos.Location = new Point(4, 204);
+            btnProductos.Location = new Point(4, 280);
             btnProductos.Margin = new Padding(4, 3, 4, 3);
             btnProductos.Name = "btnProductos";
             btnProductos.Size = new Size(290, 40);
@@ -214,6 +216,8 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(panel7);
+            panel2.Controls.Add(btnBackUp);
             panel2.Controls.Add(LTipoUser);
             panel2.Controls.Add(LNomUser);
             panel2.Controls.Add(btnCerrarSesion);
@@ -235,6 +239,33 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(294, 704);
             panel2.TabIndex = 1;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = SystemColors.Highlight;
+            panel7.Location = new Point(0, 213);
+            panel7.Margin = new Padding(4, 3, 4, 3);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(12, 40);
+            panel7.TabIndex = 15;
+            // 
+            // btnBackUp
+            // 
+            btnBackUp.Cursor = Cursors.Hand;
+            btnBackUp.FlatAppearance.BorderSize = 0;
+            btnBackUp.FlatAppearance.MouseOverBackColor = SystemColors.Highlight;
+            btnBackUp.FlatStyle = FlatStyle.Flat;
+            btnBackUp.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBackUp.ForeColor = Color.White;
+            btnBackUp.Image = Properties.Resources.icon_backup1;
+            btnBackUp.ImageAlign = ContentAlignment.MiddleLeft;
+            btnBackUp.Location = new Point(4, 213);
+            btnBackUp.Margin = new Padding(4, 3, 4, 3);
+            btnBackUp.Name = "btnBackUp";
+            btnBackUp.Size = new Size(290, 40);
+            btnBackUp.TabIndex = 16;
+            btnBackUp.Text = "BackUp ";
+            btnBackUp.UseVisualStyleBackColor = true;
             // 
             // LTipoUser
             // 
@@ -295,7 +326,7 @@
             // panel6
             // 
             panel6.BackColor = SystemColors.Highlight;
-            panel6.Location = new Point(0, 399);
+            panel6.Location = new Point(0, 475);
             panel6.Margin = new Padding(4, 3, 4, 3);
             panel6.Name = "panel6";
             panel6.Size = new Size(12, 40);
@@ -304,7 +335,7 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.Highlight;
-            panel3.Location = new Point(0, 472);
+            panel3.Location = new Point(0, 548);
             panel3.Margin = new Padding(4, 3, 4, 3);
             panel3.Name = "panel3";
             panel3.Size = new Size(12, 40);
@@ -313,7 +344,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Highlight;
-            panel1.Location = new Point(0, 332);
+            panel1.Location = new Point(0, 408);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(12, 40);
@@ -322,7 +353,7 @@
             // panel5
             // 
             panel5.BackColor = SystemColors.Highlight;
-            panel5.Location = new Point(0, 272);
+            panel5.Location = new Point(0, 348);
             panel5.Margin = new Padding(4, 3, 4, 3);
             panel5.Name = "panel5";
             panel5.Size = new Size(12, 37);
@@ -344,7 +375,7 @@
             // panel4
             // 
             panel4.BackColor = SystemColors.Highlight;
-            panel4.Location = new Point(0, 204);
+            panel4.Location = new Point(0, 280);
             panel4.Margin = new Padding(4, 3, 4, 3);
             panel4.Name = "panel4";
             panel4.Size = new Size(12, 40);
@@ -360,7 +391,7 @@
             btnUsuarios.ForeColor = SystemColors.Control;
             btnUsuarios.Image = Properties.Resources.clientes;
             btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsuarios.Location = new Point(4, 272);
+            btnUsuarios.Location = new Point(4, 348);
             btnUsuarios.Margin = new Padding(4, 3, 4, 3);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.Size = new Size(290, 37);
@@ -428,5 +459,7 @@
         private Button btnProductos;
         private Label LNomUser;
         private Label LTipoUser;
+        private Panel panel7;
+        private Button btnBackUp;
     }
 }

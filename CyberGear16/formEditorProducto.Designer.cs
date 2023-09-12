@@ -42,6 +42,8 @@
             label4 = new Label();
             label3 = new Label();
             label7 = new Label();
+            label8 = new Label();
+            textBox5 = new TextBox();
             btnBaja = new Button();
             SuspendLayout();
             // 
@@ -76,28 +78,28 @@
             // 
             textBox2.Location = new Point(110, 110);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(167, 23);
+            textBox2.Size = new Size(114, 23);
             textBox2.TabIndex = 2;
             // 
             // textBox3
             // 
             textBox3.Location = new Point(110, 153);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(167, 23);
+            textBox3.Size = new Size(114, 23);
             textBox3.TabIndex = 3;
             // 
             // comboBoxCategorias
             // 
             comboBoxCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCategorias.FormattingEnabled = true;
-            comboBoxCategorias.Location = new Point(110, 202);
+            comboBoxCategorias.Location = new Point(110, 239);
             comboBoxCategorias.Name = "comboBoxCategorias";
             comboBoxCategorias.Size = new Size(167, 23);
             comboBoxCategorias.TabIndex = 12;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(110, 244);
+            textBox4.Location = new Point(110, 282);
             textBox4.Multiline = true;
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(174, 96);
@@ -105,7 +107,7 @@
             // 
             // btnAplicar
             // 
-            btnAplicar.Location = new Point(110, 382);
+            btnAplicar.Location = new Point(110, 409);
             btnAplicar.Name = "btnAplicar";
             btnAplicar.Size = new Size(174, 23);
             btnAplicar.TabIndex = 14;
@@ -125,7 +127,7 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(24, 205);
+            label6.Location = new Point(24, 242);
             label6.Name = "label6";
             label6.Size = new Size(56, 15);
             label6.TabIndex = 20;
@@ -155,7 +157,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(12, 247);
+            label3.Location = new Point(12, 282);
             label3.Name = "label3";
             label3.Size = new Size(68, 15);
             label3.TabIndex = 17;
@@ -171,11 +173,30 @@
             label7.TabIndex = 16;
             label7.Text = "nombre producto";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = SystemColors.ActiveCaptionText;
+            label8.Location = new Point(12, 197);
+            label8.Name = "label8";
+            label8.Size = new Size(80, 15);
+            label8.TabIndex = 23;
+            label8.Text = "stock minimo";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(110, 194);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(114, 23);
+            textBox5.TabIndex = 22;
+            // 
             // formEditorProducto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(488, 450);
+            ClientSize = new Size(488, 473);
+            Controls.Add(label8);
+            Controls.Add(textBox5);
             Controls.Add(btnBaja);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -211,5 +232,7 @@
         private Label label4;
         private Label label3;
         private Label label7;
+        private Label label8;
+        private TextBox textBox5;
     }
 }
