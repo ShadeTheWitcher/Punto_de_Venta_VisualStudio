@@ -87,8 +87,9 @@ namespace CyberGear16
                 int productId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
 
                 // Abre el formulario de detalles/editar con el producto seleccionado
-                formEditorProducto editorProducto = new formEditorProducto(productId);
+                formEditorProducto editorProducto = new formEditorProducto( productId, _context);
                 editorProducto.ShowDialog();
+                CargarDatosEnDataGridView();
             }
         }
 
@@ -113,7 +114,7 @@ namespace CyberGear16
                             NombreProducto = nombre,
                             PrecioProducto = precio,
                             Descripcion = descripcion,
-                            CategoriaId = idCategoria,
+                            CategoriaId = idCategoria+1,
                             Cantidad = stock
                         };
 
