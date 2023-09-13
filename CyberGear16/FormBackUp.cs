@@ -21,8 +21,8 @@ namespace CyberGear16
         private void button1_Click(object sender, EventArgs e)
         {
             openFileDialog1.InitialDirectory = @"C:\"; // Cambia la ruta según tu ubicación.
-          //openFileDialog1.Filter = "Archivos sql (*.sql;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
-          //openFileDialog1.FilterIndex = 1;
+                                                       //openFileDialog1.Filter = "Archivos sql (*.sql;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+                                                       //openFileDialog1.FilterIndex = 1;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -33,7 +33,7 @@ namespace CyberGear16
             }
 
 
-            }
+        }
 
         private void btnRespaldar_Click(object sender, EventArgs e)
         {

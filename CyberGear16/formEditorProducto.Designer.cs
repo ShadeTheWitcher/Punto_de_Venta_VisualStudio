@@ -209,7 +209,7 @@
             // 
             // button3
             // 
-            button3.Image = Properties.Resources.flecha_verde_retroceder1;
+            button3.Image = Properties.Resources.flecha_verde_retroceder;
             button3.Location = new Point(5, 400);
             button3.Name = "button3";
             button3.Size = new Size(75, 61);

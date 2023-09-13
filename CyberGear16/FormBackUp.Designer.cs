@@ -45,7 +45,7 @@
             // btnRespaldar
             // 
             btnRespaldar.Anchor = AnchorStyles.None;
-            btnRespaldar.Image = Properties.Resources.icon_backup_negro;
+            btnRespaldar.Image = Properties.Resources.icon_backup_negro1;
             btnRespaldar.ImageAlign = ContentAlignment.MiddleLeft;
             btnRespaldar.Location = new Point(225, 82);
             btnRespaldar.Name = "btnRespaldar";
@@ -59,7 +59,7 @@
             // btnRestaurarBase
             // 
             btnRestaurarBase.Anchor = AnchorStyles.None;
-            btnRestaurarBase.Image = Properties.Resources.icon_subir_negro;
+            btnRestaurarBase.Image = Properties.Resources.icon_subir_negro1;
             btnRestaurarBase.ImageAlign = ContentAlignment.MiddleLeft;
             btnRestaurarBase.Location = new Point(225, 293);
             btnRestaurarBase.Name = "btnRestaurarBase";
