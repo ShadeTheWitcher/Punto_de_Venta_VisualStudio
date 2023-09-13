@@ -184,5 +184,10 @@ namespace CyberGear16
         {
 
         }
+
+        private void btnBackUp_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FormBackUp(_context));
+        }
     }
 }
