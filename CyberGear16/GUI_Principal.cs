@@ -45,17 +45,7 @@ namespace CyberGear16
             }
 
 
-            if (perfil_idUsuario == 2) //vendedor
-            {
-                LTipoUser.Text = "Vendedor";
-                btnProductos.Enabled = false;
-                panel4.BackColor = Color.White;
-
-                btnUsuarios.Enabled = false;
-                panel5.BackColor = Color.White;
-            }
-
-            if (perfil_idUsuario == 3) //gerente
+            if (perfil_idUsuario == 2) //gerente
             {
                 LTipoUser.Text = "Gerente";
                 btnVentas.Enabled = false;
@@ -64,6 +54,18 @@ namespace CyberGear16
                 btnClientes.Enabled = false;
                 panel6.BackColor = Color.White;
 
+                btnProductos.Enabled = false;
+                panel4.BackColor = Color.White;
+
+                btnUsuarios.Enabled = false;
+                panel5.BackColor = Color.White;
+            }
+
+            if (perfil_idUsuario == 3) //vendedor
+            {
+                
+
+                LTipoUser.Text = "Vendedor";
                 btnProductos.Enabled = false;
                 panel4.BackColor = Color.White;
 
@@ -188,6 +190,11 @@ namespace CyberGear16
         private void btnBackUp_Click(object sender, EventArgs e)
         {
             AbrirFormHija(new FormBackUp(_context));
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FormSeccionVentas(_context));
         }
     }
 }
