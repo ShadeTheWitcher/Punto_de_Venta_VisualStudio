@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Button btnBaja;
             label1 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            tbNombre = new TextBox();
+            tbPrecio = new TextBox();
+            tbStock = new TextBox();
             comboBoxCategorias = new ComboBox();
-            textBox4 = new TextBox();
+            tbDescrip = new TextBox();
             btnAplicar = new Button();
             label2 = new Label();
             label6 = new Label();
@@ -43,19 +42,11 @@
             label3 = new Label();
             label7 = new Label();
             label8 = new Label();
-            textBox5 = new TextBox();
-            btnBaja = new Button();
+            tbStockMin = new TextBox();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
-            // 
-            // btnBaja
-            // 
-            btnBaja.Location = new Point(360, 184);
-            btnBaja.Name = "btnBaja";
-            btnBaja.Size = new Size(89, 57);
-            btnBaja.TabIndex = 21;
-            btnBaja.Text = "DAR DE BAJA PRODUCTO";
-            btnBaja.UseVisualStyleBackColor = true;
-            btnBaja.Click += btnBaja_Click;
             // 
             // label1
             // 
@@ -67,26 +58,26 @@
             label1.Text = "Modificacion de Producto";
             label1.Click += label1_Click;
             // 
-            // textBox1
+            // tbNombre
             // 
-            textBox1.Location = new Point(110, 66);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(167, 23);
-            textBox1.TabIndex = 1;
+            tbNombre.Location = new Point(110, 66);
+            tbNombre.Name = "tbNombre";
+            tbNombre.Size = new Size(167, 23);
+            tbNombre.TabIndex = 1;
             // 
-            // textBox2
+            // tbPrecio
             // 
-            textBox2.Location = new Point(110, 110);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(114, 23);
-            textBox2.TabIndex = 2;
+            tbPrecio.Location = new Point(110, 110);
+            tbPrecio.Name = "tbPrecio";
+            tbPrecio.Size = new Size(114, 23);
+            tbPrecio.TabIndex = 2;
             // 
-            // textBox3
+            // tbStock
             // 
-            textBox3.Location = new Point(110, 153);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(114, 23);
-            textBox3.TabIndex = 3;
+            tbStock.Location = new Point(110, 153);
+            tbStock.Name = "tbStock";
+            tbStock.Size = new Size(114, 23);
+            tbStock.TabIndex = 3;
             // 
             // comboBoxCategorias
             // 
@@ -97,13 +88,13 @@
             comboBoxCategorias.Size = new Size(167, 23);
             comboBoxCategorias.TabIndex = 12;
             // 
-            // textBox4
+            // tbDescrip
             // 
-            textBox4.Location = new Point(110, 282);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(174, 96);
-            textBox4.TabIndex = 13;
+            tbDescrip.Location = new Point(110, 282);
+            tbDescrip.Multiline = true;
+            tbDescrip.Name = "tbDescrip";
+            tbDescrip.Size = new Size(174, 96);
+            tbDescrip.TabIndex = 13;
             // 
             // btnAplicar
             // 
@@ -183,21 +174,62 @@
             label8.TabIndex = 23;
             label8.Text = "stock minimo";
             // 
-            // textBox5
+            // tbStockMin
             // 
-            textBox5.Location = new Point(110, 194);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(114, 23);
-            textBox5.TabIndex = 22;
+            tbStockMin.Location = new Point(110, 194);
+            tbStockMin.Name = "tbStockMin";
+            tbStockMin.Size = new Size(114, 23);
+            tbStockMin.TabIndex = 22;
+            // 
+            // button1
+            // 
+            button1.Image = Properties.Resources.icon_dar_baja;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(324, 126);
+            button1.Name = "button1";
+            button1.Size = new Size(140, 45);
+            button1.TabIndex = 25;
+            button1.Text = "DAR DE BAJA";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Image = Properties.Resources.icon_dar_alta;
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(324, 182);
+            button2.Name = "button2";
+            button2.Size = new Size(140, 45);
+            button2.TabIndex = 26;
+            button2.Text = "DAR DE ALTA";
+            button2.TextAlign = ContentAlignment.MiddleRight;
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Image = Properties.Resources.flecha_verde_retroceder1;
+            button3.Location = new Point(5, 400);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 61);
+            button3.TabIndex = 27;
+            button3.Text = "Volver";
+            button3.TextAlign = ContentAlignment.BottomCenter;
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // formEditorProducto
             // 
+            AcceptButton = button3;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(488, 473);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(label8);
-            Controls.Add(textBox5);
-            Controls.Add(btnBaja);
+            Controls.Add(tbStockMin);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -205,13 +237,15 @@
             Controls.Add(label7);
             Controls.Add(label2);
             Controls.Add(btnAplicar);
-            Controls.Add(textBox4);
+            Controls.Add(tbDescrip);
             Controls.Add(comboBoxCategorias);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(tbStock);
+            Controls.Add(tbPrecio);
+            Controls.Add(tbNombre);
             Controls.Add(label1);
+            MaximizeBox = false;
             Name = "formEditorProducto";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Modificar Producto";
             ResumeLayout(false);
             PerformLayout();
@@ -220,12 +254,13 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox tbNombre;
+        private TextBox tbPrecio;
+        private TextBox tbStock;
         private ComboBox comboBoxCategorias;
-        private TextBox textBox4;
+        private TextBox tbDescrip;
         private Button btnAplicar;
+
         private Label label2;
         private Label label6;
         private Label label5;
@@ -233,6 +268,9 @@
         private Label label3;
         private Label label7;
         private Label label8;
-        private TextBox textBox5;
+        private TextBox tbStockMin;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

@@ -143,6 +143,26 @@ namespace CyberGear16.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap flecha_verde_retroceder {
+            get {
+                object obj = ResourceManager.GetObject("flecha_verde_retroceder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flecha_verde_retroceder1 {
+            get {
+                object obj = ResourceManager.GetObject("flecha_verde_retroceder1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_backup {
             get {
                 object obj = ResourceManager.GetObject("icon_backup", resourceCulture);
@@ -166,6 +186,26 @@ namespace CyberGear16.Properties {
         internal static System.Drawing.Bitmap icon_backup2 {
             get {
                 object obj = ResourceManager.GetObject("icon_backup2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_dar_alta {
+            get {
+                object obj = ResourceManager.GetObject("icon_dar_alta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_dar_baja {
+            get {
+                object obj = ResourceManager.GetObject("icon_dar_baja", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
