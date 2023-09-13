@@ -200,13 +200,13 @@ namespace CyberGear16
             //    // Actualizar el valor en el DataGridView.
             //    DGVUsuarios.Rows[e.RowIndex].Cells["Baja"].Value = valorActualBaja;
             //}
-           
+
 
             //if (e.RowIndex >= 0 && e.ColumnIndex == DGVUsuarios.Columns["Acciones"].Index)
             //{
             //    // Obtén el producto seleccionado
             //    //DataGridViewRow rowIndex = DGVUsuarios.Rows[e.RowIndex];
-                
+
 
             //    // Cambiar los valores de las celdas de esa fila.
             //    DGVUsuarios.Rows[e.RowIndex].Cells["Acciones"].Value = "SI";

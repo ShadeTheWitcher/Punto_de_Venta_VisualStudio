@@ -12,7 +12,7 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\PC-MSL\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\matum\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\PC-MSL\\.nuget\\packages"
     ],
     "configProperties": {
