@@ -13,7 +13,7 @@
     ],
     "additionalProbingPaths": [
       "C:\\Users\\matum\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\PC-MSL\\.nuget\\packages"
+      "C:\\Users\\matum\\.nuget\\packages"
     ],
     "configProperties": {
       "System.Reflection.NullabilityInfoContext.IsSupported": true,

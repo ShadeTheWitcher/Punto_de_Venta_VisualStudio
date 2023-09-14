@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminUsers));
             PUsuarios = new Panel();
+            TCodPostal = new TextBox();
+            LCodPostal = new Label();
             DTPicker = new DateTimePicker();
             BCancelar = new Button();
             BGuardar = new Button();
@@ -66,6 +68,8 @@
             // PUsuarios
             // 
             PUsuarios.BackColor = Color.FromArgb(26, 32, 40);
+            PUsuarios.Controls.Add(TCodPostal);
+            PUsuarios.Controls.Add(LCodPostal);
             PUsuarios.Controls.Add(DTPicker);
             PUsuarios.Controls.Add(BCancelar);
             PUsuarios.Controls.Add(BGuardar);
@@ -98,10 +102,27 @@
             PUsuarios.TabIndex = 0;
             PUsuarios.Paint += PUsuarios_Paint;
             // 
+            // TCodPostal
+            // 
+            TCodPostal.Location = new Point(458, 129);
+            TCodPostal.Name = "TCodPostal";
+            TCodPostal.Size = new Size(170, 23);
+            TCodPostal.TabIndex = 29;
+            // 
+            // LCodPostal
+            // 
+            LCodPostal.AutoSize = true;
+            LCodPostal.ForeColor = Color.White;
+            LCodPostal.Location = new Point(324, 132);
+            LCodPostal.Name = "LCodPostal";
+            LCodPostal.Size = new Size(84, 15);
+            LCodPostal.TabIndex = 28;
+            LCodPostal.Text = "Código Postal:";
+            // 
             // DTPicker
             // 
             DTPicker.Format = DateTimePickerFormat.Short;
-            DTPicker.Location = new Point(458, 129);
+            DTPicker.Location = new Point(458, 158);
             DTPicker.Name = "DTPicker";
             DTPicker.Size = new Size(170, 23);
             DTPicker.TabIndex = 27;
@@ -147,7 +168,7 @@
             // 
             RBMujer.AutoSize = true;
             RBMujer.ForeColor = Color.White;
-            RBMujer.Location = new Point(561, 191);
+            RBMujer.Location = new Point(566, 217);
             RBMujer.Name = "RBMujer";
             RBMujer.Size = new Size(56, 19);
             RBMujer.TabIndex = 23;
@@ -159,7 +180,7 @@
             // 
             RBHombre.AutoSize = true;
             RBHombre.ForeColor = Color.White;
-            RBHombre.Location = new Point(464, 191);
+            RBHombre.Location = new Point(469, 217);
             RBHombre.Name = "RBHombre";
             RBHombre.Size = new Size(69, 19);
             RBHombre.TabIndex = 22;
@@ -169,7 +190,7 @@
             // 
             // TTelefono
             // 
-            TTelefono.Location = new Point(458, 158);
+            TTelefono.Location = new Point(458, 187);
             TTelefono.Name = "TTelefono";
             TTelefono.Size = new Size(170, 23);
             TTelefono.TabIndex = 21;
@@ -227,7 +248,7 @@
             // 
             LSexo.AutoSize = true;
             LSexo.ForeColor = Color.White;
-            LSexo.Location = new Point(324, 190);
+            LSexo.Location = new Point(329, 216);
             LSexo.Name = "LSexo";
             LSexo.Size = new Size(35, 15);
             LSexo.TabIndex = 11;
@@ -258,7 +279,7 @@
             // 
             LFechaNac.AutoSize = true;
             LFechaNac.ForeColor = Color.White;
-            LFechaNac.Location = new Point(324, 131);
+            LFechaNac.Location = new Point(324, 160);
             LFechaNac.Name = "LFechaNac";
             LFechaNac.Size = new Size(122, 15);
             LFechaNac.TabIndex = 8;
@@ -299,7 +320,7 @@
             // 
             LTelefono.AutoSize = true;
             LTelefono.ForeColor = Color.White;
-            LTelefono.Location = new Point(324, 161);
+            LTelefono.Location = new Point(324, 190);
             LTelefono.Name = "LTelefono";
             LTelefono.Size = new Size(55, 15);
             LTelefono.TabIndex = 4;
@@ -311,9 +332,9 @@
             LUsuario.ForeColor = Color.White;
             LUsuario.Location = new Point(36, 131);
             LUsuario.Name = "LUsuario";
-            LUsuario.Size = new Size(55, 15);
+            LUsuario.Size = new Size(50, 15);
             LUsuario.TabIndex = 3;
-            LUsuario.Text = "Usuarios:";
+            LUsuario.Text = "Usuario:";
             // 
             // LApellido
             // 
@@ -367,6 +388,7 @@
             BActivos.TabIndex = 2;
             BActivos.Text = "Activos";
             BActivos.UseVisualStyleBackColor = true;
+            BActivos.Click += BActivos_Click;
             // 
             // BInactivo
             // 
@@ -429,5 +451,7 @@
         private DataGridView DGVUsuarios;
         private Button BActivos;
         private Button BInactivo;
+        private TextBox TCodPostal;
+        private Label LCodPostal;
     }
 }
