@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminUsers));
             PUsuarios = new Panel();
+            TCodPostal = new TextBox();
+            LCodPostal = new Label();
             DTPicker = new DateTimePicker();
             BCancelar = new Button();
             BGuardar = new Button();
@@ -66,6 +68,8 @@
             // PUsuarios
             // 
             PUsuarios.BackColor = Color.FromArgb(26, 32, 40);
+            PUsuarios.Controls.Add(TCodPostal);
+            PUsuarios.Controls.Add(LCodPostal);
             PUsuarios.Controls.Add(DTPicker);
             PUsuarios.Controls.Add(BCancelar);
             PUsuarios.Controls.Add(BGuardar);
@@ -98,10 +102,27 @@
             PUsuarios.TabIndex = 0;
             PUsuarios.Paint += PUsuarios_Paint;
             // 
+            // TCodPostal
+            // 
+            TCodPostal.Location = new Point(458, 129);
+            TCodPostal.Name = "TCodPostal";
+            TCodPostal.Size = new Size(170, 23);
+            TCodPostal.TabIndex = 29;
+            // 
+            // LCodPostal
+            // 
+            LCodPostal.AutoSize = true;
+            LCodPostal.ForeColor = Color.White;
+            LCodPostal.Location = new Point(324, 132);
+            LCodPostal.Name = "LCodPostal";
+            LCodPostal.Size = new Size(84, 15);
+            LCodPostal.TabIndex = 28;
+            LCodPostal.Text = "Código Postal:";
+            // 
             // DTPicker
             // 
             DTPicker.Format = DateTimePickerFormat.Short;
-            DTPicker.Location = new Point(459, 102);
+            DTPicker.Location = new Point(458, 158);
             DTPicker.Name = "DTPicker";
             DTPicker.Size = new Size(170, 23);
             DTPicker.TabIndex = 27;
@@ -111,7 +132,7 @@
             BCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             BCancelar.Image = Properties.Resources.borrar;
             BCancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            BCancelar.Location = new Point(732, 131);
+            BCancelar.Location = new Point(731, 158);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(137, 70);
             BCancelar.TabIndex = 26;
@@ -126,7 +147,7 @@
             BGuardar.ForeColor = SystemColors.ControlText;
             BGuardar.Image = (Image)resources.GetObject("BGuardar.Image");
             BGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            BGuardar.Location = new Point(732, 43);
+            BGuardar.Location = new Point(731, 70);
             BGuardar.Name = "BGuardar";
             BGuardar.Size = new Size(137, 68);
             BGuardar.TabIndex = 25;
@@ -138,7 +159,7 @@
             // CBPerfil
             // 
             CBPerfil.FormattingEnabled = true;
-            CBPerfil.Location = new Point(113, 189);
+            CBPerfil.Location = new Point(112, 216);
             CBPerfil.Name = "CBPerfil";
             CBPerfil.Size = new Size(170, 23);
             CBPerfil.TabIndex = 24;
@@ -147,7 +168,7 @@
             // 
             RBMujer.AutoSize = true;
             RBMujer.ForeColor = Color.White;
-            RBMujer.Location = new Point(562, 164);
+            RBMujer.Location = new Point(566, 217);
             RBMujer.Name = "RBMujer";
             RBMujer.Size = new Size(56, 19);
             RBMujer.TabIndex = 23;
@@ -159,7 +180,7 @@
             // 
             RBHombre.AutoSize = true;
             RBHombre.ForeColor = Color.White;
-            RBHombre.Location = new Point(465, 164);
+            RBHombre.Location = new Point(469, 217);
             RBHombre.Name = "RBHombre";
             RBHombre.Size = new Size(69, 19);
             RBHombre.TabIndex = 22;
@@ -169,56 +190,56 @@
             // 
             // TTelefono
             // 
-            TTelefono.Location = new Point(459, 131);
+            TTelefono.Location = new Point(458, 187);
             TTelefono.Name = "TTelefono";
             TTelefono.Size = new Size(170, 23);
             TTelefono.TabIndex = 21;
             // 
             // TDireccion
             // 
-            TDireccion.Location = new Point(459, 72);
+            TDireccion.Location = new Point(458, 99);
             TDireccion.Name = "TDireccion";
             TDireccion.Size = new Size(170, 23);
             TDireccion.TabIndex = 19;
             // 
             // TDni
             // 
-            TDni.Location = new Point(459, 43);
+            TDni.Location = new Point(458, 70);
             TDni.Name = "TDni";
             TDni.Size = new Size(170, 23);
             TDni.TabIndex = 18;
             // 
             // TEmail
             // 
-            TEmail.Location = new Point(113, 160);
+            TEmail.Location = new Point(112, 187);
             TEmail.Name = "TEmail";
             TEmail.Size = new Size(170, 23);
             TEmail.TabIndex = 16;
             // 
             // TContraseña
             // 
-            TContraseña.Location = new Point(113, 131);
+            TContraseña.Location = new Point(112, 158);
             TContraseña.Name = "TContraseña";
             TContraseña.Size = new Size(170, 23);
             TContraseña.TabIndex = 15;
             // 
             // TUsuario
             // 
-            TUsuario.Location = new Point(113, 101);
+            TUsuario.Location = new Point(112, 128);
             TUsuario.Name = "TUsuario";
             TUsuario.Size = new Size(170, 23);
             TUsuario.TabIndex = 14;
             // 
             // TApellido
             // 
-            TApellido.Location = new Point(113, 72);
+            TApellido.Location = new Point(112, 99);
             TApellido.Name = "TApellido";
             TApellido.Size = new Size(170, 23);
             TApellido.TabIndex = 13;
             // 
             // TNombre
             // 
-            TNombre.Location = new Point(113, 43);
+            TNombre.Location = new Point(112, 70);
             TNombre.Name = "TNombre";
             TNombre.Size = new Size(170, 23);
             TNombre.TabIndex = 12;
@@ -227,7 +248,7 @@
             // 
             LSexo.AutoSize = true;
             LSexo.ForeColor = Color.White;
-            LSexo.Location = new Point(325, 163);
+            LSexo.Location = new Point(329, 216);
             LSexo.Name = "LSexo";
             LSexo.Size = new Size(35, 15);
             LSexo.TabIndex = 11;
@@ -237,7 +258,7 @@
             // 
             LEmail.AutoSize = true;
             LEmail.ForeColor = Color.White;
-            LEmail.Location = new Point(38, 163);
+            LEmail.Location = new Point(37, 190);
             LEmail.Name = "LEmail";
             LEmail.Size = new Size(39, 15);
             LEmail.TabIndex = 10;
@@ -247,7 +268,7 @@
             // 
             LPerfil.AutoSize = true;
             LPerfil.ForeColor = Color.White;
-            LPerfil.Location = new Point(40, 189);
+            LPerfil.Location = new Point(39, 216);
             LPerfil.Name = "LPerfil";
             LPerfil.Size = new Size(37, 15);
             LPerfil.TabIndex = 9;
@@ -258,7 +279,7 @@
             // 
             LFechaNac.AutoSize = true;
             LFechaNac.ForeColor = Color.White;
-            LFechaNac.Location = new Point(325, 104);
+            LFechaNac.Location = new Point(324, 160);
             LFechaNac.Name = "LFechaNac";
             LFechaNac.Size = new Size(122, 15);
             LFechaNac.TabIndex = 8;
@@ -268,7 +289,7 @@
             // 
             LDni.AutoSize = true;
             LDni.ForeColor = Color.White;
-            LDni.Location = new Point(325, 51);
+            LDni.Location = new Point(324, 78);
             LDni.Name = "LDni";
             LDni.Size = new Size(28, 15);
             LDni.TabIndex = 7;
@@ -278,7 +299,7 @@
             // 
             LDireccion.AutoSize = true;
             LDireccion.ForeColor = Color.White;
-            LDireccion.Location = new Point(325, 80);
+            LDireccion.Location = new Point(324, 107);
             LDireccion.Name = "LDireccion";
             LDireccion.Size = new Size(60, 15);
             LDireccion.TabIndex = 6;
@@ -288,7 +309,7 @@
             // 
             LContraseña.AutoSize = true;
             LContraseña.ForeColor = Color.White;
-            LContraseña.Location = new Point(37, 134);
+            LContraseña.Location = new Point(36, 161);
             LContraseña.Name = "LContraseña";
             LContraseña.Size = new Size(70, 15);
             LContraseña.TabIndex = 5;
@@ -299,7 +320,7 @@
             // 
             LTelefono.AutoSize = true;
             LTelefono.ForeColor = Color.White;
-            LTelefono.Location = new Point(325, 134);
+            LTelefono.Location = new Point(324, 190);
             LTelefono.Name = "LTelefono";
             LTelefono.Size = new Size(55, 15);
             LTelefono.TabIndex = 4;
@@ -309,17 +330,17 @@
             // 
             LUsuario.AutoSize = true;
             LUsuario.ForeColor = Color.White;
-            LUsuario.Location = new Point(37, 104);
+            LUsuario.Location = new Point(36, 131);
             LUsuario.Name = "LUsuario";
-            LUsuario.Size = new Size(55, 15);
+            LUsuario.Size = new Size(50, 15);
             LUsuario.TabIndex = 3;
-            LUsuario.Text = "Usuarios:";
+            LUsuario.Text = "Usuario:";
             // 
             // LApellido
             // 
             LApellido.AutoSize = true;
             LApellido.ForeColor = Color.White;
-            LApellido.Location = new Point(37, 75);
+            LApellido.Location = new Point(36, 102);
             LApellido.Name = "LApellido";
             LApellido.Size = new Size(54, 15);
             LApellido.TabIndex = 2;
@@ -330,7 +351,7 @@
             // 
             LNombre.AutoSize = true;
             LNombre.ForeColor = Color.White;
-            LNombre.Location = new Point(38, 46);
+            LNombre.Location = new Point(37, 73);
             LNombre.Name = "LNombre";
             LNombre.Size = new Size(54, 15);
             LNombre.TabIndex = 1;
@@ -342,7 +363,7 @@
             LUsuarios.AutoSize = true;
             LUsuarios.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             LUsuarios.ForeColor = Color.White;
-            LUsuarios.Location = new Point(20, 9);
+            LUsuarios.Location = new Point(24, 15);
             LUsuarios.Name = "LUsuarios";
             LUsuarios.Size = new Size(89, 25);
             LUsuarios.TabIndex = 0;
@@ -367,6 +388,7 @@
             BActivos.TabIndex = 2;
             BActivos.Text = "Activos";
             BActivos.UseVisualStyleBackColor = true;
+            BActivos.Click += BActivos_Click;
             // 
             // BInactivo
             // 
@@ -429,5 +451,7 @@
         private DataGridView DGVUsuarios;
         private Button BActivos;
         private Button BInactivo;
+        private TextBox TCodPostal;
+        private Label LCodPostal;
     }
 }

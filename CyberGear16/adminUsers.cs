@@ -67,6 +67,7 @@ namespace CyberGear16
                 string contraseña = TContraseña.Text;
                 string email = TEmail.Text;
                 string direc = TDireccion.Text;
+                int codPostal = int.Parse(TCodPostal.Text);
                 DateTime fechaHora = DTPicker.Value;
                 DateOnly fecha = new DateOnly(fechaHora.Year, fechaHora.Month, fechaHora.Day);
                 int indexPerfil = CBPerfil.SelectedIndex;
@@ -89,7 +90,7 @@ namespace CyberGear16
                         Domicilio nuevoDomicilio = new Domicilio
                         {
                             Direccion = direc,
-                            CodPostal = 111
+                            CodPostal = codPostal
                         };
 
                         context.Domicilios.Add(nuevoDomicilio);
@@ -127,7 +128,7 @@ namespace CyberGear16
 
 
                         LimpiarCampos();
-                        CargarDatosEnDGV();
+                        CargarDatosEnDGVActivos();
                     }
                 }
                 catch (Exception ex)
@@ -153,10 +154,11 @@ namespace CyberGear16
                 string.IsNullOrEmpty(TTelefono.Text) ||
                 DTPicker.Value > DateTime.Today ||
                 string.IsNullOrEmpty(TDireccion.Text) ||
+                string.IsNullOrEmpty(TCodPostal.Text) ||
                 ((!RBHombre.Checked) && (!RBMujer.Checked)) ||
                 CBPerfil.SelectedIndex == -1)
             {
-                MessageBox.Show("Campos incompletos");
+                MessageBox.Show("Campos incompletos! Por favor rellénelos y vuelva a intentar.");
                 return false;
             }
             return true;
@@ -171,74 +173,56 @@ namespace CyberGear16
             TEmail.Clear();
             TTelefono.Clear();
             TDireccion.Clear();
+            TCodPostal.Clear();
             TDni.Clear();
             CBPerfil.SelectedIndex = -1;
         }
 
         private void DGVUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verificar si se hizo clic en la columna de botones y en la fila deseada.
-            //if (e.ColumnIndex == DGVUsuarios.Columns["Acciones"].Index && e.RowIndex >= 0)
-            //{
-            //    // Obtener el valor actual de "Baja" en la fila.
-            //    string valorActualBaja = (string)DGVUsuarios.Rows[e.RowIndex].Cells["Baja"].Value;
 
-            //    // Invertir el valor (cambiar de true a false o viceversa).
-            //    if (valorActualBaja == "NO")
-            //    {
-            //        valorActualBaja = "SI";
-            //    }
-            //    else
-            //    {
-            //        valorActualBaja = "NO";
-            //    }
+            if (e.RowIndex >= 0 && e.ColumnIndex == DGVUsuarios.Columns["Acciones"].Index)
+            {
+                // Obtén el producto seleccionado
+                DataGridViewRow row = DGVUsuarios.Rows[e.RowIndex];
+                int productId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
 
-
-            //    // Actualizar el valor en el origen de datos (base de datos, lista, etc.).
-            //    // Aquí debes agregar código para actualizar el valor en tu origen de datos.
-
-            //    // Actualizar el valor en el DataGridView.
-            //    DGVUsuarios.Rows[e.RowIndex].Cells["Baja"].Value = valorActualBaja;
-            //}
-           
-
-            //if (e.RowIndex >= 0 && e.ColumnIndex == DGVUsuarios.Columns["Acciones"].Index)
-            //{
-            //    // Obtén el producto seleccionado
-            //    //DataGridViewRow rowIndex = DGVUsuarios.Rows[e.RowIndex];
-                
-
-            //    // Cambiar los valores de las celdas de esa fila.
-            //    DGVUsuarios.Rows[e.RowIndex].Cells["Acciones"].Value = "SI";
-            //}
+                // Abre el formulario de detalles/editar con el Usuario seleccionado
+                FormEditorUsuario editorUsuario = new FormEditorUsuario(productId, _context);
+                editorUsuario.ShowDialog();
+                CargarDatosEnDGVActivos();
+            }
         }
 
         private void PUsuarios_Paint(object sender, PaintEventArgs e)
         {
 
         }
-        private void CargarDatosEnDGV()
+        private void CargarDatosEnDGVActivos()
         {
             using (var context = new BdCybergearContext())
             {
-                // Vuelve a cargar los datos en el DataGridView para reflejar los cambios.
-                var usuarios = context.Usuarios
-                .Select(p => new
-                {
-                    p.Id,
-                    p.Dni,
-                    p.Nombre,
-                    p.Apellido,
-                    p.Email,
-                    p.Usuario1,
-                    p.Tel,
-                    p.Fecha,
-                    p.Sexo,
-                    p.Baja
-                })
-                .ToList();
 
-                DGVUsuarios.DataSource = usuarios;
+                // Vuelve a cargar los datos en el DataGridView para reflejar los cambios.
+                //var usuarios = context.Usuarios;
+                //.Select(p => new
+                //{
+                //    p.Id,
+                //    p.Dni,
+                //    p.Nombre,
+                //    p.Apellido,
+                //    p.Email,
+                //    p.Usuario1,
+                //    p.Tel,
+                //    p.Fecha,
+                //    p.Sexo,
+                //    p.Baja
+                //})
+                //.ToList();
+
+                var usuariosNoDeBaja = context.Usuarios.Where(u => u.Baja == "NO").ToList();
+
+                DGVUsuarios.DataSource = usuariosNoDeBaja;
             }
         }
 
@@ -247,25 +231,25 @@ namespace CyberGear16
             using (var context = new BdCybergearContext()) // se lo engloba en un using para q se cierre la conexion
             {
                 // Consulta los productos desde la base de datos
-                var usuarios = context.Usuarios
-                    .Select(p => new
-                    {
-                        p.Id,
-                        p.Dni,
-                        p.Nombre,
-                        p.Apellido,
-                        p.Email,
-                        p.Usuario1,
-                        p.Tel,
-                        p.Fecha,
-                        p.Sexo,
-                        p.Baja
-                    })
-                    .ToList();
+                //var usuarios = context.Usuarios
+                //    .Select(p => new
+                //    {
+                //        p.Id,
+                //        p.Dni,
+                //        p.Nombre,
+                //        p.Apellido,
+                //        p.Email,
+                //        p.Usuario1,
+                //        p.Tel,
+                //        p.Fecha,
+                //        p.Sexo,
+                //        p.Baja
+                //    })
+                //    .ToList();
 
-                // Asigna los productos a la fuente de datos del DataGridView
-                DGVUsuarios.DataSource = usuarios;
-
+                //// Asigna los productos a la fuente de datos del DataGridView
+                //DGVUsuarios.DataSource = usuarios;
+                CargarDatosEnDGVActivos();
                 // Configura el estilo y columnas del DataGridView
                 // (asegúrate de que las propiedades de Product se correspondan con las columnas)
 
@@ -279,12 +263,12 @@ namespace CyberGear16
                 DGVUsuarios.Columns["Sexo"].Width = 50;
                 DGVUsuarios.Columns["Baja"].Width = 50;
 
-                DataGridViewButtonColumn eliminarButtonColumn = new DataGridViewButtonColumn();
-                eliminarButtonColumn.Name = "Acciones";
-                eliminarButtonColumn.Text = "Eliminar";
-                eliminarButtonColumn.Width = 150;
-                eliminarButtonColumn.UseColumnTextForButtonValue = true;
-                DGVUsuarios.Columns.Add(eliminarButtonColumn);
+                DataGridViewButtonColumn modificarButtonColumn = new DataGridViewButtonColumn();
+                modificarButtonColumn.Name = "Acciones";
+                modificarButtonColumn.Text = "Modificar/Baja-Alta";
+                modificarButtonColumn.Width = 150;
+                modificarButtonColumn.UseColumnTextForButtonValue = true;
+                DGVUsuarios.Columns.Add(modificarButtonColumn);
 
                 //DGVUsuarios.Columns["Usuario1"].Name = "Usuario";
 
@@ -311,30 +295,22 @@ namespace CyberGear16
 
         private void BInactivos_Click(object sender, EventArgs e)
         {
-            // Filtrar usuarios basados en el valor booleano "Baja".
-            string mostrarBaja = "NO";
 
             using (var context = new BdCybergearContext())
             {
-                var usuariosFiltrados = context.Usuarios.Where(u => u.Baja == mostrarBaja).ToList();
+                var usuariosFiltrados = context.Usuarios.Where(u => u.Baja == "SI").ToList();
 
                 // Enlazar los resultados al DataGridView.
                 DGVUsuarios.DataSource = usuariosFiltrados;
 
             }
 
-            CargarUsuariosInactivos();
         }
 
-        private void CargarUsuariosInactivos()
+        
+        private void BActivos_Click(object sender, EventArgs e)
         {
-            using (var context = new BdCybergearContext())
-            {
-                var usuarios = context.Usuarios.ToList();
-                DGVUsuarios.DataSource = usuarios;
-            }
+            CargarDatosEnDGVActivos();
         }
-
-
     }
 }
