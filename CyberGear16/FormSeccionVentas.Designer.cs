@@ -59,7 +59,6 @@
             label4 = new Label();
             dateTimePicker1 = new DateTimePicker();
             label1 = new Label();
-            comboBox1 = new ComboBox();
             button1 = new Button();
             button2 = new Button();
             dataGridView1 = new DataGridView();
@@ -382,14 +381,6 @@
             label1.TabIndex = 2;
             label1.Text = "Tipo:";
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(625, 356);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(98, 23);
-            comboBox1.TabIndex = 1;
-            // 
             // button1
             // 
             button1.Anchor = AnchorStyles.None;
@@ -414,10 +405,10 @@
             // 
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(27, 356);
+            dataGridView1.Location = new Point(27, 362);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(790, 220);
+            dataGridView1.Size = new Size(790, 214);
             dataGridView1.TabIndex = 7;
             // 
             // panel5
@@ -485,7 +476,6 @@
             Controls.Add(panel5);
             Controls.Add(dataGridView1);
             Controls.Add(button2);
-            Controls.Add(comboBox1);
             Controls.Add(button1);
             Controls.Add(panel4);
             Controls.Add(panel3);
@@ -528,7 +518,6 @@
         private TextBox textBox7;
         private TextBox textBox6;
         private TextBox textBox5;
-        private ComboBox comboBox1;
         private DateTimePicker dateTimePicker1;
         private DataGridView dataGridView1;
         private Label label2;
