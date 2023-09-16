@@ -74,13 +74,13 @@
             button1.Name = "button1";
             button1.Size = new Size(91, 27);
             button1.TabIndex = 4;
-            button1.Text = "Iniciar sesion";
+            button1.Text = "Iniciar Sesión";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(145, 245);
+            textBox2.Location = new Point(145, 251);
             textBox2.Margin = new Padding(4, 3, 4, 3);
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '*';
@@ -89,7 +89,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(145, 194);
+            textBox1.Location = new Point(145, 200);
             textBox1.Margin = new Padding(4, 3, 4, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(116, 23);
@@ -101,9 +101,9 @@
             label2.Location = new Point(59, 254);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(67, 15);
+            label2.Size = new Size(70, 15);
             label2.TabIndex = 1;
-            label2.Text = "Contraseña";
+            label2.Text = "Contraseña:";
             // 
             // label1
             // 
@@ -111,9 +111,9 @@
             label1.Location = new Point(59, 203);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(47, 15);
+            label1.Size = new Size(50, 15);
             label1.TabIndex = 0;
-            label1.Text = "Usuario";
+            label1.Text = "Usuario:";
             // 
             // pictureBox2
             // 
@@ -132,14 +132,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.image;
-            ClientSize = new Size(1400, 753);
+            ClientSize = new Size(1364, 749);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4, 3, 4, 3);
             Name = "formLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Inicio sesion";
+            Text = "Inicio Sesión";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
