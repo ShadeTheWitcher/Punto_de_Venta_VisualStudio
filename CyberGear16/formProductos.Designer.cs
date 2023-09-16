@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formProductos));
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            BCancelar = new Button();
             textBox5 = new TextBox();
             label7 = new Label();
-            txtFoto = new TextBox();
             comboBoxCategorias = new ComboBox();
-            button2 = new Button();
             button1 = new Button();
             label6 = new Label();
             textBox4 = new TextBox();
@@ -49,8 +49,15 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            txtFoto = new TextBox();
+            button2 = new Button();
             openFileDialog1 = new OpenFileDialog();
             dataGridView1 = new DataGridView();
+            BActivos = new Button();
+            BInactivo = new Button();
+            BBorrar = new Button();
+            BBuscar = new Button();
+            TBuscar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -82,12 +89,11 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(26, 32, 40);
+            panel1.Controls.Add(BCancelar);
             panel1.Controls.Add(textBox5);
             panel1.Controls.Add(label7);
-            panel1.Controls.Add(txtFoto);
             panel1.Controls.Add(comboBoxCategorias);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(textBox4);
@@ -103,6 +109,21 @@
             panel1.Size = new Size(630, 309);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
+            // 
+            // BCancelar
+            // 
+            BCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            BCancelar.ForeColor = SystemColors.ActiveCaptionText;
+            BCancelar.Image = Properties.Resources.borrar;
+            BCancelar.ImageAlign = ContentAlignment.MiddleLeft;
+            BCancelar.Location = new Point(449, 226);
+            BCancelar.Name = "BCancelar";
+            BCancelar.Size = new Size(137, 70);
+            BCancelar.TabIndex = 27;
+            BCancelar.Text = "Cancelar";
+            BCancelar.TextAlign = ContentAlignment.MiddleRight;
+            BCancelar.UseVisualStyleBackColor = true;
+            BCancelar.Click += BCancelar_Click;
             // 
             // textBox5
             // 
@@ -121,15 +142,6 @@
             label7.TabIndex = 13;
             label7.Text = "Stock Mínimo:";
             // 
-            // txtFoto
-            // 
-            txtFoto.Location = new Point(428, 183);
-            txtFoto.Name = "txtFoto";
-            txtFoto.ReadOnly = true;
-            txtFoto.Size = new Size(177, 23);
-            txtFoto.TabIndex = 12;
-            txtFoto.Visible = false;
-            // 
             // comboBoxCategorias
             // 
             comboBoxCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -138,18 +150,6 @@
             comboBoxCategorias.Name = "comboBoxCategorias";
             comboBoxCategorias.Size = new Size(167, 23);
             comboBoxCategorias.TabIndex = 11;
-            // 
-            // button2
-            // 
-            button2.ForeColor = SystemColors.ActiveCaptionText;
-            button2.Location = new Point(449, 212);
-            button2.Name = "button2";
-            button2.Size = new Size(131, 30);
-            button2.TabIndex = 10;
-            button2.Text = "subir foto";
-            button2.UseVisualStyleBackColor = true;
-            button2.Visible = false;
-            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -242,6 +242,27 @@
             label2.TabIndex = 0;
             label2.Text = "Nombre Del Producto:";
             // 
+            // txtFoto
+            // 
+            txtFoto.Location = new Point(777, 209);
+            txtFoto.Name = "txtFoto";
+            txtFoto.ReadOnly = true;
+            txtFoto.Size = new Size(177, 23);
+            txtFoto.TabIndex = 12;
+            txtFoto.Visible = false;
+            // 
+            // button2
+            // 
+            button2.ForeColor = SystemColors.ActiveCaptionText;
+            button2.Location = new Point(798, 238);
+            button2.Name = "button2";
+            button2.Size = new Size(131, 30);
+            button2.TabIndex = 10;
+            button2.Text = "subir foto";
+            button2.UseVisualStyleBackColor = true;
+            button2.Visible = false;
+            button2.Click += button2_Click;
+            // 
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
@@ -251,38 +272,98 @@
             // 
             dataGridView1.AccessibleRole = AccessibleRole.None;
             dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Window;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.ButtonFace;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
-            dataGridView1.Location = new Point(79, 364);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ButtonFace;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView1.Location = new Point(77, 411);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(865, 244);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // BActivos
+            // 
+            BActivos.ForeColor = SystemColors.ActiveCaptionText;
+            BActivos.Location = new Point(77, 368);
+            BActivos.Name = "BActivos";
+            BActivos.Size = new Size(113, 28);
+            BActivos.TabIndex = 4;
+            BActivos.Text = "Activos";
+            BActivos.UseVisualStyleBackColor = true;
+            BActivos.Click += BActivos_Click;
+            // 
+            // BInactivo
+            // 
+            BInactivo.ForeColor = SystemColors.ActiveCaptionText;
+            BInactivo.Location = new Point(203, 368);
+            BInactivo.Name = "BInactivo";
+            BInactivo.Size = new Size(113, 28);
+            BInactivo.TabIndex = 5;
+            BInactivo.Text = "Inactivos";
+            BInactivo.UseVisualStyleBackColor = true;
+            BInactivo.Click += BInactivo_Click;
+            // 
+            // BBorrar
+            // 
+            BBorrar.Image = (Image)resources.GetObject("BBorrar.Image");
+            BBorrar.Location = new Point(901, 363);
+            BBorrar.Name = "BBorrar";
+            BBorrar.Size = new Size(38, 37);
+            BBorrar.TabIndex = 9;
+            BBorrar.UseVisualStyleBackColor = true;
+            BBorrar.Click += BBorrar_Click;
+            // 
+            // BBuscar
+            // 
+            BBuscar.Image = Properties.Resources.lupa;
+            BBuscar.Location = new Point(857, 363);
+            BBuscar.Name = "BBuscar";
+            BBuscar.Size = new Size(38, 37);
+            BBuscar.TabIndex = 8;
+            BBuscar.UseVisualStyleBackColor = true;
+            BBuscar.Click += BBuscar_Click;
+            // 
+            // TBuscar
+            // 
+            TBuscar.Location = new Point(538, 372);
+            TBuscar.Name = "TBuscar";
+            TBuscar.Size = new Size(313, 23);
+            TBuscar.TabIndex = 7;
+            TBuscar.Text = "Buscar";
+            TBuscar.Click += TBuscar_Click;
+            TBuscar.TextChanged += TBuscar_TextChanged;
+            TBuscar.KeyPress += TBuscar_KeyPress;
+            // 
             // formProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1086, 687);
+            Controls.Add(BBorrar);
+            Controls.Add(BBuscar);
+            Controls.Add(TBuscar);
+            Controls.Add(txtFoto);
+            Controls.Add(BInactivo);
+            Controls.Add(BActivos);
+            Controls.Add(button2);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
@@ -297,6 +378,7 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -321,5 +403,11 @@
         private DataGridView dataGridView1;
         private TextBox textBox5;
         private Label label7;
+        private Button BActivos;
+        private Button BInactivo;
+        private Button BBorrar;
+        private Button BBuscar;
+        private TextBox TBuscar;
+        private Button BCancelar;
     }
 }

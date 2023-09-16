@@ -37,40 +37,40 @@ namespace CyberGear16
 
         private void button2_Click(object sender, EventArgs e)
         {
-            openFileDialog1.InitialDirectory = @"C:\"; // Cambia la ruta según tu ubicación.
-            openFileDialog1.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.FilterIndex = 1;
+            //openFileDialog1.InitialDirectory = @"C:\"; // Cambia la ruta según tu ubicación.
+            //openFileDialog1.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+            //openFileDialog1.FilterIndex = 1;
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
-                txtFoto.Text = openFileDialog1.FileName;
-
-
-                // Crear una carpeta "Images" dentro de la carpeta del proyecto
-                string carpetaDestino = Path.Combine(Application.StartupPath, "Fotos");
-                Directory.CreateDirectory(carpetaDestino);
-
-                // Obtener el nombre del archivo
-                string nombreArchivo = Path.GetFileName(openFileDialog1.FileName);
-
-                // Combinar la carpeta de destino con el nombre del archivo
-                string rutaArchivoDestino = Path.Combine(carpetaDestino, nombreArchivo);
-
-                try
-                {
-                    // Copiar el archivo a la carpeta de destino
-                    File.Copy(openFileDialog1.FileName, rutaArchivoDestino);
-
-                    // Ahora tienes la imagen guardada en 'rutaArchivoDestino'
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al guardar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
+            //    txtFoto.Text = openFileDialog1.FileName;
 
 
-            }
+            //    // Crear una carpeta "Images" dentro de la carpeta del proyecto
+            //    string carpetaDestino = Path.Combine(Application.StartupPath, "Fotos");
+            //    Directory.CreateDirectory(carpetaDestino);
+
+            //    // Obtener el nombre del archivo
+            //    string nombreArchivo = Path.GetFileName(openFileDialog1.FileName);
+
+            //    // Combinar la carpeta de destino con el nombre del archivo
+            //    string rutaArchivoDestino = Path.Combine(carpetaDestino, nombreArchivo);
+
+            //    try
+            //    {
+            //        // Copiar el archivo a la carpeta de destino
+            //        File.Copy(openFileDialog1.FileName, rutaArchivoDestino);
+
+            //        // Ahora tienes la imagen guardada en 'rutaArchivoDestino'
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("Error al guardar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+
+
+            //}
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -225,6 +225,7 @@ namespace CyberGear16
 
         private void formProductos_Load(object sender, EventArgs e)
         {
+            
             comboBoxCategorias.Items.Add("Videjuegos");
             comboBoxCategorias.Items.Add("PC-componentes");
 
@@ -243,6 +244,9 @@ namespace CyberGear16
                         p.Activo
                     })
                     .ToList();
+
+
+
 
                 // Asigna los productos a la fuente de datos del DataGridView
                 dataGridView1.DataSource = products;
@@ -269,17 +273,26 @@ namespace CyberGear16
                 dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
 
                 // Oculta las columnas no deseadas (en este caso, ocultamos todas las demás)
-                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                ocultarColumnasExtra();
+                dataGridView1.Columns["Id"].Width = 40;
+            }
+        }
+
+
+        private void ocultarColumnasExtra()
+        {
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column.Name != "Id" && column.Name != "NombreProducto" && column.Name != "PrecioProducto" && column.Name != "Descripcion" &&
+                    column.Name != "Cantidad" && column.Name != "Acciones" && column.Name != "CategoriaId" &&
+                    column.Name != "Activo")
                 {
-                    if (column.Name != "Id" && column.Name != "NombreProducto" && column.Name != "PrecioProducto" && column.Name != "Descripcion" &&
-                        column.Name != "Cantidad" && column.Name != "Acciones" && column.Name != "CategoriaId" &&
-                        column.Name != "Activo")
-                    {
-                        column.Visible = false;
-                    }
+                    column.Visible = false;
                 }
             }
         }
+
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -289,6 +302,119 @@ namespace CyberGear16
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void BActivos_Click(object sender, EventArgs e)
+        {
+            using (var context = new BdCybergearContext())
+            {
+                var productosFiltrados = context.Products.Where(p => p.Activo == "Si").ToList();
+
+                // Enlazar los resultados al DataGridView.
+                dataGridView1.DataSource = productosFiltrados;
+                ocultarColumnasExtra();
+            }
+        }
+
+        private void BInactivo_Click(object sender, EventArgs e)
+        {
+            using (var context = new BdCybergearContext())
+            {
+                var productosFiltrados = context.Products.Where(p => p.Activo == "NO").ToList();
+
+                // Enlazar los resultados al DataGridView.
+                dataGridView1.DataSource = productosFiltrados;
+                ocultarColumnasExtra();
+
+            }
+        }
+
+        private void BCancelar_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+
+
+        private void BuscarEnBaseDeDatosYActualizarDataGridView(string buscar)
+        {
+            using (var context = new BdCybergearContext())
+            {
+
+                var resultados = context.Products.Where(e => e.NombreProducto.Contains(buscar)).ToList();
+                if (resultados.Count == 0)
+                {
+                    MessageBox.Show("No se han encontrado usuarios que coincidan con la busqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    dataGridView1.DataSource = resultados;
+                    ocultarColumnasExtra();
+                }
+            }
+        }
+
+        private void TBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter))
+            {
+                if (!string.IsNullOrEmpty(TBuscar.Text))
+                {
+                    string buscar = TBuscar.Text;
+                    // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
+                    BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
+                }
+                else
+                {
+                    MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void BBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TBuscar.Text))
+            {
+                string buscar = TBuscar.Text;
+                // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
+                BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
+
+                
+            }
+            else
+            {
+                MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+        private void TBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void TBuscar_Click(object sender, EventArgs e)
+        {
+            bool borrarPrimeraVez = true;
+            if (borrarPrimeraVez)
+            {
+                TBuscar.Clear();
+                borrarPrimeraVez = false;
+            }
+        }
+
+        private void BBorrar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TBuscar.Text))
+            {
+                TBuscar.Clear();
+                CargarDatosEnDataGridView();
+
+
+
+            }
         }
     }
 }
