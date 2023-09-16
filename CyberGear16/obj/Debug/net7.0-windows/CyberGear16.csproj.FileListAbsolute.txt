@@ -75,9 +75,16 @@ C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\C
 C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.pdb
 C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.genruntimeconfig.cache
 C:\Users\matum\OneDrive\Documentos\GitHub\Grupo15_ProyectoIntegrador_CyberGear\CyberGear16\obj\Debug\net7.0-windows\ref\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.exe
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.deps.json
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.runtimeconfig.json
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.pdb
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySqlConnector.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.Utilities.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.AssemblyReference.cache
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.adminUsers.resources
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formEditorProducto.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formInicio.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formLogin.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formProductos.resources
@@ -88,17 +95,14 @@ E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integra
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.AssemblyInfoInputs.cache
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.AssemblyInfo.cs
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CoreCompileInputs.cache
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.exe
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CopyComplete
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\refint\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.pdb
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.genruntimeconfig.cache
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\ref\CyberGear16.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.dll.config
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.deps.json
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.runtimeconfig.json
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.pdb
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Google.Protobuf.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Humanizer.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Compression.LZ4.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Compression.LZ4.Streams.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Hash.xxHash.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Design.dll
@@ -114,24 +118,85 @@ E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integra
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Options.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Primitives.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Mono.TextTemplating.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Google.Protobuf.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Compression.LZ4.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Compression.LZ4.Streams.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Hash.xxHash.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.Data.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.Data.EntityFrameworkCore.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.EntityFrameworkCore.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySqlConnector.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\BouncyCastle.Crypto.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\System.IO.Pipelines.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.Utilities.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\ZstdSharp.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\comerr64.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\gssapi64.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\k5sprt64.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\krb5_64.dll
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\krbcc64.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CopyComplete
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\refint\CyberGear16.dll
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.pdb
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.genruntimeconfig.cache
-E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\ref\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.EntityFrameworkCore.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.Data.EntityFrameworkCore.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formEditorProducto.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.AssemblyReference.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.adminUsers.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formEditorProducto.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formInicio.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formLogin.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.formProductos.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.GUI_Principal.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.Properties.Resources.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.GenerateResource.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.AssemblyInfoInputs.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.AssemblyInfo.cs
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CoreCompileInputs.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\refint\CyberGear16.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.pdb
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.exe
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.dll.config
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.deps.json
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.runtimeconfig.json
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\CyberGear16.pdb
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Google.Protobuf.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Humanizer.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Compression.LZ4.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Hash.xxHash.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Mono.TextTemplating.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.Data.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.Data.EntityFrameworkCore.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySql.EntityFrameworkCore.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\MySqlConnector.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\BouncyCastle.Crypto.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\System.IO.Pipelines.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.Utilities.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\WinForms.DataVisualization.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\ZstdSharp.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\comerr64.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\gssapi64.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\krb5_64.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\runtimes\win-x64\native\krbcc64.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.csproj.CopyComplete
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.genruntimeconfig.cache
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\ref\CyberGear16.dll
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormBackUp.resources
+E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormSeccionVentas.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormBackUp.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormEditorUsuario.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormSeccionVentas.resources

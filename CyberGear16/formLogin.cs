@@ -17,7 +17,7 @@ namespace CyberGear16
 {
     public partial class formLogin : Form
     {
-        
+
         //private GUI_Principal form2 = new GUI_Principal();
 
         public formLogin()
@@ -46,8 +46,10 @@ namespace CyberGear16
                     // Crea una instancia del formulario GUI_Principal
                     GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser, context);
 
+                    string mensajeInicio = "¡Inicio de sesión exitoso!" + Environment.NewLine + "  Bienvenido: "  + nombreUser;
+
                     // Las credenciales son válidas, el usuario ha iniciado sesión
-                    MessageBox.Show("Inicio de sesión exitoso, bienvenido " + nombreUser + " tipoUsuario: " + perfilId);
+                    MessageBox.Show(mensajeInicio, "Inicio Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Oculta el formulario actual (formLogin)
                     this.Hide();
@@ -58,7 +60,7 @@ namespace CyberGear16
                 else
                 {
                     // Las credenciales son incorrectas
-                    MessageBox.Show("Nombre de usuario o contraseña incorrectos");
+                    MessageBox.Show("Nombre de usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

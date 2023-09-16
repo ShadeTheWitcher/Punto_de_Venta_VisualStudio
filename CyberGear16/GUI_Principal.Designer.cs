@@ -116,6 +116,7 @@
             btnVentas.TabIndex = 6;
             btnVentas.Text = "Ventas";
             btnVentas.UseVisualStyleBackColor = true;
+            btnVentas.Click += btnVentas_Click;
             // 
             // btnProductos
             // 
@@ -266,6 +267,7 @@
             btnBackUp.TabIndex = 16;
             btnBackUp.Text = "BackUp ";
             btnBackUp.UseVisualStyleBackColor = true;
+            btnBackUp.Click += btnBackUp_Click;
             // 
             // LTipoUser
             // 

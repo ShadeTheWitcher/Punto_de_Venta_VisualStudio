@@ -51,7 +51,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(132, 24);
+            label1.Location = new Point(166, 24);
             label1.Name = "label1";
             label1.Size = new Size(145, 15);
             label1.TabIndex = 0;
@@ -60,21 +60,21 @@
             // 
             // tbNombre
             // 
-            tbNombre.Location = new Point(110, 66);
+            tbNombre.Location = new Point(144, 67);
             tbNombre.Name = "tbNombre";
             tbNombre.Size = new Size(167, 23);
             tbNombre.TabIndex = 1;
             // 
             // tbPrecio
             // 
-            tbPrecio.Location = new Point(110, 110);
+            tbPrecio.Location = new Point(144, 111);
             tbPrecio.Name = "tbPrecio";
             tbPrecio.Size = new Size(114, 23);
             tbPrecio.TabIndex = 2;
             // 
             // tbStock
             // 
-            tbStock.Location = new Point(110, 153);
+            tbStock.Location = new Point(144, 154);
             tbStock.Name = "tbStock";
             tbStock.Size = new Size(114, 23);
             tbStock.TabIndex = 3;
@@ -83,14 +83,15 @@
             // 
             comboBoxCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCategorias.FormattingEnabled = true;
-            comboBoxCategorias.Location = new Point(110, 239);
+            comboBoxCategorias.Location = new Point(144, 243);
             comboBoxCategorias.Name = "comboBoxCategorias";
             comboBoxCategorias.Size = new Size(167, 23);
             comboBoxCategorias.TabIndex = 12;
+            comboBoxCategorias.SelectedIndexChanged += comboBoxCategorias_SelectedIndexChanged;
             // 
             // tbDescrip
             // 
-            tbDescrip.Location = new Point(110, 282);
+            tbDescrip.Location = new Point(144, 283);
             tbDescrip.Multiline = true;
             tbDescrip.Name = "tbDescrip";
             tbDescrip.Size = new Size(174, 96);
@@ -98,7 +99,7 @@
             // 
             // btnAplicar
             // 
-            btnAplicar.Location = new Point(110, 409);
+            btnAplicar.Location = new Point(144, 411);
             btnAplicar.Name = "btnAplicar";
             btnAplicar.Size = new Size(174, 23);
             btnAplicar.TabIndex = 14;
@@ -109,7 +110,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(35, 68);
+            label2.Location = new Point(47, 69);
             label2.Name = "label2";
             label2.Size = new Size(0, 15);
             label2.TabIndex = 15;
@@ -118,65 +119,65 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(24, 242);
+            label6.Location = new Point(17, 243);
             label6.Name = "label6";
-            label6.Size = new Size(56, 15);
+            label6.Size = new Size(61, 15);
             label6.TabIndex = 20;
-            label6.Text = "categoria";
+            label6.Text = "Categoría:";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.ForeColor = SystemColors.ActiveCaptionText;
-            label5.Location = new Point(45, 156);
+            label5.Location = new Point(17, 157);
             label5.Name = "label5";
-            label5.Size = new Size(35, 15);
+            label5.Size = new Size(39, 15);
             label5.TabIndex = 19;
-            label5.Text = "stock";
+            label5.Text = "Stock:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.ForeColor = SystemColors.ActiveCaptionText;
-            label4.Location = new Point(40, 113);
+            label4.Location = new Point(17, 111);
             label4.Name = "label4";
-            label4.Size = new Size(40, 15);
+            label4.Size = new Size(43, 15);
             label4.TabIndex = 18;
-            label4.Text = "precio";
+            label4.Text = "Precio:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(12, 282);
+            label3.Location = new Point(17, 283);
             label3.Name = "label3";
-            label3.Size = new Size(68, 15);
+            label3.Size = new Size(72, 15);
             label3.TabIndex = 17;
-            label3.Text = "descripcion";
+            label3.Text = "Descripción:";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.ForeColor = SystemColors.ActiveCaptionText;
-            label7.Location = new Point(3, 69);
+            label7.Location = new Point(15, 70);
             label7.Name = "label7";
-            label7.Size = new Size(101, 15);
+            label7.Size = new Size(125, 15);
             label7.TabIndex = 16;
-            label7.Text = "nombre producto";
+            label7.Text = "Nombre del Producto:";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.ForeColor = SystemColors.ActiveCaptionText;
-            label8.Location = new Point(12, 197);
+            label8.Location = new Point(17, 198);
             label8.Name = "label8";
-            label8.Size = new Size(80, 15);
+            label8.Size = new Size(84, 15);
             label8.TabIndex = 23;
-            label8.Text = "stock minimo";
+            label8.Text = "Stock Mínimo:";
             // 
             // tbStockMin
             // 
-            tbStockMin.Location = new Point(110, 194);
+            tbStockMin.Location = new Point(144, 195);
             tbStockMin.Name = "tbStockMin";
             tbStockMin.Size = new Size(114, 23);
             tbStockMin.TabIndex = 22;
@@ -185,7 +186,7 @@
             // 
             button1.Image = Properties.Resources.icon_dar_baja;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(324, 126);
+            button1.Location = new Point(336, 111);
             button1.Name = "button1";
             button1.Size = new Size(140, 45);
             button1.TabIndex = 25;
@@ -198,7 +199,7 @@
             // 
             button2.Image = Properties.Resources.icon_dar_alta;
             button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(324, 182);
+            button2.Location = new Point(336, 167);
             button2.Name = "button2";
             button2.Size = new Size(140, 45);
             button2.TabIndex = 26;
@@ -209,7 +210,7 @@
             // 
             // button3
             // 
-            button3.Image = Properties.Resources.flecha_verde_retroceder1;
+            button3.Image = Properties.Resources.flecha_verde_retroceder;
             button3.Location = new Point(5, 400);
             button3.Name = "button3";
             button3.Size = new Size(75, 61);
