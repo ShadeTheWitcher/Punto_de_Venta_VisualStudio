@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditorUsuario));
             DTPicker = new DateTimePicker();
             CBPerfil = new ComboBox();
             RBMujer = new RadioButton();
@@ -58,6 +59,7 @@
             button3 = new Button();
             TCodPostal = new TextBox();
             LCodPostal = new Label();
+            BOcultar = new Button();
             SuspendLayout();
             // 
             // DTPicker
@@ -134,6 +136,7 @@
             // 
             TContraseña.Location = new Point(247, 167);
             TContraseña.Name = "TContraseña";
+            TContraseña.PasswordChar = '*';
             TContraseña.Size = new Size(170, 23);
             TContraseña.TabIndex = 42;
             // 
@@ -358,12 +361,24 @@
             LCodPostal.TabIndex = 56;
             LCodPostal.Text = "Código Postal:";
             // 
+            // BOcultar
+            // 
+            BOcultar.BackColor = Color.SteelBlue;
+            BOcultar.Image = (Image)resources.GetObject("BOcultar.Image");
+            BOcultar.Location = new Point(423, 166);
+            BOcultar.Name = "BOcultar";
+            BOcultar.Size = new Size(33, 29);
+            BOcultar.TabIndex = 58;
+            BOcultar.UseVisualStyleBackColor = false;
+            BOcultar.Click += BOcultar_Click;
+            // 
             // FormEditorUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SteelBlue;
             ClientSize = new Size(488, 559);
+            Controls.Add(BOcultar);
             Controls.Add(TCodPostal);
             Controls.Add(LCodPostal);
             Controls.Add(button3);
@@ -433,5 +448,6 @@
         private Button button3;
         private TextBox TCodPostal;
         private Label LCodPostal;
+        private Button BOcultar;
     }
 }

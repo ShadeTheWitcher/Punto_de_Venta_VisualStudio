@@ -11,7 +11,9 @@ using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
+using System.Text.RegularExpressions;
+using System.Runtime.CompilerServices;
+using System.Security.Policy;
 
 namespace CyberGear16
 {
@@ -26,6 +28,34 @@ namespace CyberGear16
             CBPerfil.Items.Add("Supervisor");
             CBPerfil.Items.Add("Vendedor");
             _context = context;
+
+            TNombre.KeyPress += TextBox_KeyPress;
+            TApellido.KeyPress += TextBox_KeyPress;
+            TDireccion.KeyPress += TextBox_KeyPress;
+            TDni.KeyPress += TextBoxNum_KeyPress;
+            TCodPostal.KeyPress += TextBoxNum_KeyPress;
+            TTelefono.KeyPress += TextBoxNum_KeyPress;
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada es una letra (A-Z o a-z) o una tecla de control (como Backspace)
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Si no es una letra ni una tecla de control, se cancela la entrada
+                e.Handled = true;
+            }
+
+
+        }
+
+        private void TextBoxNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                // Si no es un dígito ni una tecla de control, se cancela la entrada
+                e.Handled = true;
+            }
         }
 
         private void LUsuarios_Click(object sender, EventArgs e)
@@ -137,12 +167,13 @@ namespace CyberGear16
 
                 }
             }
-            else
-            {
-                MessageBox.Show("Por favor, ingrese valores válidos en los campos.");
-            }
+            //else
+            //{
+            //    MessageBox.Show("Por favor, ingrese valores válidos en los campos.");
+            //}
         }
 
+        //-------------------------Sección Validaciones-------------------------
         public bool validarCampos()
         {
             if (string.IsNullOrEmpty(TNombre.Text) ||
@@ -161,8 +192,160 @@ namespace CyberGear16
                 MessageBox.Show("Campos incompletos! Por favor rellénelos y vuelva a intentar.");
                 return false;
             }
-            return true;
+
+            if (validarTelefono() && validarDni() && validarNom() && validarApe() && validarUser()
+                && validarDirec() && validarCodPostal() && validarContraseña() && validacionCorreo())
+            {
+                return true;
+            }
+
+            return false;
         }
+
+        private bool validarTelefono()
+        {
+            if (TTelefono.Text.Length >= 10 && TTelefono.Text.Length < 15)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el telefono es de 10 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarDni()
+        {
+            if (TDni.Text.Length == 8)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("La cantidad de caracteres del DNI debe ser de 8.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validacionCharEstandar(string textComprobar)
+        {
+            if ((textComprobar.Length > 2) && (textComprobar.Length <= 15))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool validarNom()
+        {
+            if (validacionCharEstandar(TNombre.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el nombre es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarApe()
+        {
+            if (validacionCharEstandar(TApellido.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el apellido es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarUser()
+        {
+            if (validacionCharEstandar(TUsuario.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el usuario es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarDirec()
+        {
+            if (TDireccion.Text.Length > 2 && TDireccion.Text.Length <= 20)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para la dirección es de 3 y el máximo de 20.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarCodPostal()
+        {
+            if (TCodPostal.Text.Length >= 2 && TCodPostal.Text.Length <= 5)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el código postal es de 2 y el máximo de 5.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarContraseña()
+        {
+            if (validacionCharEstandar(TContraseña.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para la dirección es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool validacionCorreo()
+        {
+            try
+            {
+                // Utiliza una expresión regular para validar el formato del correo electrónico.
+                string patrón = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+                if (Regex.IsMatch(TEmail.Text, patrón))
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Formato de correo electrónico incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                // La expresión regular tardó demasiado en ejecutarse, lo que podría indicar un patrón inválido.
+                MessageBox.Show("Formato de correo electrónico incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        //---------------------Fin de Sección Validaciones----------------------
+
+
+
+
 
         private void LimpiarCampos()
         {
@@ -378,6 +561,22 @@ namespace CyberGear16
                 CargarDatosEnDGVActivos();
             }
 
+        }
+
+        private void BOcultar_Click(object sender, EventArgs e)
+        {
+            if (TContraseña.PasswordChar == '*')
+            {
+                BOcultar.Image = Properties.Resources.visibilidad;
+                // Mostrar la contraseña en texto plano
+                TContraseña.PasswordChar = '\0'; // Carácter nulo para mostrar el texto
+            }
+            else
+            {
+                BOcultar.Image = Properties.Resources.cerrado;
+                // Ocultar la contraseña
+                TContraseña.PasswordChar = '*'; // Carácter de contraseña
+            }
         }
     }
 }

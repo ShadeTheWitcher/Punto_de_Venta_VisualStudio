@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminUsers));
             PUsuarios = new Panel();
+            BOcultar = new Button();
             TCodPostal = new TextBox();
             LCodPostal = new Label();
             DTPicker = new DateTimePicker();
@@ -71,6 +72,7 @@
             // PUsuarios
             // 
             PUsuarios.BackColor = Color.FromArgb(26, 32, 40);
+            PUsuarios.Controls.Add(BOcultar);
             PUsuarios.Controls.Add(TCodPostal);
             PUsuarios.Controls.Add(LCodPostal);
             PUsuarios.Controls.Add(DTPicker);
@@ -105,9 +107,20 @@
             PUsuarios.TabIndex = 0;
             PUsuarios.Paint += PUsuarios_Paint;
             // 
+            // BOcultar
+            // 
+            BOcultar.BackColor = Color.FromArgb(26, 32, 40);
+            BOcultar.Image = (Image)resources.GetObject("BOcultar.Image");
+            BOcultar.Location = new Point(288, 158);
+            BOcultar.Name = "BOcultar";
+            BOcultar.Size = new Size(33, 29);
+            BOcultar.TabIndex = 30;
+            BOcultar.UseVisualStyleBackColor = false;
+            BOcultar.Click += BOcultar_Click;
+            // 
             // TCodPostal
             // 
-            TCodPostal.Location = new Point(458, 129);
+            TCodPostal.Location = new Point(490, 124);
             TCodPostal.Name = "TCodPostal";
             TCodPostal.Size = new Size(170, 23);
             TCodPostal.TabIndex = 29;
@@ -116,7 +129,7 @@
             // 
             LCodPostal.AutoSize = true;
             LCodPostal.ForeColor = Color.White;
-            LCodPostal.Location = new Point(324, 132);
+            LCodPostal.Location = new Point(356, 127);
             LCodPostal.Name = "LCodPostal";
             LCodPostal.Size = new Size(84, 15);
             LCodPostal.TabIndex = 28;
@@ -125,7 +138,7 @@
             // DTPicker
             // 
             DTPicker.Format = DateTimePickerFormat.Short;
-            DTPicker.Location = new Point(458, 158);
+            DTPicker.Location = new Point(490, 153);
             DTPicker.Name = "DTPicker";
             DTPicker.Size = new Size(170, 23);
             DTPicker.TabIndex = 27;
@@ -171,7 +184,7 @@
             // 
             RBMujer.AutoSize = true;
             RBMujer.ForeColor = Color.White;
-            RBMujer.Location = new Point(566, 217);
+            RBMujer.Location = new Point(598, 212);
             RBMujer.Name = "RBMujer";
             RBMujer.Size = new Size(56, 19);
             RBMujer.TabIndex = 23;
@@ -183,7 +196,7 @@
             // 
             RBHombre.AutoSize = true;
             RBHombre.ForeColor = Color.White;
-            RBHombre.Location = new Point(469, 217);
+            RBHombre.Location = new Point(501, 212);
             RBHombre.Name = "RBHombre";
             RBHombre.Size = new Size(69, 19);
             RBHombre.TabIndex = 22;
@@ -193,21 +206,21 @@
             // 
             // TTelefono
             // 
-            TTelefono.Location = new Point(458, 187);
+            TTelefono.Location = new Point(490, 182);
             TTelefono.Name = "TTelefono";
             TTelefono.Size = new Size(170, 23);
             TTelefono.TabIndex = 21;
             // 
             // TDireccion
             // 
-            TDireccion.Location = new Point(458, 99);
+            TDireccion.Location = new Point(490, 94);
             TDireccion.Name = "TDireccion";
             TDireccion.Size = new Size(170, 23);
             TDireccion.TabIndex = 19;
             // 
             // TDni
             // 
-            TDni.Location = new Point(458, 70);
+            TDni.Location = new Point(490, 65);
             TDni.Name = "TDni";
             TDni.Size = new Size(170, 23);
             TDni.TabIndex = 18;
@@ -221,8 +234,11 @@
             // 
             // TContraseña
             // 
+            TContraseña.BackColor = SystemColors.Window;
+            TContraseña.ForeColor = SystemColors.WindowText;
             TContraseña.Location = new Point(112, 158);
             TContraseña.Name = "TContraseña";
+            TContraseña.PasswordChar = '*';
             TContraseña.Size = new Size(170, 23);
             TContraseña.TabIndex = 15;
             // 
@@ -251,7 +267,7 @@
             // 
             LSexo.AutoSize = true;
             LSexo.ForeColor = Color.White;
-            LSexo.Location = new Point(329, 216);
+            LSexo.Location = new Point(361, 211);
             LSexo.Name = "LSexo";
             LSexo.Size = new Size(35, 15);
             LSexo.TabIndex = 11;
@@ -282,7 +298,7 @@
             // 
             LFechaNac.AutoSize = true;
             LFechaNac.ForeColor = Color.White;
-            LFechaNac.Location = new Point(324, 160);
+            LFechaNac.Location = new Point(356, 155);
             LFechaNac.Name = "LFechaNac";
             LFechaNac.Size = new Size(122, 15);
             LFechaNac.TabIndex = 8;
@@ -292,7 +308,7 @@
             // 
             LDni.AutoSize = true;
             LDni.ForeColor = Color.White;
-            LDni.Location = new Point(324, 78);
+            LDni.Location = new Point(356, 73);
             LDni.Name = "LDni";
             LDni.Size = new Size(28, 15);
             LDni.TabIndex = 7;
@@ -302,7 +318,7 @@
             // 
             LDireccion.AutoSize = true;
             LDireccion.ForeColor = Color.White;
-            LDireccion.Location = new Point(324, 107);
+            LDireccion.Location = new Point(356, 102);
             LDireccion.Name = "LDireccion";
             LDireccion.Size = new Size(60, 15);
             LDireccion.TabIndex = 6;
@@ -323,7 +339,7 @@
             // 
             LTelefono.AutoSize = true;
             LTelefono.ForeColor = Color.White;
-            LTelefono.Location = new Point(324, 190);
+            LTelefono.Location = new Point(356, 185);
             LTelefono.Name = "LTelefono";
             LTelefono.Size = new Size(55, 15);
             LTelefono.TabIndex = 4;
@@ -493,5 +509,6 @@
         private TextBox TBuscar;
         private Button BBuscar;
         private Button BBorrar;
+        private Button BOcultar;
     }
 }
