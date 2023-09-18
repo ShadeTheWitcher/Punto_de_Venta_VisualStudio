@@ -27,9 +27,6 @@ namespace CyberGear16
             _context = context;
         }
 
-
-
-
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
