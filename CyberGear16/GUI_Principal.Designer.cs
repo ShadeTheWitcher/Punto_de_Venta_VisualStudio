@@ -80,6 +80,7 @@
             btnClientes.TabIndex = 10;
             btnClientes.Text = "Clientes";
             btnClientes.UseVisualStyleBackColor = true;
+            btnClientes.Click += btnClientes_Click;
             // 
             // button1
             // 
@@ -149,7 +150,7 @@
             CabeceraTitulo.Location = new Point(0, 0);
             CabeceraTitulo.Margin = new Padding(4, 3, 4, 3);
             CabeceraTitulo.Name = "CabeceraTitulo";
-            CabeceraTitulo.Size = new Size(1517, 46);
+            CabeceraTitulo.Size = new Size(1380, 46);
             CabeceraTitulo.TabIndex = 0;
             CabeceraTitulo.MouseDown += CabeceraTitulo_MouseDown;
             // 
@@ -159,7 +160,7 @@
             btnRestaurar.Cursor = Cursors.Hand;
             btnRestaurar.Image = Properties.Resources.res;
             btnRestaurar.InitialImage = null;
-            btnRestaurar.Location = new Point(1435, 10);
+            btnRestaurar.Location = new Point(1298, 10);
             btnRestaurar.Margin = new Padding(4, 3, 4, 3);
             btnRestaurar.Name = "btnRestaurar";
             btnRestaurar.Size = new Size(29, 29);
@@ -175,7 +176,7 @@
             btnMax.Cursor = Cursors.Hand;
             btnMax.Image = Properties.Resources.icono_max;
             btnMax.InitialImage = null;
-            btnMax.Location = new Point(1435, 10);
+            btnMax.Location = new Point(1298, 10);
             btnMax.Margin = new Padding(4, 3, 4, 3);
             btnMax.Name = "btnMax";
             btnMax.Size = new Size(29, 29);
@@ -190,7 +191,7 @@
             btnMin.Cursor = Cursors.Hand;
             btnMin.Image = Properties.Resources.icono_min;
             btnMin.InitialImage = null;
-            btnMin.Location = new Point(1388, 10);
+            btnMin.Location = new Point(1251, 10);
             btnMin.Margin = new Padding(4, 3, 4, 3);
             btnMin.Name = "btnMin";
             btnMin.Size = new Size(29, 29);
@@ -205,7 +206,7 @@
             btnSalir.Cursor = Cursors.Hand;
             btnSalir.Image = Properties.Resources.cerrar;
             btnSalir.InitialImage = null;
-            btnSalir.Location = new Point(1484, 10);
+            btnSalir.Location = new Point(1347, 10);
             btnSalir.Margin = new Padding(4, 3, 4, 3);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(29, 29);
@@ -274,7 +275,7 @@
             LTipoUser.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             LTipoUser.AutoSize = true;
             LTipoUser.BackColor = Color.Transparent;
-            LTipoUser.Font = new Font("Lucida Fax", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            LTipoUser.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
             LTipoUser.ForeColor = Color.LightGreen;
             LTipoUser.Location = new Point(191, 680);
             LTipoUser.Name = "LTipoUser";
@@ -288,11 +289,11 @@
             LNomUser.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             LNomUser.AutoSize = true;
             LNomUser.BackColor = Color.Transparent;
-            LNomUser.Font = new Font("Lucida Fax", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            LNomUser.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
             LNomUser.ForeColor = SystemColors.ButtonHighlight;
             LNomUser.Location = new Point(191, 654);
             LNomUser.Name = "LNomUser";
-            LNomUser.Size = new Size(86, 15);
+            LNomUser.Size = new Size(88, 15);
             LNomUser.TabIndex = 13;
             LNomUser.Text = "NombreUser";
             LNomUser.Click += LNomUser_Click;
@@ -408,14 +409,14 @@
             panelContenedor.Location = new Point(294, 46);
             panelContenedor.Margin = new Padding(4, 3, 4, 3);
             panelContenedor.Name = "panelContenedor";
-            panelContenedor.Size = new Size(1223, 704);
+            panelContenedor.Size = new Size(1086, 704);
             panelContenedor.TabIndex = 2;
             // 
             // GUI_Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1517, 750);
+            ClientSize = new Size(1380, 750);
             Controls.Add(panelContenedor);
             Controls.Add(panel2);
             Controls.Add(CabeceraTitulo);

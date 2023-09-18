@@ -63,7 +63,7 @@ namespace CyberGear16
 
             if (perfil_idUsuario == 3) //vendedor
             {
-                
+
 
                 LTipoUser.Text = "Vendedor";
                 btnProductos.Enabled = false;
@@ -195,6 +195,11 @@ namespace CyberGear16
         private void btnVentas_Click(object sender, EventArgs e)
         {
             AbrirFormHija(new FormSeccionVentas(_context));
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FormClientes(_context));
         }
     }
 }
