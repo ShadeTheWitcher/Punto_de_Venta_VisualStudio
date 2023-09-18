@@ -307,10 +307,77 @@ namespace CyberGear16
 
         }
 
-        
+
         private void BActivos_Click(object sender, EventArgs e)
         {
             CargarDatosEnDGVActivos();
+        }
+
+        bool borrarPrimeraVez = true;
+        private void TBuscar_Click(object sender, EventArgs e)
+        {
+            if (borrarPrimeraVez)
+            {
+                TBuscar.Clear();
+                borrarPrimeraVez = false;
+            }
+        }
+        private void BuscarEnBaseDeDatosYActualizarDataGridView(string buscar)
+        {
+            using (var context = new BdCybergearContext())
+            {
+
+                var resultados = context.Usuarios.Where(e => e.Nombre.Contains(buscar)).ToList();
+                if (resultados.Count == 0)
+                {
+                    MessageBox.Show("No se han encontrado usuarios que coincidan con la busqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    DGVUsuarios.DataSource = resultados;
+                }
+            }
+        }
+
+        private void TBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter))
+            {
+                if (!string.IsNullOrEmpty(TBuscar.Text))
+                {
+                    string buscar = TBuscar.Text;
+                    // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
+                    BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
+                }
+                else
+                {
+                    MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void BBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TBuscar.Text))
+            {
+                string buscar = TBuscar.Text;
+                // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
+                BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
+            }
+            else
+            {
+                MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BBorrar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TBuscar.Text))
+            {
+                TBuscar.Clear();
+                CargarDatosEnDGVActivos();
+            }
+
         }
     }
 }

@@ -331,13 +331,14 @@
             // button3
             // 
             button3.Image = Properties.Resources.flecha_verde_retroceder;
-            button3.Location = new Point(3, 491);
+            button3.Location = new Point(12, 491);
             button3.Name = "button3";
             button3.Size = new Size(58, 60);
             button3.TabIndex = 55;
             button3.Text = "Volver";
             button3.TextAlign = ContentAlignment.BottomCenter;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // TCodPostal
             // 

@@ -61,6 +61,9 @@
             DGVUsuarios = new DataGridView();
             BActivos = new Button();
             BInactivo = new Button();
+            TBuscar = new TextBox();
+            BBuscar = new Button();
+            BBorrar = new Button();
             PUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGVUsuarios).BeginInit();
             SuspendLayout();
@@ -98,7 +101,7 @@
             PUsuarios.Controls.Add(LUsuarios);
             PUsuarios.Location = new Point(19, 11);
             PUsuarios.Name = "PUsuarios";
-            PUsuarios.Size = new Size(982, 334);
+            PUsuarios.Size = new Size(982, 325);
             PUsuarios.TabIndex = 0;
             PUsuarios.Paint += PUsuarios_Paint;
             // 
@@ -361,11 +364,11 @@
             // LUsuarios
             // 
             LUsuarios.AutoSize = true;
-            LUsuarios.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LUsuarios.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             LUsuarios.ForeColor = Color.White;
             LUsuarios.Location = new Point(24, 15);
             LUsuarios.Name = "LUsuarios";
-            LUsuarios.Size = new Size(89, 25);
+            LUsuarios.Size = new Size(103, 30);
             LUsuarios.TabIndex = 0;
             LUsuarios.Text = "Usuarios:";
             LUsuarios.Click += LUsuarios_Click;
@@ -382,7 +385,7 @@
             // 
             // BActivos
             // 
-            BActivos.Location = new Point(19, 360);
+            BActivos.Location = new Point(19, 356);
             BActivos.Name = "BActivos";
             BActivos.Size = new Size(113, 28);
             BActivos.TabIndex = 2;
@@ -392,7 +395,7 @@
             // 
             // BInactivo
             // 
-            BInactivo.Location = new Point(157, 360);
+            BInactivo.Location = new Point(157, 356);
             BInactivo.Name = "BInactivo";
             BInactivo.Size = new Size(113, 28);
             BInactivo.TabIndex = 3;
@@ -400,11 +403,44 @@
             BInactivo.UseVisualStyleBackColor = true;
             BInactivo.Click += BInactivos_Click;
             // 
+            // TBuscar
+            // 
+            TBuscar.Location = new Point(601, 360);
+            TBuscar.Name = "TBuscar";
+            TBuscar.Size = new Size(313, 23);
+            TBuscar.TabIndex = 4;
+            TBuscar.Text = "Buscar";
+            TBuscar.Click += TBuscar_Click;
+            TBuscar.KeyPress += TBuscar_KeyPress;
+            // 
+            // BBuscar
+            // 
+            BBuscar.Image = Properties.Resources.lupa;
+            BBuscar.Location = new Point(920, 351);
+            BBuscar.Name = "BBuscar";
+            BBuscar.Size = new Size(38, 37);
+            BBuscar.TabIndex = 5;
+            BBuscar.UseVisualStyleBackColor = true;
+            BBuscar.Click += BBuscar_Click;
+            // 
+            // BBorrar
+            // 
+            BBorrar.Image = (Image)resources.GetObject("BBorrar.Image");
+            BBorrar.Location = new Point(964, 351);
+            BBorrar.Name = "BBorrar";
+            BBorrar.Size = new Size(38, 37);
+            BBorrar.TabIndex = 6;
+            BBorrar.UseVisualStyleBackColor = true;
+            BBorrar.Click += BBorrar_Click;
+            // 
             // adminUsers
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1061, 629);
+            Controls.Add(BBorrar);
+            Controls.Add(BBuscar);
+            Controls.Add(TBuscar);
             Controls.Add(BInactivo);
             Controls.Add(BActivos);
             Controls.Add(DGVUsuarios);
@@ -417,6 +453,7 @@
             PUsuarios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGVUsuarios).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -453,5 +490,8 @@
         private Button BInactivo;
         private TextBox TCodPostal;
         private Label LCodPostal;
+        private TextBox TBuscar;
+        private Button BBuscar;
+        private Button BBorrar;
     }
 }

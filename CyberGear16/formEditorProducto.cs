@@ -207,5 +207,10 @@ namespace CyberGear16
         {
             this.Close();
         }
+
+        private void comboBoxCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
