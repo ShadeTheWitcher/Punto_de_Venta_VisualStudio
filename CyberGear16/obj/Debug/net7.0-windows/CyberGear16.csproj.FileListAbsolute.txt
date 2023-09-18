@@ -201,3 +201,4 @@ C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormEditorUsuario.resources
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormSeccionVentas.resources
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormClientes.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormReporte.resources
