@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_Principal));
             btnClientes = new Button();
             button1 = new Button();
             btnVentas = new Button();
@@ -141,7 +142,7 @@
             // 
             // CabeceraTitulo
             // 
-            CabeceraTitulo.BackColor = SystemColors.Highlight;
+            CabeceraTitulo.BackColor = Color.DarkSlateBlue;
             CabeceraTitulo.Controls.Add(btnRestaurar);
             CabeceraTitulo.Controls.Add(btnMax);
             CabeceraTitulo.Controls.Add(btnMin);
@@ -245,7 +246,7 @@
             // 
             // panel7
             // 
-            panel7.BackColor = SystemColors.Highlight;
+            panel7.BackColor = Color.MediumPurple;
             panel7.Location = new Point(0, 213);
             panel7.Margin = new Padding(4, 3, 4, 3);
             panel7.Name = "panel7";
@@ -329,7 +330,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = SystemColors.Highlight;
+            panel6.BackColor = Color.MediumPurple;
             panel6.Location = new Point(0, 475);
             panel6.Margin = new Padding(4, 3, 4, 3);
             panel6.Name = "panel6";
@@ -338,7 +339,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.Highlight;
+            panel3.BackColor = Color.MediumPurple;
             panel3.Location = new Point(0, 548);
             panel3.Margin = new Padding(4, 3, 4, 3);
             panel3.Name = "panel3";
@@ -347,7 +348,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.Highlight;
+            panel1.BackColor = Color.MediumPurple;
             panel1.Location = new Point(0, 408);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
@@ -356,7 +357,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = SystemColors.Highlight;
+            panel5.BackColor = Color.MediumPurple;
             panel5.Location = new Point(0, 348);
             panel5.Margin = new Padding(4, 3, 4, 3);
             panel5.Name = "panel5";
@@ -366,11 +367,11 @@
             // pictureBox1
             // 
             pictureBox1.ErrorImage = null;
-            pictureBox1.Image = Properties.Resources._7be5f80bdd244197bed72c7c0f28e283;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(44, 38);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(217, 138);
+            pictureBox1.Size = new Size(155, 138);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -378,7 +379,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.Highlight;
+            panel4.BackColor = Color.MediumPurple;
             panel4.Location = new Point(0, 280);
             panel4.Margin = new Padding(4, 3, 4, 3);
             panel4.Name = "panel4";

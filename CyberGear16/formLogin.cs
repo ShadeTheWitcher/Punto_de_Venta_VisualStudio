@@ -46,7 +46,7 @@ namespace CyberGear16
                     // Crea una instancia del formulario GUI_Principal
                     GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser, context);
 
-                    string mensajeInicio = "¡Inicio de sesión exitoso!" + Environment.NewLine + "  Bienvenido: "  + nombreUser;
+                    string mensajeInicio = "¡Inicio de sesión exitoso!" + Environment.NewLine + "  Bienvenido: " + nombreUser;
 
                     // Las credenciales son válidas, el usuario ha iniciado sesión
                     MessageBox.Show(mensajeInicio, "Inicio Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);

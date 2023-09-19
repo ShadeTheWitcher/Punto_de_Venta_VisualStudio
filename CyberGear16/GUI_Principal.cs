@@ -67,7 +67,7 @@ namespace CyberGear16
                 LTipoUser.Text = "Vendedor";
                 btnProductos.Enabled = false;
                 panel4.BackColor = Color.DimGray;
-                
+
 
                 btnUsuarios.Enabled = false;
                 panel5.BackColor = Color.DimGray;

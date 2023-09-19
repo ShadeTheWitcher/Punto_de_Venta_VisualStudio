@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formLogin));
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             button1 = new Button();
@@ -43,7 +44,8 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDark;
+            panel1.Anchor = AnchorStyles.None;
+            panel1.BackColor = Color.SlateBlue;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox2);
@@ -58,7 +60,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources._1Captura_de_pantalla_2023_08_25_143248;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(145, 45);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
@@ -117,7 +119,9 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources._7be5f80bdd244197bed72c7c0f28e283;
+            pictureBox2.Anchor = AnchorStyles.Left;
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(130, 256);
             pictureBox2.Margin = new Padding(4, 3, 4, 3);
             pictureBox2.Name = "pictureBox2";
@@ -131,7 +135,8 @@
             AcceptButton = button1;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.image;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1364, 749);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
