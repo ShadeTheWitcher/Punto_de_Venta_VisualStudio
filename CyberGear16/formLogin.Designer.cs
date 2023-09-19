@@ -52,10 +52,10 @@
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(526, 223);
+            panel1.Location = new Point(486, 222);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(405, 376);
+            panel1.Size = new Size(391, 376);
             panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -141,10 +141,12 @@
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "formLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio Sesión";
+            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

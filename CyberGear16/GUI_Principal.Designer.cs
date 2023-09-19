@@ -368,7 +368,7 @@
             // 
             pictureBox1.ErrorImage = null;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(44, 38);
+            pictureBox1.Location = new Point(66, 38);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(155, 138);
@@ -423,10 +423,13 @@
             Controls.Add(panel2);
             Controls.Add(CabeceraTitulo);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "GUI_Principal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
+            WindowState = FormWindowState.Maximized;
+            Load += GUI_Principal_Load;
             CabeceraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnRestaurar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnMax).EndInit();

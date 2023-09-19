@@ -71,6 +71,7 @@
             // 
             // PUsuarios
             // 
+            PUsuarios.Anchor = AnchorStyles.None;
             PUsuarios.BackColor = Color.FromArgb(26, 32, 40);
             PUsuarios.Controls.Add(BOcultar);
             PUsuarios.Controls.Add(TCodPostal);
@@ -101,7 +102,7 @@
             PUsuarios.Controls.Add(LApellido);
             PUsuarios.Controls.Add(LNombre);
             PUsuarios.Controls.Add(LUsuarios);
-            PUsuarios.Location = new Point(19, 11);
+            PUsuarios.Location = new Point(44, 12);
             PUsuarios.Name = "PUsuarios";
             PUsuarios.Size = new Size(982, 325);
             PUsuarios.TabIndex = 0;
@@ -110,6 +111,8 @@
             // BOcultar
             // 
             BOcultar.BackColor = Color.FromArgb(26, 32, 40);
+            BOcultar.FlatAppearance.BorderSize = 0;
+            BOcultar.FlatStyle = FlatStyle.Flat;
             BOcultar.Image = (Image)resources.GetObject("BOcultar.Image");
             BOcultar.Location = new Point(288, 158);
             BOcultar.Name = "BOcultar";
@@ -391,8 +394,9 @@
             // 
             // DGVUsuarios
             // 
+            DGVUsuarios.Anchor = AnchorStyles.None;
             DGVUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVUsuarios.Location = new Point(19, 394);
+            DGVUsuarios.Location = new Point(44, 395);
             DGVUsuarios.Name = "DGVUsuarios";
             DGVUsuarios.RowTemplate.Height = 25;
             DGVUsuarios.Size = new Size(982, 213);
@@ -401,7 +405,8 @@
             // 
             // BActivos
             // 
-            BActivos.Location = new Point(19, 356);
+            BActivos.Anchor = AnchorStyles.None;
+            BActivos.Location = new Point(44, 357);
             BActivos.Name = "BActivos";
             BActivos.Size = new Size(113, 28);
             BActivos.TabIndex = 2;
@@ -411,7 +416,8 @@
             // 
             // BInactivo
             // 
-            BInactivo.Location = new Point(157, 356);
+            BInactivo.Anchor = AnchorStyles.None;
+            BInactivo.Location = new Point(182, 357);
             BInactivo.Name = "BInactivo";
             BInactivo.Size = new Size(113, 28);
             BInactivo.TabIndex = 3;
@@ -421,7 +427,8 @@
             // 
             // TBuscar
             // 
-            TBuscar.Location = new Point(601, 360);
+            TBuscar.Anchor = AnchorStyles.None;
+            TBuscar.Location = new Point(626, 361);
             TBuscar.Name = "TBuscar";
             TBuscar.Size = new Size(313, 23);
             TBuscar.TabIndex = 4;
@@ -431,8 +438,9 @@
             // 
             // BBuscar
             // 
+            BBuscar.Anchor = AnchorStyles.None;
             BBuscar.Image = Properties.Resources.lupa;
-            BBuscar.Location = new Point(920, 351);
+            BBuscar.Location = new Point(945, 352);
             BBuscar.Name = "BBuscar";
             BBuscar.Size = new Size(38, 37);
             BBuscar.TabIndex = 5;
@@ -441,8 +449,9 @@
             // 
             // BBorrar
             // 
+            BBorrar.Anchor = AnchorStyles.None;
             BBorrar.Image = (Image)resources.GetObject("BBorrar.Image");
-            BBorrar.Location = new Point(964, 351);
+            BBorrar.Location = new Point(989, 352);
             BBorrar.Name = "BBorrar";
             BBorrar.Size = new Size(38, 37);
             BBorrar.TabIndex = 6;

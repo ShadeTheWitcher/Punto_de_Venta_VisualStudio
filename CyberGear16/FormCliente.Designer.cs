@@ -64,6 +64,7 @@
             // 
             // PUsuarios
             // 
+            PUsuarios.Anchor = AnchorStyles.None;
             PUsuarios.BackColor = Color.FromArgb(26, 32, 40);
             PUsuarios.Controls.Add(TCodPostal);
             PUsuarios.Controls.Add(LCodPostal);
@@ -304,6 +305,7 @@
             // 
             // TBuscar
             // 
+            TBuscar.Anchor = AnchorStyles.None;
             TBuscar.Location = new Point(603, 358);
             TBuscar.Name = "TBuscar";
             TBuscar.Size = new Size(313, 23);
@@ -312,6 +314,7 @@
             // 
             // DGVClientes
             // 
+            DGVClientes.Anchor = AnchorStyles.None;
             DGVClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGVClientes.Location = new Point(21, 392);
             DGVClientes.Name = "DGVClientes";
@@ -321,6 +324,7 @@
             // 
             // BBorrar
             // 
+            BBorrar.Anchor = AnchorStyles.None;
             BBorrar.Image = (Image)resources.GetObject("BBorrar.Image");
             BBorrar.Location = new Point(965, 349);
             BBorrar.Name = "BBorrar";
@@ -330,6 +334,7 @@
             // 
             // BBuscar
             // 
+            BBuscar.Anchor = AnchorStyles.None;
             BBuscar.Image = Properties.Resources.lupa;
             BBuscar.Location = new Point(921, 349);
             BBuscar.Name = "BBuscar";
@@ -339,6 +344,7 @@
             // 
             // BActivos
             // 
+            BActivos.Anchor = AnchorStyles.None;
             BActivos.Location = new Point(21, 354);
             BActivos.Name = "BActivos";
             BActivos.Size = new Size(113, 28);
@@ -348,6 +354,7 @@
             // 
             // BInactivo
             // 
+            BInactivo.Anchor = AnchorStyles.None;
             BInactivo.Location = new Point(159, 354);
             BInactivo.Name = "BInactivo";
             BInactivo.Size = new Size(113, 28);

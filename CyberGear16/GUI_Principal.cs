@@ -206,5 +206,20 @@ namespace CyberGear16
         {
             AbrirFormHija(new FormReporte(/*_context*/));
         }
+
+        private void panelContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelContenedor_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void GUI_Principal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

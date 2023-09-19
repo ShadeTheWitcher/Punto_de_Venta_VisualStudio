@@ -53,6 +53,7 @@
             // 
             // PReporte
             // 
+            PReporte.Anchor = AnchorStyles.None;
             PReporte.BackColor = Color.SteelBlue;
             PReporte.Controls.Add(BReporte);
             PReporte.Controls.Add(LHasta);
@@ -113,12 +114,13 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(26, 32, 40);
             panel1.Controls.Add(PReporte);
             panel1.Controls.Add(LUsuarios);
             panel1.Location = new Point(2, -3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1142, 794);
+            panel1.Size = new Size(1060, 794);
             panel1.TabIndex = 3;
             // 
             // FormReporte
