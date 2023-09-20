@@ -162,14 +162,13 @@
             btnRestaurar.Cursor = Cursors.Hand;
             btnRestaurar.Image = Properties.Resources.res;
             btnRestaurar.InitialImage = null;
-            btnRestaurar.Location = new Point(1298, 10);
+            btnRestaurar.Location = new Point(1298, 11);
             btnRestaurar.Margin = new Padding(4, 3, 4, 3);
             btnRestaurar.Name = "btnRestaurar";
             btnRestaurar.Size = new Size(29, 29);
             btnRestaurar.SizeMode = PictureBoxSizeMode.Zoom;
             btnRestaurar.TabIndex = 2;
             btnRestaurar.TabStop = false;
-            btnRestaurar.Visible = false;
             btnRestaurar.Click += btnRestaurar_Click;
             // 
             // btnMax
@@ -185,6 +184,7 @@
             btnMax.SizeMode = PictureBoxSizeMode.Zoom;
             btnMax.TabIndex = 2;
             btnMax.TabStop = false;
+            btnMax.Visible = false;
             btnMax.Click += btnMax_Click;
             // 
             // btnMin
