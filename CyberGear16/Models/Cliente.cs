@@ -23,6 +23,8 @@ public partial class Cliente
 
     public int Telefono { get; set; }
 
+    public string Baja { get; set; } = null!;
+
     public virtual Domicilio Domicilio { get; set; } = null!;
 
     public virtual ICollection<VentasCabecera> VentasCabeceras { get; set; } = new List<VentasCabecera>();

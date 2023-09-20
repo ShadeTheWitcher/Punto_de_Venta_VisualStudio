@@ -57,6 +57,10 @@ public partial class BdCybergearContext : DbContext
             entity.Property(e => e.Apellido)
                 .HasMaxLength(30)
                 .HasColumnName("apellido");
+            entity.Property(e => e.Baja)
+                .HasMaxLength(2)
+                .HasDefaultValueSql("'NO'")
+                .HasColumnName("baja");
             entity.Property(e => e.Dni)
                 .HasColumnType("int(11)")
                 .HasColumnName("dni");
