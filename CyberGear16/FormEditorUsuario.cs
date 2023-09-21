@@ -178,7 +178,7 @@ namespace CyberGear16
 
                         // Guardar los cambios en la base de datos
                         context.SaveChanges();
-                        MessageBox.Show("Producto Actualizado Correctamente");
+                        MessageBox.Show("Usuario Actualizado Correctamente");
 
                     }
                 }
