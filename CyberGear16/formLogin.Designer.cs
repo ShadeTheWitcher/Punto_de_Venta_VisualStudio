@@ -46,7 +46,7 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.Transparent;
-            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImage = Properties.Resources.fondoDegradadoMoradoRosa;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(button1);
@@ -137,7 +137,7 @@
             AcceptButton = button1;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImage = Properties.Resources._1092728;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1364, 749);
             Controls.Add(pictureBox2);

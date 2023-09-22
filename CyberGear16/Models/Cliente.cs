@@ -21,7 +21,9 @@ public partial class Cliente
 
     public string Sexo { get; set; } = null!;
 
-    public int Telefono { get; set; }
+    public long Telefono { get; set; }
+
+    public string Baja { get; set; } = null!;
 
     public virtual Domicilio Domicilio { get; set; } = null!;
 
