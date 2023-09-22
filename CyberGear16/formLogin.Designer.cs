@@ -37,6 +37,7 @@
             label2 = new Label();
             label1 = new Label();
             pictureBox2 = new PictureBox();
+            BOcultar = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -48,6 +49,7 @@
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = Properties.Resources.fondoDegradadoMoradoRosa;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(BOcultar);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox2);
@@ -132,6 +134,19 @@
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
+            // BOcultar
+            // 
+            BOcultar.BackColor = Color.Transparent;
+            BOcultar.FlatAppearance.BorderSize = 0;
+            BOcultar.FlatStyle = FlatStyle.Flat;
+            BOcultar.Image = (Image)resources.GetObject("BOcultar.Image");
+            BOcultar.Location = new Point(268, 251);
+            BOcultar.Name = "BOcultar";
+            BOcultar.Size = new Size(33, 29);
+            BOcultar.TabIndex = 31;
+            BOcultar.UseVisualStyleBackColor = false;
+            BOcultar.Click += BOcultar_Click;
+            // 
             // formLogin
             // 
             AcceptButton = button1;
@@ -166,5 +181,6 @@
         private Label label1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button BOcultar;
     }
 }

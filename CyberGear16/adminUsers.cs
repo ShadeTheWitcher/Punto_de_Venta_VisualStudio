@@ -85,10 +85,10 @@ namespace CyberGear16
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
-            int telefono;
+            long telefono;
             int dni;
 
-            if (validarCampos() && int.TryParse(TTelefono.Text, out telefono) && int.TryParse(TDni.Text, out dni))
+            if (validarCampos() && long.TryParse(TTelefono.Text, out telefono) && int.TryParse(TDni.Text, out dni))
             {
 
                 string nombre = TNombre.Text;
@@ -208,7 +208,7 @@ namespace CyberGear16
         //    {
         //        string textoIngresado = textBox1.Text; // Obtén el texto del TextBox
 
-                
+
         //    }
         //    //using (var context = new BdCybergearContext())
         //    //{
@@ -217,7 +217,7 @@ namespace CyberGear16
         //    //    var usuariosNoDeBaja = Where(u => u.Baja == "NO")
         //}
 
-       
+
         public class Validador
         {
             public static bool EsValorUnico<T>(DbContext context, DbSet<T> dbSet, Func<T, string> propiedadSelector, string valor)
@@ -258,9 +258,9 @@ namespace CyberGear16
                     return false;
                 }
             }
-                
 
-            
+
+
         }
 
         private bool validarDni()
@@ -283,8 +283,8 @@ namespace CyberGear16
             }
             else
             {
-                 MessageBox.Show("La cantidad de caracteres del DNI debe ser de 8.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                 return false;
+                MessageBox.Show("La cantidad de caracteres del DNI debe ser de 8.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 

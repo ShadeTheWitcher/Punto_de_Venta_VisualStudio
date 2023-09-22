@@ -81,5 +81,21 @@ namespace CyberGear16
             string contraseña = textBox2.Text;
             await IniciarSesionAsync(usuario, contraseña);
         }
+
+        private void BOcultar_Click(object sender, EventArgs e)
+        {
+            if (textBox2.PasswordChar == '*')
+            {
+                BOcultar.Image = Properties.Resources.visibilidad;
+                // Mostrar la contraseña en texto plano
+                textBox2.PasswordChar = '\0'; // Carácter nulo para mostrar el texto
+            }
+            else
+            {
+                BOcultar.Image = Properties.Resources.cerrado;
+                // Ocultar la contraseña
+                textBox2.PasswordChar = '*'; // Carácter de contraseña
+            }
+        }
     }
 }

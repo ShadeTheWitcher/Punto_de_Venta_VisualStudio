@@ -1,4 +1,5 @@
 ﻿using CyberGear16.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -116,6 +118,7 @@ namespace CyberGear16
             }
         }
 
+        //-------------------------Sección Validaciones-------------------------
         public bool validarCampos()
         {
             if (string.IsNullOrEmpty(TNombre.Text) ||
@@ -134,8 +137,240 @@ namespace CyberGear16
                 MessageBox.Show("Campos incompletos! Por favor rellénelos y vuelva a intentar.");
                 return false;
             }
-            return true;
+
+            if (validarTelefono() && validarDni() && validarNom() && validarApe() && validarUser()
+                && validarDirec() && validarCodPostal() && validarContraseña() && validacionCorreo())
+            {
+                return true;
+            }
+
+            return false;
         }
+
+        //private bool detectarNoRepetidos(string strComprobar)
+        //{
+        //    using (var dbContext = new TuDbContext())
+        //    {
+        //        string textoIngresado = textBox1.Text; // Obtén el texto del TextBox
+
+
+        //    }
+        //    //using (var context = new BdCybergearContext())
+        //    //{
+        //    //    context.Usuarios.Where(u =>  u.== strComprobar);
+        //    //}
+        //    //    var usuariosNoDeBaja = Where(u => u.Baja == "NO")
+        //}
+
+
+        public class Validador
+        {
+            public static bool EsValorUnico<T>(DbContext context, DbSet<T> dbSet, Func<T, string> propiedadSelector, string valor)
+                where T : class
+            {
+                // Obtén todos los registros de la tabla y luego realiza la comparación en memoria.
+                var todosLosRegistros = dbSet.AsEnumerable();
+
+                return !todosLosRegistros.Any(entidad => propiedadSelector(entidad) == valor);
+            }
+            /*DbSet<T> dbSet: Un conjunto de entidades del tipo genérico T.
+            Esto se utiliza para especificar la tabla de la base de datos con la que deseas trabajar.*/
+            /*Func<T, string> propiedadSelector: Una función que toma una entidad del tipo T y devuelve una cadena (string). 
+            Esta función se utiliza para seleccionar la propiedad que deseas comparar con el valor ingresado.*/
+        }
+
+
+        private bool validarTelefono()
+        {
+            using (var context = new BdCybergearContext())
+            {
+                if (TTelefono.Text.Length >= 10 && TTelefono.Text.Length < 15)
+                {
+                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Tel.ToString(), TTelefono.Text))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // Muestra un mensaje de error o realiza alguna acción adecuada
+                        MessageBox.Show("El Telefono ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El mínimo de caracteres aceptados para el telefono es de 10 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+
+
+        }
+
+        private bool validarDni()
+        {
+            if (TDni.Text.Length == 8)
+            {
+                using (var context = new BdCybergearContext())
+                {
+                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Dni.ToString(), TDni.Text))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // Muestra un mensaje de error o realiza alguna acción adecuada
+                        MessageBox.Show("El DNI ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("La cantidad de caracteres del DNI debe ser de 8.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validacionCharEstandar(string textComprobar)
+        {
+            if ((textComprobar.Length > 2) && (textComprobar.Length <= 15))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool validarNom()
+        {
+            if (validacionCharEstandar(TNombre.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el nombre es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarApe()
+        {
+            if (validacionCharEstandar(TApellido.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el apellido es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarUser()
+        {
+            if (validacionCharEstandar(TUsuario.Text))
+            {
+                using (var context = new BdCybergearContext())
+                {
+                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Usuario1, TUsuario.Text))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // Muestra un mensaje de error o realiza alguna acción adecuada
+                        MessageBox.Show("El Usuario ingresado ya se encuentra registrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el usuario es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarDirec()
+        {
+            if (TDireccion.Text.Length > 2 && TDireccion.Text.Length <= 20)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para la dirección es de 3 y el máximo de 20.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarCodPostal()
+        {
+            if (TCodPostal.Text.Length >= 2 && TCodPostal.Text.Length <= 5)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para el código postal es de 2 y el máximo de 5.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validarContraseña()
+        {
+            if (validacionCharEstandar(TContraseña.Text))
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("El mínimo de caracteres aceptados para la dirección es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public bool validacionCorreo()
+        {
+            try
+            {
+                // Utiliza una expresión regular para validar el formato del correo electrónico.
+                string patrón = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+                if (Regex.IsMatch(TEmail.Text, patrón))
+                {
+                    using (var context = new BdCybergearContext())
+                    {
+                        if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Email, TEmail.Text))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            // Muestra un mensaje de error o realiza alguna acción adecuada
+                            MessageBox.Show("El Email ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Formato de correo electrónico incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            catch (RegexMatchTimeoutException)
+            {
+                // La expresión regular tardó demasiado en ejecutarse, lo que podría indicar un patrón inválido.
+                MessageBox.Show("Formato de correo electrónico incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        //---------------------Fin de Sección Validaciones----------------------
 
         private void BModificar_Click(object sender, EventArgs e)
         {
