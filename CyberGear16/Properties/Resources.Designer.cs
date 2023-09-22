@@ -63,6 +63,16 @@ namespace CyberGear16.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1092728 {
+            get {
+                object obj = ResourceManager.GetObject("1092728", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1Captura_de_pantalla_2023_08_25_143248 {
             get {
                 object obj = ResourceManager.GetObject("_1Captura_de_pantalla_2023_08_25_143248", resourceCulture);
@@ -186,6 +196,16 @@ namespace CyberGear16.Properties {
         internal static System.Drawing.Bitmap flecha_verde_retroceder {
             get {
                 object obj = ResourceManager.GetObject("flecha_verde_retroceder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondoDegradadoMoradoRosa {
+            get {
+                object obj = ResourceManager.GetObject("fondoDegradadoMoradoRosa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

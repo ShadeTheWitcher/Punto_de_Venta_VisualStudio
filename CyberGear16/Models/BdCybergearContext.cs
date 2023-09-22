@@ -78,7 +78,7 @@ public partial class BdCybergearContext : DbContext
                 .HasMaxLength(20)
                 .HasColumnName("sexo");
             entity.Property(e => e.Telefono)
-                .HasColumnType("int(30)")
+                .HasColumnType("bigint(15)")
                 .HasColumnName("telefono");
 
             entity.HasOne(d => d.Domicilio).WithMany(p => p.Clientes)
@@ -194,7 +194,7 @@ public partial class BdCybergearContext : DbContext
                 .HasMaxLength(10)
                 .HasColumnName("sexo");
             entity.Property(e => e.Tel)
-                .HasColumnType("int(10)")
+                .HasColumnType("bigint(15)")
                 .HasColumnName("tel");
             entity.Property(e => e.Usuario1)
                 .HasMaxLength(20)

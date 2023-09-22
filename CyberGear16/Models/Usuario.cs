@@ -23,7 +23,7 @@ public partial class Usuario
 
     public int? DomicilioId { get; set; }
 
-    public int? Tel { get; set; }
+    public long? Tel { get; set; }
 
     public DateOnly Fecha { get; set; }
 
