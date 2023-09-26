@@ -20,7 +20,7 @@ namespace CyberGear16
         {
             InitializeComponent();
             _context = context;
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)

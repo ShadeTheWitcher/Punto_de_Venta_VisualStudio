@@ -97,6 +97,7 @@
             Controls.Add(label1);
             Controls.Add(textBox1);
             Name = "SubFormBackUp";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Restaurar base ";
             ResumeLayout(false);
             PerformLayout();
