@@ -151,7 +151,7 @@
             // 
             AcceptButton = button1;
             AutoScaleMode = AutoScaleMode.None;
-            BackgroundImage = Properties.Resources.fondoLogin;
+            BackgroundImage = Properties.Resources._1092728;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1364, 749);
             Controls.Add(pictureBox2);
@@ -163,7 +163,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio Sesión";
             WindowState = FormWindowState.Maximized;
-            Load += formLogin_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

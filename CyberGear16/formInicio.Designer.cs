@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formInicio));
             label1 = new Label();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,15 +45,16 @@
             label1.TabIndex = 1;
             label1.Text = "Bienvenido";
             label1.TextAlign = ContentAlignment.TopCenter;
+            label1.Visible = false;
             // 
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(491, 196);
+            pictureBox1.Image = Properties.Resources._7be5f80bdd244197bed72c7c0f28e283;
+            pictureBox1.Location = new Point(490, 247);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(216, 232);
+            pictureBox1.Size = new Size(239, 232);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
