@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_Principal));
             btnClientes = new Button();
             button1 = new Button();
             btnVentas = new Button();
@@ -80,6 +81,7 @@
             btnClientes.TabIndex = 10;
             btnClientes.Text = "Clientes";
             btnClientes.UseVisualStyleBackColor = true;
+            btnClientes.Click += btnClientes_Click;
             // 
             // button1
             // 
@@ -98,6 +100,7 @@
             button1.TabIndex = 8;
             button1.Text = "Reportes";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // btnVentas
             // 
@@ -116,6 +119,7 @@
             btnVentas.TabIndex = 6;
             btnVentas.Text = "Ventas";
             btnVentas.UseVisualStyleBackColor = true;
+            btnVentas.Click += btnVentas_Click;
             // 
             // btnProductos
             // 
@@ -138,7 +142,7 @@
             // 
             // CabeceraTitulo
             // 
-            CabeceraTitulo.BackColor = SystemColors.Highlight;
+            CabeceraTitulo.BackColor = Color.DarkSlateBlue;
             CabeceraTitulo.Controls.Add(btnRestaurar);
             CabeceraTitulo.Controls.Add(btnMax);
             CabeceraTitulo.Controls.Add(btnMin);
@@ -148,7 +152,7 @@
             CabeceraTitulo.Location = new Point(0, 0);
             CabeceraTitulo.Margin = new Padding(4, 3, 4, 3);
             CabeceraTitulo.Name = "CabeceraTitulo";
-            CabeceraTitulo.Size = new Size(1517, 46);
+            CabeceraTitulo.Size = new Size(1380, 46);
             CabeceraTitulo.TabIndex = 0;
             CabeceraTitulo.MouseDown += CabeceraTitulo_MouseDown;
             // 
@@ -158,14 +162,13 @@
             btnRestaurar.Cursor = Cursors.Hand;
             btnRestaurar.Image = Properties.Resources.res;
             btnRestaurar.InitialImage = null;
-            btnRestaurar.Location = new Point(1435, 10);
+            btnRestaurar.Location = new Point(1298, 11);
             btnRestaurar.Margin = new Padding(4, 3, 4, 3);
             btnRestaurar.Name = "btnRestaurar";
             btnRestaurar.Size = new Size(29, 29);
             btnRestaurar.SizeMode = PictureBoxSizeMode.Zoom;
             btnRestaurar.TabIndex = 2;
             btnRestaurar.TabStop = false;
-            btnRestaurar.Visible = false;
             btnRestaurar.Click += btnRestaurar_Click;
             // 
             // btnMax
@@ -174,13 +177,14 @@
             btnMax.Cursor = Cursors.Hand;
             btnMax.Image = Properties.Resources.icono_max;
             btnMax.InitialImage = null;
-            btnMax.Location = new Point(1435, 10);
+            btnMax.Location = new Point(1298, 10);
             btnMax.Margin = new Padding(4, 3, 4, 3);
             btnMax.Name = "btnMax";
             btnMax.Size = new Size(29, 29);
             btnMax.SizeMode = PictureBoxSizeMode.Zoom;
             btnMax.TabIndex = 2;
             btnMax.TabStop = false;
+            btnMax.Visible = false;
             btnMax.Click += btnMax_Click;
             // 
             // btnMin
@@ -189,7 +193,7 @@
             btnMin.Cursor = Cursors.Hand;
             btnMin.Image = Properties.Resources.icono_min;
             btnMin.InitialImage = null;
-            btnMin.Location = new Point(1388, 10);
+            btnMin.Location = new Point(1251, 10);
             btnMin.Margin = new Padding(4, 3, 4, 3);
             btnMin.Name = "btnMin";
             btnMin.Size = new Size(29, 29);
@@ -204,7 +208,7 @@
             btnSalir.Cursor = Cursors.Hand;
             btnSalir.Image = Properties.Resources.cerrar;
             btnSalir.InitialImage = null;
-            btnSalir.Location = new Point(1484, 10);
+            btnSalir.Location = new Point(1347, 10);
             btnSalir.Margin = new Padding(4, 3, 4, 3);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(29, 29);
@@ -242,7 +246,7 @@
             // 
             // panel7
             // 
-            panel7.BackColor = SystemColors.Highlight;
+            panel7.BackColor = Color.MediumPurple;
             panel7.Location = new Point(0, 213);
             panel7.Margin = new Padding(4, 3, 4, 3);
             panel7.Name = "panel7";
@@ -273,7 +277,7 @@
             LTipoUser.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             LTipoUser.AutoSize = true;
             LTipoUser.BackColor = Color.Transparent;
-            LTipoUser.Font = new Font("Lucida Fax", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            LTipoUser.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
             LTipoUser.ForeColor = Color.LightGreen;
             LTipoUser.Location = new Point(191, 680);
             LTipoUser.Name = "LTipoUser";
@@ -287,11 +291,11 @@
             LNomUser.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             LNomUser.AutoSize = true;
             LNomUser.BackColor = Color.Transparent;
-            LNomUser.Font = new Font("Lucida Fax", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            LNomUser.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point);
             LNomUser.ForeColor = SystemColors.ButtonHighlight;
             LNomUser.Location = new Point(191, 654);
             LNomUser.Name = "LNomUser";
-            LNomUser.Size = new Size(86, 15);
+            LNomUser.Size = new Size(88, 15);
             LNomUser.TabIndex = 13;
             LNomUser.Text = "NombreUser";
             LNomUser.Click += LNomUser_Click;
@@ -326,7 +330,7 @@
             // 
             // panel6
             // 
-            panel6.BackColor = SystemColors.Highlight;
+            panel6.BackColor = Color.MediumPurple;
             panel6.Location = new Point(0, 475);
             panel6.Margin = new Padding(4, 3, 4, 3);
             panel6.Name = "panel6";
@@ -335,7 +339,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.Highlight;
+            panel3.BackColor = Color.MediumPurple;
             panel3.Location = new Point(0, 548);
             panel3.Margin = new Padding(4, 3, 4, 3);
             panel3.Name = "panel3";
@@ -344,7 +348,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.Highlight;
+            panel1.BackColor = Color.MediumPurple;
             panel1.Location = new Point(0, 408);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
@@ -353,7 +357,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = SystemColors.Highlight;
+            panel5.BackColor = Color.MediumPurple;
             panel5.Location = new Point(0, 348);
             panel5.Margin = new Padding(4, 3, 4, 3);
             panel5.Name = "panel5";
@@ -363,11 +367,11 @@
             // pictureBox1
             // 
             pictureBox1.ErrorImage = null;
-            pictureBox1.Image = Properties.Resources._7be5f80bdd244197bed72c7c0f28e283;
-            pictureBox1.Location = new Point(44, 38);
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(66, 38);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(217, 138);
+            pictureBox1.Size = new Size(155, 138);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -375,7 +379,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = SystemColors.Highlight;
+            panel4.BackColor = Color.MediumPurple;
             panel4.Location = new Point(0, 280);
             panel4.Margin = new Padding(4, 3, 4, 3);
             panel4.Name = "panel4";
@@ -407,22 +411,25 @@
             panelContenedor.Location = new Point(294, 46);
             panelContenedor.Margin = new Padding(4, 3, 4, 3);
             panelContenedor.Name = "panelContenedor";
-            panelContenedor.Size = new Size(1223, 704);
+            panelContenedor.Size = new Size(1086, 704);
             panelContenedor.TabIndex = 2;
             // 
             // GUI_Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1517, 750);
+            ClientSize = new Size(1380, 750);
             Controls.Add(panelContenedor);
             Controls.Add(panel2);
             Controls.Add(CabeceraTitulo);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "GUI_Principal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
+            WindowState = FormWindowState.Maximized;
+            Load += GUI_Principal_Load;
             CabeceraTitulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnRestaurar).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnMax).EndInit();

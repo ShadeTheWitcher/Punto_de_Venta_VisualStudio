@@ -17,7 +17,7 @@ namespace CyberGear16
 {
     public partial class formLogin : Form
     {
-        
+
         //private GUI_Principal form2 = new GUI_Principal();
 
         public formLogin()
@@ -46,8 +46,10 @@ namespace CyberGear16
                     // Crea una instancia del formulario GUI_Principal
                     GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser, context);
 
+                    string mensajeInicio = "¡Inicio de sesión exitoso!" + Environment.NewLine + "  Bienvenido: " + nombreUser;
+
                     // Las credenciales son válidas, el usuario ha iniciado sesión
-                    MessageBox.Show("Inicio de sesión exitoso, bienvenido " + nombreUser + " tipoUsuario: " + perfilId);
+                    MessageBox.Show(mensajeInicio, "Inicio Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Oculta el formulario actual (formLogin)
                     this.Hide();
@@ -58,7 +60,7 @@ namespace CyberGear16
                 else
                 {
                     // Las credenciales son incorrectas
-                    MessageBox.Show("Nombre de usuario o contraseña incorrectos");
+                    MessageBox.Show("Nombre de usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -78,6 +80,22 @@ namespace CyberGear16
             string usuario = textBox1.Text;
             string contraseña = textBox2.Text;
             await IniciarSesionAsync(usuario, contraseña);
+        }
+
+        private void BOcultar_Click(object sender, EventArgs e)
+        {
+            if (textBox2.PasswordChar == '*')
+            {
+                BOcultar.Image = Properties.Resources.visibilidad;
+                // Mostrar la contraseña en texto plano
+                textBox2.PasswordChar = '\0'; // Carácter nulo para mostrar el texto
+            }
+            else
+            {
+                BOcultar.Image = Properties.Resources.cerrado;
+                // Ocultar la contraseña
+                textBox2.PasswordChar = '*'; // Carácter de contraseña
+            }
         }
     }
 }

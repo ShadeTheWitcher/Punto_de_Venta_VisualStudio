@@ -59,17 +59,18 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe MDL2 Assets", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(5, 0);
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(4, 0);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(79, 21);
+            label1.Size = new Size(119, 30);
             label1.TabIndex = 0;
-            label1.Text = "Productos";
+            label1.Text = "Productos:";
             label1.Click += label1_Click;
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.producto_nuevo_png_1;
             pictureBox1.Location = new Point(723, 37);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
@@ -81,6 +82,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(26, 32, 40);
             panel1.Controls.Add(textBox5);
             panel1.Controls.Add(label7);
@@ -100,13 +102,13 @@
             panel1.Controls.Add(label2);
             panel1.Location = new Point(89, 37);
             panel1.Name = "panel1";
-            panel1.Size = new Size(630, 292);
+            panel1.Size = new Size(630, 309);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(130, 138);
+            textBox5.Location = new Point(152, 169);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(75, 23);
             textBox5.TabIndex = 14;
@@ -115,15 +117,15 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(28, 146);
+            label7.Location = new Point(23, 172);
             label7.Name = "label7";
-            label7.Size = new Size(80, 15);
+            label7.Size = new Size(84, 15);
             label7.TabIndex = 13;
-            label7.Text = "stock minimo";
+            label7.Text = "Stock Mínimo:";
             // 
             // txtFoto
             // 
-            txtFoto.Location = new Point(450, 164);
+            txtFoto.Location = new Point(428, 183);
             txtFoto.Name = "txtFoto";
             txtFoto.ReadOnly = true;
             txtFoto.Size = new Size(177, 23);
@@ -134,7 +136,7 @@
             // 
             comboBoxCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCategorias.FormattingEnabled = true;
-            comboBoxCategorias.Location = new Point(130, 193);
+            comboBoxCategorias.Location = new Point(152, 208);
             comboBoxCategorias.Name = "comboBoxCategorias";
             comboBoxCategorias.Size = new Size(167, 23);
             comboBoxCategorias.TabIndex = 11;
@@ -142,7 +144,7 @@
             // button2
             // 
             button2.ForeColor = SystemColors.ActiveCaptionText;
-            button2.Location = new Point(471, 193);
+            button2.Location = new Point(449, 212);
             button2.Name = "button2";
             button2.Size = new Size(131, 30);
             button2.TabIndex = 10;
@@ -154,7 +156,7 @@
             // button1
             // 
             button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(99, 235);
+            button1.Location = new Point(96, 257);
             button1.Name = "button1";
             button1.Size = new Size(131, 30);
             button1.TabIndex = 9;
@@ -166,15 +168,15 @@
             // 
             label6.AutoSize = true;
             label6.ForeColor = SystemColors.ButtonFace;
-            label6.Location = new Point(28, 193);
+            label6.Location = new Point(23, 208);
             label6.Name = "label6";
-            label6.Size = new Size(56, 15);
+            label6.Size = new Size(58, 15);
             label6.TabIndex = 8;
-            label6.Text = "categoria";
+            label6.Text = "Categoria";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(428, 21);
+            textBox4.Location = new Point(428, 53);
             textBox4.Multiline = true;
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(174, 64);
@@ -182,14 +184,14 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(130, 109);
+            textBox3.Location = new Point(152, 129);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(75, 23);
             textBox3.TabIndex = 6;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(130, 75);
+            textBox2.Location = new Point(152, 90);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(167, 23);
             textBox2.TabIndex = 5;
@@ -197,7 +199,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(130, 38);
+            textBox1.Location = new Point(152, 53);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(167, 23);
             textBox1.TabIndex = 4;
@@ -206,41 +208,41 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = SystemColors.ButtonFace;
-            label5.Location = new Point(28, 117);
+            label5.Location = new Point(23, 132);
             label5.Name = "label5";
-            label5.Size = new Size(35, 15);
+            label5.Size = new Size(39, 15);
             label5.TabIndex = 3;
-            label5.Text = "stock";
+            label5.Text = "Stock:";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.ForeColor = SystemColors.ButtonFace;
-            label4.Location = new Point(28, 83);
+            label4.Location = new Point(23, 93);
             label4.Name = "label4";
-            label4.Size = new Size(40, 15);
+            label4.Size = new Size(43, 15);
             label4.TabIndex = 2;
-            label4.Text = "precio";
+            label4.Text = "Precio:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.ForeColor = SystemColors.ButtonFace;
-            label3.Location = new Point(354, 21);
+            label3.Location = new Point(354, 53);
             label3.Name = "label3";
-            label3.Size = new Size(68, 15);
+            label3.Size = new Size(72, 15);
             label3.TabIndex = 1;
-            label3.Text = "descripcion";
+            label3.Text = "Descripción:";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(23, 46);
+            label2.Location = new Point(23, 56);
             label2.Name = "label2";
-            label2.Size = new Size(101, 15);
+            label2.Size = new Size(126, 15);
             label2.TabIndex = 0;
-            label2.Text = "nombre producto";
+            label2.Text = "Nombre Del Producto:";
             // 
             // openFileDialog1
             // 
@@ -253,6 +255,7 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
@@ -271,10 +274,10 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            dataGridView1.Location = new Point(79, 352);
+            dataGridView1.Location = new Point(89, 364);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(865, 244);
+            dataGridView1.Size = new Size(869, 244);
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 

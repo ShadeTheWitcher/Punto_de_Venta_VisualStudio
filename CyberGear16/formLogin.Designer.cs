@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formLogin));
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             button1 = new Button();
@@ -36,6 +37,7 @@
             label2 = new Label();
             label1 = new Label();
             pictureBox2 = new PictureBox();
+            BOcultar = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -43,22 +45,26 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ControlDark;
+            panel1.Anchor = AnchorStyles.None;
+            panel1.BackColor = Color.Transparent;
+            panel1.BackgroundImage = Properties.Resources.fondoDegradadoMoradoRosa;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(BOcultar);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(526, 223);
+            panel1.Location = new Point(486, 222);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(405, 376);
+            panel1.Size = new Size(391, 376);
             panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources._1Captura_de_pantalla_2023_08_25_143248;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(145, 45);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
@@ -74,13 +80,13 @@
             button1.Name = "button1";
             button1.Size = new Size(91, 27);
             button1.TabIndex = 4;
-            button1.Text = "Iniciar sesion";
+            button1.Text = "Iniciar Sesión";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click_1;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(145, 245);
+            textBox2.Location = new Point(145, 251);
             textBox2.Margin = new Padding(4, 3, 4, 3);
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '*';
@@ -89,7 +95,7 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(145, 194);
+            textBox1.Location = new Point(145, 200);
             textBox1.Margin = new Padding(4, 3, 4, 3);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(116, 23);
@@ -101,9 +107,9 @@
             label2.Location = new Point(59, 254);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(67, 15);
+            label2.Size = new Size(70, 15);
             label2.TabIndex = 1;
-            label2.Text = "Contraseña";
+            label2.Text = "Contraseña:";
             // 
             // label1
             // 
@@ -111,13 +117,15 @@
             label1.Location = new Point(59, 203);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(47, 15);
+            label1.Size = new Size(50, 15);
             label1.TabIndex = 0;
-            label1.Text = "Usuario";
+            label1.Text = "Usuario:";
             // 
             // pictureBox2
             // 
-            pictureBox2.Image = Properties.Resources._7be5f80bdd244197bed72c7c0f28e283;
+            pictureBox2.Anchor = AnchorStyles.Left;
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(130, 256);
             pictureBox2.Margin = new Padding(4, 3, 4, 3);
             pictureBox2.Name = "pictureBox2";
@@ -126,20 +134,36 @@
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
+            // BOcultar
+            // 
+            BOcultar.BackColor = Color.Transparent;
+            BOcultar.FlatAppearance.BorderSize = 0;
+            BOcultar.FlatStyle = FlatStyle.Flat;
+            BOcultar.Image = (Image)resources.GetObject("BOcultar.Image");
+            BOcultar.Location = new Point(268, 251);
+            BOcultar.Name = "BOcultar";
+            BOcultar.Size = new Size(33, 29);
+            BOcultar.TabIndex = 31;
+            BOcultar.UseVisualStyleBackColor = false;
+            BOcultar.Click += BOcultar_Click;
+            // 
             // formLogin
             // 
             AcceptButton = button1;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.image;
-            ClientSize = new Size(1400, 753);
+            BackgroundImage = Properties.Resources._1092728;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1364, 749);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "formLogin";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Inicio sesion";
+            Text = "Inicio Sesión";
+            WindowState = FormWindowState.Maximized;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -157,5 +181,6 @@
         private Label label1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button BOcultar;
     }
 }

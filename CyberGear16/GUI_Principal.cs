@@ -38,37 +38,39 @@ namespace CyberGear16
             {
                 LTipoUser.Text = "Admin";
                 btnVentas.Enabled = false;
-                panel1.BackColor = Color.White;
+                panel1.BackColor = Color.DimGray;
 
                 btnClientes.Enabled = false;
-                panel6.BackColor = Color.White;
+                panel6.BackColor = Color.DimGray;
             }
 
 
-            if (perfil_idUsuario == 2) //vendedor
-            {
-                LTipoUser.Text = "Vendedor";
-                btnProductos.Enabled = false;
-                panel4.BackColor = Color.White;
-
-                btnUsuarios.Enabled = false;
-                panel5.BackColor = Color.White;
-            }
-
-            if (perfil_idUsuario == 3) //gerente
+            if (perfil_idUsuario == 2) //gerente
             {
                 LTipoUser.Text = "Gerente";
                 btnVentas.Enabled = false;
-                panel1.BackColor = Color.White;
+                panel1.BackColor = Color.DimGray;
 
                 btnClientes.Enabled = false;
-                panel6.BackColor = Color.White;
+                panel6.BackColor = Color.DimGray;
 
                 btnProductos.Enabled = false;
-                panel4.BackColor = Color.White;
+                panel4.BackColor = Color.DimGray;
 
                 btnUsuarios.Enabled = false;
-                panel5.BackColor = Color.White;
+                panel5.BackColor = Color.DimGray;
+            }
+
+            if (perfil_idUsuario == 3) //vendedor
+            {
+
+                LTipoUser.Text = "Vendedor";
+                btnProductos.Enabled = false;
+                panel4.BackColor = Color.DimGray;
+
+
+                btnUsuarios.Enabled = false;
+                panel5.BackColor = Color.DimGray;
             }
 
 
@@ -105,7 +107,7 @@ namespace CyberGear16
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new adminUsers());
+            AbrirFormHija(new adminUsers(_context));
         }
 
 
@@ -188,6 +190,36 @@ namespace CyberGear16
         private void btnBackUp_Click(object sender, EventArgs e)
         {
             AbrirFormHija(new FormBackUp(_context));
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FormSeccionVentas(_context));
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FormClientes(_context));
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            AbrirFormHija(new FormReporte(/*_context*/));
+        }
+
+        private void panelContenedor_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelContenedor_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void GUI_Principal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

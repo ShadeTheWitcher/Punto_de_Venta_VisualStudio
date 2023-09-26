@@ -4,6 +4,15 @@
     <Compile Update="adminUsers.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormEditorUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormBackUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -17,6 +26,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="formProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormSeccionVentas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="GUI_Principal.cs">

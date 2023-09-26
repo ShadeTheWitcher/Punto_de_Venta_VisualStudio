@@ -45,9 +45,9 @@
             // btnRespaldar
             // 
             btnRespaldar.Anchor = AnchorStyles.None;
-            btnRespaldar.Image = Properties.Resources.icon_backup_negro;
+            btnRespaldar.Image = Properties.Resources.icon_backup_negro1;
             btnRespaldar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRespaldar.Location = new Point(225, 82);
+            btnRespaldar.Location = new Point(197, 84);
             btnRespaldar.Name = "btnRespaldar";
             btnRespaldar.Size = new Size(200, 46);
             btnRespaldar.TabIndex = 0;
@@ -59,9 +59,9 @@
             // btnRestaurarBase
             // 
             btnRestaurarBase.Anchor = AnchorStyles.None;
-            btnRestaurarBase.Image = Properties.Resources.icon_subir_negro;
+            btnRestaurarBase.Image = Properties.Resources.icon_subir_negro1;
             btnRestaurarBase.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRestaurarBase.Location = new Point(225, 293);
+            btnRestaurarBase.Location = new Point(197, 294);
             btnRestaurarBase.Name = "btnRestaurarBase";
             btnRestaurarBase.Size = new Size(200, 46);
             btnRestaurarBase.TabIndex = 1;
@@ -92,7 +92,7 @@
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 4;
-            button1.Text = "elegir ruta";
+            button1.Text = "Elegir ruta";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -134,7 +134,7 @@
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 9;
-            button2.Text = "elegir ruta";
+            button2.Text = "Elegir ruta";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
