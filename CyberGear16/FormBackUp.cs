@@ -13,10 +13,16 @@ namespace CyberGear16
 {
     public partial class FormBackUp : Form
     {
-        public FormBackUp(BdCybergearContext context)
+        private readonly BdCybergearContext _context; // DbContext de Entity Framework
+        private string userIniciado;
+        
+        public FormBackUp(BdCybergearContext context, string user)
         {
             InitializeComponent();
-        }
+            userIniciado = user;
+            _context = context;
+            
+    }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -42,15 +48,7 @@ namespace CyberGear16
 
         private void button2_Click(object sender, EventArgs e)
         {
-            openFileDialog1.InitialDirectory = @"C:\"; // Cambia la ruta según tu ubicación.
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                textBox2.Text = openFileDialog1.FileName;
-
-
-
-            }
+            
 
 
         }
@@ -59,5 +57,27 @@ namespace CyberGear16
         {
 
         }
+
+        private async void btnRestaurarBase_Click(object sender, EventArgs e)
+        {
+            PasswordInputDialog passwordDialog = new PasswordInputDialog(_context, userIniciado);
+            if (passwordDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Contraseña correcta, proceder con la restauración
+                SubFormBackUp subFormBackUp = new SubFormBackUp(_context);
+                subFormBackUp.Show();
+            }
+            else
+            {
+                MessageBox.Show("No se ha podido acceder ", "Error de confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+      
+
+
+
+
+
     }
 }

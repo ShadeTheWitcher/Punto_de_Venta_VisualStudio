@@ -34,5 +34,11 @@
     <Compile Update="GUI_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="PasswordInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="SubFormBackUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

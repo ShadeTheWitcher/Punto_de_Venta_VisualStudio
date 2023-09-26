@@ -13,17 +13,19 @@ namespace CyberGear16
 
         int perfil_idUsuario;
         string nombreUser;
+        string usuario;
 
 
 
         private readonly BdCybergearContext _context;
 
-        public GUI_Principal(int perfilIdUsuario, string nombreUsuario, BdCybergearContext context)
+        public GUI_Principal(int perfilIdUsuario, string nombreUsuario,string usuarioArgs, BdCybergearContext context)
         {
             InitializeComponent();
             AbrirFormHija(new formInicio());
             perfil_idUsuario = perfilIdUsuario;
             nombreUser = nombreUsuario;
+            usuario = usuarioArgs;
             _context = context; // Guarda el contexto de base de datos
             establecerLimitesTipoUser();
         }
@@ -189,7 +191,7 @@ namespace CyberGear16
 
         private void btnBackUp_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormBackUp(_context));
+            AbrirFormHija(new FormBackUp(_context , usuario));
         }
 
         private void btnVentas_Click(object sender, EventArgs e)

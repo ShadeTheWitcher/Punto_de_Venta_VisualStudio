@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CyberGear16.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,25 +8,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.DataFormats;
-
-using MySqlConnector;
 using Microsoft.EntityFrameworkCore;
-using CyberGear16.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace CyberGear16
 {
-    public partial class formLogin : Form
+    public partial class PasswordInputDialog : Form
     {
-
-        //private GUI_Principal form2 = new GUI_Principal();
-
-        public formLogin()
+        private readonly BdCybergearContext _context; // DbContext de Entity Framework
+        private string userIniciado;
+        public PasswordInputDialog(BdCybergearContext context, string usuario)
         {
+            userIniciado = usuario;
+            _context = context;
             InitializeComponent();
-
-
         }
+
+
+
 
 
         private async Task IniciarSesionAsync(string usuario, string contraseña)
@@ -44,19 +45,16 @@ namespace CyberGear16
                     string nombreUser = usuarioEncontrado.Nombre;
 
 
-                    // Crea una instancia del formulario GUI_Principal
-                    GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser, usuario, context);
 
-                    string mensajeInicio = "¡Inicio de sesión exitoso!" + Environment.NewLine + "  Bienvenido: " + nombreUser;
+                    string mensajeInicio = "¡Datos correctos!";
 
                     // Las credenciales son válidas, el usuario ha iniciado sesión
                     MessageBox.Show(mensajeInicio, "Inicio Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Oculta el formulario actual (formLogin)
                     this.Hide();
+                    this.DialogResult = DialogResult.OK;
 
-                    // Muestra el formulario GUI_Principal
-                    form2.Show();
                 }
                 else
                 {
@@ -74,29 +72,16 @@ namespace CyberGear16
             }
         }
 
-
-
-        private async void button1_Click_1(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            string usuario = textBox1.Text;
-            string contraseña = textBox2.Text;
-            await IniciarSesionAsync(usuario, contraseña);
+            string contraseña = textBoxPassword.Text;
+            await IniciarSesionAsync(userIniciado, contraseña);
         }
 
-        private void BOcultar_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox2.PasswordChar == '*')
-            {
-                BOcultar.Image = Properties.Resources.visibilidad;
-                // Mostrar la contraseña en texto plano
-                textBox2.PasswordChar = '\0'; // Carácter nulo para mostrar el texto
-            }
-            else
-            {
-                BOcultar.Image = Properties.Resources.cerrado;
-                // Ocultar la contraseña
-                textBox2.PasswordChar = '*'; // Carácter de contraseña
-            }
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }
