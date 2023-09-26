@@ -219,7 +219,17 @@ namespace CyberGear16
 
         private void GUI_Principal_Load(object sender, EventArgs e)
         {
+            timer1.Start();
+        }
 
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToString("hh:mm:ss");
         }
     }
 }

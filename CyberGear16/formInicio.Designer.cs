@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formInicio));
             label1 = new Label();
             pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -49,7 +50,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = Properties.Resources._7be5f80bdd244197bed72c7c0f28e283;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(491, 196);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";

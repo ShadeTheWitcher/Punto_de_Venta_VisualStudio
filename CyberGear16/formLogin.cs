@@ -81,5 +81,10 @@ namespace CyberGear16
             string contraseña = textBox2.Text;
             await IniciarSesionAsync(usuario, contraseña);
         }
+
+        private void formLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

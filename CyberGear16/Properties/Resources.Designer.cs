@@ -213,6 +213,16 @@ namespace CyberGear16.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondoLogin {
+            get {
+                object obj = ResourceManager.GetObject("fondoLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_backup {
             get {
                 object obj = ResourceManager.GetObject("icon_backup", resourceCulture);

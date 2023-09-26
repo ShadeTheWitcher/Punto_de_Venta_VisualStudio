@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_Principal));
             btnClientes = new Button();
             button1 = new Button();
@@ -39,6 +40,7 @@
             btnMin = new PictureBox();
             btnSalir = new PictureBox();
             panel2 = new Panel();
+            label1 = new Label();
             panel7 = new Panel();
             btnBackUp = new Button();
             LTipoUser = new Label();
@@ -53,6 +55,7 @@
             panel4 = new Panel();
             btnUsuarios = new Button();
             panelContenedor = new Panel();
+            timer1 = new System.Windows.Forms.Timer(components);
             CabeceraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnRestaurar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMax).BeginInit();
@@ -220,6 +223,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(label1);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(btnBackUp);
             panel2.Controls.Add(LTipoUser);
@@ -243,6 +247,18 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(294, 704);
             panel2.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(4, 3);
+            label1.Name = "label1";
+            label1.Size = new Size(57, 25);
+            label1.TabIndex = 17;
+            label1.Text = "Hora";
+            label1.Click += label1_Click_1;
             // 
             // panel7
             // 
@@ -414,6 +430,12 @@
             panelContenedor.Size = new Size(1086, 704);
             panelContenedor.TabIndex = 2;
             // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
+            // 
             // GUI_Principal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -469,5 +491,7 @@
         private Label LTipoUser;
         private Panel panel7;
         private Button btnBackUp;
+        private Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
