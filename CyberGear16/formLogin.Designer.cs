@@ -156,6 +156,7 @@
             ClientSize = new Size(1364, 749);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
