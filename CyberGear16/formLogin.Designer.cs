@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formLogin));
             panel1 = new Panel();
+            BOcultar = new Button();
             pictureBox1 = new PictureBox();
             button1 = new Button();
             textBox2 = new TextBox();
@@ -48,6 +49,7 @@
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = Properties.Resources.fondoDegradadoMoradoRosa;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(BOcultar);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(textBox2);
@@ -59,6 +61,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(391, 376);
             panel1.TabIndex = 0;
+            // 
+            // BOcultar
+            // 
+            BOcultar.BackColor = Color.Transparent;
+            BOcultar.FlatAppearance.BorderSize = 0;
+            BOcultar.FlatStyle = FlatStyle.Flat;
+            BOcultar.Image = (Image)resources.GetObject("BOcultar.Image");
+            BOcultar.Location = new Point(268, 251);
+            BOcultar.Name = "BOcultar";
+            BOcultar.Size = new Size(33, 29);
+            BOcultar.TabIndex = 31;
+            BOcultar.UseVisualStyleBackColor = false;
+            BOcultar.Click += BOcultar_Click;
             // 
             // pictureBox1
             // 
@@ -166,5 +181,6 @@
         private Label label1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button BOcultar;
     }
 }

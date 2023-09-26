@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             label10 = new Label();
             label9 = new Label();
@@ -35,6 +36,8 @@
             textBox2 = new TextBox();
             textBox1 = new TextBox();
             panel2 = new Panel();
+            button6 = new Button();
+            label17 = new Label();
             label12 = new Label();
             label11 = new Label();
             label3 = new Label();
@@ -62,11 +65,17 @@
             button1 = new Button();
             button2 = new Button();
             dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
             comboBox2 = new ComboBox();
             label13 = new Label();
             textBox9 = new TextBox();
             label16 = new Label();
+            toolTip1 = new ToolTip(components);
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -121,6 +130,7 @@
             // 
             // textBox2
             // 
+            textBox2.Enabled = false;
             textBox2.Location = new Point(99, 62);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
@@ -129,6 +139,7 @@
             // 
             // textBox1
             // 
+            textBox1.Enabled = false;
             textBox1.Location = new Point(14, 62);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
@@ -140,6 +151,8 @@
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.LightSlateGray;
             panel2.BorderStyle = BorderStyle.FixedSingle;
+            panel2.Controls.Add(button6);
+            panel2.Controls.Add(label17);
             panel2.Controls.Add(label12);
             panel2.Controls.Add(label11);
             panel2.Controls.Add(label3);
@@ -151,10 +164,30 @@
             panel2.Size = new Size(404, 105);
             panel2.TabIndex = 1;
             // 
+            // button6
+            // 
+            button6.Location = new Point(115, 77);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 11;
+            button6.Text = "Limpiar";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Sylfaen", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label17.ForeColor = Color.DarkRed;
+            label17.Location = new Point(237, 77);
+            label17.Name = "label17";
+            label17.Size = new Size(150, 19);
+            label17.TabIndex = 10;
+            label17.Text = "Cliente No asignado";
+            // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(106, 43);
+            label12.Location = new Point(237, 21);
             label12.Name = "label12";
             label12.Size = new Size(51, 15);
             label12.TabIndex = 9;
@@ -163,11 +196,11 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(26, 43);
+            label11.Location = new Point(24, 29);
             label11.Name = "label11";
-            label11.Size = new Size(17, 15);
+            label11.Size = new Size(27, 15);
             label11.TabIndex = 8;
-            label11.Text = "Id";
+            label11.Text = "DNI";
             // 
             // label3
             // 
@@ -181,7 +214,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(324, 62);
+            button3.Location = new Point(115, 47);
             button3.Name = "button3";
             button3.Size = new Size(75, 23);
             button3.TabIndex = 6;
@@ -190,17 +223,21 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(106, 62);
+            textBox3.Enabled = false;
+            textBox3.Location = new Point(237, 46);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(202, 23);
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(142, 23);
             textBox3.TabIndex = 3;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(26, 61);
+            textBox4.Location = new Point(15, 47);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(74, 23);
+            textBox4.Size = new Size(94, 23);
             textBox4.TabIndex = 2;
+            toolTip1.SetToolTip(textBox4, "Ingrese el DNI del cliente registrado y presione buscar para asinarlo\r\n");
             // 
             // panel3
             // 
@@ -341,6 +378,7 @@
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(134, 23);
             textBox5.TabIndex = 0;
+            toolTip1.SetToolTip(textBox5, "Ingrese el nombre del producto y presione Buscar para recuperar datos del producto");
             // 
             // panel4
             // 
@@ -403,13 +441,45 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.Anchor = AnchorStyles.None;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
             dataGridView1.Location = new Point(27, 362);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(790, 214);
             dataGridView1.TabIndex = 7;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Nombre Producto";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Precio";
+            Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Cantidad";
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Categoria";
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "SubTotal";
+            Column5.Name = "Column5";
             // 
             // panel5
             // 
@@ -426,6 +496,7 @@
             // 
             // comboBox2
             // 
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(53, 38);
             comboBox2.Name = "comboBox2";
@@ -466,6 +537,10 @@
             label16.TabIndex = 10;
             label16.Text = "Precio Total";
             // 
+            // toolTip1
+            // 
+            toolTip1.ToolTipIcon = ToolTipIcon.Info;
+            // 
             // FormSeccionVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -484,6 +559,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormSeccionVentas";
             Text = "Ventas";
+            toolTip1.SetToolTip(this, "Ingrese el DNI del cliente registrado para asignarlo");
             Load += FormSeccionVentas_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -542,5 +618,13 @@
         private Label label15;
         private TextBox textBox9;
         private Label label16;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private Label label17;
+        private Button button6;
+        private ToolTip toolTip1;
     }
 }

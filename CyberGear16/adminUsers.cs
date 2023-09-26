@@ -85,10 +85,10 @@ namespace CyberGear16
 
         private void BGuardar_Click(object sender, EventArgs e)
         {
-            int telefono;
+            long telefono;
             int dni;
 
-            if (validarCampos() && int.TryParse(TTelefono.Text, out telefono) && int.TryParse(TDni.Text, out dni))
+            if (validarCampos() && long.TryParse(TTelefono.Text, out telefono) && int.TryParse(TDni.Text, out dni))
             {
 
                 string nombre = TNombre.Text;
@@ -202,24 +202,84 @@ namespace CyberGear16
             return false;
         }
 
+        //private bool detectarNoRepetidos(string strComprobar)
+        //{
+        //    using (var dbContext = new TuDbContext())
+        //    {
+        //        string textoIngresado = textBox1.Text; // Obtén el texto del TextBox
+
+
+        //    }
+        //    //using (var context = new BdCybergearContext())
+        //    //{
+        //    //    context.Usuarios.Where(u =>  u.== strComprobar);
+        //    //}
+        //    //    var usuariosNoDeBaja = Where(u => u.Baja == "NO")
+        //}
+
+
+        public class Validador
+        {
+            public static bool EsValorUnico<T>(DbContext context, DbSet<T> dbSet, Func<T, string> propiedadSelector, string valor)
+                where T : class
+            {
+                // Obtén todos los registros de la tabla y luego realiza la comparación en memoria.
+                var todosLosRegistros = dbSet.AsEnumerable();
+
+                return !todosLosRegistros.Any(entidad => propiedadSelector(entidad) == valor);
+            }
+            /*DbSet<T> dbSet: Un conjunto de entidades del tipo genérico T.
+            Esto se utiliza para especificar la tabla de la base de datos con la que deseas trabajar.*/
+            /*Func<T, string> propiedadSelector: Una función que toma una entidad del tipo T y devuelve una cadena (string). 
+            Esta función se utiliza para seleccionar la propiedad que deseas comparar con el valor ingresado.*/
+        }
+
+
         private bool validarTelefono()
         {
-            if (TTelefono.Text.Length >= 10 && TTelefono.Text.Length < 15)
+            using (var context = new BdCybergearContext())
             {
-                return true;
+                if (TTelefono.Text.Length >= 10 && TTelefono.Text.Length < 15)
+                {
+                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Tel.ToString(), TTelefono.Text))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // Muestra un mensaje de error o realiza alguna acción adecuada
+                        MessageBox.Show("El Telefono ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El mínimo de caracteres aceptados para el telefono es de 10 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
-            else
-            {
-                MessageBox.Show("El mínimo de caracteres aceptados para el telefono es de 10 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+
+
+
         }
 
         private bool validarDni()
         {
             if (TDni.Text.Length == 8)
             {
-                return true;
+                using (var context = new BdCybergearContext())
+                {
+                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Dni.ToString(), TDni.Text))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // Muestra un mensaje de error o realiza alguna acción adecuada
+                        MessageBox.Show("El DNI ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
             }
             else
             {
@@ -270,7 +330,19 @@ namespace CyberGear16
         {
             if (validacionCharEstandar(TUsuario.Text))
             {
-                return true;
+                using (var context = new BdCybergearContext())
+                {
+                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Usuario1, TUsuario.Text))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        // Muestra un mensaje de error o realiza alguna acción adecuada
+                        MessageBox.Show("El Usuario ingresado ya se encuentra registrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
             }
             else
             {
@@ -326,7 +398,19 @@ namespace CyberGear16
                 string patrón = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
                 if (Regex.IsMatch(TEmail.Text, patrón))
                 {
-                    return true;
+                    using (var context = new BdCybergearContext())
+                    {
+                        if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Email, TEmail.Text))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            // Muestra un mensaje de error o realiza alguna acción adecuada
+                            MessageBox.Show("El Email ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
                 }
                 else
                 {

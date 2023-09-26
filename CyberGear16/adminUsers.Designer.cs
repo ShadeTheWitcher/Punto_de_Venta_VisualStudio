@@ -270,7 +270,7 @@
             // 
             LSexo.AutoSize = true;
             LSexo.ForeColor = Color.White;
-            LSexo.Location = new Point(361, 211);
+            LSexo.Location = new Point(356, 213);
             LSexo.Name = "LSexo";
             LSexo.Size = new Size(35, 15);
             LSexo.TabIndex = 11;

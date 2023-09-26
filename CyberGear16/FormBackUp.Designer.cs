@@ -36,9 +36,6 @@
             openFileDialog1 = new OpenFileDialog();
             label2 = new Label();
             panel1 = new Panel();
-            button2 = new Button();
-            label3 = new Label();
-            textBox2 = new TextBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -68,6 +65,7 @@
             btnRestaurarBase.Text = "Restaurar Base de datos";
             btnRestaurarBase.TextAlign = ContentAlignment.MiddleRight;
             btnRestaurarBase.UseVisualStyleBackColor = true;
+            btnRestaurarBase.Click += btnRestaurarBase_Click;
             // 
             // textBox1
             // 
@@ -115,11 +113,8 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.None;
-            panel1.Controls.Add(button2);
             panel1.Controls.Add(button1);
-            panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(textBox2);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(btnRestaurarBase);
             panel1.Controls.Add(btnRespaldar);
@@ -127,33 +122,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(656, 424);
             panel1.TabIndex = 6;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(442, 245);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 9;
-            button2.Text = "Elegir ruta";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(140, 248);
-            label3.Name = "label3";
-            label3.Size = new Size(31, 15);
-            label3.TabIndex = 8;
-            label3.Text = "Ruta";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(177, 245);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(248, 23);
-            textBox2.TabIndex = 7;
             // 
             // FormBackUp
             // 
@@ -181,8 +149,5 @@
         private OpenFileDialog openFileDialog1;
         private Label label2;
         private Panel panel1;
-        private Button button2;
-        private Label label3;
-        private TextBox textBox2;
     }
 }

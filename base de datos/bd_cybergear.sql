@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2023 a las 20:32:29
+-- Tiempo de generación: 22-09-2023 a las 05:59:13
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -36,17 +36,18 @@ CREATE TABLE `clientes` (
   `email` varchar(40) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `sexo` varchar(20) NOT NULL,
-  `telefono` int(30) NOT NULL
+  `telefono` bigint(15) NOT NULL,
+  `baja` varchar(2) NOT NULL DEFAULT 'NO'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellido`, `dni`, `domicilio_id`, `email`, `fecha_nacimiento`, `sexo`, `telefono`) VALUES
-(1, 'Jorge', 'Morales', 4464, 14, '12343234asdasd@gmail.com', '2023-09-12', 'masculino', 123345),
-(2, 'asd', 'asd', 446452, 13, '1234asdasd@gmail.com', '2023-09-12', 'masculino', 234234),
-(3, 'Susana', 'Morales', 4464524, 8, '123234asdasd@gmail.com', '2023-09-12', 'masculino', 123);
+INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellido`, `dni`, `domicilio_id`, `email`, `fecha_nacimiento`, `sexo`, `telefono`, `baja`) VALUES
+(1, 'Jorge', 'Morales', 4464, 14, '12343234asdasd@gmail.com', '2023-09-12', 'masculino', 123345, 'NO'),
+(2, 'asd', 'asd', 446452, 13, '1234asdasd@gmail.com', '2023-09-12', 'masculino', 234234, 'NO'),
+(3, 'Susana', 'Morales', 4464524, 8, '123234asdasd@gmail.com', '2023-09-12', 'masculino', 123, 'NO');
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,9 @@ INSERT INTO `domicilios` (`id`, `direccion`, `cod_postal`) VALUES
 (15, 'B pirayui', 3400),
 (16, 'barrio chiquita', 3400),
 (17, '245vv asda', 3400),
-(19, 'dddsssss', 111);
+(19, 'dddsssss', 111),
+(20, '200vv casa 45', 111),
+(21, 'andorra', 111);
 
 -- --------------------------------------------------------
 
@@ -122,7 +125,9 @@ INSERT INTO `products` (`id`, `nombre_producto`, `precio_producto`, `descripcion
 (31, 'Dark Souls Remastered', 6000.00, 'Adentrate a esta aventura llena de dificultades', 2, 600, 'SI'),
 (32, 'GTA 5', 1200.00, 'construye tu imperio del crimen', 1, 300, 'SI'),
 (33, 'pc', 12.00, 'asdasd', 1, 12, 'SI'),
-(34, 'ram_16g', 12444.00, 'asd', 1, 12, 'SI');
+(34, 'ram_16g', 12444.00, 'asd', 1, 12, 'SI'),
+(35, 'Mortal Kombat 1', 12000.00, 'juego de pelea', 1, 12, 'SI'),
+(36, 'motherboard ASUS', 12555.00, 'DDR5', 2, 13, 'SI');
 
 -- --------------------------------------------------------
 
@@ -141,7 +146,7 @@ CREATE TABLE `tipos_usuario` (
 
 INSERT INTO `tipos_usuario` (`id`, `tipo`) VALUES
 (1, 'ADMIN'),
-(2, 'SUPERVISOR'),
+(2, 'GERENTE'),
 (3, 'VENDEDOR');
 
 -- --------------------------------------------------------
@@ -160,7 +165,7 @@ CREATE TABLE `usuarios` (
   `pass` varchar(50) NOT NULL,
   `perfil_id` int(11) NOT NULL DEFAULT 2,
   `domicilio_id` int(11) DEFAULT NULL,
-  `tel` int(10) DEFAULT NULL,
+  `tel` bigint(15) DEFAULT NULL,
   `fecha` date NOT NULL,
   `sexo` varchar(10) NOT NULL,
   `baja` varchar(2) NOT NULL DEFAULT 'NO'
@@ -171,7 +176,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `apellido`, `email`, `usuario`, `pass`, `perfil_id`, `domicilio_id`, `tel`, `fecha`, `sexo`, `baja`) VALUES
-(47, 0, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, NULL, NULL, '0000-00-00', '', 'NO');
+(47, 0, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, NULL, NULL, '2023-09-22', '', 'NO'),
+(48, 12345666, 'Willy', 'Rex', 'asdsda1234@gmail.com', 'gerente1', 'gerente1', 2, 20, 444, '1994-06-16', 'Hombre', 'NO'),
+(49, 12578, 'rubius', 'doblas', 'vendeme@gmail.com', 'vendedor1', 'vendedor1', 3, 21, 12388, '1994-06-15', 'Hombre', 'NO');
 
 -- --------------------------------------------------------
 
@@ -309,19 +316,19 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `domicilios`
 --
 ALTER TABLE `domicilios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_cabecera`

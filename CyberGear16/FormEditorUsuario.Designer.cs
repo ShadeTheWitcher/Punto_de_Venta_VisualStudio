@@ -364,6 +364,7 @@
             // BOcultar
             // 
             BOcultar.BackColor = Color.SteelBlue;
+            BOcultar.FlatStyle = FlatStyle.Flat;
             BOcultar.Image = (Image)resources.GetObject("BOcultar.Image");
             BOcultar.Location = new Point(423, 166);
             BOcultar.Name = "BOcultar";
