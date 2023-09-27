@@ -38,10 +38,10 @@
             dateTimePicker1 = new DateTimePicker();
             DTPDesde = new DateTimePicker();
             panel2 = new Panel();
-            button1 = new Button();
+            BRClientes = new Button();
             LRClientes = new Label();
             panel3 = new Panel();
-            button2 = new Button();
+            BRVendedores = new Button();
             LRVendedores = new Label();
             DGVReportes = new DataGridView();
             panel1.SuspendLayout();
@@ -151,21 +151,22 @@
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.BackColor = Color.FromArgb(26, 32, 40);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(BRClientes);
             panel2.Controls.Add(LRClientes);
             panel2.Location = new Point(12, 296);
             panel2.Name = "panel2";
             panel2.Size = new Size(1034, 191);
             panel2.TabIndex = 5;
             // 
-            // button1
+            // BRClientes
             // 
-            button1.Location = new Point(401, 59);
-            button1.Name = "button1";
-            button1.Size = new Size(235, 44);
-            button1.TabIndex = 4;
-            button1.Text = "Generar Reporte";
-            button1.UseVisualStyleBackColor = true;
+            BRClientes.Location = new Point(401, 59);
+            BRClientes.Name = "BRClientes";
+            BRClientes.Size = new Size(235, 44);
+            BRClientes.TabIndex = 4;
+            BRClientes.Text = "Generar Reporte";
+            BRClientes.UseVisualStyleBackColor = true;
+            BRClientes.Click += BRClientes_Click;
             // 
             // LRClientes
             // 
@@ -182,7 +183,7 @@
             // 
             panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel3.BackColor = Color.FromArgb(26, 32, 40);
-            panel3.Controls.Add(button2);
+            panel3.Controls.Add(BRVendedores);
             panel3.Controls.Add(LRVendedores);
             panel3.Location = new Point(12, 425);
             panel3.Name = "panel3";
@@ -190,14 +191,15 @@
             panel3.TabIndex = 6;
             panel3.Paint += panel3_Paint;
             // 
-            // button2
+            // BRVendedores
             // 
-            button2.Location = new Point(402, 56);
-            button2.Name = "button2";
-            button2.Size = new Size(235, 44);
-            button2.TabIndex = 4;
-            button2.Text = "Generar Reporte";
-            button2.UseVisualStyleBackColor = true;
+            BRVendedores.Location = new Point(402, 56);
+            BRVendedores.Name = "BRVendedores";
+            BRVendedores.Size = new Size(235, 44);
+            BRVendedores.TabIndex = 4;
+            BRVendedores.Text = "Generar Reporte";
+            BRVendedores.UseVisualStyleBackColor = true;
+            BRVendedores.Click += BRVendedores_Click;
             // 
             // LRVendedores
             // 
@@ -259,10 +261,10 @@
         private DateTimePicker dateTimePicker1;
         private DateTimePicker DTPDesde;
         private Panel panel2;
-        private Button button1;
+        private Button BRClientes;
         private Label LRClientes;
         private Panel panel3;
-        private Button button2;
+        private Button BRVendedores;
         private Label LRVendedores;
         private DataGridView DGVReportes;
     }
