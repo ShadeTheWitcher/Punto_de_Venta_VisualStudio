@@ -2774,19 +2774,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC-MSL\\.nuget\\packages\\": {}
+    "C:\\Users\\matum\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\bibliotecas\\Documents\\Programacion Projects\\App escritorio vs\\Trabajo_Integrador_Grupo15\\CyberGear16\\CyberGear16.csproj",
+      "projectUniqueName": "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Trabajo_Integrador_Grupo15\\CyberGear16\\CyberGear16.csproj",
       "projectName": "CyberGear16",
-      "projectPath": "E:\\bibliotecas\\Documents\\Programacion Projects\\App escritorio vs\\Trabajo_Integrador_Grupo15\\CyberGear16\\CyberGear16.csproj",
-      "packagesPath": "C:\\Users\\PC-MSL\\.nuget\\packages\\",
-      "outputPath": "E:\\bibliotecas\\Documents\\Programacion Projects\\App escritorio vs\\Trabajo_Integrador_Grupo15\\CyberGear16\\obj\\",
+      "projectPath": "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Trabajo_Integrador_Grupo15\\CyberGear16\\CyberGear16.csproj",
+      "packagesPath": "C:\\Users\\matum\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\matum\\OneDrive\\Documentos\\GitHub\\Trabajo_Integrador_Grupo15\\CyberGear16\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC-MSL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\matum\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

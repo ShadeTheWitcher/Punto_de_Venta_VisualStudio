@@ -207,3 +207,5 @@ E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integra
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormReporte.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.SubFormBackUp.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.PasswordInputDialog.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.PasswordInputDialog.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.SubFormBackUp.resources

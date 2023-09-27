@@ -19,7 +19,7 @@ namespace CyberGear16
 
         private readonly BdCybergearContext _context;
 
-        public GUI_Principal(int perfilIdUsuario, string nombreUsuario,string usuarioArgs, BdCybergearContext context)
+        public GUI_Principal(int perfilIdUsuario, string nombreUsuario, string usuarioArgs, BdCybergearContext context)
         {
             InitializeComponent();
             AbrirFormHija(new formInicio());
@@ -191,7 +191,7 @@ namespace CyberGear16
 
         private void btnBackUp_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormBackUp(_context , usuario));
+            AbrirFormHija(new FormBackUp(_context, usuario));
         }
 
         private void btnVentas_Click(object sender, EventArgs e)
@@ -232,6 +232,11 @@ namespace CyberGear16
         private void timer1_Tick(object sender, EventArgs e)
         {
             label1.Text = DateTime.Now.ToString("hh:mm:ss");
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

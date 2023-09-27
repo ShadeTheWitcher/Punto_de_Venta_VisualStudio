@@ -357,13 +357,14 @@
             LCodPostal.ForeColor = Color.Black;
             LCodPostal.Location = new Point(75, 315);
             LCodPostal.Name = "LCodPostal";
-            LCodPostal.Size = new Size(108, 20);
+            LCodPostal.Size = new Size(156, 20);
             LCodPostal.TabIndex = 56;
-            LCodPostal.Text = "Código Postal:";
+            LCodPostal.Text = "Número de Dirección:";
             // 
             // BOcultar
             // 
             BOcultar.BackColor = Color.SteelBlue;
+            BOcultar.FlatAppearance.BorderSize = 0;
             BOcultar.FlatStyle = FlatStyle.Flat;
             BOcultar.Image = (Image)resources.GetObject("BOcultar.Image");
             BOcultar.Location = new Point(423, 166);

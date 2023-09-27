@@ -134,33 +134,18 @@ namespace CyberGear16
                 ((!RBHombre.Checked) && (!RBMujer.Checked)) ||
                 CBPerfil.SelectedIndex == -1)
             {
-                MessageBox.Show("Campos incompletos! Por favor rellénelos y vuelva a intentar.");
+                MessageBox.Show("Campos incompletos! Por favor rellénelos y vuelva a intentar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             if (validarTelefono() && validarDni() && validarNom() && validarApe() && validarUser()
-                && validarDirec() && validarCodPostal() && validarContraseña() && validacionCorreo())
+                && validarDirec() && validarNumDirec() && validarContraseña() && validacionCorreo() && validacionFecha())
             {
                 return true;
             }
 
             return false;
         }
-
-        //private bool detectarNoRepetidos(string strComprobar)
-        //{
-        //    using (var dbContext = new TuDbContext())
-        //    {
-        //        string textoIngresado = textBox1.Text; // Obtén el texto del TextBox
-
-
-        //    }
-        //    //using (var context = new BdCybergearContext())
-        //    //{
-        //    //    context.Usuarios.Where(u =>  u.== strComprobar);
-        //    //}
-        //    //    var usuariosNoDeBaja = Where(u => u.Baja == "NO")
-        //}
 
 
         public class Validador
@@ -309,7 +294,7 @@ namespace CyberGear16
             }
         }
 
-        private bool validarCodPostal()
+        private bool validarNumDirec()
         {
             if (TCodPostal.Text.Length >= 2 && TCodPostal.Text.Length <= 5)
             {
@@ -335,7 +320,7 @@ namespace CyberGear16
             }
         }
 
-        public bool validacionCorreo()
+        private bool validacionCorreo()
         {
             try
             {
@@ -367,6 +352,32 @@ namespace CyberGear16
             {
                 // La expresión regular tardó demasiado en ejecutarse, lo que podría indicar un patrón inválido.
                 MessageBox.Show("Formato de correo electrónico incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool validacionFecha()
+        {
+            // Obtén la fecha seleccionada en el DateTimePicker
+            DateTime fechaDTPicker = DTPicker.Value;
+
+            // Obtén la fecha actual
+            DateTime fechaActual = DateTime.Now;
+
+            // Calcula la diferencia en años entre la fecha seleccionada y la fecha actual
+            int diferenciaAños = fechaActual.Year - fechaDTPicker.Year;
+
+            // Verifica si la diferencia es mayor que 100 años
+            if (diferenciaAños < 100)
+            {
+                // Restaura la fecha seleccionada a la fecha actual
+                return true;
+            }
+            else
+            {
+                // Muestra un mensaje de error o realiza alguna acción adecuada
+                MessageBox.Show("La fecha no puede ser mayor a 100 años a partir de la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DTPicker.Value = fechaActual;
                 return false;
             }
         }
