@@ -212,5 +212,32 @@ namespace CyberGear16
         {
 
         }
+
+        private void formEditorProducto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LCategoria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PStockMin_Paint(object sender, PaintEventArgs e)
+        {
+            // Dibuja el fondo del Panel como transparente
+            e.Graphics.Clear(Color.Transparent);
+
+            // Dibuja el contenido del Label (texto)
+            using (Brush brush = new SolidBrush(LStockMin.ForeColor))
+            {
+                e.Graphics.DrawString(LStockMin.Text, LStockMin.Font, brush, new PointF(0, 0));
+            }
+        }
+
+        private void LStockMin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
