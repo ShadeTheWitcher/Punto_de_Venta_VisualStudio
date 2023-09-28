@@ -60,7 +60,6 @@ namespace CyberGear16
 
         private void recuperarDatosUsuario()
         {
-
             // Asigna los valores del usuario a los controles
 
             using (var newcontext = new BdCybergearContext())
@@ -68,6 +67,7 @@ namespace CyberGear16
 
                 // Obtén el producto a través del contexto y su ID
                 Usuario usuario = newcontext.Usuarios.FirstOrDefault(p => p.Id == this.id_usuario);
+                
 
                 if (usuario != null)
                 {

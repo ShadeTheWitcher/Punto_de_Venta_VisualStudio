@@ -1,4 +1,5 @@
 ﻿using CyberGear16.Models;
+using Microsoft.EntityFrameworkCore;
 using MySqlX.XDevAPI.Relational;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CyberGear16
 {
     public partial class FormReporte : Form
     {
+        private readonly BdCybergearContext _context;
         public FormReporte()
         {
             InitializeComponent();
@@ -58,8 +61,36 @@ namespace CyberGear16
 
         private void DGVReportes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.ColumnIndex == DGVReportes.Columns["Acciones"].Index)
+            {
+                // Obtén el producto seleccionado
+                DataGridViewRow row = DGVReportes.Rows[e.RowIndex];
+                int dniIndividuo = Convert.ToInt32(row.Cells["Dni"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
 
+                using (var context = new BdCybergearContext())
+                {
+                    Usuario usuarioVendedor = context.Usuarios.FirstOrDefault(p => p.Dni == dniIndividuo);
+                    Cliente usuarioCliente = context.Clientes.FirstOrDefault(p => p.Dni == dniIndividuo);
+
+
+                    if (usuarioVendedor != null)
+                    {
+                        FormInformeVendedor informeIndividuo = new FormInformeVendedor(usuarioVendedor, _context);
+                        informeIndividuo.ShowDialog();
+                    }
+                    else
+                    {
+                        FormInformeCliente informeIndividuo = new FormInformeCliente(usuarioCliente, _context);
+                        informeIndividuo.ShowDialog();
+                    }
+                }
+                // Abre el formulario de detalles/editar con el Usuario seleccionado
+                
+                //CargarDatosEnDGVActivos();
+            }
         }
+
+        
 
         private void DGVReportesClientes()
         {
