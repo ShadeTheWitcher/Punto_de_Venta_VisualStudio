@@ -36,6 +36,8 @@ namespace CyberGear16
             LNomUser.Text = nombreUser;
 
 
+            
+
             if (perfil_idUsuario == 1) //admin
             {
                 LTipoUser.Text = "Admin";
@@ -44,12 +46,17 @@ namespace CyberGear16
 
                 btnClientes.Enabled = false;
                 panel6.BackColor = Color.DimGray;
+
+                btnBackUp.Enabled = false;
+                panel7.BackColor = Color.DimGray;
             }
 
 
             if (perfil_idUsuario == 2) //gerente
             {
                 LTipoUser.Text = "Gerente";
+
+
                 btnVentas.Enabled = false;
                 panel1.BackColor = Color.DimGray;
 
@@ -73,6 +80,9 @@ namespace CyberGear16
 
                 btnUsuarios.Enabled = false;
                 panel5.BackColor = Color.DimGray;
+
+                btnBackUp.Enabled = false;
+                panel7.BackColor = Color.DimGray;
             }
 
 
