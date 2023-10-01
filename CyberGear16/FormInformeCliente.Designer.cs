@@ -41,13 +41,18 @@
             LMApellido = new Label();
             LNombre = new Label();
             LCantProduct = new Label();
+            panel1 = new Panel();
+            LCliente = new Label();
+            panel2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(297, 198);
+            pictureBox1.Location = new Point(216, 44);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(282, 240);
             pictureBox1.TabIndex = 26;
@@ -56,124 +61,194 @@
             // LApellido
             // 
             LApellido.AutoSize = true;
-            LApellido.Location = new Point(108, 92);
+            LApellido.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LApellido.ForeColor = Color.White;
+            LApellido.Location = new Point(53, 108);
             LApellido.Name = "LApellido";
-            LApellido.Size = new Size(54, 15);
+            LApellido.Size = new Size(71, 20);
             LApellido.TabIndex = 24;
             LApellido.Text = "Apellido:";
+            LApellido.Click += LApellido_Click;
             // 
             // LDni
             // 
             LDni.AutoSize = true;
-            LDni.Location = new Point(297, 40);
+            LDni.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LDni.ForeColor = Color.White;
+            LDni.Location = new Point(270, 56);
             LDni.Name = "LDni";
-            LDni.Size = new Size(30, 15);
+            LDni.Size = new Size(41, 20);
             LDni.TabIndex = 23;
             LDni.Text = "DNI:";
+            LDni.Click += LDni_Click;
             // 
             // LMNombre
             // 
             LMNombre.AutoSize = true;
-            LMNombre.Location = new Point(172, 40);
+            LMNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMNombre.ForeColor = Color.White;
+            LMNombre.Location = new Point(117, 56);
             LMNombre.Name = "LMNombre";
-            LMNombre.Size = new Size(51, 15);
+            LMNombre.Size = new Size(67, 20);
             LMNombre.TabIndex = 22;
             LMNombre.Text = "Nombre";
+            LMNombre.Click += LMNombre_Click;
             // 
             // LMTelefono
             // 
             LMTelefono.AutoSize = true;
-            LMTelefono.Location = new Point(562, 40);
+            LMTelefono.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMTelefono.ForeColor = Color.White;
+            LMTelefono.Location = new Point(580, 56);
             LMTelefono.Name = "LMTelefono";
-            LMTelefono.Size = new Size(52, 15);
+            LMTelefono.Size = new Size(70, 20);
             LMTelefono.TabIndex = 20;
             LMTelefono.Text = "Telefono";
+            LMTelefono.Click += LMTelefono_Click;
             // 
             // LTelefono
             // 
             LTelefono.AutoSize = true;
-            LTelefono.Location = new Point(478, 40);
+            LTelefono.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTelefono.ForeColor = Color.White;
+            LTelefono.Location = new Point(496, 56);
             LTelefono.Name = "LTelefono";
-            LTelefono.Size = new Size(55, 15);
+            LTelefono.Size = new Size(74, 20);
             LTelefono.TabIndex = 19;
             LTelefono.Text = "Telefono:";
+            LTelefono.Click += LTelefono_Click;
             // 
             // LMEmail
             // 
             LMEmail.AutoSize = true;
-            LMEmail.Location = new Point(381, 92);
+            LMEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMEmail.ForeColor = Color.White;
+            LMEmail.Location = new Point(354, 108);
             LMEmail.Name = "LMEmail";
-            LMEmail.Size = new Size(36, 15);
+            LMEmail.Size = new Size(47, 20);
             LMEmail.TabIndex = 18;
             LMEmail.Text = "Email";
+            LMEmail.Click += LMEmail_Click;
             // 
             // LEmail
             // 
             LEmail.AutoSize = true;
-            LEmail.Location = new Point(297, 92);
+            LEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LEmail.ForeColor = Color.White;
+            LEmail.Location = new Point(270, 108);
             LEmail.Name = "LEmail";
-            LEmail.Size = new Size(39, 15);
+            LEmail.Size = new Size(51, 20);
             LEmail.TabIndex = 17;
             LEmail.Text = "Email:";
+            LEmail.Click += LEmail_Click;
             // 
             // LMDni
             // 
             LMDni.AutoSize = true;
-            LMDni.Location = new Point(381, 40);
+            LMDni.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMDni.ForeColor = Color.White;
+            LMDni.Location = new Point(354, 56);
             LMDni.Name = "LMDni";
-            LMDni.Size = new Size(27, 15);
+            LMDni.Size = new Size(37, 20);
             LMDni.TabIndex = 16;
             LMDni.Text = "DNI";
+            LMDni.Click += LMDni_Click;
             // 
             // LMApellido
             // 
             LMApellido.AutoSize = true;
-            LMApellido.Location = new Point(178, 92);
+            LMApellido.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMApellido.ForeColor = Color.White;
+            LMApellido.Location = new Point(123, 108);
             LMApellido.Name = "LMApellido";
-            LMApellido.Size = new Size(51, 15);
+            LMApellido.Size = new Size(67, 20);
             LMApellido.TabIndex = 15;
             LMApellido.Text = "Apellido";
+            LMApellido.Click += LMApellido_Click;
             // 
             // LNombre
             // 
             LNombre.AutoSize = true;
-            LNombre.Location = new Point(108, 40);
+            LNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LNombre.ForeColor = Color.White;
+            LNombre.Location = new Point(53, 56);
             LNombre.Name = "LNombre";
-            LNombre.Size = new Size(54, 15);
+            LNombre.Size = new Size(71, 20);
             LNombre.TabIndex = 14;
             LNombre.Text = "Nombre:";
+            LNombre.Click += LNombre_Click;
             // 
             // LCantProduct
             // 
             LCantProduct.AutoSize = true;
+            LCantProduct.BackColor = Color.FromArgb(26, 32, 40);
             LCantProduct.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LCantProduct.Location = new Point(220, 170);
+            LCantProduct.ForeColor = Color.White;
+            LCantProduct.Location = new Point(191, 194);
             LCantProduct.Name = "LCantProduct";
             LCantProduct.Size = new Size(446, 25);
             LCantProduct.TabIndex = 27;
             LCantProduct.Text = "Cantidad de productos comprados por el cliente:";
             // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.None;
+            panel1.BackColor = Color.FromArgb(26, 32, 40);
+            panel1.Controls.Add(LCliente);
+            panel1.Controls.Add(LApellido);
+            panel1.Controls.Add(LDni);
+            panel1.Controls.Add(LMNombre);
+            panel1.Controls.Add(LMTelefono);
+            panel1.Controls.Add(LTelefono);
+            panel1.Controls.Add(LMEmail);
+            panel1.Controls.Add(LEmail);
+            panel1.Controls.Add(LMDni);
+            panel1.Controls.Add(LMApellido);
+            panel1.Controls.Add(LNombre);
+            panel1.Location = new Point(30, 9);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(744, 158);
+            panel1.TabIndex = 28;
+            panel1.Paint += panel1_Paint;
+            // 
+            // LCliente
+            // 
+            LCliente.AutoSize = true;
+            LCliente.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LCliente.ForeColor = Color.White;
+            LCliente.Location = new Point(22, 12);
+            LCliente.Name = "LCliente";
+            LCliente.Size = new Size(78, 25);
+            LCliente.TabIndex = 29;
+            LCliente.Text = "Cliente:";
+            LCliente.Click += label1_Click;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.None;
+            panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(pictureBox1);
+            panel2.Location = new Point(30, 187);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(744, 296);
+            panel2.TabIndex = 29;
+            // 
             // FormInformeCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(800, 495);
+            Controls.Add(panel1);
             Controls.Add(LCantProduct);
-            Controls.Add(pictureBox1);
-            Controls.Add(LApellido);
-            Controls.Add(LDni);
-            Controls.Add(LMNombre);
-            Controls.Add(LMTelefono);
-            Controls.Add(LTelefono);
-            Controls.Add(LMEmail);
-            Controls.Add(LEmail);
-            Controls.Add(LMDni);
-            Controls.Add(LMApellido);
-            Controls.Add(LNombre);
+            Controls.Add(panel2);
             Name = "FormInformeCliente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Informe de Cliente";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -192,5 +267,8 @@
         private Label LMApellido;
         private Label LNombre;
         private Label LCantProduct;
+        private Panel panel1;
+        private Label LCliente;
+        private Panel panel2;
     }
 }

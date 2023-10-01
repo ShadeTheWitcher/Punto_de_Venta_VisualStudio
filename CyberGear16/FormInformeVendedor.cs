@@ -45,5 +45,39 @@ namespace CyberGear16
         {
 
         }
+
+        private void FormInformeVendedor_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LFecha_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DTPFecha_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void LCliente_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LCantVentas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

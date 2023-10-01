@@ -611,7 +611,7 @@ namespace CyberGear16
             using (var context = new BdCybergearContext())
             {
 
-                var resultados = context.Usuarios.Where(e => e.Nombre.Contains(buscar)).ToList();
+                var resultados = context.Usuarios.Where(e => e.Nombre.Contains(buscar) || e.Apellido.Contains(buscar)).ToList();
                 if (resultados.Count == 0)
                 {
                     MessageBox.Show("No se han encontrado usuarios que coincidan con la busqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

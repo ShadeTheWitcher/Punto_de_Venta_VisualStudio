@@ -35,5 +35,58 @@ namespace CyberGear16
                 LMTelefono.Text = usuarioClienteElegido.Telefono.ToString();
             }
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void LMEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LEmail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LMApellido_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void LApellido_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void LNombre_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void LDni_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LMNombre_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void LMTelefono_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void LTelefono_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void LMDni_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
