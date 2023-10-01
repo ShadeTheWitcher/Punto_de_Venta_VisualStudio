@@ -44,11 +44,14 @@
             BRVendedores = new Button();
             LRVendedores = new Label();
             DGVReportes = new DataGridView();
+            LRClienteVendedor = new Label();
+            panel4 = new Panel();
             panel1.SuspendLayout();
             PReporte.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DGVReportes).BeginInit();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // LUsuarios
@@ -65,14 +68,14 @@
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(26, 32, 40);
             panel1.Controls.Add(LRVentas);
             panel1.Controls.Add(PReporte);
             panel1.Controls.Add(LUsuarios);
-            panel1.Location = new Point(12, 6);
+            panel1.Location = new Point(12, 37);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1034, 350);
+            panel1.Size = new Size(1034, 326);
             panel1.TabIndex = 3;
             // 
             // LRVentas
@@ -95,7 +98,7 @@
             PReporte.Controls.Add(label1);
             PReporte.Controls.Add(dateTimePicker1);
             PReporte.Controls.Add(DTPDesde);
-            PReporte.Location = new Point(227, 109);
+            PReporte.Location = new Point(227, 97);
             PReporte.Name = "PReporte";
             PReporte.Size = new Size(582, 187);
             PReporte.TabIndex = 3;
@@ -149,18 +152,18 @@
             // 
             // panel2
             // 
-            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.FromArgb(26, 32, 40);
             panel2.Controls.Add(BRClientes);
             panel2.Controls.Add(LRClientes);
-            panel2.Location = new Point(12, 296);
+            panel2.Location = new Point(12, 374);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1034, 191);
+            panel2.Size = new Size(512, 123);
             panel2.TabIndex = 5;
             // 
             // BRClientes
             // 
-            BRClientes.Location = new Point(401, 59);
+            BRClientes.Location = new Point(137, 62);
             BRClientes.Name = "BRClientes";
             BRClientes.Size = new Size(235, 44);
             BRClientes.TabIndex = 4;
@@ -173,7 +176,7 @@
             LRClientes.AutoSize = true;
             LRClientes.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             LRClientes.ForeColor = Color.White;
-            LRClientes.Location = new Point(429, 16);
+            LRClientes.Location = new Point(165, 19);
             LRClientes.Name = "LRClientes";
             LRClientes.Size = new Size(190, 25);
             LRClientes.TabIndex = 4;
@@ -181,19 +184,19 @@
             // 
             // panel3
             // 
-            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.Anchor = AnchorStyles.None;
             panel3.BackColor = Color.FromArgb(26, 32, 40);
             panel3.Controls.Add(BRVendedores);
             panel3.Controls.Add(LRVendedores);
-            panel3.Location = new Point(12, 425);
+            panel3.Location = new Point(530, 374);
             panel3.Name = "panel3";
-            panel3.Size = new Size(1034, 181);
+            panel3.Size = new Size(516, 123);
             panel3.TabIndex = 6;
             panel3.Paint += panel3_Paint;
             // 
             // BRVendedores
             // 
-            BRVendedores.Location = new Point(402, 56);
+            BRVendedores.Location = new Point(155, 59);
             BRVendedores.Name = "BRVendedores";
             BRVendedores.Size = new Size(235, 44);
             BRVendedores.TabIndex = 4;
@@ -206,7 +209,7 @@
             LRVendedores.AutoSize = true;
             LRVendedores.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             LRVendedores.ForeColor = Color.White;
-            LRVendedores.Location = new Point(402, 16);
+            LRVendedores.Location = new Point(155, 19);
             LRVendedores.Name = "LRVendedores";
             LRVendedores.Size = new Size(227, 25);
             LRVendedores.TabIndex = 4;
@@ -216,12 +219,34 @@
             // 
             DGVReportes.Anchor = AnchorStyles.None;
             DGVReportes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVReportes.Location = new Point(8, 579);
+            DGVReportes.Location = new Point(30, 562);
             DGVReportes.Name = "DGVReportes";
             DGVReportes.RowTemplate.Height = 25;
-            DGVReportes.Size = new Size(1041, 155);
+            DGVReportes.Size = new Size(997, 155);
             DGVReportes.TabIndex = 7;
             DGVReportes.CellContentClick += DGVReportes_CellContentClick;
+            // 
+            // LRClienteVendedor
+            // 
+            LRClienteVendedor.AutoSize = true;
+            LRClienteVendedor.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LRClienteVendedor.ForeColor = Color.White;
+            LRClienteVendedor.Location = new Point(18, 10);
+            LRClienteVendedor.Name = "LRClienteVendedor";
+            LRClienteVendedor.Size = new Size(86, 25);
+            LRClienteVendedor.TabIndex = 5;
+            LRClienteVendedor.Text = "Clientes:";
+            LRClienteVendedor.Click += LRClienteVendedor_Click;
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.None;
+            panel4.BackColor = Color.FromArgb(26, 32, 40);
+            panel4.Controls.Add(LRClienteVendedor);
+            panel4.Location = new Point(12, 503);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1034, 238);
+            panel4.TabIndex = 8;
             // 
             // FormReporte
             // 
@@ -233,6 +258,7 @@
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormReporte";
             Text = "Form1";
@@ -246,6 +272,8 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)DGVReportes).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -267,5 +295,7 @@
         private Button BRVendedores;
         private Label LRVendedores;
         private DataGridView DGVReportes;
+        private Label LRClienteVendedor;
+        private Panel panel4;
     }
 }

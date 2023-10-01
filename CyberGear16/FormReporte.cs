@@ -85,12 +85,12 @@ namespace CyberGear16
                     }
                 }
                 // Abre el formulario de detalles/editar con el Usuario seleccionado
-                
+
                 //CargarDatosEnDGVActivos();
             }
         }
 
-        
+
 
         private void DGVReportesClientes()
         {
@@ -120,7 +120,7 @@ namespace CyberGear16
                 CargarDatosEnDGVClientes();
                 // Configura el estilo y columnas del DataGridView
 
-                
+
                 DGVReportes.Columns["DNI"].Width = 120;
                 DGVReportes.Columns["Nombre"].Width = 120;
                 DGVReportes.Columns["Apellido"].Width = 120;
@@ -183,7 +183,7 @@ namespace CyberGear16
 
         private void adminUsers_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void FormReporte_Load(object sender, EventArgs e)
@@ -194,11 +194,12 @@ namespace CyberGear16
         private void BRClientes_Click(object sender, EventArgs e)
         {
             DGVReportesClientes();
+            LRClienteVendedor.Text = "Clientes:";
         }
 
         private void BRVendedores_Click(object sender, EventArgs e)
         {
-            
+            LRClienteVendedor.Text = "Vendedores:";
             using (var context = new BdCybergearContext()) // se lo engloba en un using para q se cierre la conexion
             {
                 DGVReportes.DataSource = null;
@@ -227,7 +228,7 @@ namespace CyberGear16
                 // Configura el estilo y columnas del DataGridView
                 // (asegúrate de que las propiedades de Product se correspondan con las columnas)
 
-               
+
                 DGVReportes.Columns["DNI"].Width = 110;
                 DGVReportes.Columns["Nombre"].Width = 130;
                 DGVReportes.Columns["Apellido"].Width = 130;
@@ -258,6 +259,11 @@ namespace CyberGear16
                     }
                 }
             }
+        }
+
+        private void LRClienteVendedor_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
