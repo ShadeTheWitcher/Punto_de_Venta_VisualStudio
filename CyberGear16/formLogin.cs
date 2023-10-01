@@ -80,6 +80,14 @@ namespace CyberGear16
         {
             string usuario = textBox1.Text;
             string contraseña = textBox2.Text;
+
+            if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contraseña))
+            {
+                MessageBox.Show("Por favor, completa ambos campos.");
+                return;
+            }
+
+
             await IniciarSesionAsync(usuario, contraseña);
         }
 
