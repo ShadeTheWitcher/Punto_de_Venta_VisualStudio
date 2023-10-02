@@ -103,16 +103,17 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(15, 46);
+            label10.Location = new Point(100, 2);
             label10.Name = "label10";
             label10.Size = new Size(17, 15);
             label10.TabIndex = 4;
             label10.Text = "Id";
+            label10.Visible = false;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(99, 44);
+            label9.Location = new Point(19, 42);
             label9.Name = "label9";
             label9.Size = new Size(51, 15);
             label9.TabIndex = 3;
@@ -131,7 +132,7 @@
             // textBox2
             // 
             textBox2.Enabled = false;
-            textBox2.Location = new Point(99, 62);
+            textBox2.Location = new Point(19, 60);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
             textBox2.Size = new Size(202, 23);
@@ -140,11 +141,12 @@
             // textBox1
             // 
             textBox1.Enabled = false;
-            textBox1.Location = new Point(14, 62);
+            textBox1.Location = new Point(99, 18);
             textBox1.Name = "textBox1";
             textBox1.ReadOnly = true;
             textBox1.Size = new Size(60, 23);
             textBox1.TabIndex = 0;
+            textBox1.Visible = false;
             // 
             // panel2
             // 
