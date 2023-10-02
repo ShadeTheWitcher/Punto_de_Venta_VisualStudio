@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2023 a las 05:59:13
+-- Tiempo de generación: 02-10-2023 a las 16:42:37
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -45,9 +45,9 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `nombre`, `apellido`, `dni`, `domicilio_id`, `email`, `fecha_nacimiento`, `sexo`, `telefono`, `baja`) VALUES
-(1, 'Jorge', 'Morales', 4464, 14, '12343234asdasd@gmail.com', '2023-09-12', 'masculino', 123345, 'NO'),
-(2, 'asd', 'asd', 446452, 13, '1234asdasd@gmail.com', '2023-09-12', 'masculino', 234234, 'NO'),
-(3, 'Susana', 'Morales', 4464524, 8, '123234asdasd@gmail.com', '2023-09-12', 'masculino', 123, 'NO');
+(1, 'Jorge', 'Morales', 44645555, 14, '12343234asdasd@gmail.com', '2023-09-12', 'Hombre', 123345, 'NO'),
+(2, 'asd', 'asd', 44645222, 13, '1234asdasd@gmail.com', '2023-09-12', 'Hombre', 234234, 'NO'),
+(3, 'Susana', 'Morales', 43264524, 8, '123234asdasd@gmail.com', '2023-09-12', 'Hombre', 123, 'NO');
 
 -- --------------------------------------------------------
 
@@ -80,7 +80,8 @@ INSERT INTO `domicilios` (`id`, `direccion`, `cod_postal`) VALUES
 (17, '245vv asda', 3400),
 (19, 'dddsssss', 111),
 (20, '200vv casa 45', 111),
-(21, 'andorra', 111);
+(21, 'andorra', 111),
+(22, 'andorra', 3400);
 
 -- --------------------------------------------------------
 
@@ -103,7 +104,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `nombre_producto`, `precio_producto`, `descripcion`, `categoria_id`, `cantidad`, `activo`) VALUES
-(8, 'Asseto Corsa', 3000.00, 'carrera', 4, 47, 'SI'),
+(8, 'Asseto Corsa', 3000.00, 'carrera', 2, 47, 'SI'),
 (9, 'The last of us', 100.00, 'zombies', 2, 53, 'SI'),
 (10, 'Dredge', 5000.00, 'asd', 2, 57, 'SI'),
 (11, 'Resident Evil 4 RE', 12000.00, 'el clasico ha vuelto ', 2, 23, 'SI'),
@@ -113,11 +114,11 @@ INSERT INTO `products` (`id`, `nombre_producto`, `precio_producto`, `descripcion
 (15, 'Doom ', 2000.00, 'un clasico modernizado', 1, 28, 'SI'),
 (16, 'Resident Evil Village', 6000.00, 'adentrate en la villa', 2, 18, 'SI'),
 (17, 'Spiderman Miles Morales', 5900.00, 'spiderman', 2, 8, 'SI'),
-(18, 'Mortal Kombat X', 2000.00, 'Fatality', 3, 10, 'SI'),
+(18, 'Mortal Kombat X', 2000.00, 'Fatality', 2, 10, 'SI'),
 (19, 'Far Cry 6', 12000.00, 'Far Cry ahora en cuba ', 2, 58, 'SI'),
 (20, 'Grand Theft Auto 6', 20000.00, 'Volvemos a Vice City!', 1, 199, 'SI'),
 (25, 'Jedi Survivor', 1230.00, 'asd', 2, 123, 'SI'),
-(26, 'Street Fighter V', 12000.00, 'vuelve la saga favorita de luchas a la edad moderna ', 3, 100, 'SI'),
+(26, 'Street Fighter V', 12000.00, 'vuelve la saga favorita de luchas a la edad moderna ', 2, 100, 'SI'),
 (27, 'GTA Triology', 6000.00, 'los clasicos GTA han vuelto', 1, 300, 'SI'),
 (28, 'GTA 4 Complete Edition', 3000.00, 'Liberty City una ciudad oscura y llena de oportunidades', 1, 200, 'SI'),
 (29, 'Call of Duty Black Ops 3', 1000.00, 'un fps donde la tecnologia es vital', 1, 250, 'SI'),
@@ -176,9 +177,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `apellido`, `email`, `usuario`, `pass`, `perfil_id`, `domicilio_id`, `tel`, `fecha`, `sexo`, `baja`) VALUES
-(47, 0, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, NULL, NULL, '2023-09-22', '', 'NO'),
+(47, 4444444, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, 20, 1111444466, '2023-09-22', 'Hombre', 'NO'),
 (48, 12345666, 'Willy', 'Rex', 'asdsda1234@gmail.com', 'gerente1', 'gerente1', 2, 20, 444, '1994-06-16', 'Hombre', 'NO'),
-(49, 12578, 'rubius', 'doblas', 'vendeme@gmail.com', 'vendedor1', 'vendedor1', 3, 21, 12388, '1994-06-15', 'Hombre', 'NO');
+(49, 12578, 'rubius', 'doblas', 'vendeme@gmail.com', 'vendedor1', 'vendedor1', 3, 21, 12388, '1994-06-15', 'Hombre', 'NO'),
+(51, 44244555, 'Sergio', 'Moles', 'eljefe@gmail.com', 'eljefe', 'admin', 1, 22, 55555111122, '1988-11-09', 'Hombre', 'NO');
 
 -- --------------------------------------------------------
 
@@ -190,6 +192,7 @@ CREATE TABLE `ventas_cabecera` (
   `id` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `id_cliente` int(11) NOT NULL,
+  `id_vendedor` int(11) NOT NULL,
   `total_venta` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -197,13 +200,13 @@ CREATE TABLE `ventas_cabecera` (
 -- Volcado de datos para la tabla `ventas_cabecera`
 --
 
-INSERT INTO `ventas_cabecera` (`id`, `fecha`, `id_cliente`, `total_venta`) VALUES
-(40, '2023-06-10', 1, 16200),
-(41, '2023-06-10', 2, 3100),
-(42, '2023-06-10', 1, 12000),
-(43, '2023-06-10', 1, 100),
-(44, '2023-06-10', 2, 122500),
-(45, '2023-06-10', 1, 5000);
+INSERT INTO `ventas_cabecera` (`id`, `fecha`, `id_cliente`, `id_vendedor`, `total_venta`) VALUES
+(40, '2023-06-10', 1, 49, 16200),
+(41, '2023-06-10', 2, 49, 3100),
+(42, '2023-06-10', 1, 49, 12000),
+(43, '2023-06-10', 1, 49, 100),
+(44, '2023-06-10', 2, 49, 122500),
+(45, '2023-06-10', 1, 49, 5000);
 
 -- --------------------------------------------------------
 
@@ -292,7 +295,8 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `ventas_cabecera`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_cliente` (`id_cliente`);
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_vendedor` (`id_vendedor`);
 
 --
 -- Indices de la tabla `ventas_detalle`
@@ -316,7 +320,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `domicilios`
 --
 ALTER TABLE `domicilios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
@@ -328,7 +332,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_cabecera`
@@ -363,7 +367,8 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `ventas_cabecera`
 --
 ALTER TABLE `ventas_cabecera`
-  ADD CONSTRAINT `ventas_cabecera_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ventas_cabecera_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ventas_cabecera_ibfk_2` FOREIGN KEY (`id_vendedor`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ventas_detalle`
