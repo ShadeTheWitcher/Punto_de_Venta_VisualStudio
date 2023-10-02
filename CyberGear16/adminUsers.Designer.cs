@@ -179,6 +179,7 @@
             // 
             // CBPerfil
             // 
+            CBPerfil.DropDownStyle = ComboBoxStyle.DropDownList;
             CBPerfil.FormattingEnabled = true;
             CBPerfil.Location = new Point(112, 216);
             CBPerfil.Name = "CBPerfil";

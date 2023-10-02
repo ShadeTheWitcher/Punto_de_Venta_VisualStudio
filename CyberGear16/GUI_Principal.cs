@@ -14,18 +14,20 @@ namespace CyberGear16
         int perfil_idUsuario;
         string nombreUser;
         string usuario;
+        int dniUsuario;
 
 
 
         private readonly BdCybergearContext _context;
 
-        public GUI_Principal(int perfilIdUsuario, string nombreUsuario, string usuarioArgs, BdCybergearContext context)
+        public GUI_Principal(int perfilIdUsuario, string nombreUsuario, string usuarioArgs, int dniUser, BdCybergearContext context)
         {
             InitializeComponent();
             AbrirFormHija(new formInicio());
             perfil_idUsuario = perfilIdUsuario;
             nombreUser = nombreUsuario;
             usuario = usuarioArgs;
+            dniUsuario = dniUser;
             _context = context; // Guarda el contexto de base de datos
             establecerLimitesTipoUser();
         }
@@ -206,7 +208,20 @@ namespace CyberGear16
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormReporte(/*_context*/));
+            if (perfil_idUsuario == 1)
+            {
+                AbrirFormHija(new FormReporte(/*_context*/));
+                
+            }
+            else if (perfil_idUsuario == 2)
+            {
+                AbrirFormHija(new FormReporteSuper());
+            }
+            else
+            {
+                AbrirFormHija(new FormReporteVendedor(perfil_idUsuario, dniUsuario));
+            }
+            
         }
 
         private void panelContenedor_Paint(object sender, PaintEventArgs e)

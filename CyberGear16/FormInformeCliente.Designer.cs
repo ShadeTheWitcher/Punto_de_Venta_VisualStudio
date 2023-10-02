@@ -87,7 +87,7 @@
             LMNombre.AutoSize = true;
             LMNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             LMNombre.ForeColor = Color.White;
-            LMNombre.Location = new Point(117, 56);
+            LMNombre.Location = new Point(123, 56);
             LMNombre.Name = "LMNombre";
             LMNombre.Size = new Size(67, 20);
             LMNombre.TabIndex = 22;

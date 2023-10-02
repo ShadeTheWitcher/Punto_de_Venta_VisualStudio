@@ -125,7 +125,6 @@ namespace CyberGear16
                 DGVReportes.Columns["Nombre"].Width = 120;
                 DGVReportes.Columns["Apellido"].Width = 120;
                 DGVReportes.Columns["Email"].Width = 220;
-                DGVReportes.Columns["FechaNacimiento"].Width = 120;
                 DGVReportes.Columns["Telefono"].Width = 130;
                 DGVReportes.Columns["Sexo"].Width = 110;
 
@@ -144,7 +143,7 @@ namespace CyberGear16
                 foreach (DataGridViewColumn column in DGVReportes.Columns)
                 {
                     if (column.Name != "Dni" && column.Name != "Nombre" && column.Name != "Apellido" && column.Name != "Email" &&
-                        column.Name != "FechaNacimiento" && column.Name != "Telefono" && column.Name != "Acciones"
+                        column.Name != "Telefono" && column.Name != "Acciones"
                         )
                     {
                         column.Visible = false;
@@ -234,7 +233,6 @@ namespace CyberGear16
                 DGVReportes.Columns["Apellido"].Width = 130;
                 DGVReportes.Columns["Email"].Width = 230;
                 DGVReportes.Columns["Fecha"].Width = 110;
-                DGVReportes.Columns["Sexo"].Width = 100;
 
 
                 DataGridViewButtonColumn modificarButtonColumn = new DataGridViewButtonColumn();
@@ -253,7 +251,7 @@ namespace CyberGear16
                 foreach (DataGridViewColumn column in DGVReportes.Columns)
                 {
                     if (column.Name != "Dni" && column.Name != "Nombre" && column.Name != "Apellido" && column.Name != "Email" &&
-                        column.Name != "Fecha" && column.Name != "Acciones" && column.Name != "Sexo")
+                        column.Name != "Fecha" && column.Name != "Acciones")
                     {
                         column.Visible = false;
                     }
