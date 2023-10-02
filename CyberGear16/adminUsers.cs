@@ -433,13 +433,22 @@ namespace CyberGear16
             // Verifica si la diferencia es mayor que 100 años
             if (diferenciaAños < 100)
             {
-                // Restaura la fecha seleccionada a la fecha actual
-                return true;
+                if (diferenciaAños >= 18)
+                {
+                    return true;
+                }
+                else
+                {
+                    DTPicker.Value = fechaActual;
+                    MessageBox.Show("El usuario a registrar debe de ser mayor de edad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             else
             {
                 // Muestra un mensaje de error o realiza alguna acción adecuada
                 MessageBox.Show("La fecha no puede ser mayor a 100 años a partir de la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Restaura la fecha seleccionada a la fecha actual
                 DTPicker.Value = fechaActual;
                 return false;
             }
@@ -469,10 +478,10 @@ namespace CyberGear16
             {
                 // Obtén el producto seleccionado
                 DataGridViewRow row = DGVUsuarios.Rows[e.RowIndex];
-                int productId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
+                int usuarioId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
 
                 // Abre el formulario de detalles/editar con el Usuario seleccionado
-                FormEditorUsuario editorUsuario = new FormEditorUsuario(productId, _context);
+                FormEditorUsuario editorUsuario = new FormEditorUsuario(usuarioId, _context);
                 editorUsuario.ShowDialog();
                 CargarDatosEnDGVActivos();
             }

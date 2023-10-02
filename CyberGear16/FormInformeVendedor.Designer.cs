@@ -44,8 +44,12 @@
             LMApellido = new Label();
             LNombre = new Label();
             panel2 = new Panel();
+            LValorVentas = new Label();
+            LTotalVentas = new Label();
             LCantVentas = new Label();
             pictureBox1 = new PictureBox();
+            LMeses = new Label();
+            label3 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -56,18 +60,18 @@
             LFecha.AutoSize = true;
             LFecha.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LFecha.ForeColor = Color.White;
-            LFecha.Location = new Point(238, 55);
+            LFecha.Location = new Point(228, 55);
             LFecha.Name = "LFecha";
-            LFecha.Size = new Size(142, 21);
+            LFecha.Size = new Size(175, 21);
             LFecha.TabIndex = 7;
-            LFecha.Text = "Fecha de Ingreso:";
+            LFecha.Text = "Fecha de Nacimiento:";
             LFecha.Click += LFecha_Click;
             // 
             // DTPFecha
             // 
             DTPFecha.Enabled = false;
             DTPFecha.Format = DateTimePickerFormat.Short;
-            DTPFecha.Location = new Point(386, 56);
+            DTPFecha.Location = new Point(399, 55);
             DTPFecha.Name = "DTPFecha";
             DTPFecha.Size = new Size(98, 23);
             DTPFecha.TabIndex = 12;
@@ -90,7 +94,7 @@
             panel1.Controls.Add(LMDni);
             panel1.Controls.Add(LMApellido);
             panel1.Controls.Add(LNombre);
-            panel1.Location = new Point(12, 12);
+            panel1.Location = new Point(12, 22);
             panel1.Name = "panel1";
             panel1.Size = new Size(776, 158);
             panel1.TabIndex = 29;
@@ -133,22 +137,22 @@
             // LMNombre
             // 
             LMNombre.AutoSize = true;
-            LMNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMNombre.ForeColor = Color.White;
             LMNombre.Location = new Point(123, 56);
             LMNombre.Name = "LMNombre";
-            LMNombre.Size = new Size(67, 20);
+            LMNombre.Size = new Size(64, 20);
             LMNombre.TabIndex = 22;
             LMNombre.Text = "Nombre";
             // 
             // LMTelefono
             // 
             LMTelefono.AutoSize = true;
-            LMTelefono.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMTelefono.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMTelefono.ForeColor = Color.White;
-            LMTelefono.Location = new Point(606, 56);
+            LMTelefono.Location = new Point(644, 55);
             LMTelefono.Name = "LMTelefono";
-            LMTelefono.Size = new Size(70, 20);
+            LMTelefono.Size = new Size(67, 20);
             LMTelefono.TabIndex = 20;
             LMTelefono.Text = "Telefono";
             // 
@@ -157,7 +161,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(512, 56);
+            label5.Location = new Point(550, 55);
             label5.Name = "label5";
             label5.Size = new Size(74, 20);
             label5.TabIndex = 19;
@@ -166,11 +170,11 @@
             // LMEmail
             // 
             LMEmail.AutoSize = true;
-            LMEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMEmail.ForeColor = Color.White;
             LMEmail.Location = new Point(503, 109);
             LMEmail.Name = "LMEmail";
-            LMEmail.Size = new Size(47, 20);
+            LMEmail.Size = new Size(46, 20);
             LMEmail.TabIndex = 18;
             LMEmail.Text = "Email";
             // 
@@ -188,22 +192,22 @@
             // LMDni
             // 
             LMDni.AutoSize = true;
-            LMDni.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMDni.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMDni.ForeColor = Color.White;
             LMDni.Location = new Point(334, 108);
             LMDni.Name = "LMDni";
-            LMDni.Size = new Size(37, 20);
+            LMDni.Size = new Size(35, 20);
             LMDni.TabIndex = 16;
             LMDni.Text = "DNI";
             // 
             // LMApellido
             // 
             LMApellido.AutoSize = true;
-            LMApellido.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMApellido.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMApellido.ForeColor = Color.White;
             LMApellido.Location = new Point(123, 108);
             LMApellido.Name = "LMApellido";
-            LMApellido.Size = new Size(67, 20);
+            LMApellido.Size = new Size(66, 20);
             LMApellido.TabIndex = 15;
             LMApellido.Text = "Apellido";
             // 
@@ -222,12 +226,38 @@
             // 
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(LMeses);
+            panel2.Controls.Add(LValorVentas);
+            panel2.Controls.Add(LTotalVentas);
             panel2.Controls.Add(LCantVentas);
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(12, 187);
+            panel2.Location = new Point(12, 197);
             panel2.Name = "panel2";
-            panel2.Size = new Size(776, 296);
+            panel2.Size = new Size(776, 309);
             panel2.TabIndex = 30;
+            // 
+            // LValorVentas
+            // 
+            LValorVentas.AutoSize = true;
+            LValorVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LValorVentas.ForeColor = Color.White;
+            LValorVentas.Location = new Point(645, 122);
+            LValorVentas.Name = "LValorVentas";
+            LValorVentas.Size = new Size(27, 20);
+            LValorVentas.TabIndex = 31;
+            LValorVentas.Text = "45";
+            // 
+            // LTotalVentas
+            // 
+            LTotalVentas.AutoSize = true;
+            LTotalVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTotalVentas.ForeColor = Color.White;
+            LTotalVentas.Location = new Point(562, 90);
+            LTotalVentas.Name = "LTotalVentas";
+            LTotalVentas.Size = new Size(186, 20);
+            LTotalVentas.TabIndex = 30;
+            LTotalVentas.Text = "Total de ventas en el año:";
             // 
             // LCantVentas
             // 
@@ -252,11 +282,31 @@
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
+            // LMeses
+            // 
+            LMeses.AutoSize = true;
+            LMeses.ForeColor = Color.White;
+            LMeses.Location = new Point(334, 287);
+            LMeses.Name = "LMeses";
+            LMeses.Size = new Size(118, 15);
+            LMeses.TabIndex = 32;
+            LMeses.Text = "Meses del Año (1-12)";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(139, 143);
+            label3.Name = "label3";
+            label3.Size = new Size(98, 15);
+            label3.TabIndex = 33;
+            label3.Text = "Ventas Realizadas";
+            // 
             // FormInformeVendedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 495);
+            ClientSize = new Size(800, 515);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "FormInformeVendedor";
@@ -289,5 +339,9 @@
         private Panel panel2;
         private PictureBox pictureBox1;
         private Label LCantVentas;
+        private Label LValorVentas;
+        private Label LTotalVentas;
+        private Label LMeses;
+        private Label label3;
     }
 }

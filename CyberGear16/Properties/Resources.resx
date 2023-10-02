@@ -244,4 +244,19 @@
   <data name="b8a44c879c7175251179fd04e3213b50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\b8a44c879c7175251179fd04e3213b50.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Gamer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gamer.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gráfico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gráfico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gráfico2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gráfico2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="JoystickMorado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JoystickMorado.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tabla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tabla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

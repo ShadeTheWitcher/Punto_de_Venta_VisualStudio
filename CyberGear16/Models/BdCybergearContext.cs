@@ -15,6 +15,7 @@ public partial class BdCybergearContext : DbContext
     {
     }
 
+    //Representación de Tablas de Base como Clase
     public virtual DbSet<Cliente> Clientes { get; set; }
 
     public virtual DbSet<Domicilio> Domicilios { get; set; }
@@ -39,6 +40,7 @@ public partial class BdCybergearContext : DbContext
             .UseCollation("utf8mb4_general_ci")
             .HasCharSet("utf8mb4");
 
+        //Restricciones
         modelBuilder.Entity<Cliente>(entity =>
         {
             entity.HasKey(e => e.IdCliente).HasName("PRIMARY");

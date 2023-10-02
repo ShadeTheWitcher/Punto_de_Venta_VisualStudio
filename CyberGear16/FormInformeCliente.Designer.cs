@@ -44,6 +44,10 @@
             panel1 = new Panel();
             LCliente = new Label();
             panel2 = new Panel();
+            LMeses = new Label();
+            label3 = new Label();
+            LValorVentas = new Label();
+            LTotalCompras = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -85,11 +89,11 @@
             // LMNombre
             // 
             LMNombre.AutoSize = true;
-            LMNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMNombre.ForeColor = Color.White;
             LMNombre.Location = new Point(123, 56);
             LMNombre.Name = "LMNombre";
-            LMNombre.Size = new Size(67, 20);
+            LMNombre.Size = new Size(64, 20);
             LMNombre.TabIndex = 22;
             LMNombre.Text = "Nombre";
             LMNombre.Click += LMNombre_Click;
@@ -97,11 +101,11 @@
             // LMTelefono
             // 
             LMTelefono.AutoSize = true;
-            LMTelefono.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMTelefono.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMTelefono.ForeColor = Color.White;
             LMTelefono.Location = new Point(580, 56);
             LMTelefono.Name = "LMTelefono";
-            LMTelefono.Size = new Size(70, 20);
+            LMTelefono.Size = new Size(67, 20);
             LMTelefono.TabIndex = 20;
             LMTelefono.Text = "Telefono";
             LMTelefono.Click += LMTelefono_Click;
@@ -121,11 +125,11 @@
             // LMEmail
             // 
             LMEmail.AutoSize = true;
-            LMEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMEmail.ForeColor = Color.White;
             LMEmail.Location = new Point(354, 108);
             LMEmail.Name = "LMEmail";
-            LMEmail.Size = new Size(47, 20);
+            LMEmail.Size = new Size(46, 20);
             LMEmail.TabIndex = 18;
             LMEmail.Text = "Email";
             LMEmail.Click += LMEmail_Click;
@@ -145,11 +149,11 @@
             // LMDni
             // 
             LMDni.AutoSize = true;
-            LMDni.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMDni.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMDni.ForeColor = Color.White;
             LMDni.Location = new Point(354, 56);
             LMDni.Name = "LMDni";
-            LMDni.Size = new Size(37, 20);
+            LMDni.Size = new Size(35, 20);
             LMDni.TabIndex = 16;
             LMDni.Text = "DNI";
             LMDni.Click += LMDni_Click;
@@ -157,11 +161,11 @@
             // LMApellido
             // 
             LMApellido.AutoSize = true;
-            LMApellido.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LMApellido.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMApellido.ForeColor = Color.White;
             LMApellido.Location = new Point(123, 108);
             LMApellido.Name = "LMApellido";
-            LMApellido.Size = new Size(67, 20);
+            LMApellido.Size = new Size(66, 20);
             LMApellido.TabIndex = 15;
             LMApellido.Text = "Apellido";
             LMApellido.Click += LMApellido_Click;
@@ -184,7 +188,7 @@
             LCantProduct.BackColor = Color.FromArgb(26, 32, 40);
             LCantProduct.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             LCantProduct.ForeColor = Color.White;
-            LCantProduct.Location = new Point(191, 194);
+            LCantProduct.Location = new Point(137, 0);
             LCantProduct.Name = "LCantProduct";
             LCantProduct.Size = new Size(446, 25);
             LCantProduct.TabIndex = 27;
@@ -205,7 +209,7 @@
             panel1.Controls.Add(LMDni);
             panel1.Controls.Add(LMApellido);
             panel1.Controls.Add(LNombre);
-            panel1.Location = new Point(30, 9);
+            panel1.Location = new Point(30, 27);
             panel1.Name = "panel1";
             panel1.Size = new Size(744, 158);
             panel1.TabIndex = 28;
@@ -227,20 +231,66 @@
             // 
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(LValorVentas);
+            panel2.Controls.Add(LTotalCompras);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(LMeses);
+            panel2.Controls.Add(LCantProduct);
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(30, 187);
+            panel2.Location = new Point(30, 205);
             panel2.Name = "panel2";
-            panel2.Size = new Size(744, 296);
+            panel2.Size = new Size(744, 314);
             panel2.TabIndex = 29;
+            // 
+            // LMeses
+            // 
+            LMeses.AutoSize = true;
+            LMeses.ForeColor = Color.White;
+            LMeses.Location = new Point(303, 287);
+            LMeses.Name = "LMeses";
+            LMeses.Size = new Size(118, 15);
+            LMeses.TabIndex = 33;
+            LMeses.Text = "Meses del Año (1-12)";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(112, 150);
+            label3.Name = "label3";
+            label3.Size = new Size(98, 15);
+            label3.TabIndex = 34;
+            label3.Text = "Ventas Realizadas";
+            // 
+            // LValorVentas
+            // 
+            LValorVentas.AutoSize = true;
+            LValorVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LValorVentas.ForeColor = Color.White;
+            LValorVentas.Location = new Point(603, 136);
+            LValorVentas.Name = "LValorVentas";
+            LValorVentas.Size = new Size(27, 20);
+            LValorVentas.TabIndex = 36;
+            LValorVentas.Text = "10";
+            // 
+            // LTotalCompras
+            // 
+            LTotalCompras.AutoSize = true;
+            LTotalCompras.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTotalCompras.ForeColor = Color.White;
+            LTotalCompras.Location = new Point(520, 104);
+            LTotalCompras.Name = "LTotalCompras";
+            LTotalCompras.Size = new Size(200, 20);
+            LTotalCompras.TabIndex = 35;
+            LTotalCompras.Text = "Total de compras en el año:";
             // 
             // FormInformeCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(800, 495);
+            ClientSize = new Size(800, 531);
             Controls.Add(panel1);
-            Controls.Add(LCantProduct);
             Controls.Add(panel2);
             Name = "FormInformeCliente";
             StartPosition = FormStartPosition.CenterScreen;
@@ -249,8 +299,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -270,5 +320,9 @@
         private Panel panel1;
         private Label LCliente;
         private Panel panel2;
+        private Label LMeses;
+        private Label label3;
+        private Label LValorVentas;
+        private Label LTotalCompras;
     }
 }

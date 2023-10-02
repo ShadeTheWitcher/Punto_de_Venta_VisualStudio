@@ -17,7 +17,6 @@ namespace CyberGear16
         int dniUsuario;
 
 
-
         private readonly BdCybergearContext _context;
 
         public GUI_Principal(int perfilIdUsuario, string nombreUsuario, string usuarioArgs, int dniUser, BdCybergearContext context)
@@ -117,8 +116,12 @@ namespace CyberGear16
 
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+
+        //Arrastrar pestaña
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+
+        //Posición
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void CabeceraTitulo_MouseDown(object sender, MouseEventArgs e) //permite mover la ventana

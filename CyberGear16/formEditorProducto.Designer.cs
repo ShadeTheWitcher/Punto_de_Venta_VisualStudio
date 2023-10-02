@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formEditorProducto));
             label1 = new Label();
             tbNombre = new TextBox();
             tbPrecio = new TextBox();
@@ -47,8 +46,8 @@
             button2 = new Button();
             button3 = new Button();
             PStockMin = new Panel();
-            label6 = new Label();
             label8 = new Label();
+            label6 = new Label();
             PStockMin.SuspendLayout();
             SuspendLayout();
             // 
@@ -232,7 +231,7 @@
             // PStockMin
             // 
             PStockMin.BackColor = Color.Black;
-            PStockMin.BackgroundImage = (Image)resources.GetObject("PStockMin.BackgroundImage");
+            PStockMin.BackgroundImage = Properties.Resources.JoystickMorado;
             PStockMin.Controls.Add(label8);
             PStockMin.Controls.Add(label6);
             PStockMin.Controls.Add(LStockMin);
@@ -241,18 +240,6 @@
             PStockMin.Size = new Size(575, 586);
             PStockMin.TabIndex = 61;
             PStockMin.Paint += PStockMin_Paint;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("MV Boli", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = Color.Transparent;
-            label6.Location = new Point(42, 232);
-            label6.Name = "label6";
-            label6.Size = new Size(110, 20);
-            label6.TabIndex = 62;
-            label6.Text = "Stock Mínimo:";
             // 
             // label8
             // 
@@ -265,6 +252,18 @@
             label8.Size = new Size(87, 20);
             label8.TabIndex = 63;
             label8.Text = "Descripción:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("MV Boli", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.Transparent;
+            label6.Location = new Point(42, 232);
+            label6.Name = "label6";
+            label6.Size = new Size(110, 20);
+            label6.TabIndex = 62;
+            label6.Text = "Stock Mínimo:";
             // 
             // formEditorProducto
             // 

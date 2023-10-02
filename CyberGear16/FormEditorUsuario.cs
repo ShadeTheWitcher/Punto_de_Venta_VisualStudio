@@ -17,6 +17,7 @@ namespace CyberGear16
     {
         private BdCybergearContext context;
         private int id_usuario;
+        private Usuario usuarioModificar;
 
         public FormEditorUsuario(int id_usuarioElegido, BdCybergearContext context)
         {
@@ -27,10 +28,10 @@ namespace CyberGear16
             CBPerfil.Items.Add("Vendedor");
 
 
-            this.id_usuario = id_usuarioElegido;
             this.context = context;
 
             recuperarDatosUsuario();
+            usuarioModificar = buscarUsuario(id_usuario);
 
         }
 
@@ -52,7 +53,7 @@ namespace CyberGear16
                     usuario.Baja = "NO";
 
                     context.SaveChanges();
-                    MessageBox.Show("Se ha dado de alta al usuario correctamente!");
+                    MessageBox.Show("Se ha dado de alta al usuario correctamente!", "Alta Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
             }
@@ -164,6 +165,24 @@ namespace CyberGear16
             Esta función se utiliza para seleccionar la propiedad que deseas comparar con el valor ingresado.*/
         }
 
+        private Usuario buscarUsuario(int idUsuario)
+        {
+            using (var context = new BdCybergearContext())
+            {
+                Usuario usuario = context.Usuarios.FirstOrDefault(p => p.Id == idUsuario);
+
+                if (usuario != null)
+                {
+                    return usuario;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            
+        }
 
         private bool validarTelefono()
         {
@@ -171,15 +190,23 @@ namespace CyberGear16
             {
                 if (TTelefono.Text.Length >= 10 && TTelefono.Text.Length < 15)
                 {
-                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Tel.ToString(), TTelefono.Text))
+                    if (usuarioModificar.Tel != long.Parse(TTelefono.Text))
                     {
-                        return true;
+                        if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Tel.ToString(), TTelefono.Text))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            // Muestra un mensaje de error o realiza alguna acción adecuada
+                            MessageBox.Show("El Telefono ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+
                     }
                     else
                     {
-                        // Muestra un mensaje de error o realiza alguna acción adecuada
-                        MessageBox.Show("El Telefono ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                        return true;
                     }
                 }
                 else
@@ -199,15 +226,23 @@ namespace CyberGear16
             {
                 using (var context = new BdCybergearContext())
                 {
-                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Dni.ToString(), TDni.Text))
+                    if (usuarioModificar.Dni != int.Parse(TDni.Text))
                     {
-                        return true;
+                        if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Dni.ToString(), TDni.Text))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            // Muestra un mensaje de error o realiza alguna acción adecuada
+                            MessageBox.Show("El DNI ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+
                     }
                     else
                     {
-                        // Muestra un mensaje de error o realiza alguna acción adecuada
-                        MessageBox.Show("El DNI ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                        return true;
                     }
                 }
             }
@@ -262,15 +297,23 @@ namespace CyberGear16
             {
                 using (var context = new BdCybergearContext())
                 {
-                    if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Usuario1, TUsuario.Text))
+                    if (usuarioModificar.Usuario1 != TUsuario.Text)
                     {
-                        return true;
+                        if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Usuario1, TUsuario.Text))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            // Muestra un mensaje de error o realiza alguna acción adecuada
+                            MessageBox.Show("El Usuario ingresado ya se encuentra registrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+
                     }
                     else
                     {
-                        // Muestra un mensaje de error o realiza alguna acción adecuada
-                        MessageBox.Show("El Usuario ingresado ya se encuentra registrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return false;
+                        return true;
                     }
                 }
             }
@@ -330,15 +373,23 @@ namespace CyberGear16
                 {
                     using (var context = new BdCybergearContext())
                     {
-                        if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Email, TEmail.Text))
+                        if (usuarioModificar.Email != TEmail.Text)
                         {
-                            return true;
+                            if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Email, TEmail.Text))
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                // Muestra un mensaje de error o realiza alguna acción adecuada
+                                MessageBox.Show("El Email ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return false;
+                            }
+
                         }
                         else
                         {
-                            // Muestra un mensaje de error o realiza alguna acción adecuada
-                            MessageBox.Show("El Email ya está registrado para otro usuario. Ingresa un valor distinto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return false;
+                            return true;
                         }
                     }
                 }
@@ -394,7 +445,7 @@ namespace CyberGear16
                     using (var context = new BdCybergearContext())
                     {
                         // Obtener el objeto existente que deseas actualizar
-                        var usuario = context.Usuarios.Find(this.id_usuario);
+                        var usuario = context.Usuarios.Find(id_usuario);
 
                         // Actualizar el objeto con los nuevos datos
                         usuario.Nombre = TNombre.Text;
@@ -409,7 +460,7 @@ namespace CyberGear16
                         direccionUsuario.Direccion = TDireccion.Text;
                         direccionUsuario.CodPostal = int.Parse(TCodPostal.Text);
                         usuario.Fecha = new DateOnly(DTPicker.Value.Year, DTPicker.Value.Month, DTPicker.Value.Day);
-                        usuario.Tel = int.Parse(TTelefono.Text);
+                        usuario.Tel = long.Parse(TTelefono.Text);
 
                         if (RBHombre.Checked)
                         {
@@ -424,13 +475,13 @@ namespace CyberGear16
 
                         // Guardar los cambios en la base de datos
                         context.SaveChanges();
-                        MessageBox.Show("Usuario Actualizado Correctamente");
+                        MessageBox.Show("¡Usuario Actualizado Correctamente!", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -455,7 +506,7 @@ namespace CyberGear16
                     usuario.Baja = "SI";
 
                     context.SaveChanges();
-                    MessageBox.Show("Se ha dado de baja el usuario exitosamente!");
+                    MessageBox.Show("Se ha dado de baja el usuario exitosamente!", "Baja Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
