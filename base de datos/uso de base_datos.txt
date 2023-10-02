@@ -1,0 +1,7 @@
+nosotros usamos xampp, el codigo sql se puede importar en xampp y incluye todos los registros de usuarios, productos,etc.
+
+Administrador: admin1  contraseña: admin
+
+Gerente: gerente1 gerente1
+
+Vendedor: vendedor1 vendedor1
