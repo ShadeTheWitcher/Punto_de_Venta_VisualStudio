@@ -113,6 +113,16 @@ namespace CyberGear16.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap b8a44c879c7175251179fd04e3213b50 {
+            get {
+                object obj = ResourceManager.GetObject("b8a44c879c7175251179fd04e3213b50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap borrar {
             get {
                 object obj = ResourceManager.GetObject("borrar", resourceCulture);
@@ -216,6 +226,36 @@ namespace CyberGear16.Properties {
         internal static System.Drawing.Bitmap fondoLogin {
             get {
                 object obj = ResourceManager.GetObject("fondoLogin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gamer {
+            get {
+                object obj = ResourceManager.GetObject("Gamer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gráfico {
+            get {
+                object obj = ResourceManager.GetObject("Gráfico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gráfico2 {
+            get {
+                object obj = ResourceManager.GetObject("Gráfico2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,6 +403,16 @@ namespace CyberGear16.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap JoystickMorado {
+            get {
+                object obj = ResourceManager.GetObject("JoystickMorado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lanzar_nuevo_producto {
             get {
                 object obj = ResourceManager.GetObject("lanzar-nuevo-producto", resourceCulture);
@@ -436,6 +486,16 @@ namespace CyberGear16.Properties {
         internal static System.Drawing.Bitmap salir {
             get {
                 object obj = ResourceManager.GetObject("salir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tabla {
+            get {
+                object obj = ResourceManager.GetObject("Tabla", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

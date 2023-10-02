@@ -14,18 +14,19 @@ namespace CyberGear16
         int perfil_idUsuario;
         string nombreUser;
         string usuario;
-
+        int dniUsuario;
 
 
         private readonly BdCybergearContext _context;
 
-        public GUI_Principal(int perfilIdUsuario, string nombreUsuario,string usuarioArgs, BdCybergearContext context)
+        public GUI_Principal(int perfilIdUsuario, string nombreUsuario, string usuarioArgs, int dniUser, BdCybergearContext context)
         {
             InitializeComponent();
             AbrirFormHija(new formInicio());
             perfil_idUsuario = perfilIdUsuario;
             nombreUser = nombreUsuario;
             usuario = usuarioArgs;
+            dniUsuario = dniUser;
             _context = context; // Guarda el contexto de base de datos
             establecerLimitesTipoUser();
         }
@@ -125,8 +126,12 @@ namespace CyberGear16
 
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+
+        //Arrastrar pestaña
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+
+        //Posición
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
         private void CabeceraTitulo_MouseDown(object sender, MouseEventArgs e) //permite mover la ventana
@@ -201,7 +206,7 @@ namespace CyberGear16
 
         private void btnBackUp_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormBackUp(_context , usuario));
+            AbrirFormHija(new FormBackUp(_context, usuario));
         }
 
         private void btnVentas_Click(object sender, EventArgs e)
@@ -216,7 +221,20 @@ namespace CyberGear16
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormReporte(/*_context*/));
+            if (perfil_idUsuario == 1)
+            {
+                AbrirFormHija(new FormReporte(/*_context*/));
+                
+            }
+            else if (perfil_idUsuario == 2)
+            {
+                AbrirFormHija(new FormReporteSuper());
+            }
+            else
+            {
+                AbrirFormHija(new FormReporteVendedor(perfil_idUsuario, dniUsuario));
+            }
+            
         }
 
         private void panelContenedor_Paint(object sender, PaintEventArgs e)
@@ -242,6 +260,11 @@ namespace CyberGear16
         private void timer1_Tick(object sender, EventArgs e)
         {
             label1.Text = DateTime.Now.ToString("hh:mm:ss");
+        }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

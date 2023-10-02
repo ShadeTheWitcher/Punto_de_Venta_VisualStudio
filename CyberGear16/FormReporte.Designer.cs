@@ -28,127 +28,192 @@
         /// </summary>
         private void InitializeComponent()
         {
-            LUsuarios = new Label();
-            PReporte = new Panel();
-            BReporte = new Button();
-            LHasta = new Label();
-            label1 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            DTPDesde = new DateTimePicker();
-            panel1 = new Panel();
-            PReporte.SuspendLayout();
-            panel1.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReporte));
+            panel2 = new Panel();
+            BRClientes = new Button();
+            LRClientes = new Label();
+            panel3 = new Panel();
+            BRVendedores = new Button();
+            LRVendedores = new Label();
+            DGVReportes = new DataGridView();
+            LRClienteVendedor = new Label();
+            panel4 = new Panel();
+            BBorrar = new Button();
+            BBuscar = new Button();
+            TBuscar = new TextBox();
+            panel2.SuspendLayout();
+            panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVReportes).BeginInit();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
-            // LUsuarios
+            // panel2
             // 
-            LUsuarios.AutoSize = true;
-            LUsuarios.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            LUsuarios.ForeColor = Color.White;
-            LUsuarios.Location = new Point(42, 39);
-            LUsuarios.Name = "LUsuarios";
-            LUsuarios.Size = new Size(106, 30);
-            LUsuarios.TabIndex = 1;
-            LUsuarios.Text = "Reportes:";
+            panel2.Anchor = AnchorStyles.None;
+            panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(BRClientes);
+            panel2.Controls.Add(LRClientes);
+            panel2.Location = new Point(15, 21);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1034, 181);
+            panel2.TabIndex = 5;
             // 
-            // PReporte
+            // BRClientes
             // 
-            PReporte.Anchor = AnchorStyles.None;
-            PReporte.BackColor = Color.SteelBlue;
-            PReporte.Controls.Add(BReporte);
-            PReporte.Controls.Add(LHasta);
-            PReporte.Controls.Add(label1);
-            PReporte.Controls.Add(dateTimePicker1);
-            PReporte.Controls.Add(DTPDesde);
-            PReporte.Location = new Point(133, 158);
-            PReporte.Name = "PReporte";
-            PReporte.Size = new Size(801, 415);
-            PReporte.TabIndex = 2;
+            BRClientes.Location = new Point(425, 82);
+            BRClientes.Name = "BRClientes";
+            BRClientes.Size = new Size(235, 44);
+            BRClientes.TabIndex = 4;
+            BRClientes.Text = "Generar Reporte";
+            BRClientes.UseVisualStyleBackColor = true;
+            BRClientes.Click += BRClientes_Click;
             // 
-            // BReporte
+            // LRClientes
             // 
-            BReporte.Location = new Point(286, 249);
-            BReporte.Name = "BReporte";
-            BReporte.Size = new Size(235, 44);
-            BReporte.TabIndex = 4;
-            BReporte.Text = "Generar Reporte";
-            BReporte.UseVisualStyleBackColor = true;
+            LRClientes.AutoSize = true;
+            LRClientes.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LRClientes.ForeColor = Color.White;
+            LRClientes.Location = new Point(453, 39);
+            LRClientes.Name = "LRClientes";
+            LRClientes.Size = new Size(190, 25);
+            LRClientes.TabIndex = 4;
+            LRClientes.Text = "Reporte de Clientes:";
             // 
-            // LHasta
+            // panel3
             // 
-            LHasta.AutoSize = true;
-            LHasta.Font = new Font("MV Boli", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LHasta.ForeColor = Color.White;
-            LHasta.Location = new Point(557, 92);
-            LHasta.Name = "LHasta";
-            LHasta.Size = new Size(75, 25);
-            LHasta.TabIndex = 3;
-            LHasta.Text = "Hasta:";
+            panel3.Anchor = AnchorStyles.None;
+            panel3.BackColor = Color.FromArgb(26, 32, 40);
+            panel3.Controls.Add(BRVendedores);
+            panel3.Controls.Add(LRVendedores);
+            panel3.Location = new Point(15, 219);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1034, 190);
+            panel3.TabIndex = 6;
+            panel3.Paint += panel3_Paint;
             // 
-            // label1
+            // BRVendedores
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("MV Boli", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(165, 92);
-            label1.Name = "label1";
-            label1.Size = new Size(74, 25);
-            label1.TabIndex = 2;
-            label1.Text = "Desde:";
+            BRVendedores.Location = new Point(425, 93);
+            BRVendedores.Name = "BRVendedores";
+            BRVendedores.Size = new Size(235, 44);
+            BRVendedores.TabIndex = 4;
+            BRVendedores.Text = "Generar Reporte";
+            BRVendedores.UseVisualStyleBackColor = true;
+            BRVendedores.Click += BRVendedores_Click;
             // 
-            // dateTimePicker1
+            // LRVendedores
             // 
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(491, 159);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(202, 23);
-            dateTimePicker1.TabIndex = 1;
+            LRVendedores.AutoSize = true;
+            LRVendedores.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LRVendedores.ForeColor = Color.White;
+            LRVendedores.Location = new Point(425, 53);
+            LRVendedores.Name = "LRVendedores";
+            LRVendedores.Size = new Size(227, 25);
+            LRVendedores.TabIndex = 4;
+            LRVendedores.Text = "Reporte de Vendedores:";
             // 
-            // DTPDesde
+            // DGVReportes
             // 
-            DTPDesde.Format = DateTimePickerFormat.Short;
-            DTPDesde.Location = new Point(107, 159);
-            DTPDesde.Name = "DTPDesde";
-            DTPDesde.Size = new Size(202, 23);
-            DTPDesde.TabIndex = 0;
+            DGVReportes.Anchor = AnchorStyles.None;
+            DGVReportes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVReportes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVReportes.Location = new Point(18, 51);
+            DGVReportes.Name = "DGVReportes";
+            DGVReportes.RowTemplate.Height = 25;
+            DGVReportes.Size = new Size(997, 155);
+            DGVReportes.TabIndex = 7;
+            DGVReportes.CellContentClick += DGVReportes_CellContentClick;
             // 
-            // panel1
+            // LRClienteVendedor
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(26, 32, 40);
-            panel1.Controls.Add(PReporte);
-            panel1.Controls.Add(LUsuarios);
-            panel1.Location = new Point(2, -3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1060, 794);
-            panel1.TabIndex = 3;
+            LRClienteVendedor.AutoSize = true;
+            LRClienteVendedor.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LRClienteVendedor.ForeColor = Color.White;
+            LRClienteVendedor.Location = new Point(18, 10);
+            LRClienteVendedor.Name = "LRClienteVendedor";
+            LRClienteVendedor.Size = new Size(86, 25);
+            LRClienteVendedor.TabIndex = 5;
+            LRClienteVendedor.Text = "Clientes:";
+            LRClienteVendedor.Click += LRClienteVendedor_Click;
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.None;
+            panel4.BackColor = Color.FromArgb(26, 32, 40);
+            panel4.Controls.Add(BBorrar);
+            panel4.Controls.Add(BBuscar);
+            panel4.Controls.Add(TBuscar);
+            panel4.Controls.Add(DGVReportes);
+            panel4.Controls.Add(LRClienteVendedor);
+            panel4.Location = new Point(15, 428);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1034, 238);
+            panel4.TabIndex = 8;
+            // 
+            // BBorrar
+            // 
+            BBorrar.Anchor = AnchorStyles.None;
+            BBorrar.Image = (Image)resources.GetObject("BBorrar.Image");
+            BBorrar.Location = new Point(977, 9);
+            BBorrar.Name = "BBorrar";
+            BBorrar.Size = new Size(38, 32);
+            BBorrar.TabIndex = 18;
+            BBorrar.UseVisualStyleBackColor = true;
+            // 
+            // BBuscar
+            // 
+            BBuscar.Anchor = AnchorStyles.None;
+            BBuscar.Image = Properties.Resources.lupa;
+            BBuscar.Location = new Point(933, 9);
+            BBuscar.Name = "BBuscar";
+            BBuscar.Size = new Size(38, 32);
+            BBuscar.TabIndex = 17;
+            BBuscar.UseVisualStyleBackColor = true;
+            // 
+            // TBuscar
+            // 
+            TBuscar.Anchor = AnchorStyles.None;
+            TBuscar.Location = new Point(770, 15);
+            TBuscar.Name = "TBuscar";
+            TBuscar.Size = new Size(157, 23);
+            TBuscar.TabIndex = 16;
+            TBuscar.Text = "Buscar";
             // 
             // FormReporte
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1061, 788);
-            Controls.Add(panel1);
+            ClientSize = new Size(1061, 685);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel4);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormReporte";
             Text = "Form1";
-            PReporte.ResumeLayout(false);
-            PReporte.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            Load += FormReporte_Load;
+            panel2.ResumeLayout(false);
+            panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVReportes).EndInit();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Label LUsuarios;
-        private Panel PReporte;
-        private Label LHasta;
-        private Label label1;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker DTPDesde;
-        private Button BReporte;
-        private Panel panel1;
+        private Panel panel2;
+        private Button BRClientes;
+        private Label LRClientes;
+        private Panel panel3;
+        private Button BRVendedores;
+        private Label LRVendedores;
+        private DataGridView DGVReportes;
+        private Label LRClienteVendedor;
+        private Panel panel4;
+        private Button BBorrar;
+        private Button BBuscar;
+        private TextBox TBuscar;
     }
 }

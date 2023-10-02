@@ -207,3 +207,10 @@ E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integra
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormReporte.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.SubFormBackUp.resources
 E:\bibliotecas\Documents\Programacion Projects\App escritorio vs\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.PasswordInputDialog.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.PasswordInputDialog.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.SubFormBackUp.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormInformeVendedor.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormInformeCliente.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormReporteVendedor.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormReporteSuper.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.FormMasVendidos.resources

@@ -31,7 +31,7 @@ namespace CyberGear16
 
             TNombre.KeyPress += TextBox_KeyPress;
             TApellido.KeyPress += TextBox_KeyPress;
-            TDireccion.KeyPress += TextBox_KeyPress;
+            TDireccion.KeyPress += TextBox_KeyPressDireccion;
             TDni.KeyPress += TextBoxNum_KeyPress;
             TCodPostal.KeyPress += TextBoxNum_KeyPress;
             TTelefono.KeyPress += TextBoxNum_KeyPress;
@@ -45,8 +45,16 @@ namespace CyberGear16
                 // Si no es una letra ni una tecla de control, se cancela la entrada
                 e.Handled = true;
             }
+        }
 
-
+        private void TextBox_KeyPressDireccion(object sender, KeyPressEventArgs e)
+        {
+            // Verificar si la tecla presionada es una letra (A-Z o a-z) o una tecla de control (como Backspace)
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                // Si no es una letra, una tecla de control ni un espacio en blanco, se cancela la entrada
+                e.Handled = true;
+            }
         }
 
         private void TextBoxNum_KeyPress(object sender, KeyPressEventArgs e)
@@ -163,7 +171,7 @@ namespace CyberGear16
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al agregar el usuario: " + ex.Message);
+                    MessageBox.Show("Error al agregar el usuario: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
@@ -189,33 +197,18 @@ namespace CyberGear16
                 ((!RBHombre.Checked) && (!RBMujer.Checked)) ||
                 CBPerfil.SelectedIndex == -1)
             {
-                MessageBox.Show("Campos incompletos! Por favor rellénelos y vuelva a intentar.");
+                MessageBox.Show("Campos incompletos! Por favor rellénelos y vuelva a intentar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             if (validarTelefono() && validarDni() && validarNom() && validarApe() && validarUser()
-                && validarDirec() && validarCodPostal() && validarContraseña() && validacionCorreo())
+                && validarDirec() && validarNumDirec() && validarContraseña() && validacionCorreo() && validacionFecha())
             {
                 return true;
             }
 
             return false;
         }
-
-        //private bool detectarNoRepetidos(string strComprobar)
-        //{
-        //    using (var dbContext = new TuDbContext())
-        //    {
-        //        string textoIngresado = textBox1.Text; // Obtén el texto del TextBox
-
-
-        //    }
-        //    //using (var context = new BdCybergearContext())
-        //    //{
-        //    //    context.Usuarios.Where(u =>  u.== strComprobar);
-        //    //}
-        //    //    var usuariosNoDeBaja = Where(u => u.Baja == "NO")
-        //}
 
 
         public class Validador
@@ -364,7 +357,7 @@ namespace CyberGear16
             }
         }
 
-        private bool validarCodPostal()
+        private bool validarNumDirec()
         {
             if (TCodPostal.Text.Length >= 2 && TCodPostal.Text.Length <= 5)
             {
@@ -390,7 +383,7 @@ namespace CyberGear16
             }
         }
 
-        public bool validacionCorreo()
+        private bool validacionCorreo()
         {
             try
             {
@@ -425,11 +418,43 @@ namespace CyberGear16
                 return false;
             }
         }
+
+        private bool validacionFecha()
+        {
+            // Obtén la fecha seleccionada en el DateTimePicker
+            DateTime fechaDTPicker = DTPicker.Value;
+
+            // Obtén la fecha actual
+            DateTime fechaActual = DateTime.Now;
+
+            // Calcula la diferencia en años entre la fecha seleccionada y la fecha actual
+            int diferenciaAños = fechaActual.Year - fechaDTPicker.Year;
+
+            // Verifica si la diferencia es mayor que 100 años
+            if (diferenciaAños < 100)
+            {
+                if (diferenciaAños >= 18)
+                {
+                    return true;
+                }
+                else
+                {
+                    DTPicker.Value = fechaActual;
+                    MessageBox.Show("El usuario a registrar debe de ser mayor de edad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            else
+            {
+                // Muestra un mensaje de error o realiza alguna acción adecuada
+                MessageBox.Show("La fecha no puede ser mayor a 100 años a partir de la fecha actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Restaura la fecha seleccionada a la fecha actual
+                DTPicker.Value = fechaActual;
+                return false;
+            }
+        }
+
         //---------------------Fin de Sección Validaciones----------------------
-
-
-
-
 
         private void LimpiarCampos()
         {
@@ -442,6 +467,7 @@ namespace CyberGear16
             TDireccion.Clear();
             TCodPostal.Clear();
             TDni.Clear();
+            DTPicker.Value = DateTime.Now;
             CBPerfil.SelectedIndex = -1;
         }
 
@@ -452,10 +478,10 @@ namespace CyberGear16
             {
                 // Obtén el producto seleccionado
                 DataGridViewRow row = DGVUsuarios.Rows[e.RowIndex];
-                int productId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
+                int usuarioId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
 
                 // Abre el formulario de detalles/editar con el Usuario seleccionado
-                FormEditorUsuario editorUsuario = new FormEditorUsuario(productId, _context);
+                FormEditorUsuario editorUsuario = new FormEditorUsuario(usuarioId, _context);
                 editorUsuario.ShowDialog();
                 CargarDatosEnDGVActivos();
             }
@@ -594,7 +620,7 @@ namespace CyberGear16
             using (var context = new BdCybergearContext())
             {
 
-                var resultados = context.Usuarios.Where(e => e.Nombre.Contains(buscar)).ToList();
+                var resultados = context.Usuarios.Where(e => e.Nombre.Contains(buscar) || e.Apellido.Contains(buscar)).ToList();
                 if (resultados.Count == 0)
                 {
                     MessageBox.Show("No se han encontrado usuarios que coincidan con la busqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -661,6 +687,16 @@ namespace CyberGear16
                 // Ocultar la contraseña
                 TContraseña.PasswordChar = '*'; // Carácter de contraseña
             }
+        }
+
+        private void TCodPostal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LCodPostal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

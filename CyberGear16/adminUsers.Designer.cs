@@ -123,10 +123,11 @@
             // 
             // TCodPostal
             // 
-            TCodPostal.Location = new Point(490, 124);
+            TCodPostal.Location = new Point(490, 129);
             TCodPostal.Name = "TCodPostal";
             TCodPostal.Size = new Size(170, 23);
             TCodPostal.TabIndex = 29;
+            TCodPostal.TextChanged += TCodPostal_TextChanged;
             // 
             // LCodPostal
             // 
@@ -134,14 +135,15 @@
             LCodPostal.ForeColor = Color.White;
             LCodPostal.Location = new Point(356, 127);
             LCodPostal.Name = "LCodPostal";
-            LCodPostal.Size = new Size(84, 15);
+            LCodPostal.Size = new Size(123, 15);
             LCodPostal.TabIndex = 28;
-            LCodPostal.Text = "Código Postal:";
+            LCodPostal.Text = "Número de Dirección:";
+            LCodPostal.Click += LCodPostal_Click;
             // 
             // DTPicker
             // 
             DTPicker.Format = DateTimePickerFormat.Short;
-            DTPicker.Location = new Point(490, 153);
+            DTPicker.Location = new Point(490, 158);
             DTPicker.Name = "DTPicker";
             DTPicker.Size = new Size(170, 23);
             DTPicker.TabIndex = 27;
@@ -151,7 +153,7 @@
             BCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             BCancelar.Image = Properties.Resources.borrar;
             BCancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            BCancelar.Location = new Point(731, 158);
+            BCancelar.Location = new Point(744, 155);
             BCancelar.Name = "BCancelar";
             BCancelar.Size = new Size(137, 70);
             BCancelar.TabIndex = 26;
@@ -166,7 +168,7 @@
             BGuardar.ForeColor = SystemColors.ControlText;
             BGuardar.Image = (Image)resources.GetObject("BGuardar.Image");
             BGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            BGuardar.Location = new Point(731, 70);
+            BGuardar.Location = new Point(744, 54);
             BGuardar.Name = "BGuardar";
             BGuardar.Size = new Size(137, 68);
             BGuardar.TabIndex = 25;
@@ -177,6 +179,7 @@
             // 
             // CBPerfil
             // 
+            CBPerfil.DropDownStyle = ComboBoxStyle.DropDownList;
             CBPerfil.FormattingEnabled = true;
             CBPerfil.Location = new Point(112, 216);
             CBPerfil.Name = "CBPerfil";
@@ -187,7 +190,7 @@
             // 
             RBMujer.AutoSize = true;
             RBMujer.ForeColor = Color.White;
-            RBMujer.Location = new Point(598, 212);
+            RBMujer.Location = new Point(598, 223);
             RBMujer.Name = "RBMujer";
             RBMujer.Size = new Size(56, 19);
             RBMujer.TabIndex = 23;
@@ -199,7 +202,7 @@
             // 
             RBHombre.AutoSize = true;
             RBHombre.ForeColor = Color.White;
-            RBHombre.Location = new Point(501, 212);
+            RBHombre.Location = new Point(501, 218);
             RBHombre.Name = "RBHombre";
             RBHombre.Size = new Size(69, 19);
             RBHombre.TabIndex = 22;
@@ -209,21 +212,21 @@
             // 
             // TTelefono
             // 
-            TTelefono.Location = new Point(490, 182);
+            TTelefono.Location = new Point(490, 187);
             TTelefono.Name = "TTelefono";
             TTelefono.Size = new Size(170, 23);
             TTelefono.TabIndex = 21;
             // 
             // TDireccion
             // 
-            TDireccion.Location = new Point(490, 94);
+            TDireccion.Location = new Point(490, 99);
             TDireccion.Name = "TDireccion";
             TDireccion.Size = new Size(170, 23);
             TDireccion.TabIndex = 19;
             // 
             // TDni
             // 
-            TDni.Location = new Point(490, 65);
+            TDni.Location = new Point(490, 70);
             TDni.Name = "TDni";
             TDni.Size = new Size(170, 23);
             TDni.TabIndex = 18;
@@ -270,7 +273,7 @@
             // 
             LSexo.AutoSize = true;
             LSexo.ForeColor = Color.White;
-            LSexo.Location = new Point(356, 213);
+            LSexo.Location = new Point(356, 219);
             LSexo.Name = "LSexo";
             LSexo.Size = new Size(35, 15);
             LSexo.TabIndex = 11;
