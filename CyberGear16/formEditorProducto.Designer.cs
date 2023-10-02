@@ -40,15 +40,14 @@
             label5 = new Label();
             label4 = new Label();
             label7 = new Label();
-            LStockMin = new Label();
             tbStockMin = new TextBox();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
-            PStockMin = new Panel();
+            panel1 = new Panel();
+            LStockMin = new Label();
             label8 = new Label();
-            label6 = new Label();
-            PStockMin.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -170,19 +169,6 @@
             label7.TabIndex = 16;
             label7.Text = "Nombre del Producto:";
             // 
-            // LStockMin
-            // 
-            LStockMin.AutoSize = true;
-            LStockMin.BackColor = Color.Transparent;
-            LStockMin.Font = new Font("MV Boli", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LStockMin.ForeColor = SystemColors.ActiveCaptionText;
-            LStockMin.Location = new Point(19, 28);
-            LStockMin.Name = "LStockMin";
-            LStockMin.Size = new Size(110, 20);
-            LStockMin.TabIndex = 23;
-            LStockMin.Text = "Stock Mínimo:";
-            LStockMin.Click += LStockMin_Click;
-            // 
             // tbStockMin
             // 
             tbStockMin.Location = new Point(214, 206);
@@ -228,18 +214,29 @@
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // PStockMin
+            // panel1
             // 
-            PStockMin.BackColor = Color.Black;
-            PStockMin.BackgroundImage = Properties.Resources.JoystickMorado;
-            PStockMin.Controls.Add(label8);
-            PStockMin.Controls.Add(label6);
-            PStockMin.Controls.Add(LStockMin);
-            PStockMin.Location = new Point(3, -23);
-            PStockMin.Name = "PStockMin";
-            PStockMin.Size = new Size(575, 586);
-            PStockMin.TabIndex = 61;
-            PStockMin.Paint += PStockMin_Paint;
+            panel1.BackgroundImage = Properties.Resources.JoystickMorado;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(label8);
+            panel1.Controls.Add(LStockMin);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(488, 559);
+            panel1.TabIndex = 64;
+            // 
+            // LStockMin
+            // 
+            LStockMin.AutoSize = true;
+            LStockMin.BackColor = Color.Transparent;
+            LStockMin.Font = new Font("MV Boli", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LStockMin.ForeColor = Color.Transparent;
+            LStockMin.Location = new Point(45, 209);
+            LStockMin.Name = "LStockMin";
+            LStockMin.Size = new Size(110, 20);
+            LStockMin.TabIndex = 62;
+            LStockMin.Text = "Stock Mínimo:";
             // 
             // label8
             // 
@@ -247,23 +244,11 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("MV Boli", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.Transparent;
-            label8.Location = new Point(42, 317);
+            label8.Location = new Point(46, 333);
             label8.Name = "label8";
             label8.Size = new Size(87, 20);
             label8.TabIndex = 63;
             label8.Text = "Descripción:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.BackColor = Color.Transparent;
-            label6.Font = new Font("MV Boli", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = Color.Transparent;
-            label6.Location = new Point(42, 232);
-            label6.Name = "label6";
-            label6.Size = new Size(110, 20);
-            label6.TabIndex = 62;
-            label6.Text = "Stock Mínimo:";
             // 
             // formEditorProducto
             // 
@@ -287,14 +272,14 @@
             Controls.Add(tbPrecio);
             Controls.Add(tbNombre);
             Controls.Add(label1);
-            Controls.Add(PStockMin);
+            Controls.Add(panel1);
             MaximizeBox = false;
             Name = "formEditorProducto";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Modificar Producto";
             Load += formEditorProducto_Load;
-            PStockMin.ResumeLayout(false);
-            PStockMin.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -314,13 +299,12 @@
         private Label label5;
         private Label label4;
         private Label label7;
-        private Label LStockMin;
         private TextBox tbStockMin;
         private Button button1;
         private Button button2;
         private Button button3;
-        private Panel PStockMin;
+        private Panel panel1;
+        private Label LStockMin;
         private Label label8;
-        private Label label6;
     }
 }

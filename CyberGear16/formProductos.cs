@@ -225,7 +225,7 @@ namespace CyberGear16
 
         private void formProductos_Load(object sender, EventArgs e)
         {
-            
+
             comboBoxCategorias.Items.Add("Videjuegos");
             comboBoxCategorias.Items.Add("PC-componentes");
 
@@ -378,7 +378,7 @@ namespace CyberGear16
                 // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
                 BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
 
-                
+
             }
             else
             {

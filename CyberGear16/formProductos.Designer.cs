@@ -77,6 +77,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.producto_nuevo_png_1;
             pictureBox1.Location = new Point(723, 37);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
@@ -88,6 +89,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(26, 32, 40);
             panel1.Controls.Add(BCancelar);
             panel1.Controls.Add(textBox5);
@@ -244,6 +246,7 @@
             // 
             // txtFoto
             // 
+            txtFoto.Anchor = AnchorStyles.None;
             txtFoto.Location = new Point(777, 209);
             txtFoto.Name = "txtFoto";
             txtFoto.ReadOnly = true;
@@ -253,6 +256,7 @@
             // 
             // button2
             // 
+            button2.Anchor = AnchorStyles.None;
             button2.ForeColor = SystemColors.ActiveCaptionText;
             button2.Location = new Point(798, 238);
             button2.Name = "button2";
@@ -274,6 +278,7 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.ActiveCaptionText;
@@ -301,6 +306,7 @@
             // 
             // BActivos
             // 
+            BActivos.Anchor = AnchorStyles.None;
             BActivos.ForeColor = SystemColors.ActiveCaptionText;
             BActivos.Location = new Point(77, 368);
             BActivos.Name = "BActivos";
@@ -312,6 +318,7 @@
             // 
             // BInactivo
             // 
+            BInactivo.Anchor = AnchorStyles.None;
             BInactivo.ForeColor = SystemColors.ActiveCaptionText;
             BInactivo.Location = new Point(203, 368);
             BInactivo.Name = "BInactivo";
@@ -323,6 +330,7 @@
             // 
             // BBorrar
             // 
+            BBorrar.Anchor = AnchorStyles.None;
             BBorrar.Image = (Image)resources.GetObject("BBorrar.Image");
             BBorrar.Location = new Point(901, 363);
             BBorrar.Name = "BBorrar";
@@ -333,6 +341,7 @@
             // 
             // BBuscar
             // 
+            BBuscar.Anchor = AnchorStyles.None;
             BBuscar.Image = Properties.Resources.lupa;
             BBuscar.Location = new Point(857, 363);
             BBuscar.Name = "BBuscar";
@@ -343,6 +352,7 @@
             // 
             // TBuscar
             // 
+            TBuscar.Anchor = AnchorStyles.None;
             TBuscar.Location = new Point(538, 372);
             TBuscar.Name = "TBuscar";
             TBuscar.Size = new Size(313, 23);
