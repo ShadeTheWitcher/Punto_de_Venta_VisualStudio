@@ -78,7 +78,7 @@ namespace CyberGear16
                     {
                         using (MySqlBackup mb = new MySqlBackup(cmd))
                         {
-                            // No necesitas abrir la conexión aquí, ya que se abre arriba
+                            // No se necesita abrir la conexión aquí, ya que se abre arriba
 
                             mb.ExportToFile(backupFilePath);
                         }
@@ -86,39 +86,11 @@ namespace CyberGear16
 
                     MessageBox.Show($"Respaldo exitoso en: {backupFilePath}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // No necesitas cerrar la conexión manualmente, se manejará automáticamente al salir del bloque using
+                    
                 }
 
 
-
-
-
-                // Comando para ejecutar mysqldump (asegúrate de que mysqldump esté en tu PATH)
-
-
-                // Ejecutar el comando
-                //var processInfo = new ProcessStartInfo("cmd.exe", $"/c {command}")
-                //{
-                //    CreateNoWindow = true,
-                //    UseShellExecute = false,
-                //    RedirectStandardError = true,
-                //    RedirectStandardOutput = true
-                //};
-
-                //var process = new Process { StartInfo = processInfo };
-
-                //process.Start();
-                //process.WaitForExit();
-
-                // Verificar si se generó el respaldo correctamente
-                //if (File.Exists(backupFilePath))
-                //{
-                //    MessageBox.Show($"Respaldo exitoso en: {backupFilePath}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Error al realizar el respaldo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                
             }
             catch (Exception ex)
             {
