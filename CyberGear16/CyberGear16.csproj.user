@@ -1,58 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="adminUsers.cs">
+    <Compile Update="WindowsForms\SeccionUsuario\adminUsers.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormMasVendidos.cs">
+    <Compile Update="WindowsForms\SeccionReportes\FormMasVendidos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormReporteVendedor.cs">
+    <Compile Update="WindowsForms\SeccionReportes\FormReporteVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormReporteSuper.cs">
+    <Compile Update="WindowsForms\SeccionReportes\FormReporteSuper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormInformeCliente.cs">
+    <Compile Update="WindowsForms\SeccionReportes\FormInformeCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormInformeVendedor.cs">
+    <Compile Update="WindowsForms\SeccionReportes\FormInformeVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormReporte.cs">
+    <Compile Update="WindowsForms\SeccionReportes\FormReporte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormCliente.cs">
+    <Compile Update="WindowsForms\SeccionCliente\FormCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormEditorUsuario.cs">
+    <Compile Update="WindowsForms\SeccionUsuario\FormEditorUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormBackUp.cs">
+    <Compile Update="WindowsForms\SeccionBackUp\FormBackUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formEditorProducto.cs">
+    <Compile Update="WindowsForms\SeccionProducto\formEditorProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formInicio.cs">
+    <Compile Update="WindowsForms\GUI_Principal\formInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formLogin.cs">
+    <Compile Update="WindowsForms\GUI_Principal\formLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="formProductos.cs">
+    <Compile Update="WindowsForms\SeccionProducto\formProductos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormSeccionVentas.cs">
+    <Compile Update="WindowsForms\SeccionVentas\FormSeccionVentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="GUI_Principal.cs">
+    <Compile Update="WindowsForms\GUI_Principal\GUI_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="PasswordInputDialog.cs">
+    <Compile Update="WindowsForms\SeccionBackUp\PasswordInputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="SubFormBackUp.cs">
+    <Compile Update="WindowsForms\SeccionBackUp\SubFormBackUp.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
