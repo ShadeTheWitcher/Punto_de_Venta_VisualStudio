@@ -495,6 +495,30 @@
           }
         }
       },
+      "MySqlBackup.NET/2.3.8": {
+        "type": "package",
+        "dependencies": {
+          "MySql.Data": "8.0.32"
+        },
+        "compile": {
+          "lib/net6.0/MySqlBackup.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/MySqlBackup.dll": {}
+        }
+      },
+      "MySqlBackup.NET.MySqlConnector/2.3.8": {
+        "type": "package",
+        "dependencies": {
+          "MySqlConnector": "2.2.5"
+        },
+        "compile": {
+          "lib/net6.0/MySqlBackupNet.MySqlConnector.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/MySqlBackupNet.MySqlConnector.dll": {}
+        }
+      },
       "MySqlConnector/2.2.7": {
         "type": "package",
         "compile": {
@@ -1599,6 +1623,42 @@
         "lib/net7.0/MySql.EntityFrameworkCore.xml",
         "mysql.entityframeworkcore.7.0.5.nupkg.sha512",
         "mysql.entityframeworkcore.nuspec"
+      ]
+    },
+    "MySqlBackup.NET/2.3.8": {
+      "sha512": "hFnfx3GcMSl/bqYlsW7VLhWlS4KpSX6zi8ZAMAq456h+jUb8aBBO/gVPuGE9y3Lapi1ibiW5rwvTRQT18x4ecA==",
+      "type": "package",
+      "path": "mysqlbackup.net/2.3.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net48/MySqlBackup.dll",
+        "lib/net481/MySqlBackup.dll",
+        "lib/net6.0/MySqlBackup.dll",
+        "lib/netstandard2.0/MySqlBackup.dll",
+        "lib/netstandard2.1/MySqlBackup.dll",
+        "mysqlbackup.net.2.3.8.nupkg.sha512",
+        "mysqlbackup.net.nuspec"
+      ]
+    },
+    "MySqlBackup.NET.MySqlConnector/2.3.8": {
+      "sha512": "A8cz2Mi9cWyS8gp4K7oU1JuuQAltnl6ZaxTiaoWCYkiFkqbLIoK5rkZak9l1dY7ujxBZG99xtCE1FzzlR9mbzg==",
+      "type": "package",
+      "path": "mysqlbackup.net.mysqlconnector/2.3.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net471/MySqlBackupNet.MySqlConnector.dll",
+        "lib/net48/MySqlBackupNet.MySqlConnector.dll",
+        "lib/net481/MySqlBackupNet.MySqlConnector.dll",
+        "lib/net6.0/MySqlBackupNet.MySqlConnector.dll",
+        "lib/netcoreapp3.1/MySqlBackupNet.MySqlConnector.dll",
+        "lib/netstandard2.0/MySqlBackupNet.MySqlConnector.dll",
+        "lib/netstandard2.1/MySqlBackupNet.MySqlConnector.dll",
+        "mysqlbackup.net.mysqlconnector.2.3.8.nupkg.sha512",
+        "mysqlbackup.net.mysqlconnector.nuspec"
       ]
     },
     "MySqlConnector/2.2.7": {
@@ -2768,6 +2828,8 @@
       "MySql.Data >= 8.1.0",
       "MySql.Data.EntityFrameworkCore >= 8.0.22",
       "MySql.EntityFrameworkCore >= 7.0.5",
+      "MySqlBackup.NET >= 2.3.8",
+      "MySqlBackup.NET.MySqlConnector >= 2.3.8",
       "MySqlConnector >= 2.2.7",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0",
       "WinForms.DataVisualization >= 1.8.0"
@@ -2839,6 +2901,14 @@
           "MySql.EntityFrameworkCore": {
             "target": "Package",
             "version": "[7.0.5, )"
+          },
+          "MySqlBackup.NET": {
+            "target": "Package",
+            "version": "[2.3.8, )"
+          },
+          "MySqlBackup.NET.MySqlConnector": {
+            "target": "Package",
+            "version": "[2.3.8, )"
           },
           "MySqlConnector": {
             "target": "Package",

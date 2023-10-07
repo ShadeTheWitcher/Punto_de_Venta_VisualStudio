@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/hMEvjtdRRksK/qQjyxMt1Ne/0vZH2tpQ7/LV+MXy5cPs/aqa1E3rkgdTuTqBFA9IORyRtoFwmkhFOG0cV3CoQ==",
+  "dgSpecHash": "+fepUbJv92sHUe/sI4iMIS5TOAaKJ3NF7GGA3J2WxW436tUw+0J9XoOpYvxtKFPHJgRvIgb9jJwUr/2MjLD9dw==",
   "success": true,
   "projectFilePath": "E:\\bibliotecas\\Documents\\Programacion Projects\\App escritorio vs\\Trabajo_Integrador_Grupo15\\CyberGear16\\CyberGear16.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,8 @@
     "C:\\Users\\PC-MSL\\.nuget\\packages\\mysql.data\\8.1.0\\mysql.data.8.1.0.nupkg.sha512",
     "C:\\Users\\PC-MSL\\.nuget\\packages\\mysql.data.entityframeworkcore\\8.0.22\\mysql.data.entityframeworkcore.8.0.22.nupkg.sha512",
     "C:\\Users\\PC-MSL\\.nuget\\packages\\mysql.entityframeworkcore\\7.0.5\\mysql.entityframeworkcore.7.0.5.nupkg.sha512",
+    "C:\\Users\\PC-MSL\\.nuget\\packages\\mysqlbackup.net\\2.3.8\\mysqlbackup.net.2.3.8.nupkg.sha512",
+    "C:\\Users\\PC-MSL\\.nuget\\packages\\mysqlbackup.net.mysqlconnector\\2.3.8\\mysqlbackup.net.mysqlconnector.2.3.8.nupkg.sha512",
     "C:\\Users\\PC-MSL\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512",
     "C:\\Users\\PC-MSL\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "C:\\Users\\PC-MSL\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",

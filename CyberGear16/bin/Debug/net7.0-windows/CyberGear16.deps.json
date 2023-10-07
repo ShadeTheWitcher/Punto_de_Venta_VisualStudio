@@ -14,6 +14,8 @@
           "MySql.Data": "8.1.0",
           "MySql.Data.EntityFrameworkCore": "8.0.22",
           "MySql.EntityFrameworkCore": "7.0.5",
+          "MySqlBackup.NET": "2.3.8",
+          "MySqlBackup.NET.MySqlConnector": "2.3.8",
           "MySqlConnector": "2.2.7",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0",
           "WinForms.DataVisualization": "1.8.0"
@@ -322,6 +324,28 @@
           "lib/net7.0/MySql.EntityFrameworkCore.dll": {
             "assemblyVersion": "7.0.5.0",
             "fileVersion": "7.0.5.0"
+          }
+        }
+      },
+      "MySqlBackup.NET/2.3.8": {
+        "dependencies": {
+          "MySql.Data": "8.1.0"
+        },
+        "runtime": {
+          "lib/net6.0/MySqlBackup.dll": {
+            "assemblyVersion": "2.3.8.0",
+            "fileVersion": "2.3.8.0"
+          }
+        }
+      },
+      "MySqlBackup.NET.MySqlConnector/2.3.8": {
+        "dependencies": {
+          "MySqlConnector": "2.2.7"
+        },
+        "runtime": {
+          "lib/net6.0/MySqlBackupNet.MySqlConnector.dll": {
+            "assemblyVersion": "2.3.8.0",
+            "fileVersion": "2.3.8.0"
           }
         }
       },
@@ -682,6 +706,20 @@
       "sha512": "sha512-cgAuQZqGaqWm+7B7CZ1fIJrA4/V8JITFuRAC5FEWlhvZA0SM9pH7iYzaCla4gsk97n81ZBqLJyquUI5VTucG3w==",
       "path": "mysql.entityframeworkcore/7.0.5",
       "hashPath": "mysql.entityframeworkcore.7.0.5.nupkg.sha512"
+    },
+    "MySqlBackup.NET/2.3.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hFnfx3GcMSl/bqYlsW7VLhWlS4KpSX6zi8ZAMAq456h+jUb8aBBO/gVPuGE9y3Lapi1ibiW5rwvTRQT18x4ecA==",
+      "path": "mysqlbackup.net/2.3.8",
+      "hashPath": "mysqlbackup.net.2.3.8.nupkg.sha512"
+    },
+    "MySqlBackup.NET.MySqlConnector/2.3.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A8cz2Mi9cWyS8gp4K7oU1JuuQAltnl6ZaxTiaoWCYkiFkqbLIoK5rkZak9l1dY7ujxBZG99xtCE1FzzlR9mbzg==",
+      "path": "mysqlbackup.net.mysqlconnector/2.3.8",
+      "hashPath": "mysqlbackup.net.mysqlconnector.2.3.8.nupkg.sha512"
     },
     "MySqlConnector/2.2.7": {
       "type": "package",
