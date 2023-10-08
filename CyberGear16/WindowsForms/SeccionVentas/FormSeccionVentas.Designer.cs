@@ -45,6 +45,8 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             panel3 = new Panel();
+            label18 = new Label();
+            cBoxCategorias = new ComboBox();
             label15 = new Label();
             numericUpDown1 = new NumericUpDown();
             button5 = new Button();
@@ -174,6 +176,7 @@
             button6.TabIndex = 11;
             button6.Text = "Limpiar";
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // label17
             // 
@@ -221,7 +224,9 @@
             button3.Size = new Size(75, 23);
             button3.TabIndex = 6;
             button3.Text = "Buscar";
+            toolTip1.SetToolTip(button3, "Ingrese el dni para asignar usuario");
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // textBox3
             // 
@@ -246,6 +251,8 @@
             panel3.Anchor = AnchorStyles.None;
             panel3.BackColor = Color.LightSlateGray;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(label18);
+            panel3.Controls.Add(cBoxCategorias);
             panel3.Controls.Add(label15);
             panel3.Controls.Add(numericUpDown1);
             panel3.Controls.Add(button5);
@@ -264,10 +271,29 @@
             panel3.Size = new Size(550, 205);
             panel3.TabIndex = 2;
             // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(13, 168);
+            label18.Name = "label18";
+            label18.Size = new Size(58, 15);
+            label18.TabIndex = 14;
+            label18.Text = "Categoria";
+            // 
+            // cBoxCategorias
+            // 
+            cBoxCategorias.Anchor = AnchorStyles.None;
+            cBoxCategorias.Enabled = false;
+            cBoxCategorias.FormattingEnabled = true;
+            cBoxCategorias.Location = new Point(76, 165);
+            cBoxCategorias.Name = "cBoxCategorias";
+            cBoxCategorias.Size = new Size(104, 23);
+            cBoxCategorias.TabIndex = 13;
+            // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(275, 135);
+            label15.Location = new Point(276, 126);
             label15.Name = "label15";
             label15.Size = new Size(55, 15);
             label15.TabIndex = 12;
@@ -276,7 +302,7 @@
             // numericUpDown1
             // 
             numericUpDown1.Anchor = AnchorStyles.None;
-            numericUpDown1.Location = new Point(334, 132);
+            numericUpDown1.Location = new Point(335, 123);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(59, 23);
             numericUpDown1.TabIndex = 11;
@@ -290,7 +316,9 @@
             button5.Size = new Size(70, 22);
             button5.TabIndex = 10;
             button5.Text = "Buscar";
+            toolTip1.SetToolTip(button5, "Ingrese el nombre del producto para buscarlo");
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -306,6 +334,7 @@
             button4.Text = "Agregar al carrito";
             button4.TextAlign = ContentAlignment.BottomCenter;
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // label14
             // 
@@ -328,7 +357,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(140, 135);
+            label7.Location = new Point(141, 126);
             label7.Name = "label7";
             label7.Size = new Size(40, 15);
             label7.TabIndex = 6;
@@ -347,7 +376,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(13, 135);
+            label5.Location = new Point(14, 126);
             label5.Name = "label5";
             label5.Size = new Size(36, 15);
             label5.TabIndex = 4;
@@ -355,20 +384,23 @@
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(186, 132);
+            textBox8.Enabled = false;
+            textBox8.Location = new Point(187, 123);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(74, 23);
             textBox8.TabIndex = 3;
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(55, 132);
+            textBox7.Enabled = false;
+            textBox7.Location = new Point(56, 123);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(74, 23);
             textBox7.TabIndex = 2;
             // 
             // textBox6
             // 
+            textBox6.Enabled = false;
             textBox6.Location = new Point(172, 70);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(237, 23);
@@ -440,6 +472,7 @@
             button2.TabIndex = 6;
             button2.Text = "Vaciar Carrito";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // dataGridView1
             // 
@@ -561,7 +594,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormSeccionVentas";
             Text = "Ventas";
-            toolTip1.SetToolTip(this, "Ingrese el DNI del cliente registrado para asignarlo");
             Load += FormSeccionVentas_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -628,5 +660,7 @@
         private Label label17;
         private Button button6;
         private ToolTip toolTip1;
+        private ComboBox cBoxCategorias;
+        private Label label18;
     }
 }
