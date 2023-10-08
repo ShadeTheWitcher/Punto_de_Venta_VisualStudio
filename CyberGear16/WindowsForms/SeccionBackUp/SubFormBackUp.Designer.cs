@@ -74,6 +74,7 @@
             btnRestaurarBase.Text = "Restaurar Base de datos";
             btnRestaurarBase.TextAlign = ContentAlignment.MiddleRight;
             btnRestaurarBase.UseVisualStyleBackColor = true;
+            btnRestaurarBase.Click += btnRestaurarBase_Click;
             // 
             // label2
             // 

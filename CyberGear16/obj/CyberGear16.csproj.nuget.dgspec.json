@@ -68,6 +68,14 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "MySqlBackup.NET": {
+              "target": "Package",
+              "version": "[2.3.8, )"
+            },
+            "MySqlBackup.NET.MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.8, )"
+            },
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.2.7, )"
