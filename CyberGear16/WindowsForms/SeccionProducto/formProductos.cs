@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -27,7 +28,7 @@ namespace CyberGear16
             _context = context;
         }
 
-
+        private byte[] imagenBytes; // Variable para almacenar los bytes de la imagen
 
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -89,13 +90,14 @@ namespace CyberGear16
 
                         // Agrega el producto al contexto.
                         context.Products.Add(nuevoProducto);
-
+                        
                         // Guarda los cambios en la base de datos.
                         context.SaveChanges();
 
                         MessageBox.Show("Producto agregado correctamente");
                         LimpiarCampos();
                         CargarDatosEnDataGridView();
+                        
                     }
                 }
                 catch (Exception ex)
@@ -407,7 +409,7 @@ namespace CyberGear16
         }
 
 
-        private byte[] imagenBytes; // Variable para almacenar los bytes de la imagen
+        
         private void button2_Click_1(object sender, EventArgs e)
         {
 
@@ -417,17 +419,19 @@ namespace CyberGear16
                 openFileDialog.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
                 openFileDialog.FilterIndex = 1;
 
-                txtFoto.Text = openFileDialog.FileName;
+                
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
                         // Convertir la imagen a bytes
-                        byte[] imagenBytes = File.ReadAllBytes(openFileDialog.FileName);
+                        imagenBytes = File.ReadAllBytes(openFileDialog.FileName);
 
                         // Mostrar la imagen 
                         pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+
+                        
 
 
 

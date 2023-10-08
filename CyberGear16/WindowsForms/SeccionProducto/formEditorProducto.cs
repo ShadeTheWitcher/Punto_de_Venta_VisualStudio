@@ -18,6 +18,8 @@ namespace CyberGear16
         private BdCybergearContext context;
         private int id_product;
 
+        private byte[] imagenBytes; // Variable para almacenar los bytes de la imagen
+
         public formEditorProducto(int id_producto, BdCybergearContext context)
         {
             InitializeComponent();
@@ -67,6 +69,23 @@ namespace CyberGear16
                         button2.Visible = true;
                     }
 
+                    // Recupera y muestra la imagen en el PictureBox
+                    if (producto.Imagen != null && producto.Imagen.Length > 0)
+                    {
+                        using (MemoryStream ms = new MemoryStream(producto.Imagen))
+                        {
+                            pictureBox1.Image = Image.FromStream(ms);
+                        }
+                    }
+                    else
+                    {
+                        // Si no hay imagen en la base de datos, puedes establecer una imagen predeterminada o dejar el PictureBox vacío
+                        pictureBox1.Image = pictureBox1.InitialImage; ; // O, puedes asignar una imagen predeterminada pictureBox1.InitialImage;
+                    }
+
+
+
+
 
                 }
 
@@ -107,6 +126,7 @@ namespace CyberGear16
                         producto.StockMinimo = int.Parse(tbStockMin.Text);
                         producto.Descripcion = tbDescrip.Text;
                         producto.CategoriaId = comboBoxCategorias.SelectedIndex + 1;
+                        producto.Imagen = imagenBytes;
 
 
 
@@ -240,6 +260,41 @@ namespace CyberGear16
         private void LStockMin_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = @"C:\"; // Establece el directorio inicial
+                openFileDialog.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+                openFileDialog.FilterIndex = 1;
+
+
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Convertir la imagen a bytes
+                        imagenBytes = File.ReadAllBytes(openFileDialog.FileName);
+
+                        // Mostrar la imagen 
+                        pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+
+
+
+
+
+                        // Ahora asigna la ruta del archivo al TextBox
+                        //txtFoto.Text = openFileDialog.FileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al leer la imagen: " + ex.Message);
+                    }
+                }
+            }
         }
     }
 }

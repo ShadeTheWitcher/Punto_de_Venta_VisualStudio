@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formEditorProducto));
             label1 = new Label();
             tbNombre = new TextBox();
             tbPrecio = new TextBox();
@@ -45,9 +46,12 @@
             button2 = new Button();
             button3 = new Button();
             panel1 = new Panel();
-            LStockMin = new Label();
+            button4 = new Button();
+            pictureBox1 = new PictureBox();
             label8 = new Label();
+            LStockMin = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -218,25 +222,36 @@
             // 
             panel1.BackgroundImage = Properties.Resources.JoystickMorado;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(button4);
+            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(LStockMin);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(488, 559);
+            panel1.Size = new Size(725, 559);
             panel1.TabIndex = 64;
             // 
-            // LStockMin
+            // button4
             // 
-            LStockMin.AutoSize = true;
-            LStockMin.BackColor = Color.Transparent;
-            LStockMin.Font = new Font("MV Boli", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LStockMin.ForeColor = Color.Transparent;
-            LStockMin.Location = new Point(45, 209);
-            LStockMin.Name = "LStockMin";
-            LStockMin.Size = new Size(110, 20);
-            LStockMin.TabIndex = 62;
-            LStockMin.Text = "Stock Mínimo:";
+            button4.Location = new Point(500, 388);
+            button4.Name = "button4";
+            button4.Size = new Size(104, 23);
+            button4.TabIndex = 65;
+            button4.Text = "Subir imagen";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(424, 165);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(272, 202);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 64;
+            pictureBox1.TabStop = false;
             // 
             // label8
             // 
@@ -250,12 +265,24 @@
             label8.TabIndex = 63;
             label8.Text = "Descripción:";
             // 
+            // LStockMin
+            // 
+            LStockMin.AutoSize = true;
+            LStockMin.BackColor = Color.Transparent;
+            LStockMin.Font = new Font("MV Boli", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LStockMin.ForeColor = Color.Transparent;
+            LStockMin.Location = new Point(45, 209);
+            LStockMin.Name = "LStockMin";
+            LStockMin.Size = new Size(110, 20);
+            LStockMin.TabIndex = 62;
+            LStockMin.Text = "Stock Mínimo:";
+            // 
             // formEditorProducto
             // 
             AcceptButton = button3;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(488, 559);
+            ClientSize = new Size(725, 559);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -280,6 +307,7 @@
             Load += formEditorProducto_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -306,5 +334,7 @@
         private Panel panel1;
         private Label LStockMin;
         private Label label8;
+        private Button button4;
+        private PictureBox pictureBox1;
     }
 }
