@@ -70,18 +70,21 @@
             button1 = new Button();
             button2 = new Button();
             dataGridView1 = new DataGridView();
+            Column6 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewImageColumn();
             Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
             comboBox2 = new ComboBox();
             label13 = new Label();
             textBox9 = new TextBox();
             label16 = new Label();
             toolTip1 = new ToolTip(components);
+            label20 = new Label();
+            textBox11 = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -275,6 +278,8 @@
             panel3.Anchor = AnchorStyles.None;
             panel3.BackColor = Color.LightSlateGray;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(label20);
+            panel3.Controls.Add(textBox11);
             panel3.Controls.Add(tbIdProducto);
             panel3.Controls.Add(label18);
             panel3.Controls.Add(cBoxCategorias);
@@ -308,7 +313,7 @@
             // label18
             // 
             label18.AutoSize = true;
-            label18.Location = new Point(13, 168);
+            label18.Location = new Point(172, 168);
             label18.Name = "label18";
             label18.Size = new Size(58, 15);
             label18.TabIndex = 14;
@@ -319,7 +324,7 @@
             cBoxCategorias.Anchor = AnchorStyles.None;
             cBoxCategorias.Enabled = false;
             cBoxCategorias.FormattingEnabled = true;
-            cBoxCategorias.Location = new Point(76, 165);
+            cBoxCategorias.Location = new Point(235, 165);
             cBoxCategorias.Name = "cBoxCategorias";
             cBoxCategorias.Size = new Size(104, 23);
             cBoxCategorias.TabIndex = 13;
@@ -517,13 +522,19 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column6, Column1, Column2, Column3, Column4, Column7, Column5 });
             dataGridView1.Location = new Point(27, 362);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(790, 214);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "id_producto";
+            Column6.Name = "Column6";
+            Column6.Visible = false;
             // 
             // Column1
             // 
@@ -547,16 +558,17 @@
             Column4.Name = "Column4";
             Column4.ReadOnly = true;
             // 
+            // Column7
+            // 
+            Column7.HeaderText = "Imagen";
+            Column7.Name = "Column7";
+            Column7.Resizable = DataGridViewTriState.True;
+            Column7.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
             // Column5
             // 
             Column5.HeaderText = "SubTotal";
             Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "id_producto";
-            Column6.Name = "Column6";
-            Column6.Visible = false;
             // 
             // panel5
             // 
@@ -617,6 +629,23 @@
             // toolTip1
             // 
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(14, 167);
+            label20.Name = "label20";
+            label20.Size = new Size(62, 15);
+            label20.TabIndex = 17;
+            label20.Text = "Stock_Min";
+            // 
+            // textBox11
+            // 
+            textBox11.Enabled = false;
+            textBox11.Location = new Point(79, 164);
+            textBox11.Name = "textBox11";
+            textBox11.Size = new Size(74, 23);
+            textBox11.TabIndex = 16;
             // 
             // FormSeccionVentas
             // 
@@ -702,11 +731,14 @@
         private TextBox textBox10;
         private TextBox tbIdProducto;
         private TextBox textBox8;
+        private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private DataGridViewImageColumn Column7;
         private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
+        private Label label20;
+        private TextBox textBox11;
     }
 }

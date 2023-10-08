@@ -80,12 +80,12 @@ namespace CyberGear16
             double precioTotal = 0.0;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                double precio = Convert.ToDouble(row.Cells[1].Value);
-                int cantidad = Convert.ToInt32(row.Cells[2].Value);
+                double precio = Convert.ToDouble(row.Cells[2].Value);
+                int cantidad = Convert.ToInt32(row.Cells[3].Value);
                 double subtotal = precio * cantidad;
 
                 // Actualizar la celda de Subtotal con el valor calculado
-                row.Cells[4].Value = subtotal;
+                row.Cells[6].Value = subtotal;
 
                 precioTotal += subtotal;
             }
@@ -175,6 +175,12 @@ namespace CyberGear16
                 // Recupera el producto desde la base de datos
                 Product productoDesdeBD = context.Products.FirstOrDefault(p => p.NombreProducto == nombreProducto);
 
+                byte[] Imagen = productoDesdeBD.Imagen;
+
+
+
+
+
                 if (productoDesdeBD != null)
                 {
                     // Verifica el stock disponible y el stock mínimo
@@ -183,11 +189,11 @@ namespace CyberGear16
                         bool productoExistente = false;
                         foreach (DataGridViewRow filaExistente in dataGridView1.Rows)
                         {
-                            if (filaExistente.Cells[0].Value != null && filaExistente.Cells[0].Value.ToString() == nombreProducto)
+                            if (filaExistente.Cells[1].Value != null && filaExistente.Cells[1].Value.ToString() == nombreProducto)
                             {
                                 // El producto ya está en la tabla, actualiza la cantidad
-                                int cantidadExistente = (int)filaExistente.Cells[2].Value;
-                                filaExistente.Cells[2].Value = cantidadExistente + cantidad;
+                                int cantidadExistente = (int)filaExistente.Cells[3].Value;
+                                filaExistente.Cells[3].Value = cantidadExistente + cantidad;
 
                                 // Calcula y muestra el precio total
                                 calcularMostrarPrecioTotal();
@@ -203,11 +209,37 @@ namespace CyberGear16
                             DataGridViewRow nuevaFila = new DataGridViewRow();
                             nuevaFila.CreateCells(dataGridView1);
 
-                            nuevaFila.Cells[0].Value = nombreProducto;
-                            nuevaFila.Cells[1].Value = precioProducto;
-                            nuevaFila.Cells[2].Value = cantidad;
-                            nuevaFila.Cells[3].Value = categoria;
-                            nuevaFila.Cells[5].Value = id_producto;
+                            nuevaFila.Cells[0].Value = id_producto;
+                            nuevaFila.Cells[1].Value = nombreProducto;
+                            nuevaFila.Cells[2].Value = precioProducto;
+                            nuevaFila.Cells[3].Value = cantidad;
+                            nuevaFila.Cells[4].Value = categoria;
+
+                            // Asigna la imagen desde el arreglo de bytes
+                            if (Imagen != null && Imagen.Length > 0)
+                            {
+                                dataGridView1.Columns[5].Width = 80; // Ajusta el ancho según sea necesario
+                                dataGridView1.Columns[5].DefaultCellStyle.NullValue = null;
+
+
+
+                                using (MemoryStream ms = new MemoryStream(Imagen))
+                                {
+                                    Image originalImage = Image.FromStream(ms);
+
+                                    // Redimensiona la imagen manteniendo la relación de aspecto
+                                    int nuevoAncho = 80; // Ancho deseado
+                                    int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
+                                    Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
+
+                                    nuevaFila.Cells[5].Value = imagenRedimensionada; // Imagen redimensionada
+                                }
+
+
+
+
+                            }
+
 
                             // Calcula y muestra el precio total
                             dataGridView1.Rows.Add(nuevaFila);
@@ -256,6 +288,7 @@ namespace CyberGear16
                     textBox8.Text = productoDesdeBD.PrecioProducto.ToString();
                     textBox7.Text = productoDesdeBD.Cantidad.ToString();
                     tbIdProducto.Text = productoDesdeBD.Id.ToString();
+                    textBox11.Text = productoDesdeBD.StockMinimo.ToString();
                     cBoxCategorias.SelectedIndex = productoDesdeBD.CategoriaId - 1;
 
 
@@ -290,6 +323,7 @@ namespace CyberGear16
 
         private void vaciarProducto()
         {
+            textBox5.Text = string.Empty;
             textBox6.Text = string.Empty;
             textBox8.Text = string.Empty;
             textBox7.Text = string.Empty;
@@ -300,8 +334,8 @@ namespace CyberGear16
         {
             // Limpia el contenido del DataGridView
             dataGridView1.Rows.Clear();
-
-            //  reiniciar totales, limpiar campos de búsqueda, etc.
+            textBox9.Text = string.Empty;
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -400,7 +434,7 @@ namespace CyberGear16
                 foreach (DataGridViewRow fila in dataGridView1.Rows)
                 {
                     // Recupera la instancia del producto por su ID
-                    int productoId = (int)fila.Cells[5].Value;
+                    int productoId = (int)fila.Cells[0].Value;
                     Product producto = context.Products.FirstOrDefault(p => p.Id == productoId);
                     if (producto == null)
                     {
@@ -413,9 +447,9 @@ namespace CyberGear16
                     {
                         VentaId = nuevaVentaCabecera.Id,
                         ProductoId = producto.Id,
-                        CantidadVenta = Convert.ToInt32(fila.Cells[2].Value),
-                        Precio = (double)fila.Cells[1].Value,
-                        SubTotal = (double)fila.Cells[1].Value * (int)fila.Cells[2].Value
+                        CantidadVenta = Convert.ToInt32(fila.Cells[3].Value),
+                        Precio = (double)fila.Cells[2].Value,
+                        SubTotal = (double)fila.Cells[2].Value * (int)fila.Cells[3].Value
                     };
 
                     // Añade el nuevo detalle al contexto
@@ -425,10 +459,32 @@ namespace CyberGear16
                 // Guarda los cambios en la base de datos
                 context.SaveChanges();
 
+                
+
+                // Actualiza la cantidad vendida en la tabla de productos
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
+                    int productoId = (int)fila.Cells[0].Value;
+                    int cantidadVendida = Convert.ToInt32(fila.Cells[3].Value);
+
+                    // Recupera la instancia del producto por su ID
+                    Product producto = context.Products.FirstOrDefault(p => p.Id == productoId);
+                    if (producto != null)
+                    {
+                        // Resta la cantidad vendida de la cantidad actual del producto
+                        producto.Cantidad -= cantidadVendida;
+
+                        // Guarda los cambios en la base de datos
+                        context.SaveChanges();
+                    }
+                }
+
+
                 MessageBox.Show("Venta guardada exitosamente.");
 
                 // Limpia el carrito después de guardar la venta
                 LimpiarCarrito();
+
             }
 
 
