@@ -1,4 +1,5 @@
 ﻿using CyberGear16.Models;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,11 @@ namespace CyberGear16
     public partial class FormSeccionVentas : Form
     {
         private readonly BdCybergearContext _context; // DbContext de Entity Framework
-        private string NombreUserIniciado;
-        public FormSeccionVentas(BdCybergearContext context, string userArgs)
+        private int dniUsuario;
+        public FormSeccionVentas(BdCybergearContext context, int userArgs)
         {
             InitializeComponent();
-            NombreUserIniciado = userArgs;
+            dniUsuario = userArgs;
             _context = context;
 
         }
@@ -32,8 +33,29 @@ namespace CyberGear16
             cBoxCategorias.Items.Add("Videjuegos");
             cBoxCategorias.Items.Add("PC-componentes");
 
+            string nombreVendedor;
 
-            textBox2.Text = NombreUserIniciado;
+            using (var context = new BdCybergearContext())
+            {
+                Usuario vendedor = context.Usuarios.FirstOrDefault(u => u.Dni == dniUsuario);
+                textBox10.Text = dniUsuario.ToString();
+
+                // Verificar si se encontró al vendedor
+                if (vendedor != null)
+                {
+                    // Acceder a la propiedad Nombre del vendedor
+                    nombreVendedor = vendedor.Nombre;
+                    textBox2.Text = nombreVendedor;
+                }
+                else
+                {
+                    // Manejar el caso en el que el vendedor no se encuentra
+                    MessageBox.Show("Vendedor no encontrado");
+                    return; // Salir del evento si no se encuentra el vendedor
+                }
+
+            }
+
 
             DataGridViewButtonColumn eliminarButtonColumn = new DataGridViewButtonColumn();
             eliminarButtonColumn.Name = "Acciones";
@@ -49,8 +71,6 @@ namespace CyberGear16
             //dataGridView1.Rows.Add("Producto 3", 5.99, 3, "PC_componentes");
 
             //calcularMostrarPrecioTotal();
-
-
         }
 
         private void calcularMostrarPrecioTotal()
@@ -132,52 +152,94 @@ namespace CyberGear16
 
         private void button4_Click(object sender, EventArgs e)
         {
+            // Verifica que los campos requeridos estén llenos
+            if (string.IsNullOrWhiteSpace(textBox5.Text) ||
+                string.IsNullOrWhiteSpace(textBox8.Text) ||
+                numericUpDown1.Value <= 0 ||
+                string.IsNullOrWhiteSpace(cBoxCategorias.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos antes de añadir al carrito.");
+                return;
+            }
+
+
             // Añade los datos al carrito directamente desde los campos
             string nombreProducto = textBox5.Text;
             double precioProducto = Convert.ToDouble(textBox8.Text);
             int cantidad = (int)numericUpDown1.Value;
             string categoria = cBoxCategorias.Text; // Asigna la descripción según sea necesario.
+            int id_producto = int.Parse(tbIdProducto.Text); ;
 
-            // Busca el producto en la tabla
-            bool productoExistente = false;
-            foreach (DataGridViewRow filaExistente in dataGridView1.Rows)
+            using (var context = new BdCybergearContext())
             {
-                if (filaExistente.Cells[0].Value != null && filaExistente.Cells[0].Value.ToString() == nombreProducto)
+                // Recupera el producto desde la base de datos
+                Product productoDesdeBD = context.Products.FirstOrDefault(p => p.NombreProducto == nombreProducto);
+
+                if (productoDesdeBD != null)
                 {
-                    // El producto ya está en la tabla, actualiza la cantidad
-                    int cantidadExistente = (int)filaExistente.Cells[2].Value;
-                    filaExistente.Cells[2].Value = cantidadExistente + cantidad;
+                    // Verifica el stock disponible y el stock mínimo
+                    if (productoDesdeBD.Cantidad >= cantidad && productoDesdeBD.Cantidad - cantidad >= productoDesdeBD.StockMinimo)
+                    {
+                        bool productoExistente = false;
+                        foreach (DataGridViewRow filaExistente in dataGridView1.Rows)
+                        {
+                            if (filaExistente.Cells[0].Value != null && filaExistente.Cells[0].Value.ToString() == nombreProducto)
+                            {
+                                // El producto ya está en la tabla, actualiza la cantidad
+                                int cantidadExistente = (int)filaExistente.Cells[2].Value;
+                                filaExistente.Cells[2].Value = cantidadExistente + cantidad;
 
-                    // Calcula y muestra el precio total
-                    calcularMostrarPrecioTotal();
+                                // Calcula y muestra el precio total
+                                calcularMostrarPrecioTotal();
 
-                    productoExistente = true;
-                    break;
+                                productoExistente = true;
+                                break;
+                            }
+                        }
+
+                        if (!productoExistente)
+                        {
+                            // Añade la fila al DataGridView
+                            DataGridViewRow nuevaFila = new DataGridViewRow();
+                            nuevaFila.CreateCells(dataGridView1);
+
+                            nuevaFila.Cells[0].Value = nombreProducto;
+                            nuevaFila.Cells[1].Value = precioProducto;
+                            nuevaFila.Cells[2].Value = cantidad;
+                            nuevaFila.Cells[3].Value = categoria;
+                            nuevaFila.Cells[5].Value = id_producto;
+
+                            // Calcula y muestra el precio total
+                            dataGridView1.Rows.Add(nuevaFila);
+                            calcularMostrarPrecioTotal();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay suficiente stock disponible.");
+                    }
                 }
-            }
-
-            if (!productoExistente)
-            {
-                // Añade la fila al DataGridView
-                DataGridViewRow nuevaFila = new DataGridViewRow();
-                nuevaFila.CreateCells(dataGridView1);
-
-                nuevaFila.Cells[0].Value = nombreProducto;
-                nuevaFila.Cells[1].Value = precioProducto;
-                nuevaFila.Cells[2].Value = cantidad;
-                nuevaFila.Cells[3].Value = categoria;
-
-                // Calcula y muestra el precio total
-                dataGridView1.Rows.Add(nuevaFila);
-                calcularMostrarPrecioTotal();
+                else
+                {
+                    MessageBox.Show("Producto no encontrado en la base de datos");
+                }
             }
         }
 
         private void button5_Click(object sender, EventArgs e) //buscar
         {
-            // Aquí deberías recuperar los datos del producto desde la base de datos
-            // utilizando el valor ingresado en textBox5, que es el nombre del producto.
-            // Supongamos que obtienes un objeto de tipo Product con los datos del producto.
+
+
+
+            // Verifica que los campos requeridos estén llenos
+            if (string.IsNullOrWhiteSpace(textBox5.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos antes de buscar");
+                return;
+            }
+
+
+
 
             using (var context = new BdCybergearContext())
             {
@@ -193,6 +255,7 @@ namespace CyberGear16
                     textBox6.Text = productoDesdeBD.Descripcion;
                     textBox8.Text = productoDesdeBD.PrecioProducto.ToString();
                     textBox7.Text = productoDesdeBD.Cantidad.ToString();
+                    tbIdProducto.Text = productoDesdeBD.Id.ToString();
                     cBoxCategorias.SelectedIndex = productoDesdeBD.CategoriaId - 1;
 
 
@@ -221,7 +284,7 @@ namespace CyberGear16
             label17.Text = "Cliente No asignado";
             label17.ForeColor = Color.DarkRed;
 
-            
+
         }
 
 
@@ -230,14 +293,157 @@ namespace CyberGear16
             textBox6.Text = string.Empty;
             textBox8.Text = string.Empty;
             textBox7.Text = string.Empty;
-            cBoxCategorias.SelectedIndex = - 1;
+            cBoxCategorias.SelectedIndex = -1;
+        }
+
+        private void LimpiarCarrito()
+        {
+            // Limpia el contenido del DataGridView
+            dataGridView1.Rows.Clear();
+
+            //  reiniciar totales, limpiar campos de búsqueda, etc.
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             vaciarCliente();
             vaciarProducto();
+            LimpiarCarrito();
 
         }
+
+        //BOTON QUITAR CARRITO
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataGridView1.Columns["Acciones"].Index && e.RowIndex >= 0)
+            {
+                // Obtén la fila actual
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                // Elimina la fila del DataGridView
+                dataGridView1.Rows.Remove(row);
+
+                // Calcula y muestra el precio total
+                calcularMostrarPrecioTotal();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            // Verifica si hay un cliente asignado
+            if (string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text))
+            {
+                MessageBox.Show("No hay un cliente asignado. Asigne un cliente antes de guardar la venta.");
+                return;
+            }
+
+            // Verifica que haya productos en el carrito antes de intentar guardar la venta
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay productos en el carrito. Añada productos antes de guardar la venta.");
+                return;
+            }
+
+            using (var context = new BdCybergearContext())
+            {
+                // Obtener el DNI desde el TextBox
+                int dniCliente = Convert.ToInt32(textBox4.Text);
+
+
+
+                // Recupera la instancia del cliente por su ID
+                Cliente cliente = context.Clientes.FirstOrDefault(c => c.Dni == dniCliente);
+                // Verificar si se encontró al cliente
+                if (cliente != null)
+                {
+                    // Aquí puedes acceder a la propiedad IdCliente de cliente
+                    int idCliente = cliente.IdCliente;
+
+                    // Ahora puedes usar idCliente como sea necesario
+                }
+                else
+                {
+                    // Manejar el caso en el que el cliente no se encuentra
+                    MessageBox.Show("Cliente no encontrado");
+                }
+
+                // Recupera la instancia del usuario (vendedor) por su ID
+                Usuario vendedor = context.Usuarios.FirstOrDefault(u => u.Dni == dniUsuario);
+
+                if (vendedor == null)
+                {
+                    MessageBox.Show("Vendedor no encontrado. No se puede guardar la venta.");
+                    return;
+                }
+
+                // Ahora puedes acceder a la propiedad Id de vendedor
+                int idVendedor = vendedor.Id;
+
+                // Crea una nueva instancia de VentasCabecera
+                VentasCabecera nuevaVentaCabecera = new VentasCabecera
+                {
+                    Fecha = DateOnly.FromDateTime(DateTime.Now), // Puedes ajustar la fecha según sea necesario
+                    IdCliente = cliente.IdCliente,
+                    IdVendedor = vendedor.Id,
+
+
+
+                    TotalVenta = double.TryParse(textBox9.Text, out double totalVenta) ? totalVenta : 0.0
+                };
+
+                // Añade la nueva venta al contexto
+                context.VentasCabeceras.Add(nuevaVentaCabecera);
+                context.SaveChanges(); // Guarda los cambios para obtener el ID generado automáticamente
+
+                // Recorre las filas del DataGridView para agregar los detalles de la venta
+                foreach (DataGridViewRow fila in dataGridView1.Rows)
+                {
+                    // Recupera la instancia del producto por su ID
+                    int productoId = (int)fila.Cells[5].Value;
+                    Product producto = context.Products.FirstOrDefault(p => p.Id == productoId);
+                    if (producto == null)
+                    {
+                        MessageBox.Show($"Producto con ID {productoId} no encontrado. No se puede guardar la venta.");
+                        return;
+                    }
+
+                    // Crea una nueva instancia de VentasDetalle
+                    VentasDetalle nuevoDetalle = new VentasDetalle
+                    {
+                        VentaId = nuevaVentaCabecera.Id,
+                        ProductoId = producto.Id,
+                        CantidadVenta = Convert.ToInt32(fila.Cells[2].Value),
+                        Precio = (double)fila.Cells[1].Value,
+                        SubTotal = (double)fila.Cells[1].Value * (int)fila.Cells[2].Value
+                    };
+
+                    // Añade el nuevo detalle al contexto
+                    context.VentasDetalles.Add(nuevoDetalle);
+                }
+
+                // Guarda los cambios en la base de datos
+                context.SaveChanges();
+
+                MessageBox.Show("Venta guardada exitosamente.");
+
+                // Limpia el carrito después de guardar la venta
+                LimpiarCarrito();
+            }
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

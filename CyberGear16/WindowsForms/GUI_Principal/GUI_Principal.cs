@@ -211,7 +211,7 @@ namespace CyberGear16
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormSeccionVentas(_context, nombreUser));
+            AbrirFormHija(new FormSeccionVentas(_context, dniUsuario));
         }
 
         private void btnClientes_Click(object sender, EventArgs e)

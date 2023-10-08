@@ -30,6 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             panel1 = new Panel();
+            label19 = new Label();
+            textBox10 = new TextBox();
             label10 = new Label();
             label9 = new Label();
             label2 = new Label();
@@ -45,6 +47,7 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             panel3 = new Panel();
+            tbIdProducto = new TextBox();
             label18 = new Label();
             cBoxCategorias = new ComboBox();
             label15 = new Label();
@@ -72,6 +75,7 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
             comboBox2 = new ComboBox();
             label13 = new Label();
@@ -92,6 +96,8 @@
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.LightSlateGray;
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(label19);
+            panel1.Controls.Add(textBox10);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(label2);
@@ -101,6 +107,24 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(345, 105);
             panel1.TabIndex = 0;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(224, 42);
+            label19.Name = "label19";
+            label19.Size = new Size(27, 15);
+            label19.TabIndex = 10;
+            label19.Text = "DNI";
+            // 
+            // textBox10
+            // 
+            textBox10.Enabled = false;
+            textBox10.Location = new Point(215, 60);
+            textBox10.Name = "textBox10";
+            textBox10.Size = new Size(94, 23);
+            textBox10.TabIndex = 9;
+            toolTip1.SetToolTip(textBox10, "Ingrese el DNI del cliente registrado y presione buscar para asinarlo\r\n");
             // 
             // label10
             // 
@@ -137,7 +161,7 @@
             textBox2.Location = new Point(19, 60);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(202, 23);
+            textBox2.Size = new Size(170, 23);
             textBox2.TabIndex = 1;
             // 
             // textBox1
@@ -251,6 +275,7 @@
             panel3.Anchor = AnchorStyles.None;
             panel3.BackColor = Color.LightSlateGray;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(tbIdProducto);
             panel3.Controls.Add(label18);
             panel3.Controls.Add(cBoxCategorias);
             panel3.Controls.Add(label15);
@@ -270,6 +295,15 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(550, 205);
             panel3.TabIndex = 2;
+            // 
+            // tbIdProducto
+            // 
+            tbIdProducto.Enabled = false;
+            tbIdProducto.Location = new Point(79, 6);
+            tbIdProducto.Name = "tbIdProducto";
+            tbIdProducto.Size = new Size(51, 23);
+            tbIdProducto.TabIndex = 15;
+            tbIdProducto.Visible = false;
             // 
             // label18
             // 
@@ -462,6 +496,7 @@
             button1.TabIndex = 5;
             button1.Text = "Guardar venta";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -482,12 +517,13 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
             dataGridView1.Location = new Point(27, 362);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(790, 214);
             dataGridView1.TabIndex = 7;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
             // 
@@ -515,6 +551,12 @@
             // 
             Column5.HeaderText = "SubTotal";
             Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "id_producto";
+            Column6.Name = "Column6";
+            Column6.Visible = false;
             // 
             // panel5
             // 
@@ -624,7 +666,6 @@
         private Button button3;
         private TextBox textBox3;
         private TextBox textBox4;
-        private TextBox textBox8;
         private TextBox textBox7;
         private TextBox textBox6;
         private TextBox textBox5;
@@ -652,15 +693,20 @@
         private Label label15;
         private TextBox textBox9;
         private Label label16;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
         private Label label17;
         private Button button6;
         private ToolTip toolTip1;
         private ComboBox cBoxCategorias;
         private Label label18;
+        private Label label19;
+        private TextBox textBox10;
+        private TextBox tbIdProducto;
+        private TextBox textBox8;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
     }
 }
