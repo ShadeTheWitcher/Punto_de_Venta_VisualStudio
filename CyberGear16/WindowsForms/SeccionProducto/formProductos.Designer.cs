@@ -35,9 +35,11 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            button2 = new Button();
             BCancelar = new Button();
             textBox5 = new TextBox();
             label7 = new Label();
+            txtFoto = new TextBox();
             comboBoxCategorias = new ComboBox();
             button1 = new Button();
             label6 = new Label();
@@ -49,15 +51,13 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            txtFoto = new TextBox();
-            button2 = new Button();
-            openFileDialog1 = new OpenFileDialog();
             dataGridView1 = new DataGridView();
             BActivos = new Button();
             BInactivo = new Button();
             BBorrar = new Button();
             BBuscar = new Button();
             TBuscar = new TextBox();
+            openFileDialog1 = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -78,8 +78,9 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = Properties.Resources.producto_nuevo_png_1;
-            pictureBox1.Location = new Point(723, 37);
+            pictureBox1.Image = Properties.Resources.producto_nuevoEditado;
+            pictureBox1.InitialImage = Properties.Resources.producto_nuevoEditado;
+            pictureBox1.Location = new Point(726, 37);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(231, 254);
@@ -91,9 +92,11 @@
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(26, 32, 40);
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(BCancelar);
             panel1.Controls.Add(textBox5);
             panel1.Controls.Add(label7);
+            panel1.Controls.Add(txtFoto);
             panel1.Controls.Add(comboBoxCategorias);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
@@ -111,6 +114,17 @@
             panel1.Size = new Size(630, 309);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
+            // 
+            // button2
+            // 
+            button2.ForeColor = SystemColors.ActiveCaptionText;
+            button2.Location = new Point(474, 188);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 28;
+            button2.Text = "Subir foto";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
             // 
             // BCancelar
             // 
@@ -143,6 +157,15 @@
             label7.Size = new Size(84, 15);
             label7.TabIndex = 13;
             label7.Text = "Stock Mínimo:";
+            // 
+            // txtFoto
+            // 
+            txtFoto.Anchor = AnchorStyles.None;
+            txtFoto.Location = new Point(425, 145);
+            txtFoto.Name = "txtFoto";
+            txtFoto.ReadOnly = true;
+            txtFoto.Size = new Size(177, 23);
+            txtFoto.TabIndex = 12;
             // 
             // comboBoxCategorias
             // 
@@ -244,34 +267,6 @@
             label2.TabIndex = 0;
             label2.Text = "Nombre Del Producto:";
             // 
-            // txtFoto
-            // 
-            txtFoto.Anchor = AnchorStyles.None;
-            txtFoto.Location = new Point(777, 209);
-            txtFoto.Name = "txtFoto";
-            txtFoto.ReadOnly = true;
-            txtFoto.Size = new Size(177, 23);
-            txtFoto.TabIndex = 12;
-            txtFoto.Visible = false;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.None;
-            button2.ForeColor = SystemColors.ActiveCaptionText;
-            button2.Location = new Point(798, 238);
-            button2.Name = "button2";
-            button2.Size = new Size(131, 30);
-            button2.TabIndex = 10;
-            button2.Text = "subir foto";
-            button2.UseVisualStyleBackColor = true;
-            button2.Visible = false;
-            button2.Click += button2_Click;
-            // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
-            openFileDialog1.FileOk += openFileDialog1_FileOk;
-            // 
             // dataGridView1
             // 
             dataGridView1.AccessibleRole = AccessibleRole.None;
@@ -362,6 +357,11 @@
             TBuscar.TextChanged += TBuscar_TextChanged;
             TBuscar.KeyPress += TBuscar_KeyPress;
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.FileOk += openFileDialog1_FileOk_1;
+            // 
             // formProductos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -370,10 +370,8 @@
             Controls.Add(BBorrar);
             Controls.Add(BBuscar);
             Controls.Add(TBuscar);
-            Controls.Add(txtFoto);
             Controls.Add(BInactivo);
             Controls.Add(BActivos);
-            Controls.Add(button2);
             Controls.Add(dataGridView1);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
@@ -407,8 +405,6 @@
         private TextBox textBox3;
         private Button button1;
         private ComboBox comboBoxCategorias;
-        private Button button2;
-        private OpenFileDialog openFileDialog1;
         private TextBox txtFoto;
         private DataGridView dataGridView1;
         private TextBox textBox5;
@@ -419,5 +415,7 @@
         private Button BBuscar;
         private TextBox TBuscar;
         private Button BCancelar;
+        private Button button2;
+        private OpenFileDialog openFileDialog1;
     }
 }

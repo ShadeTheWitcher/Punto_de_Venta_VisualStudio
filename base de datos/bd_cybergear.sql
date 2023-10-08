@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2023 a las 16:42:37
+-- Tiempo de generación: 08-10-2023 a las 02:33:41
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -96,6 +96,8 @@ CREATE TABLE `products` (
   `descripcion` text DEFAULT NULL,
   `categoria_id` int(2) NOT NULL,
   `cantidad` int(100) NOT NULL,
+  `stock_minimo` int(100) NOT NULL,
+  `imagen` mediumblob DEFAULT NULL,
   `activo` varchar(2) NOT NULL DEFAULT 'SI'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -103,32 +105,32 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `nombre_producto`, `precio_producto`, `descripcion`, `categoria_id`, `cantidad`, `activo`) VALUES
-(8, 'Asseto Corsa', 3000.00, 'carrera', 2, 47, 'SI'),
-(9, 'The last of us', 100.00, 'zombies', 2, 53, 'SI'),
-(10, 'Dredge', 5000.00, 'asd', 2, 57, 'SI'),
-(11, 'Resident Evil 4 RE', 12000.00, 'el clasico ha vuelto ', 2, 23, 'SI'),
-(12, 'Sifu', 5000.00, 'sobrevive y cumple tu venganza', 2, 17, 'SI'),
-(13, 'Resident Evil 2 RE', 6000.00, 'el clásico reimaginado', 1, 59, 'SI'),
-(14, 'Doom Eternal', 6800.00, 'mata demonios', 1, 47, 'SI'),
-(15, 'Doom ', 2000.00, 'un clasico modernizado', 1, 28, 'SI'),
-(16, 'Resident Evil Village', 6000.00, 'adentrate en la villa', 2, 18, 'SI'),
-(17, 'Spiderman Miles Morales', 5900.00, 'spiderman', 2, 8, 'SI'),
-(18, 'Mortal Kombat X', 2000.00, 'Fatality', 2, 10, 'SI'),
-(19, 'Far Cry 6', 12000.00, 'Far Cry ahora en cuba ', 2, 58, 'SI'),
-(20, 'Grand Theft Auto 6', 20000.00, 'Volvemos a Vice City!', 1, 199, 'SI'),
-(25, 'Jedi Survivor', 1230.00, 'asd', 2, 123, 'SI'),
-(26, 'Street Fighter V', 12000.00, 'vuelve la saga favorita de luchas a la edad moderna ', 2, 100, 'SI'),
-(27, 'GTA Triology', 6000.00, 'los clasicos GTA han vuelto', 1, 300, 'SI'),
-(28, 'GTA 4 Complete Edition', 3000.00, 'Liberty City una ciudad oscura y llena de oportunidades', 1, 200, 'SI'),
-(29, 'Call of Duty Black Ops 3', 1000.00, 'un fps donde la tecnologia es vital', 1, 250, 'SI'),
-(30, 'Battlefiel 1 Revolution', 1500.00, 'un shooter lleno de destruccion', 1, 200, 'SI'),
-(31, 'Dark Souls Remastered', 6000.00, 'Adentrate a esta aventura llena de dificultades', 2, 600, 'SI'),
-(32, 'GTA 5', 1200.00, 'construye tu imperio del crimen', 1, 300, 'SI'),
-(33, 'pc', 12.00, 'asdasd', 1, 12, 'SI'),
-(34, 'ram_16g', 12444.00, 'asd', 1, 12, 'SI'),
-(35, 'Mortal Kombat 1', 12000.00, 'juego de pelea', 1, 12, 'SI'),
-(36, 'motherboard ASUS', 12555.00, 'DDR5', 2, 13, 'SI');
+INSERT INTO `products` (`id`, `nombre_producto`, `precio_producto`, `descripcion`, `categoria_id`, `cantidad`, `stock_minimo`, `imagen`, `activo`) VALUES
+(8, 'Asseto Corsa', 3000.00, 'carrera', 2, 47, 10, '', 'SI'),
+(9, 'The last of us', 100.00, 'zombies', 2, 53, 0, '', 'SI'),
+(10, 'Dredge', 5000.00, 'asd', 2, 57, 0, '', 'SI'),
+(11, 'Resident Evil 4 RE', 12000.00, 'el clasico ha vuelto ', 2, 23, 0, '', 'SI'),
+(12, 'Sifu', 5000.00, 'sobrevive y cumple tu venganza', 2, 17, 0, '', 'SI'),
+(13, 'Resident Evil 2 RE', 6000.00, 'el clásico reimaginado', 1, 59, 0, '', 'SI'),
+(14, 'Doom Eternal', 6800.00, 'mata demonios', 1, 47, 0, '', 'SI'),
+(15, 'Doom ', 2000.00, 'un clasico modernizado', 1, 28, 0, '', 'SI'),
+(16, 'Resident Evil Village', 6000.00, 'adentrate en la villa', 2, 18, 0, '', 'SI'),
+(17, 'Spiderman Miles Morales', 5900.00, 'spiderman', 2, 8, 0, '', 'SI'),
+(18, 'Mortal Kombat X', 2000.00, 'Fatality', 2, 10, 0, '', 'SI'),
+(19, 'Far Cry 6', 12000.00, 'Far Cry ahora en cuba ', 2, 58, 0, '', 'SI'),
+(20, 'Grand Theft Auto 6', 20000.00, 'Volvemos a Vice City!', 1, 199, 0, '', 'SI'),
+(25, 'Jedi Survivor', 1230.00, 'asd', 2, 123, 0, '', 'SI'),
+(26, 'Street Fighter V', 12000.00, 'vuelve la saga favorita de luchas a la edad moderna ', 2, 100, 0, '', 'SI'),
+(27, 'GTA Triology', 6000.00, 'los clasicos GTA han vuelto', 1, 300, 0, '', 'SI'),
+(28, 'GTA 4 Complete Edition', 3000.00, 'Liberty City una ciudad oscura y llena de oportunidades', 1, 200, 0, '', 'SI'),
+(29, 'Call of Duty Black Ops 3', 1000.00, 'un fps donde la tecnologia es vital', 1, 250, 0, '', 'SI'),
+(30, 'Battlefiel 1 Revolution', 1500.00, 'un shooter lleno de destruccion', 1, 200, 0, '', 'SI'),
+(31, 'Dark Souls Remastered', 6000.00, 'Adentrate a esta aventura llena de dificultades', 2, 600, 0, '', 'SI'),
+(32, 'GTA 5', 1200.00, 'construye tu imperio del crimen', 1, 300, 0, '', 'SI'),
+(33, 'pc', 12.00, 'asdasd', 1, 12, 0, '', 'SI'),
+(34, 'ram_16g', 12444.00, 'asd', 1, 12, 0, '', 'SI'),
+(35, 'Mortal Kombat 1', 12000.00, 'juego de pelea', 1, 12, 0, '', 'SI'),
+(36, 'motherboard ASUS', 12555.00, 'DDR5', 2, 13, 0, '', 'SI');
 
 -- --------------------------------------------------------
 
@@ -177,7 +179,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `apellido`, `email`, `usuario`, `pass`, `perfil_id`, `domicilio_id`, `tel`, `fecha`, `sexo`, `baja`) VALUES
-(47, 4444444, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, 20, 1111444466, '2023-09-22', 'Hombre', 'NO'),
+(47, 44444441, 'Samuel', 'DeLuque', 'vege777@gmail.com', 'admin1', 'admin', 1, 20, 1111444466, '2023-09-22', 'Hombre', 'NO'),
 (48, 12345666, 'Willy', 'Rex', 'asdsda1234@gmail.com', 'gerente1', 'gerente1', 2, 20, 444, '1994-06-16', 'Hombre', 'NO'),
 (49, 12578, 'rubius', 'doblas', 'vendeme@gmail.com', 'vendedor1', 'vendedor1', 3, 21, 12388, '1994-06-15', 'Hombre', 'NO'),
 (51, 44244555, 'Sergio', 'Moles', 'eljefe@gmail.com', 'eljefe', 'admin', 1, 22, 55555111122, '1988-11-09', 'Hombre', 'NO');

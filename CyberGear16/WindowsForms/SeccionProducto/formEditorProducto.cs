@@ -51,6 +51,7 @@ namespace CyberGear16
                     tbNombre.Text = producto.NombreProducto;
                     tbPrecio.Text = producto.PrecioProducto.ToString();
                     tbStock.Text = producto.Cantidad.ToString();
+                    tbStockMin.Text = producto.StockMinimo.ToString();
                     comboBoxCategorias.SelectedIndex = producto.CategoriaId - 1;
                     tbDescrip.Text = producto.Descripcion;
 
@@ -103,6 +104,7 @@ namespace CyberGear16
                         producto.NombreProducto = tbNombre.Text;
                         producto.PrecioProducto = Double.Parse(tbPrecio.Text);
                         producto.Cantidad = int.Parse(tbStock.Text);
+                        producto.StockMinimo = int.Parse(tbStockMin.Text);
                         producto.Descripcion = tbDescrip.Text;
                         producto.CategoriaId = comboBoxCategorias.SelectedIndex + 1;
 

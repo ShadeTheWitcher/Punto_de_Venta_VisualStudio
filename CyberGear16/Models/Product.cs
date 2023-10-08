@@ -17,6 +17,10 @@ public partial class Product
 
     public int Cantidad { get; set; }
 
+    public int StockMinimo { get; set; }
+
+    public byte[]? Imagen { get; set; }
+
     public string Activo { get; set; } = null!;
 
     public virtual ICollection<VentasDetalle> VentasDetalles { get; set; } = new List<VentasDetalle>();

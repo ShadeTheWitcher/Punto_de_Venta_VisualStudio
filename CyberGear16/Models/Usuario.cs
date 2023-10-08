@@ -34,4 +34,6 @@ public partial class Usuario
     public virtual Domicilio? Domicilio { get; set; }
 
     public virtual TiposUsuario Perfil { get; set; } = null!;
+
+    public virtual ICollection<VentasCabecera> VentasCabeceras { get; set; } = new List<VentasCabecera>();
 }

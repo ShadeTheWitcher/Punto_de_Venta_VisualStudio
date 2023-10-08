@@ -35,43 +35,9 @@ namespace CyberGear16
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //openFileDialog1.InitialDirectory = @"C:\"; // Cambia la ruta según tu ubicación.
-            //openFileDialog1.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
-            //openFileDialog1.FilterIndex = 1;
-
-            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            //{
-            //    pictureBox1.Image = new Bitmap(openFileDialog1.FileName);
-            //    txtFoto.Text = openFileDialog1.FileName;
 
 
-            //    // Crear una carpeta "Images" dentro de la carpeta del proyecto
-            //    string carpetaDestino = Path.Combine(Application.StartupPath, "Fotos");
-            //    Directory.CreateDirectory(carpetaDestino);
 
-            //    // Obtener el nombre del archivo
-            //    string nombreArchivo = Path.GetFileName(openFileDialog1.FileName);
-
-            //    // Combinar la carpeta de destino con el nombre del archivo
-            //    string rutaArchivoDestino = Path.Combine(carpetaDestino, nombreArchivo);
-
-            //    try
-            //    {
-            //        // Copiar el archivo a la carpeta de destino
-            //        File.Copy(openFileDialog1.FileName, rutaArchivoDestino);
-
-            //        // Ahora tienes la imagen guardada en 'rutaArchivoDestino'
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Error al guardar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-
-
-            //}
-        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -97,8 +63,9 @@ namespace CyberGear16
         {
             double precio = 0;
             int stock = 0;
+            int stock_min = 0;
 
-            if (validarCampos() && double.TryParse(textBox2.Text, out precio) && int.TryParse(textBox3.Text, out stock))
+            if (validarCampos() && double.TryParse(textBox2.Text, out precio) && int.TryParse(textBox3.Text, out stock) && int.TryParse(textBox5.Text, out stock_min))
             {
                 string nombre = textBox1.Text;
                 string descripcion = textBox4.Text;
@@ -114,8 +81,10 @@ namespace CyberGear16
                             NombreProducto = nombre,
                             PrecioProducto = precio,
                             Descripcion = descripcion,
+                            StockMinimo = stock_min,
                             CategoriaId = idCategoria + 1,
-                            Cantidad = stock
+                            Cantidad = stock,
+                            Imagen = imagenBytes // Asigna los bytes de la imagen al producto
                         };
 
                         // Agrega el producto al contexto.
@@ -127,7 +96,6 @@ namespace CyberGear16
                         MessageBox.Show("Producto agregado correctamente");
                         LimpiarCampos();
                         CargarDatosEnDataGridView();
-
                     }
                 }
                 catch (Exception ex)
@@ -137,7 +105,7 @@ namespace CyberGear16
             }
             else
             {
-                MessageBox.Show("Por favor, ingresa valores numéricos válidos en los campos.");
+                MessageBox.Show("Por favor, comingresa valores numéricos válidos en los campos.");
             }
         }
 
@@ -163,6 +131,17 @@ namespace CyberGear16
             textBox3.Clear();
             textBox4.Clear();
             comboBoxCategorias.SelectedIndex = -1;
+            txtFoto.Clear();
+            pictureBox1.Image =  null;
+
+            // Restablecer el PictureBox a su estado original
+            if (pictureBox1.Image == null)
+            {
+                // Si no hay una imagen seleccionada, establecer la imagen inicial
+                pictureBox1.Image = pictureBox1.InitialImage;
+            }
+            
+
         }
 
         private void CargarDatosEnDataGridView()
@@ -415,6 +394,57 @@ namespace CyberGear16
 
 
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OPF1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+
+        private byte[] imagenBytes; // Variable para almacenar los bytes de la imagen
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = @"C:\"; // Establece el directorio inicial
+                openFileDialog.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+                openFileDialog.FilterIndex = 1;
+
+                txtFoto.Text = openFileDialog.FileName;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        // Convertir la imagen a bytes
+                        byte[] imagenBytes = File.ReadAllBytes(openFileDialog.FileName);
+
+                        // Mostrar la imagen 
+                        pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
+
+
+
+                        // Ahora asigna la ruta del archivo al TextBox
+                        txtFoto.Text = openFileDialog.FileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al leer la imagen: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

@@ -15,7 +15,6 @@ public partial class BdCybergearContext : DbContext
     {
     }
 
-    //Representación de Tablas de Base como Clase
     public virtual DbSet<Cliente> Clientes { get; set; }
 
     public virtual DbSet<Domicilio> Domicilios { get; set; }
@@ -40,7 +39,6 @@ public partial class BdCybergearContext : DbContext
             .UseCollation("utf8mb4_general_ci")
             .HasCharSet("utf8mb4");
 
-        //Restricciones
         modelBuilder.Entity<Cliente>(entity =>
         {
             entity.HasKey(e => e.IdCliente).HasName("PRIMARY");
@@ -127,12 +125,18 @@ public partial class BdCybergearContext : DbContext
             entity.Property(e => e.Descripcion)
                 .HasColumnType("text")
                 .HasColumnName("descripcion");
+            entity.Property(e => e.Imagen)
+                .HasColumnType("mediumblob")
+                .HasColumnName("imagen");
             entity.Property(e => e.NombreProducto)
                 .HasMaxLength(255)
                 .HasColumnName("nombre_producto");
             entity.Property(e => e.PrecioProducto)
                 .HasColumnType("double(16,2)")
                 .HasColumnName("precio_producto");
+            entity.Property(e => e.StockMinimo)
+                .HasColumnType("int(100)")
+                .HasColumnName("stock_minimo");
         });
 
         modelBuilder.Entity<TiposUsuario>(entity =>
@@ -220,6 +224,8 @@ public partial class BdCybergearContext : DbContext
 
             entity.HasIndex(e => e.IdCliente, "id_cliente");
 
+            entity.HasIndex(e => e.IdVendedor, "id_vendedor");
+
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
@@ -227,11 +233,18 @@ public partial class BdCybergearContext : DbContext
             entity.Property(e => e.IdCliente)
                 .HasColumnType("int(11)")
                 .HasColumnName("id_cliente");
+            entity.Property(e => e.IdVendedor)
+                .HasColumnType("int(11)")
+                .HasColumnName("id_vendedor");
             entity.Property(e => e.TotalVenta).HasColumnName("total_venta");
 
             entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.VentasCabeceras)
                 .HasForeignKey(d => d.IdCliente)
                 .HasConstraintName("ventas_cabecera_ibfk_1");
+
+            entity.HasOne(d => d.IdVendedorNavigation).WithMany(p => p.VentasCabeceras)
+                .HasForeignKey(d => d.IdVendedor)
+                .HasConstraintName("ventas_cabecera_ibfk_2");
         });
 
         modelBuilder.Entity<VentasDetalle>(entity =>
