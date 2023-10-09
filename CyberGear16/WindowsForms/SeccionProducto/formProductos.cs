@@ -12,6 +12,7 @@ using MySqlConnector;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using CyberGear16.Models; // importar el espacio de nombres de tus modelos
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace CyberGear16
@@ -47,11 +48,11 @@ namespace CyberGear16
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns["Acciones"].Index)
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns[7].Index)
             {
                 // Obtén el producto seleccionado
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                int productId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
+                int productId = Convert.ToInt32(row.Cells[0].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
 
                 // Abre el formulario de detalles/editar con el producto seleccionado
                 formEditorProducto editorProducto = new formEditorProducto(productId, _context);
@@ -90,14 +91,14 @@ namespace CyberGear16
 
                         // Agrega el producto al contexto.
                         context.Products.Add(nuevoProducto);
-                        
+
                         // Guarda los cambios en la base de datos.
                         context.SaveChanges();
 
                         MessageBox.Show("Producto agregado correctamente");
                         LimpiarCampos();
                         CargarDatosEnDataGridView();
-                        
+
                     }
                 }
                 catch (Exception ex)
@@ -134,7 +135,7 @@ namespace CyberGear16
             textBox4.Clear();
             comboBoxCategorias.SelectedIndex = -1;
             txtFoto.Clear();
-            pictureBox1.Image =  null;
+            pictureBox1.Image = null;
 
             // Restablecer el PictureBox a su estado original
             if (pictureBox1.Image == null)
@@ -142,29 +143,85 @@ namespace CyberGear16
                 // Si no hay una imagen seleccionada, establecer la imagen inicial
                 pictureBox1.Image = pictureBox1.InitialImage;
             }
-            
+
 
         }
+
+
+        private string GetCategoryName(int categoryId)
+        {
+            switch (categoryId)
+            {
+                case 1:
+                    return "VideoJuego";
+                case 2:
+                    return "PC-Componentes";
+                
+                default:
+                    return "Otra categoría";
+            }
+        }
+
+
 
         private void CargarDatosEnDataGridView()
         {
             using (var context = new BdCybergearContext())
             {
-                // Vuelve a cargar los datos en el DataGridView para reflejar los cambios.
-                var productos = context.Products
-                .Select(p => new
-                {
-                    p.Id,
-                    p.NombreProducto,
-                    p.PrecioProducto,
-                    p.Descripcion,
-                    p.Cantidad,
-                    p.CategoriaId,
-                    p.Activo
-                })
-                .ToList();
+                // obtiene todos los productos
+                List<Product> productosDesdeBD = context.Products.ToList();
 
-                dataGridView1.DataSource = productos;
+                // limpia las celdas
+                dataGridView1.Rows.Clear();
+                // Cambia el color de fuente a negro para todas las celdas del DataGridView
+                dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+
+                foreach (var productoDesdeBD in productosDesdeBD)
+                {
+                    // Extae la info de la base
+                    int id_producto = productoDesdeBD.Id;
+                    string nombreProducto = productoDesdeBD.NombreProducto ?? "";
+                    double precioProducto = productoDesdeBD.PrecioProducto ?? 0;
+                    string descripcionProducto = productoDesdeBD.Descripcion;
+                    int cantidad = productoDesdeBD.Cantidad;
+                    int categoriId = productoDesdeBD.CategoriaId;
+
+                    string categoria = GetCategoryName(categoriId); //segun el id ira una catgoria
+
+                    // Crea una nueva fila en la tabla
+                    DataGridViewRow nuevaFila = new DataGridViewRow();
+                    nuevaFila.CreateCells(dataGridView1);
+
+                    nuevaFila.Cells[0].Value = id_producto;
+                    nuevaFila.Cells[1].Value = nombreProducto;
+                    nuevaFila.Cells[2].Value = descripcionProducto;
+                    nuevaFila.Cells[3].Value = precioProducto;
+                    nuevaFila.Cells[4].Value = cantidad;
+                    nuevaFila.Cells[5].Value = categoria;
+
+                    // Add the row to the DataGridView
+                    dataGridView1.Rows.Add(nuevaFila);
+
+                    // Load and display the image if available
+                    byte[] Imagen = productoDesdeBD.Imagen;
+                    if (Imagen != null && Imagen.Length > 0)
+                    {
+                        dataGridView1.Columns[6].Width = 80; // Adjust the width as needed
+                        dataGridView1.Columns[6].DefaultCellStyle.NullValue = null;
+
+                        using (MemoryStream ms = new MemoryStream(Imagen))
+                        {
+                            Image originalImage = Image.FromStream(ms);
+
+                            // Resize the image while maintaining the aspect ratio
+                            int nuevoAncho = 80; // Desired width
+                            int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
+                            Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
+
+                            nuevaFila.Cells[6].Value = imagenRedimensionada; // Resized image
+                        }
+                    }
+                }
             }
         }
 
@@ -210,53 +267,10 @@ namespace CyberGear16
             comboBoxCategorias.Items.Add("Videjuegos");
             comboBoxCategorias.Items.Add("PC-componentes");
 
-            using (var context = new BdCybergearContext()) // se lo engloba en un using para q se cierre la conexion
-            {
-                // Consulta los productos desde la base de datos
-                var products = context.Products
-                    .Select(p => new
-                    {
-                        p.Id,
-                        p.NombreProducto,
-                        p.PrecioProducto,
-                        p.Descripcion,
-                        p.Cantidad,
-                        p.CategoriaId,
-                        p.Activo
-                    })
-                    .ToList();
+            CargarDatosEnDataGridView();
 
 
 
-
-                // Asigna los productos a la fuente de datos del DataGridView
-                dataGridView1.DataSource = products;
-
-                // Configura el estilo y columnas del DataGridView
-                // (asegúrate de que las propiedades de Product se correspondan con las columnas)
-
-                dataGridView1.Columns["Id"].Width = 40;
-                dataGridView1.Columns["NombreProducto"].Width = 150;
-                dataGridView1.Columns["PrecioProducto"].Width = 100;
-                dataGridView1.Columns["Descripcion"].Width = 200;
-                dataGridView1.Columns["Cantidad"].Width = 100;
-                dataGridView1.Columns["CategoriaId"].Width = 100;
-                dataGridView1.Columns["Activo"].Width = 100;
-
-                DataGridViewButtonColumn eliminarButtonColumn = new DataGridViewButtonColumn();
-                eliminarButtonColumn.Name = "Acciones";
-                eliminarButtonColumn.Text = "Editar/Baja";
-                eliminarButtonColumn.UseColumnTextForButtonValue = true;
-                dataGridView1.Columns.Add(eliminarButtonColumn);
-
-
-                // Cambia el color de fuente a negro para todas las celdas del DataGridView
-                dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
-
-                // Oculta las columnas no deseadas (en este caso, ocultamos todas las demás)
-                ocultarColumnasExtra();
-                dataGridView1.Columns["Id"].Width = 40;
-            }
         }
 
 
@@ -265,7 +279,7 @@ namespace CyberGear16
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
                 if (column.Name != "Id" && column.Name != "NombreProducto" && column.Name != "PrecioProducto" && column.Name != "Descripcion" &&
-                    column.Name != "Cantidad" && column.Name != "Acciones" && column.Name != "CategoriaId" &&
+                    column.Name != "Cantidad" && column.Name != "Acciones" && column.Name != "CategoriaId" && column.Name != "CategoriaId" &&
                     column.Name != "Activo")
                 {
                     column.Visible = false;
@@ -289,11 +303,57 @@ namespace CyberGear16
         {
             using (var context = new BdCybergearContext())
             {
-                var productosFiltrados = context.Products.Where(p => p.Activo == "Si").ToList();
+                var productosFiltrados = context.Products.Where(p => p.Activo == "SI").ToList();
 
-                // Enlazar los resultados al DataGridView.
-                dataGridView1.DataSource = productosFiltrados;
-                ocultarColumnasExtra();
+                // Limpia las filas existentes en el DataGridView
+                dataGridView1.Rows.Clear();
+
+                foreach (var productoFiltrado in productosFiltrados)
+                {
+                    int id_producto = productoFiltrado.Id;
+                    string nombreProducto = productoFiltrado.NombreProducto ?? "";
+                    double precioProducto = productoFiltrado.PrecioProducto ?? 0;
+                    string descripcionProducto = productoFiltrado.Descripcion;
+                    int cantidad = productoFiltrado.Cantidad;
+                    int categoriaId = productoFiltrado.CategoriaId;
+
+                    // Usa el método GetCategoryName para obtener el nombre de la categoría
+                    string categoria = GetCategoryName(categoriaId);
+
+                    // Crea una nueva fila y asigna los valores
+                    DataGridViewRow nuevaFila = new DataGridViewRow();
+                    nuevaFila.CreateCells(dataGridView1);
+
+                    nuevaFila.Cells[0].Value = id_producto;
+                    nuevaFila.Cells[1].Value = nombreProducto;
+                    nuevaFila.Cells[2].Value = descripcionProducto;
+                    nuevaFila.Cells[3].Value = precioProducto;
+                    nuevaFila.Cells[4].Value = cantidad;
+                    nuevaFila.Cells[5].Value = categoria;
+
+                    // Añade la fila al DataGridView
+                    dataGridView1.Rows.Add(nuevaFila);
+
+                    // Carga y muestra la imagen si está disponible
+                    byte[] Imagen = productoFiltrado.Imagen;
+                    if (Imagen != null && Imagen.Length > 0)
+                    {
+                        dataGridView1.Columns[6].Width = 80; // Ajusta el ancho según sea necesario
+                        dataGridView1.Columns[6].DefaultCellStyle.NullValue = null;
+
+                        using (MemoryStream ms = new MemoryStream(Imagen))
+                        {
+                            Image originalImage = Image.FromStream(ms);
+
+                            // Redimensiona la imagen manteniendo la relación de aspecto
+                            int nuevoAncho = 80; // Ancho deseado
+                            int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
+                            Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
+
+                            nuevaFila.Cells[6].Value = imagenRedimensionada; // Imagen redimensionada
+                        }
+                    }
+                }
             }
         }
 
@@ -303,10 +363,55 @@ namespace CyberGear16
             {
                 var productosFiltrados = context.Products.Where(p => p.Activo == "NO").ToList();
 
-                // Enlazar los resultados al DataGridView.
-                dataGridView1.DataSource = productosFiltrados;
-                ocultarColumnasExtra();
+                // Limpia las filas existentes en el DataGridView
+                dataGridView1.Rows.Clear();
 
+                foreach (var productoFiltrado in productosFiltrados)
+                {
+                    int id_producto = productoFiltrado.Id;
+                    string nombreProducto = productoFiltrado.NombreProducto ?? "";
+                    double precioProducto = productoFiltrado.PrecioProducto ?? 0;
+                    string descripcionProducto = productoFiltrado.Descripcion;
+                    int cantidad = productoFiltrado.Cantidad;
+                    int categoriaId = productoFiltrado.CategoriaId;
+
+                    // Usa el método GetCategoryName para obtener el nombre de la categoría
+                    string categoria = GetCategoryName(categoriaId);
+
+                    // Crea una nueva fila y asigna los valores
+                    DataGridViewRow nuevaFila = new DataGridViewRow();
+                    nuevaFila.CreateCells(dataGridView1);
+
+                    nuevaFila.Cells[0].Value = id_producto;
+                    nuevaFila.Cells[1].Value = nombreProducto;
+                    nuevaFila.Cells[2].Value = descripcionProducto;
+                    nuevaFila.Cells[3].Value = precioProducto;
+                    nuevaFila.Cells[4].Value = cantidad;
+                    nuevaFila.Cells[5].Value = categoria;
+
+                    // Añade la fila al DataGridView
+                    dataGridView1.Rows.Add(nuevaFila);
+
+                    // Carga y muestra la imagen si está disponible
+                    byte[] Imagen = productoFiltrado.Imagen;
+                    if (Imagen != null && Imagen.Length > 0)
+                    {
+                        dataGridView1.Columns[6].Width = 80; // Ajusta el ancho según sea necesario
+                        dataGridView1.Columns[6].DefaultCellStyle.NullValue = null;
+
+                        using (MemoryStream ms = new MemoryStream(Imagen))
+                        {
+                            Image originalImage = Image.FromStream(ms);
+
+                            // Redimensiona la imagen manteniendo la relación de aspecto
+                            int nuevoAncho = 80; // Ancho deseado
+                            int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
+                            Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
+
+                            nuevaFila.Cells[6].Value = imagenRedimensionada; // Imagen redimensionada
+                        }
+                    }
+                }
             }
         }
 
@@ -409,7 +514,7 @@ namespace CyberGear16
         }
 
 
-        
+
         private void button2_Click_1(object sender, EventArgs e)
         {
 
@@ -419,7 +524,7 @@ namespace CyberGear16
                 openFileDialog.Filter = "Archivos de imagen (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
                 openFileDialog.FilterIndex = 1;
 
-                
+
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -431,7 +536,7 @@ namespace CyberGear16
                         // Mostrar la imagen 
                         pictureBox1.Image = Image.FromFile(openFileDialog.FileName);
 
-                        
+
 
 
 
