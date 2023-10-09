@@ -52,12 +52,6 @@
             label3 = new Label();
             label2 = new Label();
             dataGridView1 = new DataGridView();
-            BActivos = new Button();
-            BInactivo = new Button();
-            BBorrar = new Button();
-            BBuscar = new Button();
-            TBuscar = new TextBox();
-            openFileDialog1 = new OpenFileDialog();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
@@ -66,6 +60,12 @@
             Column8 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewImageColumn();
             Column6 = new DataGridViewButtonColumn();
+            BActivos = new Button();
+            BInactivo = new Button();
+            BBorrar = new Button();
+            BBuscar = new Button();
+            TBuscar = new TextBox();
+            openFileDialog1 = new OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -131,6 +131,7 @@
             button2.TabIndex = 28;
             button2.Text = "Subir foto";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // BCancelar
             // 
@@ -306,6 +307,58 @@
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // Column1
+            // 
+            Column1.FillWeight = 60.9137039F;
+            Column1.HeaderText = "id";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.FillWeight = 107.817253F;
+            Column2.HeaderText = "Nombre_producto";
+            Column2.Name = "Column2";
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "Descripcion";
+            Column7.Name = "Column7";
+            // 
+            // Column3
+            // 
+            Column3.FillWeight = 107.817253F;
+            Column3.HeaderText = "Precio";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.FillWeight = 107.817253F;
+            Column4.HeaderText = "Stock";
+            Column4.Name = "Column4";
+            // 
+            // Column8
+            // 
+            Column8.HeaderText = "Categoria";
+            Column8.Name = "Column8";
+            // 
+            // Column5
+            // 
+            Column5.FillWeight = 107.817253F;
+            Column5.HeaderText = "Imagen";
+            Column5.Name = "Column5";
+            Column5.Resizable = DataGridViewTriState.True;
+            Column5.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column6
+            // 
+            Column6.FillWeight = 107.817253F;
+            Column6.HeaderText = "Acciones";
+            Column6.Name = "Column6";
+            Column6.Resizable = DataGridViewTriState.True;
+            Column6.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column6.Text = "Edit-Baja-Alta";
+            Column6.UseColumnTextForButtonValue = true;
+            // 
             // BActivos
             // 
             BActivos.Anchor = AnchorStyles.None;
@@ -361,65 +414,12 @@
             TBuscar.TabIndex = 7;
             TBuscar.Text = "Buscar";
             TBuscar.Click += TBuscar_Click;
-            TBuscar.TextChanged += TBuscar_TextChanged;
             TBuscar.KeyPress += TBuscar_KeyPress;
             // 
             // openFileDialog1
             // 
             openFileDialog1.FileName = "openFileDialog1";
             openFileDialog1.FileOk += openFileDialog1_FileOk_1;
-            // 
-            // Column1
-            // 
-            Column1.FillWeight = 60.9137039F;
-            Column1.HeaderText = "id";
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.FillWeight = 107.817253F;
-            Column2.HeaderText = "Nombre_producto";
-            Column2.Name = "Column2";
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Descripcion";
-            Column7.Name = "Column7";
-            // 
-            // Column3
-            // 
-            Column3.FillWeight = 107.817253F;
-            Column3.HeaderText = "Precio";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.FillWeight = 107.817253F;
-            Column4.HeaderText = "Stock";
-            Column4.Name = "Column4";
-            // 
-            // Column8
-            // 
-            Column8.HeaderText = "Categoria";
-            Column8.Name = "Column8";
-            // 
-            // Column5
-            // 
-            Column5.FillWeight = 107.817253F;
-            Column5.HeaderText = "Imagen";
-            Column5.Name = "Column5";
-            Column5.Resizable = DataGridViewTriState.True;
-            Column5.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column6
-            // 
-            Column6.FillWeight = 107.817253F;
-            Column6.HeaderText = "Acciones";
-            Column6.Name = "Column6";
-            Column6.Resizable = DataGridViewTriState.True;
-            Column6.SortMode = DataGridViewColumnSortMode.Automatic;
-            Column6.Text = "Edit-Baja-Alta";
-            Column6.UseColumnTextForButtonValue = true;
             // 
             // formProductos
             // 

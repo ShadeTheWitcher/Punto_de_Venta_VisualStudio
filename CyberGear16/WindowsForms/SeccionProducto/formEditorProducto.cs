@@ -108,12 +108,8 @@ namespace CyberGear16
 
             if (validarCampos())
             {
-
-
                 try
                 {
-
-
                     using (var context = new BdCybergearContext())
                     {
                         // Obtener el objeto existente que deseas actualizar
@@ -126,21 +122,22 @@ namespace CyberGear16
                         producto.StockMinimo = int.Parse(tbStockMin.Text);
                         producto.Descripcion = tbDescrip.Text;
                         producto.CategoriaId = comboBoxCategorias.SelectedIndex + 1;
-                        producto.Imagen = imagenBytes;
 
-
+                        // Verificar si se ha cargado una nueva imagen antes de actualizarla
+                        if (imagenBytes != null && imagenBytes.Length > 0)
+                        {
+                            producto.Imagen = imagenBytes;
+                        }
 
                         // Guardar los cambios en la base de datos
                         context.SaveChanges();
                         MessageBox.Show("Producto actualizado correctamente");
-
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
                 }
-
             }
 
 

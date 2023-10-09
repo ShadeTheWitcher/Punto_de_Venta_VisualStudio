@@ -133,6 +133,7 @@ namespace CyberGear16
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
+            textBox5.Clear();
             comboBoxCategorias.SelectedIndex = -1;
             txtFoto.Clear();
             pictureBox1.Image = null;
@@ -156,7 +157,7 @@ namespace CyberGear16
                     return "VideoJuego";
                 case 2:
                     return "PC-Componentes";
-                
+
                 default:
                     return "Otra categoría";
             }
@@ -164,21 +165,30 @@ namespace CyberGear16
 
 
 
-        private void CargarDatosEnDataGridView()
+        private void CargarDatosEnDataGridView(string filtro = "")
         {
             using (var context = new BdCybergearContext())
             {
-                // obtiene todos los productos
-                List<Product> productosDesdeBD = context.Products.ToList();
+                IQueryable<Product> productosQuery = context.Products;
 
-                // limpia las celdas
+                // Aplicar filtro si se proporciona
+                if (!string.IsNullOrEmpty(filtro))
+                {
+                    productosQuery = productosQuery.Where(p => p.NombreProducto.Contains(filtro));
+                }
+
+                // Obtener los productos
+                List<Product> productosDesdeBD = productosQuery.ToList();
+
+                // Limpiar las filas
                 dataGridView1.Rows.Clear();
-                // Cambia el color de fuente a negro para todas las celdas del DataGridView
+
+                // Cambiar el color de fuente a negro para todas las celdas del DataGridView
                 dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
 
                 foreach (var productoDesdeBD in productosDesdeBD)
                 {
-                    // Extae la info de la base
+                    // Extraer la información de la base de datos
                     int id_producto = productoDesdeBD.Id;
                     string nombreProducto = productoDesdeBD.NombreProducto ?? "";
                     double precioProducto = productoDesdeBD.PrecioProducto ?? 0;
@@ -186,9 +196,9 @@ namespace CyberGear16
                     int cantidad = productoDesdeBD.Cantidad;
                     int categoriId = productoDesdeBD.CategoriaId;
 
-                    string categoria = GetCategoryName(categoriId); //segun el id ira una catgoria
+                    string categoria = GetCategoryName(categoriId); // Según el id irá una categoría
 
-                    // Crea una nueva fila en la tabla
+                    // Crear una nueva fila en la tabla
                     DataGridViewRow nuevaFila = new DataGridViewRow();
                     nuevaFila.CreateCells(dataGridView1);
 
@@ -199,26 +209,26 @@ namespace CyberGear16
                     nuevaFila.Cells[4].Value = cantidad;
                     nuevaFila.Cells[5].Value = categoria;
 
-                    // Add the row to the DataGridView
+                    // Añadir la fila al DataGridView
                     dataGridView1.Rows.Add(nuevaFila);
 
-                    // Load and display the image if available
+                    // Cargar y mostrar la imagen si está disponible
                     byte[] Imagen = productoDesdeBD.Imagen;
                     if (Imagen != null && Imagen.Length > 0)
                     {
-                        dataGridView1.Columns[6].Width = 80; // Adjust the width as needed
+                        dataGridView1.Columns[6].Width = 80; // Ajustar el ancho según sea necesario
                         dataGridView1.Columns[6].DefaultCellStyle.NullValue = null;
 
                         using (MemoryStream ms = new MemoryStream(Imagen))
                         {
                             Image originalImage = Image.FromStream(ms);
 
-                            // Resize the image while maintaining the aspect ratio
-                            int nuevoAncho = 80; // Desired width
+                            // Redimensionar la imagen manteniendo la relación de aspecto
+                            int nuevoAncho = 80; // Ancho deseado
                             int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
                             Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
 
-                            nuevaFila.Cells[6].Value = imagenRedimensionada; // Resized image
+                            nuevaFila.Cells[6].Value = imagenRedimensionada; // Imagen redimensionada
                         }
                     }
                 }
@@ -423,53 +433,36 @@ namespace CyberGear16
 
         private void BuscarEnBaseDeDatosYActualizarDataGridView(string buscar)
         {
-            using (var context = new BdCybergearContext())
-            {
+            CargarDatosEnDataGridView(buscar);
+        }
 
-                var resultados = context.Products.Where(e => e.NombreProducto.Contains(buscar)).ToList();
-                if (resultados.Count == 0)
-                {
-                    MessageBox.Show("No se han encontrado usuarios que coincidan con la busqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    dataGridView1.DataSource = resultados;
-                    ocultarColumnasExtra();
-                }
+        private void RealizarBusqueda()
+        {
+            if (!string.IsNullOrEmpty(TBuscar.Text))
+            {
+                string buscar = TBuscar.Text;
+                // Llama al método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
+                BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
+            }
+            else
+            {
+                // Si no hay texto, carga todos los datos
+                CargarDatosEnDataGridView();
             }
         }
 
+
         private void TBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar == (char)Keys.Enter))
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                if (!string.IsNullOrEmpty(TBuscar.Text))
-                {
-                    string buscar = TBuscar.Text;
-                    // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
-                    BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
-                }
-                else
-                {
-                    MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                RealizarBusqueda();
             }
         }
 
         private void BBuscar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TBuscar.Text))
-            {
-                string buscar = TBuscar.Text;
-                // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
-                BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
-
-
-            }
-            else
-            {
-                MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            RealizarBusqueda();
         }
 
 
@@ -515,9 +508,15 @@ namespace CyberGear16
 
 
 
-        private void button2_Click_1(object sender, EventArgs e)
+        
+
+        private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e) //subir foto
+        {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = @"C:\"; // Establece el directorio inicial
@@ -551,9 +550,8 @@ namespace CyberGear16
             }
         }
 
-        private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
-        {
 
-        }
+
+
     }
 }
