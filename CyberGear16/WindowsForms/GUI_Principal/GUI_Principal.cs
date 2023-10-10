@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using CyberGear16;
 using MySqlConnector;
 using CyberGear16.Models;
+using CyberGear16.WindowsForms.Seccion_Catalogo;
 
 namespace CyberGear16
 {
@@ -75,9 +76,10 @@ namespace CyberGear16
             {
 
                 LTipoUser.Text = "Vendedor";
-                btnProductos.Enabled = false;
-                panel4.BackColor = Color.DimGray;
+                //btnProductos.Enabled = false;
+                //panel4.BackColor = Color.DimGray;
 
+                btnProductos.Text = "Catalogo";
 
                 btnUsuarios.Enabled = false;
                 panel5.BackColor = Color.DimGray;
@@ -171,7 +173,16 @@ namespace CyberGear16
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new formProductos(_context));
+            if (perfil_idUsuario==3)
+            {
+                AbrirFormHija(new FormCatalogo(_context));
+                
+            }
+            else
+            {
+                AbrirFormHija(new formProductos(_context));
+            }
+            
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)

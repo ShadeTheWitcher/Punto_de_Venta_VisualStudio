@@ -55,5 +55,11 @@
     <Compile Update="WindowsForms\SeccionBackUp\SubFormBackUp.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="WindowsForms\Seccion_Catalogo\FormCatalogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="WindowsForms\Seccion_Catalogo\ProductoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
