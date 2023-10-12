@@ -50,6 +50,9 @@ public partial class BdCybergearContext : DbContext
             entity.Property(e => e.IdCategoria)
                 .HasColumnType("int(11)")
                 .HasColumnName("id_categoria");
+            entity.Property(e => e.Activo)
+                .HasMaxLength(2)
+                .HasDefaultValueSql("'SI'");
             entity.Property(e => e.CategoriaNombre)
                 .HasMaxLength(30)
                 .HasColumnName("categoria_nombre");

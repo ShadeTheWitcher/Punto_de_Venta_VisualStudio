@@ -9,5 +9,7 @@ public partial class Categorium
 
     public string CategoriaNombre { get; set; } = null!;
 
+    public string Activo { get; set; } = null!;
+
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

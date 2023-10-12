@@ -36,8 +36,7 @@ namespace CyberGear16
             comboBox2.Items.Add("B");
 
 
-            cBoxCategorias.Items.Add("Videjuegos");
-            cBoxCategorias.Items.Add("PC-componentes");
+            CargarCategorias();
 
 
 
@@ -83,19 +82,11 @@ namespace CyberGear16
                 {
                     string categoriaNombre;
 
-                    // Verifica el valor de CategoriaId y asigna la cadena correspondiente
-                    if (producto.CategoriaId == 1)
+                    using (var context = new BdCybergearContext())
                     {
-                        categoriaNombre = "Videojuegos";
-                    }
-                    else if (producto.CategoriaId == 2)
-                    {
-                        categoriaNombre = "PC-Componente";
-                    }
-                    else
-                    {
-                        // Trata otros valores según sea necesario
-                        categoriaNombre = "Otra categoría";
+                        var categoria = context.Categoria.Find(producto.CategoriaId);
+
+                        categoriaNombre = categoria.CategoriaNombre;
                     }
 
 
@@ -113,6 +104,22 @@ namespace CyberGear16
 
         }
 
+        private void CargarCategorias()
+        {
+            // cargar las categorías desde la base de datos y agregarlas al ComboBox
+
+            using (var context = new BdCybergearContext())
+            {
+                var categorias = context.Categoria.ToList();
+
+                // Agrega una opción vacía al principio de la lista
+                categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Seleccionar Categoría" });
+
+                cBoxCategorias.DataSource = categorias;
+                cBoxCategorias.DisplayMember = "CategoriaNombre"; // Ajusta esto según tu modelo
+                cBoxCategorias.ValueMember = "IdCategoria"; // Ajusta esto según tu modelo
+            }
+        }
 
         private void AgregarProductoAlCarrito(int id, string nombre, double precio, int cantidad, string categoria, byte[] imagen)
         {
