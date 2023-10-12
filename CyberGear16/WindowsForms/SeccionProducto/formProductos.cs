@@ -508,7 +508,7 @@ namespace CyberGear16
 
 
 
-        
+
 
         private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
         {

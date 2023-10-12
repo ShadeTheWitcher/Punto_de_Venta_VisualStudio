@@ -365,7 +365,7 @@ namespace CyberGear16
             }
             else
             {
-                MessageBox.Show("El mínimo de caracteres aceptados para el código postal es de 2 y el máximo de 5.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El mínimo de caracteres aceptados para el número de dirección es de 2 y el máximo de 5.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -695,6 +695,11 @@ namespace CyberGear16
         }
 
         private void LCodPostal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TNombre_TextChanged(object sender, EventArgs e)
         {
 
         }

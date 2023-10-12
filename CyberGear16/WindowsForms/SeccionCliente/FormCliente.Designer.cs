@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
             PUsuarios = new Panel();
-            TCodPostal = new TextBox();
+            TNumeroDirec = new TextBox();
             LCodPostal = new Label();
             DTPicker = new DateTimePicker();
             BCancelar = new Button();
@@ -66,7 +66,7 @@
             // 
             PUsuarios.Anchor = AnchorStyles.None;
             PUsuarios.BackColor = Color.FromArgb(26, 32, 40);
-            PUsuarios.Controls.Add(TCodPostal);
+            PUsuarios.Controls.Add(TNumeroDirec);
             PUsuarios.Controls.Add(LCodPostal);
             PUsuarios.Controls.Add(DTPicker);
             PUsuarios.Controls.Add(BCancelar);
@@ -93,12 +93,12 @@
             PUsuarios.Size = new Size(982, 325);
             PUsuarios.TabIndex = 1;
             // 
-            // TCodPostal
+            // TNumeroDirec
             // 
-            TCodPostal.Location = new Point(483, 120);
-            TCodPostal.Name = "TCodPostal";
-            TCodPostal.Size = new Size(170, 23);
-            TCodPostal.TabIndex = 29;
+            TNumeroDirec.Location = new Point(483, 120);
+            TNumeroDirec.Name = "TNumeroDirec";
+            TNumeroDirec.Size = new Size(170, 23);
+            TNumeroDirec.TabIndex = 29;
             // 
             // LCodPostal
             // 
@@ -130,6 +130,7 @@
             BCancelar.Text = "Cancelar";
             BCancelar.TextAlign = ContentAlignment.MiddleRight;
             BCancelar.UseVisualStyleBackColor = true;
+            BCancelar.Click += BCancelar_Click;
             // 
             // BGuardar
             // 
@@ -144,6 +145,7 @@
             BGuardar.Text = "Guardar";
             BGuardar.TextAlign = ContentAlignment.MiddleRight;
             BGuardar.UseVisualStyleBackColor = true;
+            BGuardar.Click += BGuardar_Click;
             // 
             // RBMujer
             // 
@@ -315,12 +317,14 @@
             // DGVClientes
             // 
             DGVClientes.Anchor = AnchorStyles.None;
+            DGVClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGVClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGVClientes.Location = new Point(21, 392);
             DGVClientes.Name = "DGVClientes";
             DGVClientes.RowTemplate.Height = 25;
             DGVClientes.Size = new Size(982, 213);
             DGVClientes.TabIndex = 5;
+            DGVClientes.CellContentClick += DGVClientes_CellContentClick;
             // 
             // BBorrar
             // 
@@ -388,7 +392,7 @@
         #endregion
 
         private Panel PUsuarios;
-        private TextBox TCodPostal;
+        private TextBox TNumeroDirec;
         private Label LCodPostal;
         private DateTimePicker DTPicker;
         private Button BCancelar;

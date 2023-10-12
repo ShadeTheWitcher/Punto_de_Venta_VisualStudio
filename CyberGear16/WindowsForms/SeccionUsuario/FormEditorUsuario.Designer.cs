@@ -413,6 +413,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(494, 572);
             panel1.TabIndex = 59;
+            panel1.Paint += panel1_Paint;
             // 
             // FormEditorUsuario
             // 
