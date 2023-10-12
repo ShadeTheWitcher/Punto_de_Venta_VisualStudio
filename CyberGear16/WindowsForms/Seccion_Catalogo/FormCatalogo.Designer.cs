@@ -28,14 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCatalogo));
             label1 = new Label();
             panel1 = new Panel();
+            label3 = new Label();
+            cbFiltroCategorias = new ComboBox();
+            pictureBox2 = new PictureBox();
+            textBoxBusqueda = new TextBox();
             panel3 = new Panel();
             label2 = new Label();
             pictureBox1 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel2 = new Panel();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -54,22 +60,69 @@
             // 
             // panel1
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.FromArgb(17, 19, 27);
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(cbFiltroCategorias);
+            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(textBoxBusqueda);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(flowLayoutPanel1);
-            panel1.Location = new Point(0, 42);
+            panel1.Dock = DockStyle.Fill;
+            panel1.ForeColor = SystemColors.ControlLightLight;
+            panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1159, 653);
+            panel1.Size = new Size(1159, 695);
             panel1.TabIndex = 3;
             panel1.Paint += panel1_Paint;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.ForeColor = SystemColors.ControlLightLight;
+            label3.Location = new Point(684, 56);
+            label3.Name = "label3";
+            label3.Size = new Size(63, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Categorias";
+            // 
+            // cbFiltroCategorias
+            // 
+            cbFiltroCategorias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cbFiltroCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbFiltroCategorias.FormattingEnabled = true;
+            cbFiltroCategorias.Location = new Point(753, 53);
+            cbFiltroCategorias.Name = "cbFiltroCategorias";
+            cbFiltroCategorias.Size = new Size(146, 23);
+            cbFiltroCategorias.TabIndex = 4;
+            cbFiltroCategorias.SelectedIndexChanged += cbFiltroCategorias_SelectedIndexChanged;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(1099, 53);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(31, 23);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 3;
+            pictureBox2.TabStop = false;
+            // 
+            // textBoxBusqueda
+            // 
+            textBoxBusqueda.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            textBoxBusqueda.Location = new Point(938, 53);
+            textBoxBusqueda.Name = "textBoxBusqueda";
+            textBoxBusqueda.Size = new Size(155, 23);
+            textBoxBusqueda.TabIndex = 2;
+            textBoxBusqueda.TextChanged += textBoxBusqueda_TextChanged;
             // 
             // panel3
             // 
             panel3.Controls.Add(label2);
             panel3.Controls.Add(pictureBox1);
-            panel3.Location = new Point(0, 0);
+            panel3.Location = new Point(32, 48);
             panel3.Name = "panel3";
             panel3.Size = new Size(89, 32);
             panel3.TabIndex = 1;
@@ -101,9 +154,10 @@
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             flowLayoutPanel1.BackColor = Color.Transparent;
-            flowLayoutPanel1.Location = new Point(28, 33);
+            flowLayoutPanel1.ForeColor = Color.Black;
+            flowLayoutPanel1.Location = new Point(32, 87);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1105, 587);
+            flowLayoutPanel1.Size = new Size(1098, 586);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // panel2
@@ -129,6 +183,8 @@
             Text = "FormCatalogo";
             Load += FormCatalogo_Load;
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -145,5 +201,9 @@
         private Panel panel3;
         private PictureBox pictureBox1;
         private Label label2;
+        private TextBox textBoxBusqueda;
+        private PictureBox pictureBox2;
+        private Label label3;
+        private ComboBox cbFiltroCategorias;
     }
 }

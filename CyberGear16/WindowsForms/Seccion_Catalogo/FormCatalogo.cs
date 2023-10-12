@@ -23,15 +23,20 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
         public FormCatalogo(BdCybergearContext context)
         {
             InitializeComponent();
-            productos = ObtenerProductosDesdeBD();
-            _context = context;
-            //Llena el catálogo con productos
-            foreach (var producto in productos)
-            {
-                var productoControl = new ProductoControl(producto, 1, AgregarAlCarrito);
-                flowLayoutPanel1.Controls.Add(productoControl);
-            }
+            CargarCategorias();
 
+            // Agrega un evento para manejar cambios en el TextBox (puedes hacer esto en el diseñador también)
+            textBoxBusqueda.TextChanged += textBoxBusqueda_TextChanged;
+            cbFiltroCategorias.SelectedIndexChanged += cbFiltroCategorias_SelectedIndexChanged;
+
+            // Carga todos los productos al iniciar el formulario
+            CargarProductosConFiltro(string.Empty, ObtenerCategoriaSeleccionada());
+
+            // Carga todos los productos al iniciar el formulario
+            CargarProductosConFiltro(string.Empty, ObtenerCategoriaSeleccionada());
+
+            _context = context;
+            
 
 
             flowLayoutPanel1.Padding = new Padding(20, 0, 0, 0);
@@ -42,8 +47,8 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
         }
 
 
-        
 
+        //BOTON AGREGAR AL CARRITO 
         private void AgregarAlCarrito(Product producto, int cant)
         {
             using (var context = new BdCybergearContext())
@@ -51,7 +56,7 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
                 // Obtén el producto actualizado desde la base de datos para verificar el stock
                 Product productoBD = context.Products.FirstOrDefault(p => p.Id == producto.Id);
 
-                if (productoBD != null && productoBD.Cantidad >= 1 && productoBD.Cantidad - 1 >= productoBD.StockMinimo)
+                if (productoBD != null && productoBD.Cantidad >= cant && productoBD.Cantidad - cant >= productoBD.StockMinimo)
                 {
                     // Buscar el producto en el carrito por su Id
                     Product productoExistente = ClassCarritoDatos.ProductosEnCarrito.FirstOrDefault(p => p.Id == producto.Id);
@@ -59,9 +64,9 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
                     if (productoExistente != null)
                     {
                         // Si el producto ya está en el carrito, actualiza la cantidad
-                        if (productoExistente.CantEnCart < productoBD.Cantidad)
+                        if (productoExistente.CantEnCart < productoBD.Cantidad && productoBD.CantEnCart + cant >= productoBD.StockMinimo)
                         {
-                            productoExistente.CantEnCart+= cant;
+                            productoExistente.CantEnCart += cant;
                         }
                         else
                         {
@@ -93,50 +98,37 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
         }
 
 
-        private List<Product> ObtenerProductosDesdeBD()
+
+        private List<Product> ObtenerProductosDesdeBD(string filtro, int categoriaId)
         {
-            // Aquí asumo que tienes una DbSet<Product> en tu contexto llamada Products.
-            // Ajusta esto según la estructura de tu modelo y contexto.
             using (var context = new BdCybergearContext())
             {
                 IQueryable<Product> productosQuery = context.Products;
 
-                // Filtrar solo los productos activos
+                // Filtra por nombre de producto si hay un filtro
+                if (!string.IsNullOrEmpty(filtro))
+                {
+                    productosQuery = productosQuery.Where(p => p.NombreProducto.Contains(filtro));
+                }
+
+                // Filtra por categoría
+                if (categoriaId != 0) // 0 podría ser el valor por defecto para "Todas las categorías"
+                {
+                    productosQuery = productosQuery.Where(p => p.CategoriaId == categoriaId);
+                }
+
+                // Filtra solo los productos activos
                 productosQuery = productosQuery.Where(p => p.Activo == "SI");
 
-
-                // Obtener los productos
+                // Obtén los productos
                 List<Product> productosDesdeBD = productosQuery.ToList();
 
-                foreach (var productoDesdeBD in productosDesdeBD)
-                {
-                    // Extraer la información de la base de datos
-                    int idProducto = productoDesdeBD.Id;
-                    string nombreProducto = productoDesdeBD.NombreProducto ?? "";
-                    double precioProducto = productoDesdeBD.PrecioProducto ?? 0;
-
-                    // Cargar y mostrar la imagen si está disponible
-                    byte[] imagenBytes = productoDesdeBD.Imagen;
-                    if (imagenBytes != null && imagenBytes.Length > 0)
-                    {
-                        using (MemoryStream ms = new MemoryStream(imagenBytes))
-                        {
-                            System.Drawing.Image originalImage = System.Drawing.Image.FromStream(ms);
-
-                            // Redimensionar la imagen manteniendo la relación de aspecto
-                            int nuevoAncho = 80; // Ancho deseado
-                            int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
-                            System.Drawing.Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
-
-                            // Ahora puedes utilizar 'imagenRedimensionada' donde necesites
-                            // Por ejemplo, podrías asignar esta imagen a un control PictureBox en tu formulario
-                        }
-                    }
-                }
+                
 
                 return productosDesdeBD;
             }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -156,6 +148,66 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
 
             label2.Text = $"{cantidadEnCarrito}";
         }
+
+        private void textBoxBusqueda_TextChanged(object sender, EventArgs e)
+        {
+            CargarProductosConFiltro(textBoxBusqueda.Text, ObtenerCategoriaSeleccionada());
+        }
+
+
+
+        private void CargarCategorias()
+        {
+            // cargar las categorías desde la base de datos y agregarlas al ComboBox
+            
+            using (var context = new BdCybergearContext())
+            {
+                var categorias = context.Categoria.ToList();
+
+                // Agrega una opción vacía al principio de la lista
+                categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Seleccionar Categoría" });
+
+                cbFiltroCategorias.DataSource = categorias;
+                cbFiltroCategorias.DisplayMember = "CategoriaNombre"; // Ajusta esto según tu modelo
+                cbFiltroCategorias.ValueMember = "IdCategoria"; // Ajusta esto según tu modelo
+            }
+        }
+        private int ObtenerCategoriaSeleccionada()
+        {
+            // Retorna el valor de la categoría seleccionada en el ComboBox
+            return (int)cbFiltroCategorias.SelectedValue;
+        }
+
+        private void cbFiltroCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Vuelve a cargar los productos desde la base de datos con el nuevo filtro de categoría
+            CargarProductosConFiltro(textBoxBusqueda.Text, ObtenerCategoriaSeleccionada());
+        }
+
+
+        private void CargarProductosConFiltro(string filtro, int categoriaId)
+        {
+            // Obtén los productos desde la base de datos con el filtro de búsqueda y categoría
+            List<Product> productosFiltrados = ObtenerProductosDesdeBD(filtro, categoriaId);
+
+            // Limpia el catálogo actual
+            flowLayoutPanel1.Controls.Clear();
+
+            // Llena el catálogo con los productos filtrados
+            foreach (var producto in productosFiltrados)
+            {
+                var productoControl = new ProductoControl(producto, 1, AgregarAlCarrito);
+                flowLayoutPanel1.Controls.Add(productoControl);
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }
 

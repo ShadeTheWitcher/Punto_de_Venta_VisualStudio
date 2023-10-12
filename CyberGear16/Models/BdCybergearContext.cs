@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace CyberGear16.Models;
@@ -16,6 +15,8 @@ public partial class BdCybergearContext : DbContext
     {
     }
 
+    public virtual DbSet<Categorium> Categoria { get; set; }
+
     public virtual DbSet<Cliente> Clientes { get; set; }
 
     public virtual DbSet<Domicilio> Domicilios { get; set; }
@@ -30,8 +31,6 @@ public partial class BdCybergearContext : DbContext
 
     public virtual DbSet<VentasDetalle> VentasDetalles { get; set; }
 
-    private string conectionString = ConfigurationManager.ConnectionStrings["MiConexionMySQL"].ConnectionString; //obtenemos la string
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=localhost;database=bd_cybergear;uid=root;treattinyasboolean=true", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.4.27-mariadb"));
@@ -41,6 +40,20 @@ public partial class BdCybergearContext : DbContext
         modelBuilder
             .UseCollation("utf8mb4_general_ci")
             .HasCharSet("utf8mb4");
+
+        modelBuilder.Entity<Categorium>(entity =>
+        {
+            entity.HasKey(e => e.IdCategoria).HasName("PRIMARY");
+
+            entity.ToTable("categoria");
+
+            entity.Property(e => e.IdCategoria)
+                .HasColumnType("int(11)")
+                .HasColumnName("id_categoria");
+            entity.Property(e => e.CategoriaNombre)
+                .HasMaxLength(30)
+                .HasColumnName("categoria_nombre");
+        });
 
         modelBuilder.Entity<Cliente>(entity =>
         {
@@ -112,6 +125,8 @@ public partial class BdCybergearContext : DbContext
 
             entity.ToTable("products");
 
+            entity.HasIndex(e => e.CategoriaId, "categoria_id");
+
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
@@ -140,6 +155,10 @@ public partial class BdCybergearContext : DbContext
             entity.Property(e => e.StockMinimo)
                 .HasColumnType("int(100)")
                 .HasColumnName("stock_minimo");
+
+            entity.HasOne(d => d.Categoria).WithMany(p => p.Products)
+                .HasForeignKey(d => d.CategoriaId)
+                .HasConstraintName("products_ibfk_1");
         });
 
         modelBuilder.Entity<TiposUsuario>(entity =>
