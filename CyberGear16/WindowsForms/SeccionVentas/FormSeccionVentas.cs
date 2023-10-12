@@ -557,11 +557,31 @@ namespace CyberGear16
                 // Obtén el nombre del producto en la fila
                 int id_producto = Convert.ToInt32(row.Cells[0].Value);
 
-                sumarProductoDeCarrito(id_producto); //incrementa globa
-
                 int cantActual = Convert.ToInt32(row.Cells[3].Value);
 
-                row.Cells[3].Value = cantActual + 1;
+                Product productoExistente = ClassCarritoDatos.ProductosEnCarrito.FirstOrDefault(p => p.Id == id_producto);
+
+
+                using (var context = new BdCybergearContext())
+                {
+                    // Obtén el producto actualizado desde la base de datos para verificar el stock
+                    Product productoBD = context.Products.FirstOrDefault(p => p.Id == id_producto);
+
+                    // valida si hay stock
+                    if (productoExistente.CantEnCart < productoBD.Cantidad && productoBD.CantEnCart + 1 >= productoBD.StockMinimo)
+                    {
+                        row.Cells[3].Value = cantActual + 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay suficiente stock disponible para incrementar la cantidad.");
+                        return;
+                    }
+                }
+                
+
+
+                sumarProductoDeCarrito(id_producto); //incrementa globa
 
 
                 // Calcula y muestra el precio total
