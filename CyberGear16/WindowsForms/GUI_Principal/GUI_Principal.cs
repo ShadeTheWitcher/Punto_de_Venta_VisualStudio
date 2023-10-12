@@ -32,7 +32,10 @@ namespace CyberGear16
             establecerLimitesTipoUser();
         }
 
-
+        public BdCybergearContext ObtenerContexto()
+        {
+            return _context;
+        }
         private void establecerLimitesTipoUser()
         {
             LNomUser.Text = nombreUser;
@@ -145,10 +148,11 @@ namespace CyberGear16
 
         private void AbrirFormHija(Form formHija)
         {
-            // Cerrar formularios secundarios abiertos previamente
-            foreach (Form frm in panelContenedor.Controls)
+            // Verificar si el formulario hijo ya está abierto
+            if (formHija.Visible)
             {
-                frm.Close();
+                // Si está abierto, no es necesario hacer nada más
+                return;
             }
 
             // Establecer propiedades del formulario hijo
@@ -156,13 +160,18 @@ namespace CyberGear16
             formHija.FormBorderStyle = FormBorderStyle.None;
             formHija.Dock = DockStyle.Fill;
 
+            // Cerrar formularios secundarios abiertos previamente
+            foreach (Form frm in panelContenedor.Controls)
+            {
+                frm.Close();
+            }
+
             // Agregar el formulario al panel contenedor
             panelContenedor.Controls.Add(formHija);
             panelContenedor.Tag = formHija;
 
             // Mostrar el formulario
             formHija.Show();
-
 
         }
 

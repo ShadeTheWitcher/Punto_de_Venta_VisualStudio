@@ -32,7 +32,9 @@
             pictureBox1 = new PictureBox();
             labelPrecio = new Label();
             button1 = new Button();
+            numericUpDown1 = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // labelNombre
@@ -40,9 +42,10 @@
             labelNombre.Anchor = AnchorStyles.None;
             labelNombre.AutoSize = true;
             labelNombre.BackColor = Color.Transparent;
+            labelNombre.Font = new Font("Leelawadee", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelNombre.Location = new Point(31, 193);
             labelNombre.Name = "labelNombre";
-            labelNombre.Size = new Size(51, 15);
+            labelNombre.Size = new Size(53, 14);
             labelNombre.TabIndex = 0;
             labelNombre.Text = "Nombre";
             // 
@@ -63,21 +66,36 @@
             labelPrecio.Anchor = AnchorStyles.None;
             labelPrecio.AutoSize = true;
             labelPrecio.BackColor = Color.Transparent;
+            labelPrecio.Font = new Font("Leelawadee", 9F, FontStyle.Bold, GraphicsUnit.Point);
             labelPrecio.Location = new Point(31, 223);
             labelPrecio.Name = "labelPrecio";
-            labelPrecio.Size = new Size(40, 15);
+            labelPrecio.Size = new Size(43, 14);
             labelPrecio.TabIndex = 2;
             labelPrecio.Text = "Precio";
             // 
             // button1
             // 
-            button1.Location = new Point(55, 250);
+            button1.BackColor = Color.Gainsboro;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Malgun Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(31, 250);
             button1.Name = "button1";
-            button1.Size = new Size(124, 23);
+            button1.Size = new Size(124, 22);
             button1.TabIndex = 3;
             button1.Text = "Agregar al carrito";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Anchor = AnchorStyles.None;
+            numericUpDown1.Location = new Point(161, 250);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(59, 23);
+            numericUpDown1.TabIndex = 12;
+            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
+            numericUpDown1.Click += numericUpDown1_Click;
             // 
             // ProductoControl
             // 
@@ -85,6 +103,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
             BackgroundImageLayout = ImageLayout.Stretch;
+            Controls.Add(numericUpDown1);
             Controls.Add(button1);
             Controls.Add(labelPrecio);
             Controls.Add(pictureBox1);
@@ -93,6 +112,7 @@
             Name = "ProductoControl";
             Size = new Size(238, 290);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -103,5 +123,6 @@
         private PictureBox pictureBox1;
         private Label labelPrecio;
         private Button button1;
+        private NumericUpDown numericUpDown1;
     }
 }

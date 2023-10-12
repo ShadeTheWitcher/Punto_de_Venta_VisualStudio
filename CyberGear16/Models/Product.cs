@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CyberGear16.Models;
 
@@ -23,5 +24,15 @@ public partial class Product
 
     public string Activo { get; set; } = null!;
 
+
+
+
+
     public virtual ICollection<VentasDetalle> VentasDetalles { get; set; } = new List<VentasDetalle>();
+
+    // Nueva propiedad para almacenar la cantidad que se quiere comprar
+    [NotMapped] //no afecta a la base de datos
+    public int CantEnCart { get; set; }
+
+
 }

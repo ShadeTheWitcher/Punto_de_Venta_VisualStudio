@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label19 = new Label();
             textBox10 = new TextBox();
@@ -47,6 +48,9 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             panel3 = new Panel();
+            button7 = new Button();
+            label20 = new Label();
+            textBox11 = new TextBox();
             tbIdProducto = new TextBox();
             label18 = new Label();
             cBoxCategorias = new ComboBox();
@@ -77,14 +81,14 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewImageColumn();
             Column5 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewButtonColumn();
+            Column9 = new DataGridViewButtonColumn();
             panel5 = new Panel();
             comboBox2 = new ComboBox();
             label13 = new Label();
             textBox9 = new TextBox();
             label16 = new Label();
             toolTip1 = new ToolTip(components);
-            label20 = new Label();
-            textBox11 = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -278,6 +282,7 @@
             panel3.Anchor = AnchorStyles.None;
             panel3.BackColor = Color.LightSlateGray;
             panel3.BorderStyle = BorderStyle.FixedSingle;
+            panel3.Controls.Add(button7);
             panel3.Controls.Add(label20);
             panel3.Controls.Add(textBox11);
             panel3.Controls.Add(tbIdProducto);
@@ -300,6 +305,34 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(550, 205);
             panel3.TabIndex = 2;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(420, 20);
+            button7.Name = "button7";
+            button7.Size = new Size(102, 23);
+            button7.TabIndex = 18;
+            button7.Text = "Abrir Catalogo";
+            button7.UseVisualStyleBackColor = true;
+            button7.Visible = false;
+            button7.Click += button7_Click;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(14, 167);
+            label20.Name = "label20";
+            label20.Size = new Size(62, 15);
+            label20.TabIndex = 17;
+            label20.Text = "Stock_Min";
+            // 
+            // textBox11
+            // 
+            textBox11.Enabled = false;
+            textBox11.Location = new Point(79, 164);
+            textBox11.Name = "textBox11";
+            textBox11.Size = new Size(74, 23);
+            textBox11.TabIndex = 16;
             // 
             // tbIdProducto
             // 
@@ -522,13 +555,22 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column6, Column1, Column2, Column3, Column4, Column7, Column5 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column6, Column1, Column2, Column3, Column4, Column7, Column5, Column8, Column9 });
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.Location = new Point(27, 362);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(790, 214);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellPainting += dataGridView1_CellPainting;
             // 
             // Column6
             // 
@@ -538,28 +580,33 @@
             // 
             // Column1
             // 
+            Column1.FillWeight = 119.132622F;
             Column1.HeaderText = "Nombre Producto";
             Column1.Name = "Column1";
             // 
             // Column2
             // 
+            Column2.FillWeight = 119.132622F;
             Column2.HeaderText = "Precio";
             Column2.Name = "Column2";
             // 
             // Column3
             // 
+            Column3.FillWeight = 119.132622F;
             Column3.HeaderText = "Cantidad";
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
             // 
             // Column4
             // 
+            Column4.FillWeight = 119.132622F;
             Column4.HeaderText = "Categoria";
             Column4.Name = "Column4";
             Column4.ReadOnly = true;
             // 
             // Column7
             // 
+            Column7.FillWeight = 119.132622F;
             Column7.HeaderText = "Imagen";
             Column7.Name = "Column7";
             Column7.Resizable = DataGridViewTriState.True;
@@ -567,8 +614,29 @@
             // 
             // Column5
             // 
+            Column5.FillWeight = 119.132622F;
             Column5.HeaderText = "SubTotal";
             Column5.Name = "Column5";
+            // 
+            // Column8
+            // 
+            Column8.FillWeight = 44.5951F;
+            Column8.HeaderText = "";
+            Column8.Name = "Column8";
+            Column8.Resizable = DataGridViewTriState.True;
+            Column8.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column8.Text = "+";
+            Column8.UseColumnTextForButtonValue = true;
+            // 
+            // Column9
+            // 
+            Column9.FillWeight = 40.60913F;
+            Column9.HeaderText = "";
+            Column9.Name = "Column9";
+            Column9.Resizable = DataGridViewTriState.True;
+            Column9.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column9.Text = "-";
+            Column9.UseColumnTextForButtonValue = true;
             // 
             // panel5
             // 
@@ -629,23 +697,6 @@
             // toolTip1
             // 
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new Point(14, 167);
-            label20.Name = "label20";
-            label20.Size = new Size(62, 15);
-            label20.TabIndex = 17;
-            label20.Text = "Stock_Min";
-            // 
-            // textBox11
-            // 
-            textBox11.Enabled = false;
-            textBox11.Location = new Point(79, 164);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(74, 23);
-            textBox11.TabIndex = 16;
             // 
             // FormSeccionVentas
             // 
@@ -731,6 +782,9 @@
         private TextBox textBox10;
         private TextBox tbIdProducto;
         private TextBox textBox8;
+        private Label label20;
+        private TextBox textBox11;
+        private Button button7;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
@@ -738,7 +792,7 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewImageColumn Column7;
         private DataGridViewTextBoxColumn Column5;
-        private Label label20;
-        private TextBox textBox11;
+        private DataGridViewButtonColumn Column8;
+        private DataGridViewButtonColumn Column9;
     }
 }

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CyberGear16.WindowsForms.Seccion_Catalogo
 {
@@ -16,6 +18,8 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
     {
         private readonly BdCybergearContext _context;
         private readonly List<Product> productos;
+        private List<Product> productosEnCarrito;
+        int cantidadEnCarrito;
         public FormCatalogo(BdCybergearContext context)
         {
             InitializeComponent();
@@ -24,28 +28,68 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             //Llena el catálogo con productos
             foreach (var producto in productos)
             {
-                var productoControl = new ProductoControl(producto, AgregarAlCarrito);
+                var productoControl = new ProductoControl(producto, 1, AgregarAlCarrito);
                 flowLayoutPanel1.Controls.Add(productoControl);
             }
+
 
 
             flowLayoutPanel1.Padding = new Padding(20, 0, 0, 0);
 
 
-
+            label2.ForeColor = Color.White;
 
         }
 
 
-        private FormSeccionVentas formSeccionVentas;
+        
 
-        private void AgregarAlCarrito(Product producto)
+        private void AgregarAlCarrito(Product producto, int cant)
         {
-            // Aquí puedes agregar el producto al carrito o a la lista que desees
-            // Puedes almacenar los productos seleccionados en una lista y luego enviarlos al datagrid
-            // Puedes tener un evento que se dispare al agregar al carrito y manejarlo en el formulario principal
-            // o donde tengas el datagrid
-            //formSeccionVentas.AgregarAlCarrito(producto);
+            using (var context = new BdCybergearContext())
+            {
+                // Obtén el producto actualizado desde la base de datos para verificar el stock
+                Product productoBD = context.Products.FirstOrDefault(p => p.Id == producto.Id);
+
+                if (productoBD != null && productoBD.Cantidad >= 1 && productoBD.Cantidad - 1 >= productoBD.StockMinimo)
+                {
+                    // Buscar el producto en el carrito por su Id
+                    Product productoExistente = ClassCarritoDatos.ProductosEnCarrito.FirstOrDefault(p => p.Id == producto.Id);
+
+                    if (productoExistente != null)
+                    {
+                        // Si el producto ya está en el carrito, actualiza la cantidad
+                        if (productoExistente.CantEnCart < productoBD.Cantidad)
+                        {
+                            productoExistente.CantEnCart+= cant;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No hay suficiente stock disponible para incrementar la cantidad.");
+                        }
+                    }
+                    else
+                    {
+                        // Si el producto no está en el carrito, agrégalo
+                        ClassCarritoDatos.ProductosEnCarrito.Add(new Product
+                        {
+                            Id = producto.Id,
+                            NombreProducto = producto.NombreProducto,
+                            PrecioProducto = producto.PrecioProducto,
+                            CantEnCart = cant,
+                            CategoriaId = producto.CategoriaId,
+                            Imagen = producto.Imagen,
+                        });
+                    }
+
+                    cantidadEnCarrito = ClassCarritoDatos.ProductosEnCarrito.Sum(p => p.CantEnCart);
+                    label2.Text = $"{cantidadEnCarrito}";
+                }
+                else
+                {
+                    MessageBox.Show("No hay suficiente stock disponible o no se ha alcanzado el stock mínimo.");
+                }
+            }
         }
 
 
@@ -56,6 +100,10 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             using (var context = new BdCybergearContext())
             {
                 IQueryable<Product> productosQuery = context.Products;
+
+                // Filtrar solo los productos activos
+                productosQuery = productosQuery.Where(p => p.Activo == "SI");
+
 
                 // Obtener los productos
                 List<Product> productosDesdeBD = productosQuery.ToList();
@@ -73,12 +121,12 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
                     {
                         using (MemoryStream ms = new MemoryStream(imagenBytes))
                         {
-                            Image originalImage = Image.FromStream(ms);
+                            System.Drawing.Image originalImage = System.Drawing.Image.FromStream(ms);
 
                             // Redimensionar la imagen manteniendo la relación de aspecto
                             int nuevoAncho = 80; // Ancho deseado
                             int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
-                            Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
+                            System.Drawing.Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
 
                             // Ahora puedes utilizar 'imagenRedimensionada' donde necesites
                             // Por ejemplo, podrías asignar esta imagen a un control PictureBox en tu formulario
@@ -90,7 +138,24 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void FormCatalogo_Load(object sender, EventArgs e)
+        {
+            // Obtener la cantidad de elementos en el carrito
+            cantidadEnCarrito = ClassCarritoDatos.ProductosEnCarrito.Sum(p => p.CantEnCart);
+            label2.ForeColor = Color.White;
+
+            label2.Text = $"{cantidadEnCarrito}";
+        }
     }
 }
 
