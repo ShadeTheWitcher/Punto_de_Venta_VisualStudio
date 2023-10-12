@@ -138,9 +138,16 @@ namespace CyberGear16.WindowsForms.SeccionProducto.Categoria
 
             if (e.RowIndex >= 0 && e.ColumnIndex == dataGridView1.Columns[4].Index)
             {
+                int categoriaNoEditable = 1;
+
                 // Obtén el producto seleccionado
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                int categoriaId = Convert.ToInt32(row.Cells[0].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
+                int categoriaId = Convert.ToInt32(row.Cells[0].Value); // obtenemso la id
+
+                if(categoriaId == categoriaNoEditable) {
+                    MessageBox.Show("No se puede editar esto", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 // Abre el formulario de detalles/editar con el producto seleccionado
                 formEditarCategoria editorCategoria = new formEditarCategoria(categoriaId);

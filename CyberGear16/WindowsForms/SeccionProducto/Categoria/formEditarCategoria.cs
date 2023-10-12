@@ -104,7 +104,8 @@ namespace CyberGear16.WindowsForms.SeccionProducto.Categoria
         private void button1_Click(object sender, EventArgs e)
         {
             // Mostrar un cuadro de diálogo de confirmación
-            DialogResult result = MessageBox.Show("¿Estás seguro que quieres dar de baja esta categoria?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2); //la ultima hace q enfoque el boton 2 "NO" 
+            DialogResult result = MessageBox.Show("¿Estás seguro que quieres dar de baja esta categoria?\n Todos los productos con esta categoria cambiaran a (sin-categoria) ", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2); //la ultima hace q enfoque el boton 2 "NO" 
+
 
 
 
@@ -119,6 +120,24 @@ namespace CyberGear16.WindowsForms.SeccionProducto.Categoria
                     categoria.Activo = "NO";
 
                     context.SaveChanges();
+
+
+                    // 1. Identificar productos asociados
+                    var productsAssociatedToCategory = context.Products.Where(p => p.CategoriaId == categoria.IdCategoria).ToList();
+
+                    // 2. Actualizar productos asociados
+                    foreach (var product in productsAssociatedToCategory)
+                    {
+                        product.CategoriaId = 1; // asigna a otra categoría predeterminada como lo es "sin categoria"
+                    }
+
+                    // Guardar cambios en la base de datos
+                    context.SaveChanges();
+
+
+
+
+
                     MessageBox.Show("SE DIO DE BAJA LA CATEGORIA");
                 }
             }

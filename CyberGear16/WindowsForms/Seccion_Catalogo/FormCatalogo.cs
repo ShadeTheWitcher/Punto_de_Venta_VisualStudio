@@ -162,7 +162,7 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             
             using (var context = new BdCybergearContext())
             {
-                var categorias = context.Categoria.ToList();
+                var categorias = context.Categoria.Where(c => c.Activo == "SI").ToList(); //solo se puede añadir las categorias activas
 
                 // Agrega una opción vacía al principio de la lista
                 categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Seleccionar Categoría" });
