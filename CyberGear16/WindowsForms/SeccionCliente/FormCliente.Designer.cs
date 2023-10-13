@@ -106,9 +106,9 @@
             LCodPostal.ForeColor = Color.White;
             LCodPostal.Location = new Point(349, 123);
             LCodPostal.Name = "LCodPostal";
-            LCodPostal.Size = new Size(84, 15);
+            LCodPostal.Size = new Size(123, 15);
             LCodPostal.TabIndex = 28;
-            LCodPostal.Text = "Código Postal:";
+            LCodPostal.Text = "Número de Dirección:";
             // 
             // DTPicker
             // 
@@ -313,6 +313,8 @@
             TBuscar.Size = new Size(313, 23);
             TBuscar.TabIndex = 8;
             TBuscar.Text = "Buscar";
+            TBuscar.Click += TBuscar_Click;
+            TBuscar.KeyPress += TBuscar_KeyPress;
             // 
             // DGVClientes
             // 
@@ -335,6 +337,7 @@
             BBorrar.Size = new Size(38, 37);
             BBorrar.TabIndex = 32;
             BBorrar.UseVisualStyleBackColor = true;
+            BBorrar.Click += BBorrar_Click;
             // 
             // BBuscar
             // 
@@ -345,6 +348,7 @@
             BBuscar.Size = new Size(38, 37);
             BBuscar.TabIndex = 31;
             BBuscar.UseVisualStyleBackColor = true;
+            BBuscar.Click += BBuscar_Click;
             // 
             // BActivos
             // 
@@ -355,6 +359,7 @@
             BActivos.TabIndex = 6;
             BActivos.Text = "Activos";
             BActivos.UseVisualStyleBackColor = true;
+            BActivos.Click += BActivos_Click;
             // 
             // BInactivo
             // 
@@ -365,6 +370,7 @@
             BInactivo.TabIndex = 7;
             BInactivo.Text = "Inactivos";
             BInactivo.UseVisualStyleBackColor = true;
+            BInactivo.Click += BInactivo_Click;
             // 
             // FormClientes
             // 

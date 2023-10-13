@@ -276,7 +276,7 @@
             // 
             BAlta.Image = Properties.Resources.icon_dar_alta;
             BAlta.ImageAlign = ContentAlignment.MiddleLeft;
-            BAlta.Location = new Point(197, 443);
+            BAlta.Location = new Point(173, 443);
             BAlta.Name = "BAlta";
             BAlta.Size = new Size(140, 45);
             BAlta.TabIndex = 87;

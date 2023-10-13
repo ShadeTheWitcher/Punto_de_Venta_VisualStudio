@@ -624,6 +624,7 @@ namespace CyberGear16
                 if (resultados.Count == 0)
                 {
                     MessageBox.Show("No se han encontrado usuarios que coincidan con la busqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CargarDatosEnDGVActivos();
                 }
                 else
                 {
@@ -645,6 +646,8 @@ namespace CyberGear16
                 else
                 {
                     MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CargarDatosEnDGVActivos();
+
                 }
             }
         }
@@ -660,6 +663,8 @@ namespace CyberGear16
             else
             {
                 MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CargarDatosEnDGVActivos();
+
             }
         }
 

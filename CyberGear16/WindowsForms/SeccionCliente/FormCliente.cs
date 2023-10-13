@@ -46,12 +46,13 @@ namespace CyberGear16
                     p.FechaNacimiento,
                     p.Sexo,
                     p.Telefono,
+                    p.Baja
                 })
                 .ToList();
 
-                //var usuariosNoDeBaja = context.Clientes.Where(u => u.Baja == "NO").ToList();
+                var clienteNoDeBaja = context.Clientes.Where(u => u.Baja == "NO").ToList();
 
-                DGVClientes.DataSource = varClientes;
+                DGVClientes.DataSource = clienteNoDeBaja;
             }
         }
 
@@ -76,6 +77,7 @@ namespace CyberGear16
                         p.FechaNacimiento,
                         p.Sexo,
                         p.Telefono,
+                        p.Baja
                     })
                 .ToList();
 
@@ -111,8 +113,8 @@ namespace CyberGear16
                 foreach (DataGridViewColumn column in DGVClientes.Columns)
                 {
                     if (column.Name != "Dni" && column.Name != "Nombre" && column.Name != "Apellido" && column.Name != "Email" &&
-                        column.Name != "FechaNacimiento" && column.Name != "Telefono" && column.Name != "Acciones" && column.Name != "Sexo"
-                        /*column.Name != "Baja"*/)
+                        column.Name != "FechaNacimiento" && column.Name != "Telefono" && column.Name != "Baja" && column.Name != "Acciones" && column.Name != "Sexo"
+                        )
                     {
                         column.Visible = false;
                     }
@@ -466,6 +468,94 @@ namespace CyberGear16
         private void BCancelar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+        }
+
+        private void BActivos_Click(object sender, EventArgs e)
+        {
+            CargarDatosEnDGVActivos();
+        }
+
+        private void BInactivo_Click(object sender, EventArgs e)
+        {
+            using (var context = new BdCybergearContext())
+            {
+                var clientesFiltrados = context.Clientes.Where(u => u.Baja == "SI").ToList();
+
+                // Enlazar los resultados al DataGridView.
+                DGVClientes.DataSource = clientesFiltrados;
+
+            }
+        }
+
+
+        private void BuscarEnBaseDeDatosYActualizarDataGridView(string buscar)
+        {
+            using (var context = new BdCybergearContext())
+            {
+
+                var resultados = context.Clientes.Where(e => e.Nombre.Contains(buscar) || e.Apellido.Contains(buscar)).ToList();
+                if (resultados.Count == 0)
+                {
+                    MessageBox.Show("No se han encontrado clientes que coincidan con la busqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CargarDatosEnDGVActivos();
+                }
+                else
+                {
+                    DGVClientes.DataSource = resultados;
+                }
+            }
+        }
+        private void BBuscar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TBuscar.Text))
+            {
+                string buscar = TBuscar.Text;
+                // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
+                BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
+            }
+            else
+            {
+                MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CargarDatosEnDGVActivos();
+            }
+        }
+
+        private void TBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter))
+            {
+                if (!string.IsNullOrEmpty(TBuscar.Text))
+                {
+                    string buscar = TBuscar.Text;
+                    // Llama a un método que realiza la búsqueda en la base de datos y actualiza el DataGridView.
+                    BuscarEnBaseDeDatosYActualizarDataGridView(buscar);
+                }
+                else
+                {
+                    MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CargarDatosEnDGVActivos();                
+                }
+            }
+        }
+
+        bool borrarPrimeraVez = true;
+
+        private void TBuscar_Click(object sender, EventArgs e)
+        {
+            if (borrarPrimeraVez)
+            {
+                TBuscar.Clear();
+                borrarPrimeraVez = false;
+            }
+        }
+
+        private void BBorrar_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TBuscar.Text))
+            {
+                TBuscar.Clear();
+                CargarDatosEnDGVActivos();
+            }
         }
     }
 

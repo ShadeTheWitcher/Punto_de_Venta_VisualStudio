@@ -373,34 +373,34 @@ namespace CyberGear16.WindowsForms.SeccionCliente
                     using (var context = new BdCybergearContext())
                     {
                         // Obtener el objeto existente que deseas actualizar
-                        //var usuario = context.Usuarios.Find(id_cliente);
+                        var cliente = context.Clientes.Find(id_cliente);
 
                         // Actualizar el objeto con los nuevos datos
-                        clienteModificar.Nombre = TNombre.Text;
-                        clienteModificar.Apellido = TApellido.Text;
-                        clienteModificar.Email = TEmail.Text;
-                        clienteModificar.Dni = int.Parse(TDni.Text);
+                        cliente.Nombre = TNombre.Text;
+                        cliente.Apellido = TApellido.Text;
+                        cliente.Email = TEmail.Text;
+                        cliente.Dni = int.Parse(TDni.Text);
 
-                        var direccionUsuario = context.Domicilios.Find(clienteModificar.DomicilioId);
+                        var direccionUsuario = context.Domicilios.Find(cliente.DomicilioId);
                         direccionUsuario.Direccion = TDireccion.Text;
                         direccionUsuario.CodPostal = int.Parse(TNumeroDirec.Text);
-                        clienteModificar.FechaNacimiento = new DateOnly(DTPicker.Value.Year, DTPicker.Value.Month, DTPicker.Value.Day);
-                        clienteModificar.Telefono = long.Parse(TTelefono.Text);
+                        cliente.FechaNacimiento = new DateOnly(DTPicker.Value.Year, DTPicker.Value.Month, DTPicker.Value.Day);
+                        cliente.Telefono = long.Parse(TTelefono.Text);
 
                         if (RBHombre.Checked)
                         {
-                            clienteModificar.Sexo = "Hombre";
+                            cliente.Sexo = "Hombre";
                         }
                         else
                         {
-                            clienteModificar.Sexo = "Mujer";
+                            cliente.Sexo = "Mujer";
                         }
 
 
 
                         // Guardar los cambios en la base de datos
                         context.SaveChanges();
-                        MessageBox.Show("¡Usuario Actualizado Correctamente!", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("¡Cliente Actualizado Correctamente!", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
@@ -424,9 +424,9 @@ namespace CyberGear16.WindowsForms.SeccionCliente
                 using (var context = new BdCybergearContext())
                 {
                     // Obtener el objeto existente que deseas actualizar
-                    //var usuario = context.Usuarios.Find(this.id_cliente);
+                    var cliente = context.Clientes.Find(this.id_cliente);
 
-                    clienteModificar.Baja = "NO";
+                    cliente.Baja = "NO";
 
                     context.SaveChanges();
                     MessageBox.Show("Se ha dado de alta al cliente correctamente!", "Alta Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -453,9 +453,9 @@ namespace CyberGear16.WindowsForms.SeccionCliente
                 using (var context = new BdCybergearContext())
                 {
                     // Obtener el objeto existente que deseas actualizar
-                    //var cliente = context.Clientes.Find(this.id_cliente);
+                    var cliente = context.Clientes.Find(this.id_cliente);
 
-                    clienteModificar.Baja = "SI";
+                    cliente.Baja = "SI";
 
                     context.SaveChanges();
                     MessageBox.Show("Se ha dado de baja el cliente exitosamente!", "Baja Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
