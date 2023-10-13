@@ -421,8 +421,17 @@ namespace CyberGear16
             // Verifica si la diferencia es mayor que 100 años
             if (diferenciaAños < 100)
             {
-                // Restaura la fecha seleccionada a la fecha actual
-                return true;
+                if (diferenciaAños >= 18)
+                {
+                    return true;
+                }
+                else
+                {
+                    // Restaura la fecha seleccionada a la fecha actual
+                    DTPicker.Value = fechaActual;
+                    MessageBox.Show("El usuario a modificar debe de ser mayor de edad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
             else
             {

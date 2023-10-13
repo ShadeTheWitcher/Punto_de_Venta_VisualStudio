@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TCodPostal = new TextBox();
+            TNumeroDirec = new TextBox();
             LCodPostal = new Label();
             BModificar = new Button();
             LModificar = new Label();
@@ -54,12 +54,12 @@
             BBaja = new Button();
             SuspendLayout();
             // 
-            // TCodPostal
+            // TNumeroDirec
             // 
-            TCodPostal.Location = new Point(227, 236);
-            TCodPostal.Name = "TCodPostal";
-            TCodPostal.Size = new Size(170, 23);
-            TCodPostal.TabIndex = 85;
+            TNumeroDirec.Location = new Point(227, 236);
+            TNumeroDirec.Name = "TNumeroDirec";
+            TNumeroDirec.Size = new Size(170, 23);
+            TNumeroDirec.TabIndex = 85;
             // 
             // LCodPostal
             // 
@@ -83,6 +83,7 @@
             BModificar.Text = "MODIFICAR USUARIO";
             BModificar.TextAlign = ContentAlignment.MiddleRight;
             BModificar.UseVisualStyleBackColor = true;
+            BModificar.Click += BModificar_Click;
             // 
             // LModificar
             // 
@@ -269,18 +270,20 @@
             button3.Text = "Volver";
             button3.TextAlign = ContentAlignment.BottomCenter;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // BAlta
             // 
             BAlta.Image = Properties.Resources.icon_dar_alta;
             BAlta.ImageAlign = ContentAlignment.MiddleLeft;
-            BAlta.Location = new Point(173, 443);
+            BAlta.Location = new Point(197, 443);
             BAlta.Name = "BAlta";
             BAlta.Size = new Size(140, 45);
             BAlta.TabIndex = 87;
             BAlta.Text = "DAR DE ALTA";
             BAlta.TextAlign = ContentAlignment.MiddleRight;
             BAlta.UseVisualStyleBackColor = true;
+            BAlta.Click += BAlta_Click;
             // 
             // BBaja
             // 
@@ -293,6 +296,7 @@
             BBaja.Text = "DAR DE BAJA";
             BBaja.TextAlign = ContentAlignment.MiddleRight;
             BBaja.UseVisualStyleBackColor = true;
+            BBaja.Click += BBaja_Click_1;
             // 
             // FormEditorCliente
             // 
@@ -302,7 +306,7 @@
             ClientSize = new Size(478, 533);
             Controls.Add(button3);
             Controls.Add(BAlta);
-            Controls.Add(TCodPostal);
+            Controls.Add(TNumeroDirec);
             Controls.Add(LCodPostal);
             Controls.Add(BModificar);
             Controls.Add(LModificar);
@@ -333,7 +337,7 @@
         }
 
         #endregion
-        private TextBox TCodPostal;
+        private TextBox TNumeroDirec;
         private Label LCodPostal;
         private Button BModificar;
         private Label LModificar;
