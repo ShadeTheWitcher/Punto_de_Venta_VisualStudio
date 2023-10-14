@@ -365,7 +365,7 @@ namespace CyberGear16
             }
             else
             {
-                MessageBox.Show("El mínimo de caracteres aceptados para el código postal es de 2 y el máximo de 5.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El mínimo de caracteres aceptados para el número de dirección es de 2 y el máximo de 5.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -624,6 +624,7 @@ namespace CyberGear16
                 if (resultados.Count == 0)
                 {
                     MessageBox.Show("No se han encontrado usuarios que coincidan con la busqueda.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CargarDatosEnDGVActivos();
                 }
                 else
                 {
@@ -645,6 +646,8 @@ namespace CyberGear16
                 else
                 {
                     MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CargarDatosEnDGVActivos();
+
                 }
             }
         }
@@ -660,6 +663,8 @@ namespace CyberGear16
             else
             {
                 MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CargarDatosEnDGVActivos();
+
             }
         }
 
@@ -695,6 +700,11 @@ namespace CyberGear16
         }
 
         private void LCodPostal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TNombre_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -8,6 +8,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="WindowsForms\SeccionProducto\formCrudCategorias.cs">
+    <Compile Update="WindowsForms\SeccionCliente\FormEditorCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="WindowsForms\SeccionUsuario\adminUsers.cs">

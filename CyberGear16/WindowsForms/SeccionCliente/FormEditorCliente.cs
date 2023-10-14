@@ -11,52 +11,26 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CyberGear16
+namespace CyberGear16.WindowsForms.SeccionCliente
 {
-    public partial class FormEditorUsuario : Form
+    public partial class FormEditorCliente : Form
     {
-        private BdCybergearContext context;
-        private int id_usuario;
-        private Usuario usuarioModificar;
-
-        public FormEditorUsuario(int id_usuarioElegido, BdCybergearContext context)
+        private BdCybergearContext contextCliente;
+        private int id_cliente;
+        private Cliente clienteModificar;
+        public FormEditorCliente(int id_clienteElegido, BdCybergearContext context)
         {
             InitializeComponent();
-            id_usuario = id_usuarioElegido;
-            CBPerfil.Items.Add("Admin");
-            CBPerfil.Items.Add("Supervisor");
-            CBPerfil.Items.Add("Vendedor");
-
-
-            this.context = context;
+            id_cliente = id_clienteElegido;
+            contextCliente = context;
 
             recuperarDatosUsuario();
-            usuarioModificar = buscarUsuario(id_usuario);
-
+            clienteModificar = buscarCliente(id_cliente);
         }
 
-        private void BAlta_Click(object sender, EventArgs e)
+        private void FormEditorCliente_Load(object sender, EventArgs e)
         {
-            // Mostrar un cuadro de diálogo de confirmación
-            DialogResult result = MessageBox.Show("¿Estás seguro que quieres dar de alta este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-
-
-            // Verificar si el usuario hizo clic en "Sí"
-            if (result == DialogResult.Yes)
-            {
-                using (var context = new BdCybergearContext())
-                {
-                    // Obtener el objeto existente que deseas actualizar
-                    var usuario = context.Usuarios.Find(this.id_usuario);
-
-                    usuario.Baja = "NO";
-
-                    context.SaveChanges();
-                    MessageBox.Show("Se ha dado de alta al usuario correctamente!", "Alta Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-            }
         }
 
         private void recuperarDatosUsuario()
@@ -67,7 +41,7 @@ namespace CyberGear16
             {  // se lo engloba en un using para q se cierre la conexion
 
                 // Obtén el producto a través del contexto y su ID
-                Usuario usuario = newcontext.Usuarios.FirstOrDefault(p => p.Id == this.id_usuario);
+                Cliente usuario = newcontext.Clientes.FirstOrDefault(p => p.IdCliente == this.id_cliente);
 
 
                 if (usuario != null)
@@ -75,18 +49,15 @@ namespace CyberGear16
                     // Asigna los valores del producto a los controles
                     TNombre.Text = usuario.Nombre;
                     TApellido.Text = usuario.Apellido;
-                    TUsuario.Text = usuario.Usuario1;
-                    TContraseña.Text = usuario.Pass;
                     TEmail.Text = usuario.Email;
-                    CBPerfil.SelectedIndex = usuario.PerfilId - 1;
                     TDni.Text = usuario.Dni.ToString();
 
                     Domicilio domiciolioUsuario = newcontext.Domicilios.FirstOrDefault(p => p.Id == usuario.DomicilioId);
                     TDireccion.Text = domiciolioUsuario.Direccion;
-                    TCodPostal.Text = domiciolioUsuario.CodPostal.ToString();
-                    DateTime fechaConHora = new DateTime(usuario.Fecha.Year, usuario.Fecha.Month, usuario.Fecha.Day); ;
+                    TNumeroDirec.Text = domiciolioUsuario.CodPostal.ToString();
+                    DateTime fechaConHora = new DateTime(usuario.FechaNacimiento.Year, usuario.FechaNacimiento.Month, usuario.FechaNacimiento.Day); ;
                     DTPicker.Value = fechaConHora;
-                    TTelefono.Text = usuario.Tel.ToString();
+                    TTelefono.Text = usuario.Telefono.ToString();
                     string sexo = usuario.Sexo;
 
                     if (sexo == "Hombre")
@@ -119,28 +90,24 @@ namespace CyberGear16
             }
         }
 
-        //-------------------------Sección Validaciones-------------------------
         public bool validarCampos()
         {
             if (string.IsNullOrEmpty(TNombre.Text) ||
                 string.IsNullOrEmpty(TApellido.Text) ||
                 string.IsNullOrEmpty(TDni.Text) ||
-                string.IsNullOrEmpty(TUsuario.Text) ||
-                string.IsNullOrEmpty(TContraseña.Text) ||
                 string.IsNullOrEmpty(TEmail.Text) ||
                 string.IsNullOrEmpty(TTelefono.Text) ||
                 DTPicker.Value > DateTime.Today ||
                 string.IsNullOrEmpty(TDireccion.Text) ||
-                string.IsNullOrEmpty(TCodPostal.Text) ||
-                ((!RBHombre.Checked) && (!RBMujer.Checked)) ||
-                CBPerfil.SelectedIndex == -1)
+                string.IsNullOrEmpty(TNumeroDirec.Text) ||
+                ((!RBHombre.Checked) && (!RBMujer.Checked)))
             {
                 MessageBox.Show("Campos incompletos! Por favor rellénelos y vuelva a intentar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (validarTelefono() && validarDni() && validarNom() && validarApe() && validarUser()
-                && validarDirec() && validarNumDirec() && validarContraseña() && validacionCorreo() && validacionFecha())
+            if (validarTelefono() && validarDni() && validarNom() && validarApe() &&
+                validarDirec() && validarNumDirec() && validacionCorreo() && validacionFecha())
             {
                 return true;
             }
@@ -165,15 +132,15 @@ namespace CyberGear16
             Esta función se utiliza para seleccionar la propiedad que deseas comparar con el valor ingresado.*/
         }
 
-        private Usuario buscarUsuario(int idUsuario)
+        private Cliente buscarCliente(int idUsuario)
         {
             using (var context = new BdCybergearContext())
             {
-                Usuario usuario = context.Usuarios.FirstOrDefault(p => p.Id == idUsuario);
+                Cliente cliente = context.Clientes.FirstOrDefault(p => p.IdCliente == idUsuario);
 
-                if (usuario != null)
+                if (cliente != null)
                 {
-                    return usuario;
+                    return cliente;
                 }
                 else
                 {
@@ -190,7 +157,7 @@ namespace CyberGear16
             {
                 if (TTelefono.Text.Length >= 10 && TTelefono.Text.Length < 15)
                 {
-                    if (usuarioModificar.Tel != long.Parse(TTelefono.Text))
+                    if (clienteModificar.Telefono != long.Parse(TTelefono.Text))
                     {
                         if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Tel.ToString(), TTelefono.Text))
                         {
@@ -226,7 +193,7 @@ namespace CyberGear16
             {
                 using (var context = new BdCybergearContext())
                 {
-                    if (usuarioModificar.Dni != int.Parse(TDni.Text))
+                    if (clienteModificar.Dni != int.Parse(TDni.Text))
                     {
                         if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Dni.ToString(), TDni.Text))
                         {
@@ -291,39 +258,6 @@ namespace CyberGear16
             }
         }
 
-        private bool validarUser()
-        {
-            if (validacionCharEstandar(TUsuario.Text))
-            {
-                using (var context = new BdCybergearContext())
-                {
-                    if (usuarioModificar.Usuario1 != TUsuario.Text)
-                    {
-                        if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Usuario1, TUsuario.Text))
-                        {
-                            return true;
-                        }
-                        else
-                        {
-                            // Muestra un mensaje de error o realiza alguna acción adecuada
-                            MessageBox.Show("El Usuario ingresado ya se encuentra registrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return false;
-                        }
-
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("El mínimo de caracteres aceptados para el usuario es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
         private bool validarDirec()
         {
             if (TDireccion.Text.Length > 2 && TDireccion.Text.Length <= 20)
@@ -339,26 +273,13 @@ namespace CyberGear16
 
         private bool validarNumDirec()
         {
-            if (TCodPostal.Text.Length >= 2 && TCodPostal.Text.Length <= 5)
+            if (TNumeroDirec.Text.Length >= 2 && TNumeroDirec.Text.Length <= 5)
             {
                 return true;
             }
             else
             {
                 MessageBox.Show("El mínimo de caracteres aceptados para el código postal es de 2 y el máximo de 5.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        private bool validarContraseña()
-        {
-            if (validacionCharEstandar(TContraseña.Text))
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("El mínimo de caracteres aceptados para la dirección es de 3 y el máximo de 15.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -373,7 +294,7 @@ namespace CyberGear16
                 {
                     using (var context = new BdCybergearContext())
                     {
-                        if (usuarioModificar.Email != TEmail.Text)
+                        if (clienteModificar.Email != TEmail.Text)
                         {
                             if (Validador.EsValorUnico(context, context.Usuarios, entidad => entidad.Email, TEmail.Text))
                             {
@@ -421,15 +342,14 @@ namespace CyberGear16
             // Verifica si la diferencia es mayor que 100 años
             if (diferenciaAños < 100)
             {
-                if (diferenciaAños >= 18)
+                if (diferenciaAños >= 7)
                 {
                     return true;
                 }
                 else
                 {
-                    // Restaura la fecha seleccionada a la fecha actual
                     DTPicker.Value = fechaActual;
-                    MessageBox.Show("El usuario a modificar debe de ser mayor de edad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("El cliente a modificar debe de ser mayor a 6 años.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
@@ -442,7 +362,6 @@ namespace CyberGear16
             }
         }
         //---------------------Fin de Sección Validaciones----------------------
-
         private void BModificar_Click(object sender, EventArgs e)
         {
             if (validarCampos())
@@ -454,37 +373,34 @@ namespace CyberGear16
                     using (var context = new BdCybergearContext())
                     {
                         // Obtener el objeto existente que deseas actualizar
-                        var usuario = context.Usuarios.Find(id_usuario);
+                        var cliente = context.Clientes.Find(id_cliente);
 
                         // Actualizar el objeto con los nuevos datos
-                        usuario.Nombre = TNombre.Text;
-                        usuario.Apellido = TApellido.Text;
-                        usuario.Usuario1 = TUsuario.Text;
-                        usuario.Pass = TContraseña.Text;
-                        usuario.Email = TEmail.Text;
-                        usuario.PerfilId = CBPerfil.SelectedIndex + 1;
-                        usuario.Dni = int.Parse(TDni.Text);
+                        cliente.Nombre = TNombre.Text;
+                        cliente.Apellido = TApellido.Text;
+                        cliente.Email = TEmail.Text;
+                        cliente.Dni = int.Parse(TDni.Text);
 
-                        var direccionUsuario = context.Domicilios.Find(usuario.DomicilioId);
+                        var direccionUsuario = context.Domicilios.Find(cliente.DomicilioId);
                         direccionUsuario.Direccion = TDireccion.Text;
-                        direccionUsuario.CodPostal = int.Parse(TCodPostal.Text);
-                        usuario.Fecha = new DateOnly(DTPicker.Value.Year, DTPicker.Value.Month, DTPicker.Value.Day);
-                        usuario.Tel = long.Parse(TTelefono.Text);
+                        direccionUsuario.CodPostal = int.Parse(TNumeroDirec.Text);
+                        cliente.FechaNacimiento = new DateOnly(DTPicker.Value.Year, DTPicker.Value.Month, DTPicker.Value.Day);
+                        cliente.Telefono = long.Parse(TTelefono.Text);
 
                         if (RBHombre.Checked)
                         {
-                            usuario.Sexo = "Hombre";
+                            cliente.Sexo = "Hombre";
                         }
                         else
                         {
-                            usuario.Sexo = "Mujer";
+                            cliente.Sexo = "Mujer";
                         }
 
 
 
                         // Guardar los cambios en la base de datos
                         context.SaveChanges();
-                        MessageBox.Show("¡Usuario Actualizado Correctamente!", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("¡Cliente Actualizado Correctamente!", "Actualización Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
@@ -495,12 +411,10 @@ namespace CyberGear16
 
             }
         }
-
-
-        private void BBaja_Click_1(object sender, EventArgs e)
+        private void BAlta_Click(object sender, EventArgs e)
         {
             // Mostrar un cuadro de diálogo de confirmación
-            DialogResult result = MessageBox.Show("¿Estás seguro que quieres dar de baja este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            DialogResult result = MessageBox.Show("¿Estás seguro que quieres dar de alta a este cliente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 
 
@@ -510,12 +424,13 @@ namespace CyberGear16
                 using (var context = new BdCybergearContext())
                 {
                     // Obtener el objeto existente que deseas actualizar
-                    var usuario = context.Usuarios.Find(this.id_usuario);
+                    var cliente = context.Clientes.Find(this.id_cliente);
 
-                    usuario.Baja = "SI";
+                    cliente.Baja = "NO";
 
                     context.SaveChanges();
-                    MessageBox.Show("Se ha dado de baja el usuario exitosamente!", "Baja Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se ha dado de alta al cliente correctamente!", "Alta Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
         }
@@ -525,25 +440,27 @@ namespace CyberGear16
             this.Close();
         }
 
-        private void BOcultar_Click(object sender, EventArgs e)
+        private void BBaja_Click_1(object sender, EventArgs e)
         {
-            if (TContraseña.PasswordChar == '*')
-            {
-                BOcultar.Image = Properties.Resources.visibilidad;
-                // Mostrar la contraseña en texto plano
-                TContraseña.PasswordChar = '\0'; // Carácter nulo para mostrar el texto
-            }
-            else
-            {
-                BOcultar.Image = Properties.Resources.cerrado;
-                // Ocultar la contraseña
-                TContraseña.PasswordChar = '*'; // Carácter de contraseña
-            }
-        }
+            // Mostrar un cuadro de diálogo de confirmación
+            DialogResult result = MessageBox.Show("¿Estás seguro que quieres dar de baja a este cliente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
+
+            // Verificar si el usuario hizo clic en "Sí"
+            if (result == DialogResult.Yes)
+            {
+                using (var context = new BdCybergearContext())
+                {
+                    // Obtener el objeto existente que deseas actualizar
+                    var cliente = context.Clientes.Find(this.id_cliente);
+
+                    cliente.Baja = "SI";
+
+                    context.SaveChanges();
+                    MessageBox.Show("Se ha dado de baja el cliente exitosamente!", "Baja Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

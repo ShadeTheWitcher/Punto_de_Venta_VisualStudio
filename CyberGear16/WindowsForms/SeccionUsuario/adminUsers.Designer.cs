@@ -268,6 +268,7 @@
             TNombre.Name = "TNombre";
             TNombre.Size = new Size(170, 23);
             TNombre.TabIndex = 12;
+            TNombre.TextChanged += TNombre_TextChanged;
             // 
             // LSexo
             // 
