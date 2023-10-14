@@ -35,9 +35,9 @@ namespace CyberGear16
             comboBox2.Items.Add("A");
             comboBox2.Items.Add("B");
 
+            CargarCategorias();
 
-            cBoxCategorias.Items.Add("Videjuegos");
-            cBoxCategorias.Items.Add("PC-componentes");
+
 
 
 
@@ -463,7 +463,7 @@ namespace CyberGear16
                     textBox7.Text = productoDesdeBD.Cantidad.ToString();
                     tbIdProducto.Text = productoDesdeBD.Id.ToString();
                     textBox11.Text = productoDesdeBD.StockMinimo.ToString();
-                    cBoxCategorias.SelectedIndex = productoDesdeBD.CategoriaId - 1;
+                    cBoxCategorias.SelectedIndex = productoDesdeBD.CategoriaId;
 
 
                     // establecer la cantidad predeterminada
@@ -941,5 +941,34 @@ namespace CyberGear16
                 e.Handled = true;
             }
         }
+
+
+
+
+
+        private void CargarCategorias()
+        {
+            // cargar las categorías desde la base de datos y agregarlas al ComboBox
+
+            using (var context = new BdCybergearContext())
+            {
+                var categorias = context.Categoria.Where(c => c.Activo == "SI").ToList(); //solo se puede añadir las categorias activas a nuevos productos
+
+                // Agrega una opción vacía al principio de la lista
+                categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Categoría" });
+
+                cBoxCategorias.DataSource = categorias;
+                cBoxCategorias.DisplayMember = "CategoriaNombre"; // Ajusta esto según tu modelo
+                cBoxCategorias.ValueMember = "IdCategoria"; // Ajusta esto según tu modelo
+            }
+        }
+
+
+
+
+
+
+
+
     }
 }
