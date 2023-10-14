@@ -84,7 +84,7 @@ namespace CyberGear16
                             PrecioProducto = precio,
                             Descripcion = descripcion,
                             StockMinimo = stock_min,
-                            CategoriaId = idCategoria + 1,
+                            CategoriaId = idCategoria,
                             Cantidad = stock,
                             Imagen = imagenBytes // Asigna los bytes de la imagen al producto
                         };
@@ -151,16 +151,26 @@ namespace CyberGear16
 
         private string GetCategoryName(int categoryId)
         {
-            switch (categoryId)
-            {
-                case 1:
-                    return "VideoJuego";
-                case 2:
-                    return "PC-Componentes";
 
-                default:
-                    return "Otra categoría";
+            using (var context = new BdCybergearContext())
+            {
+                var categoria = context.Categoria
+                               .FirstOrDefault(c => c.IdCategoria == categoryId);
+
+                if (categoria != null)
+                {
+                    return categoria.CategoriaNombre;
+                }
+                else
+                {
+                    // Manejar el caso en el que no se encuentra la categoría con la ID dada
+                    return "Categoría no encontrada";
+                }
+
             }
+
+
+
         }
 
 
@@ -273,9 +283,8 @@ namespace CyberGear16
 
         private void formProductos_Load(object sender, EventArgs e)
         {
+            CargarCategorias();
 
-            comboBoxCategorias.Items.Add("Videjuegos");
-            comboBoxCategorias.Items.Add("PC-componentes");
 
             CargarDatosEnDataGridView();
 
@@ -508,7 +517,7 @@ namespace CyberGear16
 
 
 
-        
+
 
         private void openFileDialog1_FileOk_1(object sender, CancelEventArgs e)
         {
@@ -550,8 +559,26 @@ namespace CyberGear16
             }
         }
 
+        private void CargarCategorias()
+        {
+            // cargar las categorías desde la base de datos y agregarlas al ComboBox
 
+            using (var context = new BdCybergearContext())
+            {
+                var categorias = context.Categoria.ToList();
 
+                // Agrega una opción vacía al principio de la lista
+                categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Seleccionar Categoría" });
 
+                comboBoxCategorias.DataSource = categorias;
+                comboBoxCategorias.DisplayMember = "CategoriaNombre"; // Ajusta esto según tu modelo
+                comboBoxCategorias.ValueMember = "IdCategoria"; // Ajusta esto según tu modelo
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
