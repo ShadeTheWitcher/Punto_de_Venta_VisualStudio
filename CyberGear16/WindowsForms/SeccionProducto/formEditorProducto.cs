@@ -24,8 +24,8 @@ namespace CyberGear16
         {
             InitializeComponent();
             id_product = id_producto;
-            comboBoxCategorias.Items.Add("Videjuegos");
-            comboBoxCategorias.Items.Add("PC-componentes");
+
+            CargarCategorias();
 
 
             this.id_product = id_producto;
@@ -54,7 +54,7 @@ namespace CyberGear16
                     tbPrecio.Text = producto.PrecioProducto.ToString();
                     tbStock.Text = producto.Cantidad.ToString();
                     tbStockMin.Text = producto.StockMinimo.ToString();
-                    comboBoxCategorias.SelectedIndex = producto.CategoriaId - 1;
+                    comboBoxCategorias.SelectedIndex = producto.CategoriaId;
                     tbDescrip.Text = producto.Descripcion;
 
                     if (producto.Activo == "SI")
@@ -95,7 +95,22 @@ namespace CyberGear16
             }
         }
 
+        private void CargarCategorias()
+        {
+            // cargar las categorías desde la base de datos y agregarlas al ComboBox
 
+            using (var context = new BdCybergearContext())
+            {
+                var categorias = context.Categoria.Where(c => c.Activo == "SI").ToList(); //solo se puede asignar las categorias activas
+
+                // Agrega una opción vacía al principio de la lista
+                categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Seleccionar Categoría" });
+
+                comboBoxCategorias.DataSource = categorias;
+                comboBoxCategorias.DisplayMember = "CategoriaNombre"; // Ajusta esto según tu modelo
+                comboBoxCategorias.ValueMember = "IdCategoria"; // Ajusta esto según tu modelo
+            }
+        }
 
 
         private void label1_Click(object sender, EventArgs e)
@@ -121,7 +136,7 @@ namespace CyberGear16
                         producto.Cantidad = int.Parse(tbStock.Text);
                         producto.StockMinimo = int.Parse(tbStockMin.Text);
                         producto.Descripcion = tbDescrip.Text;
-                        producto.CategoriaId = comboBoxCategorias.SelectedIndex + 1;
+                        producto.CategoriaId = comboBoxCategorias.SelectedIndex;
 
                         // Verificar si se ha cargado una nueva imagen antes de actualizarla
                         if (imagenBytes != null && imagenBytes.Length > 0)

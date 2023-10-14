@@ -12,6 +12,7 @@ using MySqlConnector;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using CyberGear16.Models; // importar el espacio de nombres de tus modelos
+using CyberGear16.WindowsForms.SeccionProducto.Categoria;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -20,6 +21,7 @@ namespace CyberGear16
     public partial class formProductos : Form
     {
         private readonly BdCybergearContext _context; // DbContext de Entity Framework
+        private Panel panelCrudCategoria;
         public formProductos(BdCybergearContext context)
         {
             InitializeComponent();
@@ -565,7 +567,7 @@ namespace CyberGear16
 
             using (var context = new BdCybergearContext())
             {
-                var categorias = context.Categoria.ToList();
+                var categorias = context.Categoria.Where(c => c.Activo == "SI").ToList(); //solo se puede añadir las categorias activas a nuevos productos
 
                 // Agrega una opción vacía al principio de la lista
                 categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Seleccionar Categoría" });
@@ -578,7 +580,45 @@ namespace CyberGear16
 
         private void button3_Click(object sender, EventArgs e)
         {
+            // Crear un panel para contener el formulario formCrudCategoria
+            panelCrudCategoria = new Panel();
+            panelCrudCategoria.Dock = DockStyle.Fill;
 
+            // Crear una instancia del formulario formCrudCategoria
+            formCrudCategoria formCategoria = new formCrudCategoria();
+
+            // Configurar el tamaño y la posición del formulario
+            formCategoria.TopLevel = false;
+            formCategoria.Dock = DockStyle.Fill;
+
+            // Agregar el formulario al panel
+            panelCrudCategoria.Controls.Add(formCategoria);
+
+            // Agregar el panel al formulario
+            Controls.Add(panelCrudCategoria);
+
+            // Asegurar que el panel esté en la parte superior del z-order
+            panelCrudCategoria.BringToFront();
+
+            // Mostrar el panel (y el formulario dentro de él)
+            panelCrudCategoria.Visible = true;
+            formCategoria.Show();
+
+            // Manejar el evento de cierre de formCrudCategoria
+            formCategoria.FormClosed += (sender, args) =>
+            {
+                // Restaurar la visibilidad de cualquier contenido que pueda haber quedado oculto
+                panelCrudCategoria.Visible = false;  // O establecer en false si lo prefieres
+                CargarCategorias();
+                CargarDatosEnDataGridView();
+            };
         }
+
+
+
+
+
+
+
     }
 }
