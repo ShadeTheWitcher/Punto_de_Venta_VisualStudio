@@ -51,6 +51,12 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
         //BOTON AGREGAR AL CARRITO 
         private void AgregarAlCarrito(Product producto, int cant)
         {
+            if(cant == 0)
+            {
+                MessageBox.Show("No puedes insertar 0");
+                return ;
+            }
+
             using (var context = new BdCybergearContext())
             {
                 // Obtén el producto actualizado desde la base de datos para verificar el stock
@@ -64,7 +70,8 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
                     if (productoExistente != null)
                     {
                         // Si el producto ya está en el carrito, actualiza la cantidad
-                        if (productoExistente.CantEnCart < productoBD.Cantidad && productoBD.CantEnCart + cant >= productoBD.StockMinimo)
+                        if (productoExistente.CantEnCart < productoBD.Cantidad
+                              && (productoExistente.CantEnCart + 1) <= (productoBD.Cantidad - productoBD.StockMinimo))
                         {
                             productoExistente.CantEnCart += cant;
                         }

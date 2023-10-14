@@ -568,7 +568,8 @@ namespace CyberGear16
                     Product productoBD = context.Products.FirstOrDefault(p => p.Id == id_producto);
 
                     // valida si hay stock
-                    if (productoExistente.CantEnCart < productoBD.Cantidad && productoBD.CantEnCart + 1 >= productoBD.StockMinimo)
+                    if (productoExistente.CantEnCart < productoBD.Cantidad
+                        && (productoExistente.CantEnCart + 1) <= (productoBD.Cantidad - productoBD.StockMinimo))
                     {
                         row.Cells[3].Value = cantActual + 1;
                     }
