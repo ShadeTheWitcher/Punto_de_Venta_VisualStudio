@@ -122,6 +122,7 @@
             CBCategorias.Name = "CBCategorias";
             CBCategorias.Size = new Size(166, 23);
             CBCategorias.TabIndex = 3;
+            CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
             // 
             // LUsuarios
             // 

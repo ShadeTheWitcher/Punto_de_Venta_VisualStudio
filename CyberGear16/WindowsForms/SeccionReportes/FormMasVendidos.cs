@@ -19,8 +19,6 @@ namespace CyberGear16
         public FormMasVendidos()
         {
             InitializeComponent();
-            CBCategorias.Items.Add("Juegos");
-            CBCategorias.Items.Add("Componentes");
         }
 
         private void CProducts_Click(object sender, EventArgs e)
@@ -28,16 +26,40 @@ namespace CyberGear16
 
         }
 
-        private void CargarProductosMasVendidos()
+        
+
+        private void FormMasVendidos_Load(object sender, EventArgs e)
+        {
+            // Suscribe el evento SelectedIndexChanged del ComboBox
+            CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
+
+            // Llena el ComboBox con categorías (puedes adaptar esto a tu propio código)
+            CBCategorias.Items.Add("VideoJuegos");
+            CBCategorias.Items.Add("PC-Componentes");
+            CBCategorias.Items.Add("Netbooks");
+
+            // Establece una categoría predeterminada
+            CBCategorias.SelectedIndex = 0;
+
+            // Llama al manejador de eventos para cargar la información inicial
+            CargarProductosMasVendidos("VideoJuegos");
+            
+        }
+
+        private void CBCategorias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Obtiene la categoría seleccionada en el ComboBox
+            string categoriaSeleccionada = CBCategorias.SelectedItem.ToString();
+
+            // Llama al método para cargar la información según la categoría seleccionada
+            CargarProductosMasVendidos(categoriaSeleccionada);
+        }
+        private void CargarProductosMasVendidos(string categoriaCombo)
         {
             using (var contexto = new BdCybergearContext())
             {
-                int categoriaSeleccionada = CBCategorias.SelectedIndex + 2;
-
-                if (categoriaSeleccionada >= 2 && categoriaSeleccionada <= 4)
-                {
                     var productosMasVendidos = contexto.VentasDetalles
-                        .Where(detalle => detalle.Producto.CategoriaId == categoriaSeleccionada) // Filtra por la categoría seleccionada
+                        .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo) // Filtra por la categoría seleccionada
                         .GroupBy(detalle => detalle.ProductoId)
                         .OrderByDescending(g => g.Count())
                         .Take(5) // Puedes ajustar este número según la cantidad de productos que deseas mostrar
@@ -64,19 +86,18 @@ namespace CyberGear16
                         //point.Label = producto.NombreProducto;
                     }
 
-                }
-                else
-                {
-                    MessageBox.Show("Categoría Inexistente. Seleccione una Categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                //if (categoriaSeleccionada >= 2 && categoriaSeleccionada <= 4)
+                //{
+
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Categoría Inexistente. Seleccione una Categoría.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
 
             }
         }
-
-        private void FormMasVendidos_Load(object sender, EventArgs e)
-        {
-            CBCategorias.SelectedItem = "Juegos";
-            CargarProductosMasVendidos();
-        }
     }
+
 }

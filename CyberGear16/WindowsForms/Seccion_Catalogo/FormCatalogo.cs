@@ -182,7 +182,7 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
         private int ObtenerCategoriaSeleccionada()
         {
             // Retorna el valor de la categoría seleccionada en el ComboBox
-            return (int)cbFiltroCategorias.SelectedValue;
+            return cbFiltroCategorias.SelectedIndex;
         }
 
         private void cbFiltroCategorias_SelectedIndexChanged(object sender, EventArgs e)
