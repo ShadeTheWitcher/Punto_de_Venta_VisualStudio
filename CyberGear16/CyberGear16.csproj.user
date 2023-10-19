@@ -55,6 +55,9 @@
     <Compile Update="WindowsForms\SeccionProducto\formProductos.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="WindowsForms\SeccionVentas\FormFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="WindowsForms\SeccionVentas\FormSeccionVentas.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             label19 = new Label();
             textBox10 = new TextBox();
@@ -89,6 +90,7 @@
             textBox9 = new TextBox();
             label16 = new Label();
             toolTip1 = new ToolTip(components);
+            mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -370,6 +372,7 @@
             label15.Size = new Size(55, 15);
             label15.TabIndex = 12;
             label15.Text = "Cantidad";
+            label15.Visible = false;
             // 
             // numericUpDown1
             // 
@@ -378,6 +381,7 @@
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(59, 23);
             numericUpDown1.TabIndex = 11;
+            numericUpDown1.Visible = false;
             // 
             // button5
             // 
@@ -406,6 +410,7 @@
             button4.Text = "Agregar al carrito";
             button4.TextAlign = ContentAlignment.BottomCenter;
             button4.UseVisualStyleBackColor = false;
+            button4.Visible = false;
             button4.Click += button4_Click;
             // 
             // label14
@@ -497,6 +502,7 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(220, 98);
             panel4.TabIndex = 3;
+            panel4.Visible = false;
             // 
             // label4
             // 
@@ -554,16 +560,24 @@
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column6, Column1, Column2, Column3, Column4, Column7, Column5, Column8, Column9 });
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column6, Column1, Column2, Column3, Column4, Column7, Column5, Column8, Column9 });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.Location = new Point(27, 362);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
@@ -650,6 +664,7 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(220, 98);
             panel5.TabIndex = 8;
+            panel5.Visible = false;
             // 
             // comboBox2
             // 
@@ -697,6 +712,13 @@
             // toolTip1
             // 
             toolTip1.ToolTipIcon = ToolTipIcon.Info;
+            // 
+            // mySqlCommand1
+            // 
+            mySqlCommand1.CacheAge = 0;
+            mySqlCommand1.Connection = null;
+            mySqlCommand1.EnableCaching = false;
+            mySqlCommand1.Transaction = null;
             // 
             // FormSeccionVentas
             // 
@@ -794,5 +816,6 @@
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewButtonColumn Column8;
         private DataGridViewButtonColumn Column9;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
     }
 }

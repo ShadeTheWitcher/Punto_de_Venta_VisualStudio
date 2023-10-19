@@ -1,5 +1,6 @@
 ﻿using CyberGear16.Models;
 using CyberGear16.WindowsForms.Seccion_Catalogo;
+using CyberGear16.WindowsForms.SeccionVentas;
 using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
@@ -214,109 +215,7 @@ namespace CyberGear16
 
         }
 
-        //private void AgregarProductoAlCarrito(int id, string nombre, double precio, int cantidad, string categoria, byte[] imagen)
-        //{
 
-
-        //    using (var context = new BdCybergearContext())
-        //    {
-        //        // Verifica el stock disponible y el stock mínimo
-        //        if (context.Products.Any(p => p.Id == id && p.Cantidad >= cantidad && p.Cantidad - cantidad >= p.StockMinimo))
-        //        {
-        //            // Guardar en la clase global
-
-        //            bool productoExistente = false;
-        //            foreach (DataGridViewRow filaExistente in dataGridView1.Rows)
-        //            {
-        //                if (filaExistente.Cells[0].Value != null && Convert.ToInt32(filaExistente.Cells[0].Value) == id)
-        //                {
-        //                    // El producto ya está en la tabla, actualiza la cantidad
-        //                    int cantidadExistente = (int)filaExistente.Cells[3].Value;
-        //                    filaExistente.Cells[3].Value = cantidadExistente + cantidad;
-
-        //                    // Calcula y muestra el precio total
-        //                    calcularMostrarPrecioTotal();
-
-        //                    productoExistente = true;
-        //                    break;
-        //                }
-        //            }
-
-        //            if (!productoExistente)
-        //            {
-        //                // Añade la fila al DataGridView
-        //                DataGridViewRow nuevaFila = new DataGridViewRow();
-        //                nuevaFila.CreateCells(dataGridView1);
-
-        //                nuevaFila.Cells[0].Value = id;
-        //                nuevaFila.Cells[1].Value = nombre;
-        //                nuevaFila.Cells[2].Value = precio;
-        //                nuevaFila.Cells[3].Value = cantidad;
-        //                nuevaFila.Cells[4].Value = categoria;
-
-        //                // Asigna la imagen desde el arreglo de bytes
-        //                if (imagen != null && imagen.Length > 0)
-        //                {
-        //                    dataGridView1.Columns[5].Width = 80; // Ajusta el ancho según sea necesario
-        //                    dataGridView1.Columns[5].DefaultCellStyle.NullValue = null;
-
-        //                    using (MemoryStream ms = new MemoryStream(imagen))
-        //                    {
-        //                        Image originalImage = Image.FromStream(ms);
-
-        //                        // Redimensiona la imagen manteniendo la relación de aspecto
-        //                        int nuevoAncho = 80; // Ancho deseado
-        //                        int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
-        //                        Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
-
-        //                        nuevaFila.Cells[5].Value = imagenRedimensionada; // Imagen redimensionada
-        //                    }
-        //                }
-
-
-        //                // Calcula y muestra el precio total
-        //                dataGridView1.Rows.Add(nuevaFila);
-        //                calcularMostrarPrecioTotal();
-
-        //                if (carritoLoad != true)
-        //                {
-        //                    // Buscar el producto en el carrito por su Id
-        //                    Product productoExistenteGlobal = ClassCarritoDatos.ProductosEnCarrito.FirstOrDefault(p => p.Id == id);
-
-        //                    if (productoExistenteGlobal != null)
-        //                    {
-        //                        // Si el producto ya está en el carrito, actualiza la cantidad
-        //                        productoExistenteGlobal.CantEnCart++;
-        //                    }
-        //                    else
-        //                    {
-
-
-        //                        ClassCarritoDatos.ProductosEnCarrito.Add(new Product
-        //                        {
-        //                            Id = id,
-        //                            NombreProducto = nombre,
-        //                            PrecioProducto = precio,
-        //                            CantEnCart = cantidad,
-        //                            CategoriaId = productoExistenteGlobal.CategoriaId,
-        //                            Imagen = imagen,
-
-        //                        });
-
-        //                    }
-        //                }
-
-        //            }
-        //        }
-
-        //        else
-        //        {
-        //            MessageBox.Show("No hay suficiente stock disponible.");
-        //        }
-        //    }
-
-
-        //}
 
         private void calcularMostrarPrecioTotal()
         {
@@ -579,7 +478,7 @@ namespace CyberGear16
                         return;
                     }
                 }
-                
+
 
 
                 sumarProductoDeCarrito(id_producto); //incrementa globa
@@ -896,6 +795,22 @@ namespace CyberGear16
 
                 // Limpia el carrito después de guardar la venta
                 LimpiarCarrito();
+
+                FormFactura facturaForm = new FormFactura();
+
+                // Pasa la información necesaria a la factura
+                facturaForm.IdVenta = nuevaVentaCabecera.Id; // Puedes agregar más información según tus necesidades
+                facturaForm.FechaVenta = nuevaVentaCabecera.Fecha;
+                facturaForm.ClienteNombre = cliente.Nombre; // Suponiendo que cliente tiene una propiedad "Nombre"
+                facturaForm.Apellido = cliente.Apellido;
+                facturaForm.dniCliente = cliente.Dni;
+
+                // Puedes seguir pasando más información de ser necesario
+
+                // Muestra el formulario de la factura
+                facturaForm.Show();
+
+
 
             }
 
