@@ -28,12 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReporteSuper));
             LRProductos = new Label();
             panel4 = new Panel();
-            BBorrar = new Button();
-            BBuscar = new Button();
-            TBuscar = new TextBox();
             LRHasta = new Label();
             LRDesde = new Label();
             DTPGHasta = new DateTimePicker();
@@ -65,17 +61,14 @@
             LRProductos.ForeColor = Color.White;
             LRProductos.Location = new Point(18, 12);
             LRProductos.Name = "LRProductos";
-            LRProductos.Size = new Size(109, 25);
+            LRProductos.Size = new Size(76, 25);
             LRProductos.TabIndex = 5;
-            LRProductos.Text = "Productos:";
+            LRProductos.Text = "Ventas:";
             // 
             // panel4
             // 
             panel4.Anchor = AnchorStyles.None;
             panel4.BackColor = Color.FromArgb(26, 32, 40);
-            panel4.Controls.Add(BBorrar);
-            panel4.Controls.Add(BBuscar);
-            panel4.Controls.Add(TBuscar);
             panel4.Controls.Add(LRHasta);
             panel4.Controls.Add(LRDesde);
             panel4.Controls.Add(DTPGHasta);
@@ -87,41 +80,12 @@
             panel4.Size = new Size(1019, 238);
             panel4.TabIndex = 12;
             // 
-            // BBorrar
-            // 
-            BBorrar.Anchor = AnchorStyles.None;
-            BBorrar.Image = (Image)resources.GetObject("BBorrar.Image");
-            BBorrar.Location = new Point(976, 8);
-            BBorrar.Name = "BBorrar";
-            BBorrar.Size = new Size(38, 32);
-            BBorrar.TabIndex = 15;
-            BBorrar.UseVisualStyleBackColor = true;
-            // 
-            // BBuscar
-            // 
-            BBuscar.Anchor = AnchorStyles.None;
-            BBuscar.Image = Properties.Resources.lupa;
-            BBuscar.Location = new Point(932, 8);
-            BBuscar.Name = "BBuscar";
-            BBuscar.Size = new Size(38, 32);
-            BBuscar.TabIndex = 14;
-            BBuscar.UseVisualStyleBackColor = true;
-            // 
-            // TBuscar
-            // 
-            TBuscar.Anchor = AnchorStyles.None;
-            TBuscar.Location = new Point(769, 14);
-            TBuscar.Name = "TBuscar";
-            TBuscar.Size = new Size(157, 23);
-            TBuscar.TabIndex = 13;
-            TBuscar.Text = "Buscar";
-            // 
             // LRHasta
             // 
             LRHasta.AutoSize = true;
             LRHasta.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             LRHasta.ForeColor = Color.White;
-            LRHasta.Location = new Point(481, 12);
+            LRHasta.Location = new Point(537, 12);
             LRHasta.Name = "LRHasta";
             LRHasta.Size = new Size(67, 25);
             LRHasta.TabIndex = 12;
@@ -132,7 +96,7 @@
             LRDesde.AutoSize = true;
             LRDesde.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             LRDesde.ForeColor = Color.White;
-            LRDesde.Location = new Point(225, 12);
+            LRDesde.Location = new Point(281, 12);
             LRDesde.Name = "LRDesde";
             LRDesde.Size = new Size(71, 25);
             LRDesde.TabIndex = 11;
@@ -142,7 +106,7 @@
             // 
             DTPGHasta.Enabled = false;
             DTPGHasta.Format = DateTimePickerFormat.Short;
-            DTPGHasta.Location = new Point(575, 14);
+            DTPGHasta.Location = new Point(631, 14);
             DTPGHasta.Name = "DTPGHasta";
             DTPGHasta.Size = new Size(108, 23);
             DTPGHasta.TabIndex = 10;
@@ -151,7 +115,7 @@
             // 
             DTPGDesde.Enabled = false;
             DTPGDesde.Format = DateTimePickerFormat.Short;
-            DTPGDesde.Location = new Point(319, 14);
+            DTPGDesde.Location = new Point(375, 14);
             DTPGDesde.Name = "DTPGDesde";
             DTPGDesde.Size = new Size(101, 23);
             DTPGDesde.TabIndex = 9;
@@ -340,8 +304,5 @@
         private Label LRDesde;
         private DateTimePicker DTPGHasta;
         private DateTimePicker DTPGDesde;
-        private Button BBorrar;
-        private Button BBuscar;
-        private TextBox TBuscar;
     }
 }

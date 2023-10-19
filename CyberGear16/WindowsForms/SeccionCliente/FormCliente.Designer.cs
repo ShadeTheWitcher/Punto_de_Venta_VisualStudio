@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClientes));
             PUsuarios = new Panel();
-            TCodPostal = new TextBox();
+            TNumeroDirec = new TextBox();
             LCodPostal = new Label();
             DTPicker = new DateTimePicker();
             BCancelar = new Button();
@@ -66,7 +66,7 @@
             // 
             PUsuarios.Anchor = AnchorStyles.None;
             PUsuarios.BackColor = Color.FromArgb(26, 32, 40);
-            PUsuarios.Controls.Add(TCodPostal);
+            PUsuarios.Controls.Add(TNumeroDirec);
             PUsuarios.Controls.Add(LCodPostal);
             PUsuarios.Controls.Add(DTPicker);
             PUsuarios.Controls.Add(BCancelar);
@@ -93,12 +93,12 @@
             PUsuarios.Size = new Size(982, 325);
             PUsuarios.TabIndex = 1;
             // 
-            // TCodPostal
+            // TNumeroDirec
             // 
-            TCodPostal.Location = new Point(483, 120);
-            TCodPostal.Name = "TCodPostal";
-            TCodPostal.Size = new Size(170, 23);
-            TCodPostal.TabIndex = 29;
+            TNumeroDirec.Location = new Point(483, 120);
+            TNumeroDirec.Name = "TNumeroDirec";
+            TNumeroDirec.Size = new Size(170, 23);
+            TNumeroDirec.TabIndex = 29;
             // 
             // LCodPostal
             // 
@@ -106,9 +106,9 @@
             LCodPostal.ForeColor = Color.White;
             LCodPostal.Location = new Point(349, 123);
             LCodPostal.Name = "LCodPostal";
-            LCodPostal.Size = new Size(84, 15);
+            LCodPostal.Size = new Size(123, 15);
             LCodPostal.TabIndex = 28;
-            LCodPostal.Text = "Código Postal:";
+            LCodPostal.Text = "Número de Dirección:";
             // 
             // DTPicker
             // 
@@ -130,6 +130,7 @@
             BCancelar.Text = "Cancelar";
             BCancelar.TextAlign = ContentAlignment.MiddleRight;
             BCancelar.UseVisualStyleBackColor = true;
+            BCancelar.Click += BCancelar_Click;
             // 
             // BGuardar
             // 
@@ -144,6 +145,7 @@
             BGuardar.Text = "Guardar";
             BGuardar.TextAlign = ContentAlignment.MiddleRight;
             BGuardar.UseVisualStyleBackColor = true;
+            BGuardar.Click += BGuardar_Click;
             // 
             // RBMujer
             // 
@@ -311,16 +313,20 @@
             TBuscar.Size = new Size(313, 23);
             TBuscar.TabIndex = 8;
             TBuscar.Text = "Buscar";
+            TBuscar.Click += TBuscar_Click;
+            TBuscar.KeyPress += TBuscar_KeyPress;
             // 
             // DGVClientes
             // 
             DGVClientes.Anchor = AnchorStyles.None;
+            DGVClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGVClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGVClientes.Location = new Point(21, 392);
             DGVClientes.Name = "DGVClientes";
             DGVClientes.RowTemplate.Height = 25;
             DGVClientes.Size = new Size(982, 213);
             DGVClientes.TabIndex = 5;
+            DGVClientes.CellContentClick += DGVClientes_CellContentClick;
             // 
             // BBorrar
             // 
@@ -331,6 +337,7 @@
             BBorrar.Size = new Size(38, 37);
             BBorrar.TabIndex = 32;
             BBorrar.UseVisualStyleBackColor = true;
+            BBorrar.Click += BBorrar_Click;
             // 
             // BBuscar
             // 
@@ -341,6 +348,7 @@
             BBuscar.Size = new Size(38, 37);
             BBuscar.TabIndex = 31;
             BBuscar.UseVisualStyleBackColor = true;
+            BBuscar.Click += BBuscar_Click;
             // 
             // BActivos
             // 
@@ -351,6 +359,7 @@
             BActivos.TabIndex = 6;
             BActivos.Text = "Activos";
             BActivos.UseVisualStyleBackColor = true;
+            BActivos.Click += BActivos_Click;
             // 
             // BInactivo
             // 
@@ -361,6 +370,7 @@
             BInactivo.TabIndex = 7;
             BInactivo.Text = "Inactivos";
             BInactivo.UseVisualStyleBackColor = true;
+            BInactivo.Click += BInactivo_Click;
             // 
             // FormClientes
             // 
@@ -388,7 +398,7 @@
         #endregion
 
         private Panel PUsuarios;
-        private TextBox TCodPostal;
+        private TextBox TNumeroDirec;
         private Label LCodPostal;
         private DateTimePicker DTPicker;
         private Button BCancelar;
