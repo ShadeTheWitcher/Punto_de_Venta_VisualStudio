@@ -40,6 +40,11 @@
             btnMin = new PictureBox();
             btnSalir = new PictureBox();
             panel2 = new Panel();
+            panelSubMenuReportes = new Panel();
+            panel9 = new Panel();
+            btnReportVendedor = new Button();
+            panel8 = new Panel();
+            btnReportClient = new Button();
             label1 = new Label();
             panel7 = new Panel();
             btnBackUp = new Button();
@@ -62,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)btnMin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnSalir).BeginInit();
             panel2.SuspendLayout();
+            panelSubMenuReportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnCerrarSesion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)botonSalir).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -223,6 +229,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(panelSubMenuReportes);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(panel7);
             panel2.Controls.Add(btnBackUp);
@@ -247,6 +254,74 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(294, 704);
             panel2.TabIndex = 1;
+            // 
+            // panelSubMenuReportes
+            // 
+            panelSubMenuReportes.Controls.Add(panel9);
+            panelSubMenuReportes.Controls.Add(btnReportVendedor);
+            panelSubMenuReportes.Controls.Add(panel8);
+            panelSubMenuReportes.Controls.Add(btnReportClient);
+            panelSubMenuReportes.Location = new Point(50, 481);
+            panelSubMenuReportes.Name = "panelSubMenuReportes";
+            panelSubMenuReportes.Size = new Size(244, 100);
+            panelSubMenuReportes.TabIndex = 18;
+            panelSubMenuReportes.Visible = false;
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.MediumPurple;
+            panel9.Location = new Point(0, 49);
+            panel9.Margin = new Padding(4, 3, 4, 3);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(8, 29);
+            panel9.TabIndex = 13;
+            // 
+            // btnReportVendedor
+            // 
+            btnReportVendedor.Cursor = Cursors.Hand;
+            btnReportVendedor.FlatAppearance.BorderSize = 0;
+            btnReportVendedor.FlatAppearance.MouseOverBackColor = SystemColors.Highlight;
+            btnReportVendedor.FlatStyle = FlatStyle.Flat;
+            btnReportVendedor.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReportVendedor.ForeColor = Color.WhiteSmoke;
+            btnReportVendedor.ImageAlign = ContentAlignment.MiddleLeft;
+            btnReportVendedor.Location = new Point(4, 49);
+            btnReportVendedor.Margin = new Padding(4, 3, 4, 3);
+            btnReportVendedor.Name = "btnReportVendedor";
+            btnReportVendedor.Size = new Size(236, 27);
+            btnReportVendedor.TabIndex = 14;
+            btnReportVendedor.Text = "Reportes Vendedor";
+            btnReportVendedor.UseVisualStyleBackColor = true;
+            btnReportVendedor.Click += btnReportVendedor_Click;
+            // 
+            // panel8
+            // 
+            panel8.Anchor = AnchorStyles.None;
+            panel8.BackColor = Color.MediumPurple;
+            panel8.Location = new Point(0, 1);
+            panel8.Margin = new Padding(4, 3, 4, 3);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(8, 29);
+            panel8.TabIndex = 11;
+            // 
+            // btnReportClient
+            // 
+            btnReportClient.Anchor = AnchorStyles.None;
+            btnReportClient.Cursor = Cursors.Hand;
+            btnReportClient.FlatAppearance.BorderSize = 0;
+            btnReportClient.FlatAppearance.MouseOverBackColor = SystemColors.Highlight;
+            btnReportClient.FlatStyle = FlatStyle.Flat;
+            btnReportClient.Font = new Font("Lucida Console", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReportClient.ForeColor = Color.WhiteSmoke;
+            btnReportClient.ImageAlign = ContentAlignment.MiddleLeft;
+            btnReportClient.Location = new Point(4, 3);
+            btnReportClient.Margin = new Padding(4, 3, 4, 3);
+            btnReportClient.Name = "btnReportClient";
+            btnReportClient.Size = new Size(236, 27);
+            btnReportClient.TabIndex = 12;
+            btnReportClient.Text = "Reportes Clientes";
+            btnReportClient.UseVisualStyleBackColor = true;
+            btnReportClient.Click += btnReportClient_Click;
             // 
             // label1
             // 
@@ -459,6 +534,7 @@
             ((System.ComponentModel.ISupportInitialize)btnSalir).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panelSubMenuReportes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnCerrarSesion).EndInit();
             ((System.ComponentModel.ISupportInitialize)botonSalir).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -493,5 +569,10 @@
         private Button btnBackUp;
         private Label label1;
         private System.Windows.Forms.Timer timer1;
+        private Panel panelSubMenuReportes;
+        private Panel panel8;
+        private Button btnReportClient;
+        private Panel panel9;
+        private Button btnReportVendedor;
     }
 }

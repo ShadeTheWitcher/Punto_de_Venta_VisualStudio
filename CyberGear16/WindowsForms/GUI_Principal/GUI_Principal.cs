@@ -239,7 +239,9 @@ namespace CyberGear16
             }
             else if (perfil_idUsuario == 2)
             {
-                AbrirFormHija(new FormReporteSuper());
+                //AbrirFormHija(new FormReporteSuper());
+                panelSubMenuReportes.Visible = true;
+
             }
             else
             {
@@ -276,6 +278,16 @@ namespace CyberGear16
         private void panel8_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnReportClient_Click(object sender, EventArgs e)
+        {
+            panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
+        }
+
+        private void btnReportVendedor_Click(object sender, EventArgs e)
+        {
+            panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
         }
     }
 }
