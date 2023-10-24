@@ -77,7 +77,7 @@
             btnClientes.ForeColor = Color.WhiteSmoke;
             btnClientes.Image = Properties.Resources.clientes;
             btnClientes.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClientes.Location = new Point(4, 475);
+            btnClientes.Location = new Point(4, 394);
             btnClientes.Margin = new Padding(4, 3, 4, 3);
             btnClientes.Name = "btnClientes";
             btnClientes.Size = new Size(290, 40);
@@ -96,7 +96,7 @@
             button1.ForeColor = Color.White;
             button1.Image = Properties.Resources.reportes;
             button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(4, 548);
+            button1.Location = new Point(4, 440);
             button1.Margin = new Padding(4, 3, 4, 3);
             button1.Name = "button1";
             button1.Size = new Size(290, 40);
@@ -115,7 +115,7 @@
             btnVentas.ForeColor = Color.White;
             btnVentas.Image = Properties.Resources.venta;
             btnVentas.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVentas.Location = new Point(4, 408);
+            btnVentas.Location = new Point(4, 348);
             btnVentas.Margin = new Padding(4, 3, 4, 3);
             btnVentas.Name = "btnVentas";
             btnVentas.Size = new Size(290, 40);
@@ -134,7 +134,7 @@
             btnProductos.ForeColor = Color.White;
             btnProductos.Image = Properties.Resources.producto;
             btnProductos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProductos.Location = new Point(4, 280);
+            btnProductos.Location = new Point(4, 259);
             btnProductos.Margin = new Padding(4, 3, 4, 3);
             btnProductos.Name = "btnProductos";
             btnProductos.Size = new Size(290, 40);
@@ -347,7 +347,7 @@
             // panel6
             // 
             panel6.BackColor = Color.MediumPurple;
-            panel6.Location = new Point(0, 475);
+            panel6.Location = new Point(0, 394);
             panel6.Margin = new Padding(4, 3, 4, 3);
             panel6.Name = "panel6";
             panel6.Size = new Size(12, 40);
@@ -356,7 +356,7 @@
             // panel3
             // 
             panel3.BackColor = Color.MediumPurple;
-            panel3.Location = new Point(0, 548);
+            panel3.Location = new Point(0, 440);
             panel3.Margin = new Padding(4, 3, 4, 3);
             panel3.Name = "panel3";
             panel3.Size = new Size(12, 40);
@@ -365,7 +365,7 @@
             // panel1
             // 
             panel1.BackColor = Color.MediumPurple;
-            panel1.Location = new Point(0, 408);
+            panel1.Location = new Point(0, 348);
             panel1.Margin = new Padding(4, 3, 4, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(12, 40);
@@ -374,7 +374,7 @@
             // panel5
             // 
             panel5.BackColor = Color.MediumPurple;
-            panel5.Location = new Point(0, 348);
+            panel5.Location = new Point(0, 305);
             panel5.Margin = new Padding(4, 3, 4, 3);
             panel5.Name = "panel5";
             panel5.Size = new Size(12, 37);
@@ -396,7 +396,7 @@
             // panel4
             // 
             panel4.BackColor = Color.MediumPurple;
-            panel4.Location = new Point(0, 280);
+            panel4.Location = new Point(0, 259);
             panel4.Margin = new Padding(4, 3, 4, 3);
             panel4.Name = "panel4";
             panel4.Size = new Size(12, 40);
@@ -412,7 +412,7 @@
             btnUsuarios.ForeColor = SystemColors.Control;
             btnUsuarios.Image = Properties.Resources.clientes;
             btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsuarios.Location = new Point(4, 348);
+            btnUsuarios.Location = new Point(4, 305);
             btnUsuarios.Margin = new Padding(4, 3, 4, 3);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.Size = new Size(290, 37);

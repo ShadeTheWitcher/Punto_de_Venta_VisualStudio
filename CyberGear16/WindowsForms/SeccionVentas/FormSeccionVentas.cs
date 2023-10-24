@@ -1,5 +1,6 @@
 ﻿using CyberGear16.Models;
 using CyberGear16.WindowsForms.Seccion_Catalogo;
+using CyberGear16.WindowsForms.SeccionProducto.Categoria;
 using CyberGear16.WindowsForms.SeccionVentas;
 using MySqlX.XDevAPI;
 using System;
@@ -16,7 +17,7 @@ namespace CyberGear16
 {
     public partial class FormSeccionVentas : Form
     {
-
+        private Panel panelCatalogo;
         private List<Product> productosEnCarrito; // Declarar como un campo de clase
 
         private readonly BdCybergearContext _context; // DbContext de Entity Framework
@@ -36,7 +37,7 @@ namespace CyberGear16
             comboBox2.Items.Add("A");
             comboBox2.Items.Add("B");
 
-            CargarCategorias();
+            //CargarCategorias();
 
 
 
@@ -73,6 +74,12 @@ namespace CyberGear16
             dataGridView1.Columns.Add(eliminarButtonColumn);
 
 
+            loadDataGridCarrito();
+
+        }
+
+        private void loadDataGridCarrito()
+        {
             // Acceder a los productos en el carrito desde otro formulario o clase
             productosEnCarrito = ClassCarritoDatos.ProductosEnCarrito;
 
@@ -82,22 +89,9 @@ namespace CyberGear16
                 // La lista no está vacía, puedes realizar operaciones con ella
                 foreach (var producto in productosEnCarrito)
                 {
-                    string categoriaNombre;
+                    string categoriaNombre = asignarCategoria(producto.CategoriaId);
 
-                    // Verifica el valor de CategoriaId y asigna la cadena correspondiente
-                    if (producto.CategoriaId == 1)
-                    {
-                        categoriaNombre = "Videojuegos";
-                    }
-                    else if (producto.CategoriaId == 2)
-                    {
-                        categoriaNombre = "PC-Componente";
-                    }
-                    else
-                    {
-                        // Trata otros valores según sea necesario
-                        categoriaNombre = "Otra categoría";
-                    }
+
 
 
                     AgregarProductoAlCarrito(producto.Id, producto.NombreProducto, Convert.ToDouble(producto.PrecioProducto), producto.CantEnCart, categoriaNombre, producto.Imagen);
@@ -111,7 +105,6 @@ namespace CyberGear16
             }
 
             carritoLoad = false;
-
         }
 
 
@@ -297,38 +290,39 @@ namespace CyberGear16
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //carritoLoad = false;
-            // Verifica que los campos requeridos estén llenos
-            if (string.IsNullOrWhiteSpace(textBox5.Text) ||
-                string.IsNullOrWhiteSpace(textBox8.Text) ||
-                numericUpDown1.Value <= 0 ||
-                string.IsNullOrWhiteSpace(cBoxCategorias.Text))
+            // Crear un panel para contener el formulario formCrudCategoria
+            panelCatalogo = new Panel();
+            panelCatalogo.Dock = DockStyle.Fill;
+
+            // Crear una instancia del formulario formCrudCategoria
+            FormCatalogo formCatalogo = new FormCatalogo(_context);
+
+            // Configurar el tamaño y la posición del formulario
+            formCatalogo.TopLevel = false;
+            formCatalogo.Dock = DockStyle.Fill;
+
+            // Agregar el formulario al panel
+            panelCatalogo.Controls.Add(formCatalogo);
+
+            // Agregar el panel al formulario
+            Controls.Add(panelCatalogo);
+
+            // Asegurar que el panel esté en la parte superior del z-order
+            panelCatalogo.BringToFront();
+
+            // Mostrar el panel (y el formulario dentro de él)
+            panelCatalogo.Visible = true;
+            formCatalogo.Show();
+
+            // Manejar el evento de cierre de formCrudCategoria
+            formCatalogo.FormClosed += (sender, args) =>
             {
-                MessageBox.Show("Por favor, complete todos los campos antes de añadir al carrito.");
-                return;
-            }
+                // Restaurar la visibilidad de cualquier contenido que pueda haber quedado oculto
+                panelCatalogo.Visible = false;  // O establecer en false si lo prefieres
+                carritoLoad = true;
+                loadDataGridCarrito();
 
-
-            // Añade los datos al carrito directamente desde los campos
-            string nombreProducto = textBox5.Text;
-            double precioProducto = Convert.ToDouble(textBox8.Text);
-            int cantidad = (int)numericUpDown1.Value;
-            string categoria = cBoxCategorias.Text; // Asigna la descripción según sea necesario.
-            int id_producto = int.Parse(tbIdProducto.Text); ;
-
-            using (var context = new BdCybergearContext())
-            {
-                // Recupera el producto desde la base de datos
-                Product productoDesdeBD = context.Products.FirstOrDefault(p => p.NombreProducto == nombreProducto);
-
-                byte[] Imagen = productoDesdeBD.Imagen;
-
-
-                AgregarProductoAlCarrito(id_producto, nombreProducto, precioProducto, cantidad, categoria, Imagen);
-
-
-
-            }
+            };
         }
 
         private void button5_Click(object sender, EventArgs e) //buscar
@@ -336,45 +330,7 @@ namespace CyberGear16
 
 
 
-            // Verifica que los campos requeridos estén llenos
-            if (string.IsNullOrWhiteSpace(textBox5.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos antes de buscar");
-                return;
-            }
 
-
-
-
-            using (var context = new BdCybergearContext())
-            {
-                // Realiza tus operaciones de base de datos aquí
-
-                // Simulación de datos de producto
-                Product productoDesdeBD = context.Products.FirstOrDefault(p => p.NombreProducto == textBox5.Text);
-
-                // Verifica si se encontró el producto
-                if (productoDesdeBD != null)
-                {
-                    // Rellena los campos con los datos del producto
-                    textBox6.Text = productoDesdeBD.Descripcion;
-                    textBox8.Text = productoDesdeBD.PrecioProducto.ToString();
-                    textBox7.Text = productoDesdeBD.Cantidad.ToString();
-                    tbIdProducto.Text = productoDesdeBD.Id.ToString();
-                    textBox11.Text = productoDesdeBD.StockMinimo.ToString();
-                    cBoxCategorias.SelectedIndex = productoDesdeBD.CategoriaId;
-
-
-                    // establecer la cantidad predeterminada
-                    numericUpDown1.Value = 1;
-                }
-                else
-                {
-                    // Producto no encontrado en la base de datos
-                    MessageBox.Show("Producto no encontrado");
-                }
-
-            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -397,11 +353,7 @@ namespace CyberGear16
 
         private void vaciarProducto()
         {
-            textBox5.Text = string.Empty;
-            textBox6.Text = string.Empty;
-            textBox8.Text = string.Empty;
-            textBox7.Text = string.Empty;
-            cBoxCategorias.SelectedIndex = -1;
+
         }
 
         private void LimpiarCarrito()
@@ -570,105 +522,7 @@ namespace CyberGear16
 
         public void AgregarAlCarritoDesdeCatalogo(Product producto = null)
         {
-            // Aquí puedes agregar el producto al carrito o realizar cualquier otra acción.
 
-            // Si el parámetro producto no es nulo, significa que se proporcionó un producto.
-            // Puedes realizar acciones específicas en consecuencia.
-            if (producto != null)
-            {
-                using (var context = new BdCybergearContext())
-                {
-
-                    // Añade los datos al carrito directamente desde los campos
-                    string nombreProducto = producto.NombreProducto;
-
-
-                    // Recupera el producto desde la base de datos
-                    Product productoDesdeBD = context.Products.FirstOrDefault(p => p.NombreProducto == nombreProducto);
-
-                    double precioProducto = Convert.ToDouble(productoDesdeBD.PrecioProducto);
-                    int cantidad = (int)numericUpDown1.Value;
-                    string categoria = cBoxCategorias.Text; // Asigna la descripción según sea necesario.
-                    int id_producto = productoDesdeBD.Id; ;
-
-                    byte[] Imagen = productoDesdeBD.Imagen;
-
-                    if (productoDesdeBD != null)
-                    {
-                        // Verifica el stock disponible y el stock mínimo
-                        if (productoDesdeBD.Cantidad >= cantidad && productoDesdeBD.Cantidad - cantidad >= productoDesdeBD.StockMinimo)
-                        {
-                            bool productoExistente = false;
-                            foreach (DataGridViewRow filaExistente in dataGridView1.Rows)
-                            {
-                                if (filaExistente.Cells[1].Value != null && filaExistente.Cells[1].Value.ToString() == nombreProducto)
-                                {
-                                    // El producto ya está en la tabla, actualiza la cantidad
-                                    int cantidadExistente = (int)filaExistente.Cells[3].Value;
-                                    filaExistente.Cells[3].Value = cantidadExistente + cantidad;
-
-                                    // Calcula y muestra el precio total
-                                    calcularMostrarPrecioTotal();
-
-                                    productoExistente = true;
-                                    break;
-                                }
-                            }
-
-                            if (!productoExistente)
-                            {
-                                // Añade la fila al DataGridView
-                                DataGridViewRow nuevaFila = new DataGridViewRow();
-                                nuevaFila.CreateCells(dataGridView1);
-
-                                nuevaFila.Cells[0].Value = id_producto;
-                                nuevaFila.Cells[1].Value = nombreProducto;
-                                nuevaFila.Cells[2].Value = precioProducto;
-                                nuevaFila.Cells[3].Value = cantidad;
-                                nuevaFila.Cells[4].Value = categoria;
-
-                                // Asigna la imagen desde el arreglo de bytes
-                                if (Imagen != null && Imagen.Length > 0)
-                                {
-                                    dataGridView1.Columns[5].Width = 80; // Ajusta el ancho según sea necesario
-                                    dataGridView1.Columns[5].DefaultCellStyle.NullValue = null;
-
-
-
-                                    using (MemoryStream ms = new MemoryStream(Imagen))
-                                    {
-                                        Image originalImage = Image.FromStream(ms);
-
-                                        // Redimensiona la imagen manteniendo la relación de aspecto
-                                        int nuevoAncho = 80; // Ancho deseado
-                                        int nuevoAlto = (int)((double)originalImage.Height / originalImage.Width * nuevoAncho);
-                                        Image imagenRedimensionada = new Bitmap(originalImage, nuevoAncho, nuevoAlto);
-
-                                        nuevaFila.Cells[5].Value = imagenRedimensionada; // Imagen redimensionada
-                                    }
-
-
-
-
-                                }
-
-
-                                // Calcula y muestra el precio total
-                                dataGridView1.Rows.Add(nuevaFila);
-                                calcularMostrarPrecioTotal();
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("No hay suficiente stock disponible.");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Producto no encontrado en la base de datos");
-                    }
-                }
-            }
         }
 
 
@@ -833,10 +687,10 @@ namespace CyberGear16
             dataGridView1.CellPainting += dataGridView1_CellPainting;
 
             // Centra el texto en las celdas
-            dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             // Centra el texto en los encabezados de columna
-            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -859,24 +713,48 @@ namespace CyberGear16
 
 
 
-
-
-        private void CargarCategorias()
+        private string asignarCategoria(int idCategoria)
         {
-            // cargar las categorías desde la base de datos y agregarlas al ComboBox
-
+            string categoria = "sin-categoria";
             using (var context = new BdCybergearContext())
             {
-                var categorias = context.Categoria.Where(c => c.Activo == "SI").ToList(); //solo se puede añadir las categorias activas a nuevos productos
+                // Busca la categoría por su Id
+                var categoriaEncontrada = context.Categoria
+                    .Where(c => c.IdCategoria == idCategoria && c.Activo == "SI")
+                    .FirstOrDefault(); // Puedes usar FirstOrDefault() para obtener la primera coincidencia
 
-                // Agrega una opción vacía al principio de la lista
-                categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Categoría" });
+                if (categoriaEncontrada != null)
+                {
+                    categoria = categoriaEncontrada.CategoriaNombre; // Asigna el nombre de la categoría encontrada
+                }
 
-                cBoxCategorias.DataSource = categorias;
-                cBoxCategorias.DisplayMember = "CategoriaNombre"; // Ajusta esto según tu modelo
-                cBoxCategorias.ValueMember = "IdCategoria"; // Ajusta esto según tu modelo
+
+
+                return categoria;
             }
         }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        //private void CargarCategorias()
+        //{
+        //    // cargar las categorías desde la base de datos y agregarlas al ComboBox
+
+        //    using (var context = new BdCybergearContext())
+        //    {
+        //        var categorias = context.Categoria.Where(c => c.Activo == "SI").ToList(); //solo se puede añadir las categorias activas a nuevos productos
+
+        //        // Agrega una opción vacía al principio de la lista
+        //        categorias.Insert(0, new Categorium { IdCategoria = 0, CategoriaNombre = "Categoría" });
+
+        //        cBoxCategorias.DataSource = categorias;
+        //        cBoxCategorias.DisplayMember = "CategoriaNombre"; // Ajusta esto según tu modelo
+        //        cBoxCategorias.ValueMember = "IdCategoria"; // Ajusta esto según tu modelo
+        //    }
+        //}
 
 
 

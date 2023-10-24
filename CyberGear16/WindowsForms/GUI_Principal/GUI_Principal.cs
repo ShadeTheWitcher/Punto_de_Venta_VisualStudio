@@ -41,7 +41,7 @@ namespace CyberGear16
             LNomUser.Text = nombreUser;
 
 
-            
+
 
             if (perfil_idUsuario == 1) //admin
             {
@@ -79,10 +79,10 @@ namespace CyberGear16
             {
 
                 LTipoUser.Text = "Vendedor";
-                //btnProductos.Enabled = false;
-                //panel4.BackColor = Color.DimGray;
+                btnProductos.Enabled = false;
+                panel4.BackColor = Color.DimGray;
 
-                btnProductos.Text = "Catalogo";
+                //btnProductos.Text = "Catalogo";
 
                 btnUsuarios.Enabled = false;
                 panel5.BackColor = Color.DimGray;
@@ -182,16 +182,7 @@ namespace CyberGear16
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (perfil_idUsuario==3)
-            {
-                AbrirFormHija(new FormCatalogo(_context));
-                
-            }
-            else
-            {
-                AbrirFormHija(new formProductos(_context));
-            }
-            
+            AbrirFormHija(new formProductos(_context));
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
@@ -244,7 +235,7 @@ namespace CyberGear16
             if (perfil_idUsuario == 1)
             {
                 AbrirFormHija(new FormReporte(/*_context*/));
-                
+
             }
             else if (perfil_idUsuario == 2)
             {
@@ -254,7 +245,7 @@ namespace CyberGear16
             {
                 AbrirFormHija(new FormReporteVendedor(perfil_idUsuario, dniUsuario));
             }
-            
+
         }
 
         private void panelContenedor_Paint(object sender, PaintEventArgs e)

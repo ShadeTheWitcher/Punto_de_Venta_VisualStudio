@@ -49,25 +49,8 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             panel3 = new Panel();
-            button7 = new Button();
-            label20 = new Label();
-            textBox11 = new TextBox();
-            tbIdProducto = new TextBox();
-            label18 = new Label();
-            cBoxCategorias = new ComboBox();
-            label15 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            button5 = new Button();
             button4 = new Button();
-            label14 = new Label();
-            label8 = new Label();
-            label7 = new Label();
             label6 = new Label();
-            label5 = new Label();
-            textBox8 = new TextBox();
-            textBox7 = new TextBox();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
             panel4 = new Panel();
             label4 = new Label();
             dateTimePicker1 = new DateTimePicker();
@@ -91,10 +74,10 @@
             label16 = new Label();
             toolTip1 = new ToolTip(components);
             mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            label5 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel5.SuspendLayout();
@@ -112,7 +95,7 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(textBox1);
-            panel1.Location = new Point(27, 12);
+            panel1.Location = new Point(27, 74);
             panel1.Name = "panel1";
             panel1.Size = new Size(345, 105);
             panel1.TabIndex = 0;
@@ -196,7 +179,7 @@
             panel2.Controls.Add(button3);
             panel2.Controls.Add(textBox3);
             panel2.Controls.Add(textBox4);
-            panel2.Location = new Point(413, 12);
+            panel2.Location = new Point(413, 74);
             panel2.Name = "panel2";
             panel2.Size = new Size(404, 105);
             panel2.TabIndex = 1;
@@ -284,117 +267,12 @@
             panel3.Anchor = AnchorStyles.None;
             panel3.BackColor = Color.LightSlateGray;
             panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(button7);
-            panel3.Controls.Add(label20);
-            panel3.Controls.Add(textBox11);
-            panel3.Controls.Add(tbIdProducto);
-            panel3.Controls.Add(label18);
-            panel3.Controls.Add(cBoxCategorias);
-            panel3.Controls.Add(label15);
-            panel3.Controls.Add(numericUpDown1);
-            panel3.Controls.Add(button5);
             panel3.Controls.Add(button4);
-            panel3.Controls.Add(label14);
-            panel3.Controls.Add(label8);
-            panel3.Controls.Add(label7);
             panel3.Controls.Add(label6);
-            panel3.Controls.Add(label5);
-            panel3.Controls.Add(textBox8);
-            panel3.Controls.Add(textBox7);
-            panel3.Controls.Add(textBox6);
-            panel3.Controls.Add(textBox5);
-            panel3.Location = new Point(27, 135);
+            panel3.Location = new Point(27, 195);
             panel3.Name = "panel3";
-            panel3.Size = new Size(550, 205);
+            panel3.Size = new Size(345, 98);
             panel3.TabIndex = 2;
-            // 
-            // button7
-            // 
-            button7.Location = new Point(420, 20);
-            button7.Name = "button7";
-            button7.Size = new Size(102, 23);
-            button7.TabIndex = 18;
-            button7.Text = "Abrir Catalogo";
-            button7.UseVisualStyleBackColor = true;
-            button7.Visible = false;
-            button7.Click += button7_Click;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Location = new Point(14, 167);
-            label20.Name = "label20";
-            label20.Size = new Size(62, 15);
-            label20.TabIndex = 17;
-            label20.Text = "Stock_Min";
-            // 
-            // textBox11
-            // 
-            textBox11.Enabled = false;
-            textBox11.Location = new Point(79, 164);
-            textBox11.Name = "textBox11";
-            textBox11.Size = new Size(74, 23);
-            textBox11.TabIndex = 16;
-            // 
-            // tbIdProducto
-            // 
-            tbIdProducto.Enabled = false;
-            tbIdProducto.Location = new Point(79, 6);
-            tbIdProducto.Name = "tbIdProducto";
-            tbIdProducto.Size = new Size(51, 23);
-            tbIdProducto.TabIndex = 15;
-            tbIdProducto.Visible = false;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new Point(172, 168);
-            label18.Name = "label18";
-            label18.Size = new Size(58, 15);
-            label18.TabIndex = 14;
-            label18.Text = "Categoria";
-            // 
-            // cBoxCategorias
-            // 
-            cBoxCategorias.Anchor = AnchorStyles.None;
-            cBoxCategorias.Enabled = false;
-            cBoxCategorias.FormattingEnabled = true;
-            cBoxCategorias.Location = new Point(235, 165);
-            cBoxCategorias.Name = "cBoxCategorias";
-            cBoxCategorias.Size = new Size(104, 23);
-            cBoxCategorias.TabIndex = 13;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(276, 126);
-            label15.Name = "label15";
-            label15.Size = new Size(55, 15);
-            label15.TabIndex = 12;
-            label15.Text = "Cantidad";
-            label15.Visible = false;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Anchor = AnchorStyles.None;
-            numericUpDown1.Location = new Point(335, 123);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(59, 23);
-            numericUpDown1.TabIndex = 11;
-            numericUpDown1.Visible = false;
-            // 
-            // button5
-            // 
-            button5.BackColor = Color.LightSteelBlue;
-            button5.FlatStyle = FlatStyle.Popup;
-            button5.Location = new Point(452, 69);
-            button5.Name = "button5";
-            button5.Size = new Size(70, 22);
-            button5.TabIndex = 10;
-            button5.Text = "Buscar";
-            toolTip1.SetToolTip(button5, "Ingrese el nombre del producto para buscarlo");
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -403,42 +281,14 @@
             button4.FlatStyle = FlatStyle.Popup;
             button4.Image = Properties.Resources.venta;
             button4.ImageAlign = ContentAlignment.TopCenter;
-            button4.Location = new Point(426, 123);
+            button4.Location = new Point(119, 11);
             button4.Name = "button4";
             button4.Size = new Size(108, 64);
             button4.TabIndex = 9;
-            button4.Text = "Agregar al carrito";
+            button4.Text = "Abrir Catalogo";
             button4.TextAlign = ContentAlignment.BottomCenter;
             button4.UseVisualStyleBackColor = false;
-            button4.Visible = false;
             button4.Click += button4_Click;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(21, 50);
-            label14.Name = "label14";
-            label14.Size = new Size(51, 15);
-            label14.TabIndex = 8;
-            label14.Text = "Nombre";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(175, 50);
-            label8.Name = "label8";
-            label8.Size = new Size(69, 15);
-            label8.TabIndex = 7;
-            label8.Text = "Descripcion";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(141, 126);
-            label7.Name = "label7";
-            label7.Size = new Size(40, 15);
-            label7.TabIndex = 6;
-            label7.Text = "Precio";
             // 
             // label6
             // 
@@ -450,47 +300,6 @@
             label6.TabIndex = 5;
             label6.Text = "Producto";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(14, 126);
-            label5.Name = "label5";
-            label5.Size = new Size(36, 15);
-            label5.TabIndex = 4;
-            label5.Text = "Stock";
-            // 
-            // textBox8
-            // 
-            textBox8.Enabled = false;
-            textBox8.Location = new Point(187, 123);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(74, 23);
-            textBox8.TabIndex = 3;
-            // 
-            // textBox7
-            // 
-            textBox7.Enabled = false;
-            textBox7.Location = new Point(56, 123);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(74, 23);
-            textBox7.TabIndex = 2;
-            // 
-            // textBox6
-            // 
-            textBox6.Enabled = false;
-            textBox6.Location = new Point(172, 70);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(237, 23);
-            textBox6.TabIndex = 1;
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(19, 70);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(134, 23);
-            textBox5.TabIndex = 0;
-            toolTip1.SetToolTip(textBox5, "Ingrese el nombre del producto y presione Buscar para recuperar datos del producto");
-            // 
             // panel4
             // 
             panel4.Anchor = AnchorStyles.None;
@@ -498,9 +307,9 @@
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(label4);
             panel4.Controls.Add(dateTimePicker1);
-            panel4.Location = new Point(597, 135);
+            panel4.Location = new Point(628, 195);
             panel4.Name = "panel4";
-            panel4.Size = new Size(220, 98);
+            panel4.Size = new Size(192, 98);
             panel4.TabIndex = 3;
             panel4.Visible = false;
             // 
@@ -556,6 +365,8 @@
             // dataGridView1
             // 
             dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.Anchor = AnchorStyles.None;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -581,6 +392,7 @@
             dataGridView1.Location = new Point(27, 362);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridView1.Size = new Size(790, 214);
             dataGridView1.TabIndex = 7;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -660,11 +472,12 @@
             panel5.Controls.Add(comboBox2);
             panel5.Controls.Add(label13);
             panel5.Controls.Add(label1);
-            panel5.Location = new Point(597, 242);
+            panel5.Location = new Point(413, 195);
             panel5.Name = "panel5";
-            panel5.Size = new Size(220, 98);
+            panel5.Size = new Size(191, 98);
             panel5.TabIndex = 8;
             panel5.Visible = false;
+            panel5.Paint += panel5_Paint;
             // 
             // comboBox2
             // 
@@ -720,11 +533,23 @@
             mySqlCommand1.EnableCaching = false;
             mySqlCommand1.Transaction = null;
             // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.None;
+            label5.AutoSize = true;
+            label5.Font = new Font("Sylfaen", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(27, 319);
+            label5.Name = "label5";
+            label5.Size = new Size(206, 27);
+            label5.TabIndex = 11;
+            label5.Text = "Carrito de compras:";
+            // 
             // FormSeccionVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(849, 664);
+            Controls.Add(label5);
             Controls.Add(label16);
             Controls.Add(textBox9);
             Controls.Add(panel5);
@@ -745,7 +570,6 @@
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -768,45 +592,28 @@
         private Button button3;
         private TextBox textBox3;
         private TextBox textBox4;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private TextBox textBox5;
         private DateTimePicker dateTimePicker1;
         private DataGridView dataGridView1;
         private Label label2;
         private Label label3;
         private Label label6;
-        private Label label5;
         private Label label4;
         private Label label1;
-        private Label label7;
-        private Label label8;
         private Label label10;
         private Label label9;
         private Label label12;
         private Label label11;
         private Panel panel5;
         private Label label13;
-        private NumericUpDown numericUpDown1;
-        private Button button5;
         private Button button4;
-        private Label label14;
         private ComboBox comboBox2;
-        private Label label15;
         private TextBox textBox9;
         private Label label16;
         private Label label17;
         private Button button6;
         private ToolTip toolTip1;
-        private ComboBox cBoxCategorias;
-        private Label label18;
         private Label label19;
         private TextBox textBox10;
-        private TextBox tbIdProducto;
-        private TextBox textBox8;
-        private Label label20;
-        private TextBox textBox11;
-        private Button button7;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
@@ -817,5 +624,6 @@
         private DataGridViewButtonColumn Column8;
         private DataGridViewButtonColumn Column9;
         private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
+        private Label label5;
     }
 }

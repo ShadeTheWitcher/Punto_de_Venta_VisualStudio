@@ -40,6 +40,7 @@
             pictureBox1 = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             panel2 = new Panel();
+            btBack = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel3.SuspendLayout();
@@ -162,6 +163,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(btBack);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.ForeColor = SystemColors.ControlText;
@@ -169,6 +171,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1159, 42);
             panel2.TabIndex = 4;
+            // 
+            // btBack
+            // 
+            btBack.Image = Properties.Resources.flecha_verde_retroceder;
+            btBack.Location = new Point(3, 3);
+            btBack.Name = "btBack";
+            btBack.Size = new Size(69, 33);
+            btBack.TabIndex = 2;
+            btBack.UseVisualStyleBackColor = true;
+            btBack.Click += btBack_Click;
             // 
             // FormCatalogo
             // 
@@ -205,5 +217,6 @@
         private PictureBox pictureBox2;
         private Label label3;
         private ComboBox cbFiltroCategorias;
+        private Button btBack;
     }
 }

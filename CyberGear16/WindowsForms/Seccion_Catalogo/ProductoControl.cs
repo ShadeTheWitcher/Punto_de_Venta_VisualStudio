@@ -30,9 +30,22 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             cantidadSeleccionada = cant;
             // Inicializa el NumericUpDown y configura sus propiedades
 
-            numericUpDown1.Minimum = 1;
-            numericUpDown1.Maximum = producto.Cantidad - producto.StockMinimo +1; // Establece el máximo según el stock disponible
-            numericUpDown1.Value = 1; // Valor predeterminado
+            if (hayStock() == true)
+            {
+                numericUpDown1.Minimum = 1;
+                numericUpDown1.Maximum = producto.Cantidad - producto.StockMinimo + 1; // Establece el máximo según el stock disponible
+                numericUpDown1.Value = 1; // Valor predeterminado
+            }
+            else
+            {
+                numericUpDown1.Enabled = false;
+                numericUpDown1.Visible = false;
+                button1.Enabled = false;
+                button1.Visible = false;
+                label1.Visible = true;
+            }
+
+
 
             // Configura los controles con la información del producto
             labelNombre.Text = producto.NombreProducto;
@@ -60,6 +73,16 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             {
                 return Image.FromStream(ms);
             }
+        }
+
+        private bool hayStock()
+        {
+            if (producto.Cantidad - producto.StockMinimo == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
 
 

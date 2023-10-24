@@ -33,6 +33,7 @@
             labelPrecio = new Label();
             button1 = new Button();
             numericUpDown1 = new NumericUpDown();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
@@ -97,12 +98,24 @@
             numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             numericUpDown1.Click += numericUpDown1_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(31, 250);
+            label1.Name = "label1";
+            label1.Size = new Size(90, 21);
+            label1.TabIndex = 13;
+            label1.Text = "SIN STOCK";
+            label1.Visible = false;
+            // 
             // ProductoControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
             BackgroundImageLayout = ImageLayout.Stretch;
+            Controls.Add(label1);
             Controls.Add(numericUpDown1);
             Controls.Add(button1);
             Controls.Add(labelPrecio);
@@ -124,5 +137,6 @@
         private Label labelPrecio;
         private Button button1;
         private NumericUpDown numericUpDown1;
+        private Label label1;
     }
 }

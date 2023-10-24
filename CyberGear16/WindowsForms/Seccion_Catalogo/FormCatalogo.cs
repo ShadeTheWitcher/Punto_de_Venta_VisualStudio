@@ -36,7 +36,7 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             CargarProductosConFiltro(string.Empty, ObtenerCategoriaSeleccionada());
 
             _context = context;
-            
+
 
 
             flowLayoutPanel1.Padding = new Padding(20, 0, 0, 0);
@@ -51,10 +51,10 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
         //BOTON AGREGAR AL CARRITO 
         private void AgregarAlCarrito(Product producto, int cant)
         {
-            if(cant == 0)
+            if (cant == 0)
             {
                 MessageBox.Show("No puedes insertar 0");
-                return ;
+                return;
             }
 
             using (var context = new BdCybergearContext())
@@ -101,6 +101,8 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
                 {
                     MessageBox.Show("No hay suficiente stock disponible o no se ha alcanzado el stock mínimo.");
                 }
+
+                this.Close();
             }
         }
 
@@ -130,7 +132,7 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
                 // Obtén los productos
                 List<Product> productosDesdeBD = productosQuery.ToList();
 
-                
+
 
                 return productosDesdeBD;
             }
@@ -166,7 +168,7 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
         private void CargarCategorias()
         {
             // cargar las categorías desde la base de datos y agregarlas al ComboBox
-            
+
             using (var context = new BdCybergearContext())
             {
                 var categorias = context.Categoria.ToList();
@@ -208,13 +210,10 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             }
         }
 
-
-
-
-
-
-
-
+        private void btBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
 
