@@ -6,6 +6,7 @@ using CyberGear16;
 using MySqlConnector;
 using CyberGear16.Models;
 using CyberGear16.WindowsForms.Seccion_Catalogo;
+using CyberGear16.WindowsForms.SeccionReportes;
 
 namespace CyberGear16
 {
@@ -234,13 +235,14 @@ namespace CyberGear16
         {
             if (perfil_idUsuario == 1)
             {
-                AbrirFormHija(new FormReporte(/*_context*/));
+                panelSubMenuReportes.Visible = true;
+                //AbrirFormHija(new FormReporte(/*_context*/));
 
             }
             else if (perfil_idUsuario == 2)
             {
-                //AbrirFormHija(new FormReporteSuper());
-                panelSubMenuReportes.Visible = true;
+                AbrirFormHija(new FormReporteSuper());
+                //panelSubMenuReportes.Visible = true;
 
             }
             else
@@ -282,12 +284,21 @@ namespace CyberGear16
 
         private void btnReportClient_Click(object sender, EventArgs e)
         {
+            string tipoReporte = "Cliente";
             panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
+            AbrirFormHija(new FormReporteSubMenu(tipoReporte));
         }
 
         private void btnReportVendedor_Click(object sender, EventArgs e)
         {
+            string tipoReporte = "Vendedor";
             panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
+            AbrirFormHija(new FormReporteSubMenu(tipoReporte));
+        }
+
+        private void panelSubMenuReportes_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

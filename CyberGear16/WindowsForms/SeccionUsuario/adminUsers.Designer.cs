@@ -437,6 +437,7 @@
             TBuscar.TabIndex = 4;
             TBuscar.Text = "Buscar";
             TBuscar.Click += TBuscar_Click;
+            TBuscar.TextChanged += TBuscar_TextChanged;
             TBuscar.KeyPress += TBuscar_KeyPress;
             // 
             // BBuscar

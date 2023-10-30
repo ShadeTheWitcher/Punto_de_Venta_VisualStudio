@@ -698,5 +698,10 @@ namespace CyberGear16
         {
 
         }
+
+        private void TBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
