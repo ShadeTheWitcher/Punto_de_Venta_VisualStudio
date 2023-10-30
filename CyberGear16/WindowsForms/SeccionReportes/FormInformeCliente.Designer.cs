@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInformeCliente));
-            pictureBox1 = new PictureBox();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             LApellido = new Label();
             LDni = new Label();
             LMNombre = new Label();
@@ -44,23 +45,14 @@
             panel1 = new Panel();
             LCliente = new Label();
             panel2 = new Panel();
-            LMeses = new Label();
-            label3 = new Label();
+            CProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            CBCategorias = new ComboBox();
             LValorVentas = new Label();
             LTotalCompras = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CProducts).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(216, 44);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(282, 240);
-            pictureBox1.TabIndex = 26;
-            pictureBox1.TabStop = false;
             // 
             // LApellido
             // 
@@ -231,43 +223,58 @@
             // 
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(CProducts);
+            panel2.Controls.Add(CBCategorias);
             panel2.Controls.Add(LValorVentas);
             panel2.Controls.Add(LTotalCompras);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(LMeses);
             panel2.Controls.Add(LCantProduct);
-            panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(30, 205);
             panel2.Name = "panel2";
             panel2.Size = new Size(744, 314);
             panel2.TabIndex = 29;
             // 
-            // LMeses
+            // CProducts
             // 
-            LMeses.AutoSize = true;
-            LMeses.ForeColor = Color.White;
-            LMeses.Location = new Point(303, 287);
-            LMeses.Name = "LMeses";
-            LMeses.Size = new Size(118, 15);
-            LMeses.TabIndex = 33;
-            LMeses.Text = "Meses del Año (1-12)";
+            CProducts.BackColor = Color.Transparent;
+            chartArea1.BackColor = Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            CProducts.ChartAreas.Add(chartArea1);
+            legend1.BackColor = Color.Transparent;
+            legend1.ForeColor = Color.White;
+            legend1.Name = "Legend1";
+            legend1.TitleForeColor = Color.White;
+            legend1.TitleSeparatorColor = Color.White;
+            CProducts.Legends.Add(legend1);
+            CProducts.Location = new Point(53, 50);
+            CProducts.Name = "CProducts";
+            CProducts.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 2;
+            CProducts.Series.Add(series1);
+            CProducts.Size = new Size(382, 245);
+            CProducts.TabIndex = 41;
+            CProducts.Text = "chart1";
             // 
-            // label3
+            // CBCategorias
             // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(112, 150);
-            label3.Name = "label3";
-            label3.Size = new Size(98, 15);
-            label3.TabIndex = 34;
-            label3.Text = "Ventas Realizadas";
+            CBCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBCategorias.FormattingEnabled = true;
+            CBCategorias.Location = new Point(551, 50);
+            CBCategorias.Name = "CBCategorias";
+            CBCategorias.Size = new Size(166, 23);
+            CBCategorias.TabIndex = 40;
+            CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
             // 
             // LValorVentas
             // 
             LValorVentas.AutoSize = true;
             LValorVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             LValorVentas.ForeColor = Color.White;
-            LValorVentas.Location = new Point(603, 136);
+            LValorVentas.Location = new Point(600, 267);
             LValorVentas.Name = "LValorVentas";
             LValorVentas.Size = new Size(27, 20);
             LValorVentas.TabIndex = 36;
@@ -278,7 +285,7 @@
             LTotalCompras.AutoSize = true;
             LTotalCompras.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             LTotalCompras.ForeColor = Color.White;
-            LTotalCompras.Location = new Point(520, 104);
+            LTotalCompras.Location = new Point(517, 235);
             LTotalCompras.Name = "LTotalCompras";
             LTotalCompras.Size = new Size(200, 20);
             LTotalCompras.TabIndex = 35;
@@ -295,17 +302,16 @@
             Name = "FormInformeCliente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Informe de Cliente";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += FormInformeCliente_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)CProducts).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private Label LApellido;
         private Label LDni;
         private Label LMNombre;
@@ -320,9 +326,9 @@
         private Panel panel1;
         private Label LCliente;
         private Panel panel2;
-        private Label LMeses;
-        private Label label3;
         private Label LValorVentas;
         private Label LTotalCompras;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CProducts;
+        private ComboBox CBCategorias;
     }
 }
