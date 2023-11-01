@@ -27,6 +27,8 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
             this.producto = producto;
             this.agregarAlCarritoClick = agregarAlCarrito;
 
+            stockActual.Text = "Stock total: " + producto.Cantidad.ToString();
+            StockMin.Text = "Stock Min: " + producto.StockMinimo.ToString();
             cantidadSeleccionada = cant;
             // Inicializa el NumericUpDown y configura sus propiedades
 
@@ -102,6 +104,11 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
         {
             cantidadSeleccionada = (int)numericUpDown1.Value;
             Debug.WriteLine($"Click - Cantidad seleccionada: {cantidadSeleccionada}");
+        }
+
+        private void ProductoControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

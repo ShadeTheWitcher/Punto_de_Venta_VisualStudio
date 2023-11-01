@@ -17,6 +17,7 @@ namespace CyberGear16
 {
     public partial class FormSeccionVentas : Form
     {
+        public bool cierreCatalogo=false;
         private Panel panelCatalogo;
         private List<Product> productosEnCarrito; // Declarar como un campo de clase
 
@@ -73,7 +74,7 @@ namespace CyberGear16
             eliminarButtonColumn.UseColumnTextForButtonValue = true;
             dataGridView1.Columns.Add(eliminarButtonColumn);
 
-
+            dataGridView1.Rows.Clear();
             loadDataGridCarrito();
 
         }
@@ -170,7 +171,7 @@ namespace CyberGear16
                         dataGridView1.Rows.Add(nuevaFila);
                         calcularMostrarPrecioTotal();
 
-                        if (carritoLoad != true)
+                        if (carritoLoad != true) //controla si es una insersion de producto o solo se quiere mostrar datos
                         {
                             // Buscar el producto en el carrito por su Id
                             Product productoExistenteGlobal = ClassCarritoDatos.ProductosEnCarrito.FirstOrDefault(p => p.Id == id);
@@ -320,7 +321,10 @@ namespace CyberGear16
                 // Restaurar la visibilidad de cualquier contenido que pueda haber quedado oculto
                 panelCatalogo.Visible = false;  // O establecer en false si lo prefieres
                 carritoLoad = true;
+                dataGridView1.Rows.Clear();
                 loadDataGridCarrito();
+                
+                
 
             };
         }
@@ -369,7 +373,7 @@ namespace CyberGear16
 
         private void button2_Click(object sender, EventArgs e)
         {
-            vaciarCliente();
+            
             vaciarProducto();
             LimpiarCarrito();
 

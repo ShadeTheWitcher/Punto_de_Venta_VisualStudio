@@ -175,7 +175,7 @@ namespace CyberGear16.WindowsForms.SeccionVentas
                     var document = new iText.Layout.Document(pdf);
                     try
                     {
-                        
+
                         // Agregar contenido al PDF
                         AgregarContenidoPDF(document);
 
@@ -185,15 +185,15 @@ namespace CyberGear16.WindowsForms.SeccionVentas
                     {
                         document.Close();
                     }
-                    
 
-                   
+
+
                 }
             }
 
         }
 
-        private void AgregarContenidoPDF(iText.Layout.Document document )
+        private void AgregarContenidoPDF(iText.Layout.Document document)
         {
             // Agregar información del encabezado
             document.Add(new Paragraph($"Factura #{IdVenta} - Fecha: {FechaVenta.ToString("yyyy-MM-dd")}"));
@@ -216,13 +216,9 @@ namespace CyberGear16.WindowsForms.SeccionVentas
             document.Add(new Paragraph($"Total: {label13.Text}"));
         }
 
+        private void lbNomyApellido_Click(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
-
+        }
     }
 }

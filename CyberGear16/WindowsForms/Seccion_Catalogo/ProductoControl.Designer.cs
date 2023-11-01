@@ -34,6 +34,8 @@
             button1 = new Button();
             numericUpDown1 = new NumericUpDown();
             label1 = new Label();
+            stockActual = new Label();
+            StockMin = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
@@ -44,7 +46,7 @@
             labelNombre.AutoSize = true;
             labelNombre.BackColor = Color.Transparent;
             labelNombre.Font = new Font("Leelawadee", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelNombre.Location = new Point(31, 193);
+            labelNombre.Location = new Point(21, 186);
             labelNombre.Name = "labelNombre";
             labelNombre.Size = new Size(53, 14);
             labelNombre.TabIndex = 0;
@@ -55,7 +57,7 @@
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.Producto_sin_imagen;
             pictureBox1.InitialImage = Properties.Resources.Producto_sin_imagen;
-            pictureBox1.Location = new Point(31, 20);
+            pictureBox1.Location = new Point(31, 26);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(176, 148);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -68,7 +70,7 @@
             labelPrecio.AutoSize = true;
             labelPrecio.BackColor = Color.Transparent;
             labelPrecio.Font = new Font("Leelawadee", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            labelPrecio.Location = new Point(31, 223);
+            labelPrecio.Location = new Point(21, 209);
             labelPrecio.Name = "labelPrecio";
             labelPrecio.Size = new Size(43, 14);
             labelPrecio.TabIndex = 2;
@@ -101,13 +103,34 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(31, 250);
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.DarkRed;
+            label1.Location = new Point(51, 247);
             label1.Name = "label1";
-            label1.Size = new Size(90, 21);
+            label1.Size = new Size(121, 30);
             label1.TabIndex = 13;
             label1.Text = "SIN STOCK";
             label1.Visible = false;
+            // 
+            // stockActual
+            // 
+            stockActual.AutoSize = true;
+            stockActual.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            stockActual.Location = new Point(21, 232);
+            stockActual.Name = "stockActual";
+            stockActual.Size = new Size(39, 15);
+            stockActual.TabIndex = 14;
+            stockActual.Text = "Stock";
+            // 
+            // StockMin
+            // 
+            StockMin.AutoSize = true;
+            StockMin.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            StockMin.Location = new Point(143, 232);
+            StockMin.Name = "StockMin";
+            StockMin.Size = new Size(40, 15);
+            StockMin.TabIndex = 15;
+            StockMin.Text = "S_Min";
             // 
             // ProductoControl
             // 
@@ -115,6 +138,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumSlateBlue;
             BackgroundImageLayout = ImageLayout.Stretch;
+            Controls.Add(StockMin);
+            Controls.Add(stockActual);
             Controls.Add(label1);
             Controls.Add(numericUpDown1);
             Controls.Add(button1);
@@ -124,6 +149,7 @@
             DoubleBuffered = true;
             Name = "ProductoControl";
             Size = new Size(238, 290);
+            Load += ProductoControl_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
@@ -138,5 +164,7 @@
         private Button button1;
         private NumericUpDown numericUpDown1;
         private Label label1;
+        private Label stockActual;
+        private Label StockMin;
     }
 }

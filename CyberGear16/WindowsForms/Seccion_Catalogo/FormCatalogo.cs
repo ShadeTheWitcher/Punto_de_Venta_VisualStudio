@@ -16,6 +16,7 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
 {
     public partial class FormCatalogo : Form
     {
+        
         private readonly BdCybergearContext _context;
         private readonly List<Product> productos;
         private List<Product> productosEnCarrito;
@@ -78,6 +79,7 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
                         else
                         {
                             MessageBox.Show("No hay suficiente stock disponible para incrementar la cantidad.");
+                            return;
                         }
                     }
                     else
@@ -99,9 +101,10 @@ namespace CyberGear16.WindowsForms.Seccion_Catalogo
                 }
                 else
                 {
-                    MessageBox.Show("No hay suficiente stock disponible o no se ha alcanzado el stock mínimo.");
+                    MessageBox.Show("No hay suficiente stock disponible o se ha alcanzado el stock mínimo.");
+                    return;
                 }
-
+                
                 this.Close();
             }
         }

@@ -51,38 +51,36 @@
             lbFecha = new Label();
             lbIdVenta = new Label();
             label1 = new Label();
-            panelPDF = new Panel();
             button1 = new Button();
+            panelPDF = new Panel();
+            panel4 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panelPDF.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
+            panel1.Controls.Add(panel4);
             panel1.Controls.Add(label13);
             panel1.Controls.Add(label12);
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(panel3);
-            panel1.Controls.Add(label9);
-            panel1.Controls.Add(label8);
-            panel1.Controls.Add(lbDireccion);
-            panel1.Controls.Add(lbNomyApellido);
-            panel1.Controls.Add(label5);
-            panel1.Controls.Add(label4);
             panel1.Controls.Add(panel2);
+            panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(703, 719);
+            panel1.Size = new Size(705, 640);
             panel1.TabIndex = 0;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label13.Location = new Point(561, 629);
+            label13.Location = new Point(537, 522);
             label13.Name = "label13";
             label13.Size = new Size(31, 15);
             label13.TabIndex = 10;
@@ -92,7 +90,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(495, 621);
+            label12.Location = new Point(471, 514);
             label12.Name = "label12";
             label12.Size = new Size(60, 25);
             label12.TabIndex = 9;
@@ -118,12 +116,12 @@
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column3, Column2, Column4 });
-            dataGridView1.Location = new Point(28, 220);
+            dataGridView1.Location = new Point(29, 243);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.ScrollBars = ScrollBars.None;
-            dataGridView1.Size = new Size(649, 368);
+            dataGridView1.Size = new Size(649, 268);
             dataGridView1.TabIndex = 8;
             // 
             // Column1
@@ -155,9 +153,9 @@
             panel3.Controls.Add(label11);
             panel3.Controls.Add(label10);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 655);
+            panel3.Location = new Point(0, 542);
             panel3.Name = "panel3";
-            panel3.Size = new Size(703, 64);
+            panel3.Size = new Size(705, 98);
             panel3.TabIndex = 7;
             // 
             // label11
@@ -183,7 +181,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(439, 190);
+            label9.Location = new Point(409, 61);
             label9.Name = "label9";
             label9.Size = new Size(146, 14);
             label9.TabIndex = 6;
@@ -193,7 +191,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(439, 166);
+            label8.Location = new Point(409, 37);
             label8.Name = "label8";
             label8.Size = new Size(65, 14);
             label8.TabIndex = 5;
@@ -203,7 +201,7 @@
             // 
             lbDireccion.AutoSize = true;
             lbDireccion.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbDireccion.Location = new Point(53, 190);
+            lbDireccion.Location = new Point(23, 61);
             lbDireccion.Name = "lbDireccion";
             lbDireccion.Size = new Size(60, 14);
             lbDireccion.TabIndex = 4;
@@ -213,17 +211,18 @@
             // 
             lbNomyApellido.AutoSize = true;
             lbNomyApellido.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbNomyApellido.Location = new Point(53, 166);
+            lbNomyApellido.Location = new Point(23, 37);
             lbNomyApellido.Name = "lbNomyApellido";
             lbNomyApellido.Size = new Size(111, 14);
             lbNomyApellido.TabIndex = 3;
             lbNomyApellido.Text = "Nombre y Apellido";
+            lbNomyApellido.Click += lbNomyApellido_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Sitka Small", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(437, 140);
+            label5.Location = new Point(409, 11);
             label5.Name = "label5";
             label5.Size = new Size(57, 18);
             label5.TabIndex = 2;
@@ -233,7 +232,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Sitka Small", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(53, 140);
+            label4.Location = new Point(23, 11);
             label4.Name = "label4";
             label4.Size = new Size(68, 18);
             label4.TabIndex = 1;
@@ -248,7 +247,7 @@
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(703, 100);
+            panel2.Size = new Size(705, 100);
             panel2.TabIndex = 0;
             // 
             // lbFecha
@@ -281,15 +280,6 @@
             label1.TabIndex = 0;
             label1.Text = "Factura";
             // 
-            // panelPDF
-            // 
-            panelPDF.Controls.Add(button1);
-            panelPDF.Dock = DockStyle.Bottom;
-            panelPDF.Location = new Point(0, 725);
-            panelPDF.Name = "panelPDF";
-            panelPDF.Size = new Size(705, 45);
-            panelPDF.TabIndex = 1;
-            // 
             // button1
             // 
             button1.Location = new Point(302, 10);
@@ -298,21 +288,43 @@
             button1.TabIndex = 0;
             button1.Text = "Generar PDF";
             button1.UseVisualStyleBackColor = true;
+            button1.Visible = false;
             button1.Click += button1_Click;
+            // 
+            // panelPDF
+            // 
+            panelPDF.Controls.Add(button1);
+            panelPDF.Dock = DockStyle.Bottom;
+            panelPDF.Location = new Point(0, 595);
+            panelPDF.Name = "panelPDF";
+            panelPDF.Size = new Size(705, 45);
+            panelPDF.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(label9);
+            panel4.Controls.Add(label8);
+            panel4.Controls.Add(lbDireccion);
+            panel4.Controls.Add(lbNomyApellido);
+            panel4.Controls.Add(label5);
+            panel4.Controls.Add(label4);
+            panel4.Location = new Point(29, 130);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(649, 88);
+            panel4.TabIndex = 11;
             // 
             // FormFactura
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoScroll = true;
-            ClientSize = new Size(705, 770);
+            ClientSize = new Size(705, 640);
             Controls.Add(panelPDF);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Name = "FormFactura";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormFactura";
+            Text = "Factura";
             Load += FormFactura_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -322,6 +334,8 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panelPDF.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -348,7 +362,8 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column4;
-        private Panel panelPDF;
         private Button button1;
+        private Panel panelPDF;
+        private Panel panel4;
     }
 }
