@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInformeVendedor));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             LFecha = new Label();
             DTPFecha = new DateTimePicker();
             panel1 = new Panel();
@@ -43,16 +45,18 @@
             LMDni = new Label();
             LMApellido = new Label();
             LNombre = new Label();
-            panel2 = new Panel();
-            LValorVentas = new Label();
-            LTotalVentas = new Label();
             LCantVentas = new Label();
-            pictureBox1 = new PictureBox();
-            LMeses = new Label();
+            LTotalVentasCat = new Label();
+            LValorVentasCat = new Label();
+            CBCategorias = new ComboBox();
+            CProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            panel2 = new Panel();
+            LValorVentasTot = new Label();
+            LTotalVentasTot = new Label();
             label3 = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CProducts).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // LFecha
@@ -94,7 +98,7 @@
             panel1.Controls.Add(LMDni);
             panel1.Controls.Add(LMApellido);
             panel1.Controls.Add(LNombre);
-            panel1.Location = new Point(12, 22);
+            panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(776, 158);
             panel1.TabIndex = 29;
@@ -222,43 +226,6 @@
             LNombre.TabIndex = 14;
             LNombre.Text = "Nombre:";
             // 
-            // panel2
-            // 
-            panel2.Anchor = AnchorStyles.None;
-            panel2.BackColor = Color.FromArgb(26, 32, 40);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(LMeses);
-            panel2.Controls.Add(LValorVentas);
-            panel2.Controls.Add(LTotalVentas);
-            panel2.Controls.Add(LCantVentas);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(12, 197);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(776, 309);
-            panel2.TabIndex = 30;
-            // 
-            // LValorVentas
-            // 
-            LValorVentas.AutoSize = true;
-            LValorVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LValorVentas.ForeColor = Color.White;
-            LValorVentas.Location = new Point(645, 122);
-            LValorVentas.Name = "LValorVentas";
-            LValorVentas.Size = new Size(27, 20);
-            LValorVentas.TabIndex = 31;
-            LValorVentas.Text = "45";
-            // 
-            // LTotalVentas
-            // 
-            LTotalVentas.AutoSize = true;
-            LTotalVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LTotalVentas.ForeColor = Color.White;
-            LTotalVentas.Location = new Point(562, 90);
-            LTotalVentas.Name = "LTotalVentas";
-            LTotalVentas.Size = new Size(186, 20);
-            LTotalVentas.TabIndex = 30;
-            LTotalVentas.Text = "Total de ventas en el año:";
-            // 
             // LCantVentas
             // 
             LCantVentas.AutoSize = true;
@@ -272,41 +239,122 @@
             LCantVentas.Text = "Cantidad de ventas realizadas por el vendedor:";
             LCantVentas.Click += LCantVentas_Click;
             // 
-            // pictureBox1
+            // LTotalVentasCat
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(243, 44);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(282, 240);
-            pictureBox1.TabIndex = 26;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            LTotalVentasCat.AutoSize = true;
+            LTotalVentasCat.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTotalVentasCat.ForeColor = Color.White;
+            LTotalVentasCat.Location = new Point(550, 161);
+            LTotalVentasCat.Name = "LTotalVentasCat";
+            LTotalVentasCat.Size = new Size(216, 20);
+            LTotalVentasCat.TabIndex = 30;
+            LTotalVentasCat.Text = "Total de ventas por categoría:";
             // 
-            // LMeses
+            // LValorVentasCat
             // 
-            LMeses.AutoSize = true;
-            LMeses.ForeColor = Color.White;
-            LMeses.Location = new Point(334, 287);
-            LMeses.Name = "LMeses";
-            LMeses.Size = new Size(118, 15);
-            LMeses.TabIndex = 32;
-            LMeses.Text = "Meses del Año (1-12)";
+            LValorVentasCat.AutoSize = true;
+            LValorVentasCat.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LValorVentasCat.ForeColor = Color.White;
+            LValorVentasCat.Location = new Point(649, 193);
+            LValorVentasCat.Name = "LValorVentasCat";
+            LValorVentasCat.Size = new Size(27, 20);
+            LValorVentasCat.TabIndex = 31;
+            LValorVentasCat.Text = "45";
+            // 
+            // CBCategorias
+            // 
+            CBCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBCategorias.FormattingEnabled = true;
+            CBCategorias.Location = new Point(577, 75);
+            CBCategorias.Name = "CBCategorias";
+            CBCategorias.Size = new Size(166, 23);
+            CBCategorias.TabIndex = 42;
+            CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
+            // 
+            // CProducts
+            // 
+            CProducts.BackColor = Color.Transparent;
+            chartArea2.BackColor = Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            CProducts.ChartAreas.Add(chartArea2);
+            legend2.BackColor = Color.Transparent;
+            legend2.ForeColor = Color.White;
+            legend2.Name = "Legend1";
+            legend2.TitleForeColor = Color.White;
+            legend2.TitleSeparatorColor = Color.White;
+            CProducts.Legends.Add(legend2);
+            CProducts.Location = new Point(82, 48);
+            CProducts.Name = "CProducts";
+            CProducts.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 2;
+            CProducts.Series.Add(series2);
+            CProducts.Size = new Size(382, 245);
+            CProducts.TabIndex = 43;
+            CProducts.Text = "chart1";
+            CProducts.Click += CProducts_Click;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.None;
+            panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(LValorVentasTot);
+            panel2.Controls.Add(LTotalVentasTot);
+            panel2.Controls.Add(CProducts);
+            panel2.Controls.Add(CBCategorias);
+            panel2.Controls.Add(LValorVentasCat);
+            panel2.Controls.Add(LTotalVentasCat);
+            panel2.Controls.Add(LCantVentas);
+            panel2.Location = new Point(12, 191);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(776, 334);
+            panel2.TabIndex = 30;
+            panel2.Paint += panel2_Paint;
+            // 
+            // LValorVentasTot
+            // 
+            LValorVentasTot.AutoSize = true;
+            LValorVentasTot.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LValorVentasTot.ForeColor = Color.White;
+            LValorVentasTot.Location = new Point(648, 261);
+            LValorVentasTot.Name = "LValorVentasTot";
+            LValorVentasTot.Size = new Size(27, 20);
+            LValorVentasTot.TabIndex = 45;
+            LValorVentasTot.Text = "45";
+            // 
+            // LTotalVentasTot
+            // 
+            LTotalVentasTot.AutoSize = true;
+            LTotalVentasTot.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTotalVentasTot.ForeColor = Color.White;
+            LTotalVentasTot.Location = new Point(565, 229);
+            LTotalVentasTot.Name = "LTotalVentasTot";
+            LTotalVentasTot.Size = new Size(192, 20);
+            LTotalVentasTot.TabIndex = 44;
+            LTotalVentasTot.Text = "Total de ventas realizadas:";
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(26, 32, 40);
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(139, 143);
+            label3.Location = new Point(123, 296);
             label3.Name = "label3";
-            label3.Size = new Size(98, 15);
-            label3.TabIndex = 33;
-            label3.Text = "Ventas Realizadas";
+            label3.Size = new Size(241, 21);
+            label3.TabIndex = 45;
+            label3.Text = "Top 5 productos más vendidos";
             // 
             // FormInformeVendedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 515);
+            ClientSize = new Size(800, 537);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "FormInformeVendedor";
@@ -315,9 +363,9 @@
             Load += FormInformeVendedor_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)CProducts).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -336,12 +384,14 @@
         private Label LMDni;
         private Label LMApellido;
         private Label LNombre;
-        private Panel panel2;
-        private PictureBox pictureBox1;
         private Label LCantVentas;
-        private Label LValorVentas;
-        private Label LTotalVentas;
-        private Label LMeses;
+        private Label LTotalVentasCat;
+        private Label LValorVentasCat;
+        private ComboBox CBCategorias;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CProducts;
+        private Panel panel2;
+        private Label LValorVentasTot;
+        private Label LTotalVentasTot;
         private Label label3;
     }
 }

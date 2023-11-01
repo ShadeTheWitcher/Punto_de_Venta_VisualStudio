@@ -25,6 +25,25 @@ namespace CyberGear16
             recuperarDatosIndividuo();
         }
 
+        private void FormInformeCliente_Load(object sender, EventArgs e)
+        {
+            // Suscribe el evento SelectedIndexChanged del ComboBox
+            CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
+
+            // Llena el ComboBox con categorías (puedes adaptar esto a tu propio código)
+            CBCategorias.Items.Add("VideoJuegos");
+            CBCategorias.Items.Add("PC-Componentes");
+            CBCategorias.Items.Add("Netbooks");
+
+            // Establece una categoría predeterminada
+            CBCategorias.SelectedIndex = 0;
+
+            // Llama al manejador de eventos para cargar la información inicial
+            CargarProductosMasVendidos("VideoJuegos");
+
+
+        }
+
         private void recuperarDatosIndividuo()
         {
             if (usuarioClienteElegido != null)
@@ -64,24 +83,16 @@ namespace CyberGear16
 
         private void CargarProductosMasVendidos(string categoriaCombo)
         {
+            int cantTotalCat = 0;
+            int cantTotal = 0;
+
             using (var contexto = new BdCybergearContext())
             {
-                //var productosMasVendidos = contexto.VentasDetalles
-                //    .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo)// Filtra por la categoría seleccionada
-                //    .GroupBy(detalle => detalle.ProductoId)
-                //    .OrderByDescending(g => g.Count())
-                //    .Take(5) // Puedes ajustar este número según la cantidad de productos que deseas mostrar
-                //    .Select(g => new
-                //    {
-                //        //Key: Clave del grupo de consulta (GroupBy)
-                //        NombreProducto = contexto.Products.FirstOrDefault(p => p.Id == g.Key).NombreProducto,
-                //        CantidadVendida = g.Count()
-                //    })
-                //    .ToList();
-
-                var productosMasVendidos = contexto.VentasCabeceras
+                //-----------
+                //Busqueda Gráfico
+                var graficoMasVendidos = contexto.VentasCabeceras
                     .Where(ventaCabecera => ventaCabecera.IdCliente == usuarioClienteElegido.IdCliente) // Filtra por el Id del cliente
-                    //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
+                                                                                                        //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
                     .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
                     .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo)
                     .GroupBy(detalle => detalle.ProductoId)
@@ -94,24 +105,55 @@ namespace CyberGear16
                     })
                     .ToList();
 
-
-
-
-
-
-
-
-
-
-
                 // Limpia los puntos de datos existentes en el gráfico
                 CProducts.Series["Series1"].Points.Clear();
 
                 // Agrega los datos al gráfico
-                foreach (var producto in productosMasVendidos)
+                foreach (var producto in graficoMasVendidos)
                 {
                     CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
                 }
+                //-----------------------
+
+                //Busqueda TotalCategorias
+                var categoriaMasVendidos = contexto.VentasCabeceras
+                   .Where(ventaCabecera => ventaCabecera.IdCliente == usuarioClienteElegido.IdCliente) // Filtra por el Id del cliente
+                                                                                                       //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
+                   .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
+                   .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo)
+                   .GroupBy(detalle => detalle.ProductoId)
+                   .Select(g => new
+                   {
+                       NombreProducto = contexto.Products.FirstOrDefault(p => p.Id == g.Key).NombreProducto,
+                       CantidadVendida = g.Sum(detalle => detalle.CantidadVenta)
+                   })
+                   .ToList();
+
+                foreach (var compradosCat in categoriaMasVendidos)
+                {
+                    cantTotalCat = cantTotalCat + compradosCat.CantidadVendida;
+                }
+
+                //-----------------------
+
+                //Busqueda TotalVentas
+                var cantProductsVendidos = contexto.VentasCabeceras
+                    .Where(ventaCabecera => ventaCabecera.IdCliente == usuarioClienteElegido.IdCliente) // Filtra por el Id del cliente
+                                                                                                        //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
+                    .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
+                    .ToList();
+
+                foreach (var compradosTot in cantProductsVendidos)
+                {
+                    cantTotal = cantTotal + compradosTot.CantidadVenta;
+
+                }
+                //-----------------------
+
+
+                //Asignación a Labels
+                LComprasCat.Text = cantTotalCat.ToString();
+                LComprasTot.Text = cantTotal.ToString();
             }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -167,22 +209,8 @@ namespace CyberGear16
 
         }
 
-        private void FormInformeCliente_Load(object sender, EventArgs e)
+        private void LCantProduct_Click(object sender, EventArgs e)
         {
-            // Suscribe el evento SelectedIndexChanged del ComboBox
-            CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
-
-            // Llena el ComboBox con categorías (puedes adaptar esto a tu propio código)
-            CBCategorias.Items.Add("VideoJuegos");
-            CBCategorias.Items.Add("PC-Componentes");
-            CBCategorias.Items.Add("Netbooks");
-
-            // Establece una categoría predeterminada
-            CBCategorias.SelectedIndex = 0;
-
-            // Llama al manejador de eventos para cargar la información inicial
-            CargarProductosMasVendidos("VideoJuegos");
-
 
         }
     }
