@@ -16,13 +16,18 @@ namespace CyberGear16
     {
         private readonly BdCybergearContext _context;
         private Usuario usuarioVendedorElegido;
-        public FormInformeVendedor(Usuario usuarioVendedor, BdCybergearContext context)
+        int idPerfil;
+        public FormInformeVendedor(int perfil_id, Usuario usuarioVendedor, BdCybergearContext context)
         {
             InitializeComponent();
 
             this.usuarioVendedorElegido = usuarioVendedor;
+            this.idPerfil = perfil_id;
             //this.dniIndividuo = dniIndividuoElegido;
-
+            if(idPerfil == 3)
+            {
+                this.FormBorderStyle = FormBorderStyle.None;
+            }
             recuperarDatosIndividuo();
         }
 

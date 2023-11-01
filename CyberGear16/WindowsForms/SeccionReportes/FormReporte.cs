@@ -73,16 +73,16 @@ namespace CyberGear16
                     Cliente usuarioCliente = context.Clientes.FirstOrDefault(p => p.Dni == dniIndividuo);
 
 
-                    if (usuarioVendedor != null)
-                    {
-                        FormInformeVendedor informeIndividuo = new FormInformeVendedor(usuarioVendedor, _context);
-                        informeIndividuo.ShowDialog();
-                    }
-                    else
-                    {
-                        FormInformeCliente informeIndividuo = new FormInformeCliente(usuarioCliente, _context);
-                        informeIndividuo.ShowDialog();
-                    }
+                    //if (usuarioVendedor != null)
+                    //{
+                    //    FormInformeVendedor informeIndividuo = new FormInformeVendedor(usuarioVendedor, context);
+                    //    informeIndividuo.ShowDialog();
+                    //}
+                    //else
+                    //{
+                    //    FormInformeCliente informeIndividuo = new FormInformeCliente(usuarioCliente, context);
+                    //    informeIndividuo.ShowDialog();
+                    //}
                 }
                 // Abre el formulario de detalles/editar con el Usuario seleccionado
 

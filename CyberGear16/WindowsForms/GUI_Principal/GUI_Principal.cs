@@ -17,11 +17,12 @@ namespace CyberGear16
         string nombreUser;
         string usuario;
         int dniUsuario;
+        int id_Usuario;
 
 
         private readonly BdCybergearContext _context;
 
-        public GUI_Principal(int perfilIdUsuario, string nombreUsuario, string usuarioArgs, int dniUser, BdCybergearContext context)
+        public GUI_Principal(int idUsuario, int perfilIdUsuario, string nombreUsuario, string usuarioArgs, int dniUser, BdCybergearContext context)
         {
             InitializeComponent();
             AbrirFormHija(new formInicio());
@@ -29,6 +30,7 @@ namespace CyberGear16
             nombreUser = nombreUsuario;
             usuario = usuarioArgs;
             dniUsuario = dniUser;
+            id_Usuario = idUsuario;
             _context = context; // Guarda el contexto de base de datos
             establecerLimitesTipoUser();
         }
@@ -247,7 +249,16 @@ namespace CyberGear16
             }
             else
             {
-                AbrirFormHija(new FormReporteVendedor(perfil_idUsuario, dniUsuario));
+                using (var contexto = new BdCybergearContext()) {
+                    Usuario usuarioVendedor = contexto.Usuarios
+                    .Where(usuario => usuario.Id == id_Usuario)
+                    .FirstOrDefault();
+
+                    AbrirFormHija(new FormInformeVendedor(perfil_idUsuario, usuarioVendedor, contexto));
+
+                }
+
+                //AbrirFormHija(new FormReporteVendedor(perfil_idUsuario, dniUsuario));
             }
 
         }
@@ -286,14 +297,14 @@ namespace CyberGear16
         {
             string tipoReporte = "Cliente";
             panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
-            AbrirFormHija(new FormReporteSubMenu(tipoReporte));
+            AbrirFormHija(new FormReporteSubMenu(perfil_idUsuario, tipoReporte));
         }
 
         private void btnReportVendedor_Click(object sender, EventArgs e)
         {
             string tipoReporte = "Vendedor";
             panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
-            AbrirFormHija(new FormReporteSubMenu(tipoReporte));
+            AbrirFormHija(new FormReporteSubMenu(perfil_idUsuario, tipoReporte));
         }
 
         private void panelSubMenuReportes_Paint(object sender, PaintEventArgs e)

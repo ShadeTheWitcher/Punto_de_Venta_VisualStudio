@@ -14,11 +14,13 @@ namespace CyberGear16.WindowsForms.SeccionReportes
     public partial class FormReporteSubMenu : Form
     {
         string tipoUsuario;
+        int idPerfil;
         private readonly BdCybergearContext _context;
-        public FormReporteSubMenu(string tipoUsuarioReporte)
+        public FormReporteSubMenu(int perfil_idUsuario, string tipoUsuarioReporte)
         {
             InitializeComponent();
             this.tipoUsuario = tipoUsuarioReporte;
+            this.idPerfil = perfil_idUsuario;
         }
         private void CargarDatosEnDGVClientes()
         {
@@ -225,7 +227,7 @@ namespace CyberGear16.WindowsForms.SeccionReportes
 
                     if (usuarioVendedor != null)
                     {
-                        FormInformeVendedor informeIndividuo = new FormInformeVendedor(usuarioVendedor, _context);
+                        FormInformeVendedor informeIndividuo = new FormInformeVendedor(idPerfil, usuarioVendedor, _context);
                         informeIndividuo.ShowDialog();
                     }
                     else
