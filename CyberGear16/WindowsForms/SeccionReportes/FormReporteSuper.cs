@@ -44,8 +44,8 @@ namespace CyberGear16
                                      join usuario in contexto.Usuarios on venta.IdVendedor equals usuario.Id
                                      select new
                                      {
-                                         ClienteDNI = cliente.Dni,
-                                         VendedorDNI = usuario.Dni,
+                                         ClientenNom = cliente.Nombre + " " + cliente.Apellido,
+                                         VendedorNombre = usuario.Nombre + " " + usuario.Apellido,
                                          //Campos de VentaCabecera
                                          FechaVenta = venta.Fecha,
                                          MontoVenta = venta.TotalVenta
@@ -81,8 +81,8 @@ namespace CyberGear16
                              join usuario in context.Usuarios on venta.IdVendedor equals usuario.Id
                              select new
                              {
-                                 ClienteDNI = cliente.Dni,
-                                 VendedorDNI = usuario.Dni,
+                                 ClientenNom = cliente.Nombre + " " + cliente.Apellido,
+                                 VendedorNombre = usuario.Nombre + " " + usuario.Apellido,
                                  //Campos de VentaCabecera
                                  FechaVenta = venta.Fecha,
                                  MontoVenta = venta.TotalVenta
@@ -91,7 +91,7 @@ namespace CyberGear16
                 //// Asigna los productos a la fuente de datos del DataGridView
                 DGVReportes.DataSource = ventas.ToList();
 
-
+                
                 //// Configura el estilo y columnas del DataGridView
                 //// (asegúrate de que las propiedades de Product se correspondan con las columnas)
 

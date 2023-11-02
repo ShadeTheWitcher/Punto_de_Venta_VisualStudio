@@ -476,7 +476,7 @@ namespace CyberGear16
 
             if (e.RowIndex >= 0 && e.ColumnIndex == DGVUsuarios.Columns["Acciones"].Index)
             {
-                // Obtén el producto seleccionado
+                // Obtén el usuario seleccionado
                 DataGridViewRow row = DGVUsuarios.Rows[e.RowIndex];
                 int usuarioId = Convert.ToInt32(row.Cells["Id"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
 
