@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInformeCliente));
-            pictureBox1 = new PictureBox();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             LApellido = new Label();
             LDni = new Label();
             LMNombre = new Label();
@@ -44,23 +45,17 @@
             panel1 = new Panel();
             LCliente = new Label();
             panel2 = new Panel();
-            LMeses = new Label();
-            label3 = new Label();
-            LValorVentas = new Label();
-            LTotalCompras = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            LComprasCat = new Label();
+            LTextComprasCat = new Label();
+            CProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            CBCategorias = new ComboBox();
+            LComprasTot = new Label();
+            LTextComprasTot = new Label();
+            label1 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CProducts).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(216, 44);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(282, 240);
-            pictureBox1.TabIndex = 26;
-            pictureBox1.TabStop = false;
             // 
             // LApellido
             // 
@@ -188,11 +183,12 @@
             LCantProduct.BackColor = Color.FromArgb(26, 32, 40);
             LCantProduct.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             LCantProduct.ForeColor = Color.White;
-            LCantProduct.Location = new Point(137, 0);
+            LCantProduct.Location = new Point(138, 13);
             LCantProduct.Name = "LCantProduct";
             LCantProduct.Size = new Size(446, 25);
             LCantProduct.TabIndex = 27;
             LCantProduct.Text = "Cantidad de productos comprados por el cliente:";
+            LCantProduct.Click += LCantProduct_Click;
             // 
             // panel1
             // 
@@ -209,9 +205,9 @@
             panel1.Controls.Add(LMDni);
             panel1.Controls.Add(LMApellido);
             panel1.Controls.Add(LNombre);
-            panel1.Location = new Point(30, 27);
+            panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(744, 158);
+            panel1.Size = new Size(776, 158);
             panel1.TabIndex = 28;
             panel1.Paint += panel1_Paint;
             // 
@@ -231,81 +227,132 @@
             // 
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.FromArgb(26, 32, 40);
-            panel2.Controls.Add(LValorVentas);
-            panel2.Controls.Add(LTotalCompras);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(LMeses);
+            panel2.Controls.Add(label1);
+            panel2.Controls.Add(LComprasCat);
+            panel2.Controls.Add(LTextComprasCat);
+            panel2.Controls.Add(CProducts);
+            panel2.Controls.Add(CBCategorias);
+            panel2.Controls.Add(LComprasTot);
+            panel2.Controls.Add(LTextComprasTot);
             panel2.Controls.Add(LCantProduct);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(30, 205);
+            panel2.Location = new Point(12, 189);
             panel2.Name = "panel2";
-            panel2.Size = new Size(744, 314);
+            panel2.Size = new Size(776, 336);
             panel2.TabIndex = 29;
             // 
-            // LMeses
+            // LComprasCat
             // 
-            LMeses.AutoSize = true;
-            LMeses.ForeColor = Color.White;
-            LMeses.Location = new Point(303, 287);
-            LMeses.Name = "LMeses";
-            LMeses.Size = new Size(118, 15);
-            LMeses.TabIndex = 33;
-            LMeses.Text = "Meses del Año (1-12)";
+            LComprasCat.AutoSize = true;
+            LComprasCat.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LComprasCat.ForeColor = Color.White;
+            LComprasCat.Location = new Point(610, 192);
+            LComprasCat.Name = "LComprasCat";
+            LComprasCat.Size = new Size(27, 20);
+            LComprasCat.TabIndex = 43;
+            LComprasCat.Text = "45";
             // 
-            // label3
+            // LTextComprasCat
             // 
-            label3.AutoSize = true;
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(112, 150);
-            label3.Name = "label3";
-            label3.Size = new Size(98, 15);
-            label3.TabIndex = 34;
-            label3.Text = "Ventas Realizadas";
+            LTextComprasCat.AutoSize = true;
+            LTextComprasCat.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTextComprasCat.ForeColor = Color.White;
+            LTextComprasCat.Location = new Point(501, 160);
+            LTextComprasCat.Name = "LTextComprasCat";
+            LTextComprasCat.Size = new Size(230, 20);
+            LTextComprasCat.TabIndex = 42;
+            LTextComprasCat.Text = "Total de compras por categoría:";
             // 
-            // LValorVentas
+            // CProducts
             // 
-            LValorVentas.AutoSize = true;
-            LValorVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LValorVentas.ForeColor = Color.White;
-            LValorVentas.Location = new Point(603, 136);
-            LValorVentas.Name = "LValorVentas";
-            LValorVentas.Size = new Size(27, 20);
-            LValorVentas.TabIndex = 36;
-            LValorVentas.Text = "10";
+            CProducts.BackColor = Color.Transparent;
+            chartArea3.BackColor = Color.Transparent;
+            chartArea3.Name = "ChartArea1";
+            CProducts.ChartAreas.Add(chartArea3);
+            legend3.BackColor = Color.Transparent;
+            legend3.ForeColor = Color.White;
+            legend3.Name = "Legend1";
+            legend3.TitleForeColor = Color.White;
+            legend3.TitleSeparatorColor = Color.White;
+            CProducts.Legends.Add(legend3);
+            CProducts.Location = new Point(53, 50);
+            CProducts.Name = "CProducts";
+            CProducts.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series3.IsValueShownAsLabel = true;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.YValuesPerPoint = 2;
+            CProducts.Series.Add(series3);
+            CProducts.Size = new Size(382, 245);
+            CProducts.TabIndex = 41;
+            CProducts.Text = "chart1";
             // 
-            // LTotalCompras
+            // CBCategorias
             // 
-            LTotalCompras.AutoSize = true;
-            LTotalCompras.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LTotalCompras.ForeColor = Color.White;
-            LTotalCompras.Location = new Point(520, 104);
-            LTotalCompras.Name = "LTotalCompras";
-            LTotalCompras.Size = new Size(200, 20);
-            LTotalCompras.TabIndex = 35;
-            LTotalCompras.Text = "Total de compras en el año:";
+            CBCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBCategorias.FormattingEnabled = true;
+            CBCategorias.Location = new Point(534, 61);
+            CBCategorias.Name = "CBCategorias";
+            CBCategorias.Size = new Size(166, 23);
+            CBCategorias.TabIndex = 40;
+            CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
+            // 
+            // LComprasTot
+            // 
+            LComprasTot.AutoSize = true;
+            LComprasTot.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LComprasTot.ForeColor = Color.White;
+            LComprasTot.Location = new Point(610, 265);
+            LComprasTot.Name = "LComprasTot";
+            LComprasTot.Size = new Size(27, 20);
+            LComprasTot.TabIndex = 36;
+            LComprasTot.Text = "10";
+            // 
+            // LTextComprasTot
+            // 
+            LTextComprasTot.AutoSize = true;
+            LTextComprasTot.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTextComprasTot.ForeColor = Color.White;
+            LTextComprasTot.Location = new Point(517, 235);
+            LTextComprasTot.Name = "LTextComprasTot";
+            LTextComprasTot.Size = new Size(206, 20);
+            LTextComprasTot.TabIndex = 35;
+            LTextComprasTot.Text = "Total de compras realizadas:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.FromArgb(26, 32, 40);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(97, 298);
+            label1.Name = "label1";
+            label1.Size = new Size(256, 21);
+            label1.TabIndex = 44;
+            label1.Text = "Top 5 productos más comprados";
             // 
             // FormInformeCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(800, 531);
+            ClientSize = new Size(800, 537);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "FormInformeCliente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Informe de Cliente";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += FormInformeCliente_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)CProducts).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private Label LApellido;
         private Label LDni;
         private Label LMNombre;
@@ -320,9 +367,12 @@
         private Panel panel1;
         private Label LCliente;
         private Panel panel2;
-        private Label LMeses;
-        private Label label3;
-        private Label LValorVentas;
-        private Label LTotalCompras;
+        private Label LComprasTot;
+        private Label LTextComprasTot;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CProducts;
+        private ComboBox CBCategorias;
+        private Label LComprasCat;
+        private Label LTextComprasCat;
+        private Label label1;
     }
 }

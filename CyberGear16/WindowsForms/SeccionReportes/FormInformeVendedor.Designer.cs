@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInformeVendedor));
-            LFecha = new Label();
-            DTPFecha = new DateTimePicker();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             panel1 = new Panel();
             LCliente = new Label();
             label1 = new Label();
@@ -43,39 +43,36 @@
             LMDni = new Label();
             LMApellido = new Label();
             LNombre = new Label();
-            panel2 = new Panel();
-            LValorVentas = new Label();
-            LTotalVentas = new Label();
             LCantVentas = new Label();
-            pictureBox1 = new PictureBox();
-            LMeses = new Label();
+            LTotalVentasCat = new Label();
+            LValorVentasCat = new Label();
+            CBCategorias = new ComboBox();
+            CProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            panel2 = new Panel();
             label3 = new Label();
+            LValorVentasTot = new Label();
+            LTotalVentasTot = new Label();
+            PReporte = new Panel();
+            BReporte = new Button();
+            LHasta = new Label();
+            label4 = new Label();
+            DTPHasta = new DateTimePicker();
+            DTPDesde = new DateTimePicker();
+            panel4 = new Panel();
+            LRHasta = new Label();
+            LRDesde = new Label();
+            DTPGHasta = new DateTimePicker();
+            DTPGDesde = new DateTimePicker();
+            DGVReportes = new DataGridView();
+            LRProductos = new Label();
+            BGeneral = new Button();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)CProducts).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            PReporte.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVReportes).BeginInit();
             SuspendLayout();
-            // 
-            // LFecha
-            // 
-            LFecha.AutoSize = true;
-            LFecha.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            LFecha.ForeColor = Color.White;
-            LFecha.Location = new Point(228, 55);
-            LFecha.Name = "LFecha";
-            LFecha.Size = new Size(175, 21);
-            LFecha.TabIndex = 7;
-            LFecha.Text = "Fecha de Nacimiento:";
-            LFecha.Click += LFecha_Click;
-            // 
-            // DTPFecha
-            // 
-            DTPFecha.Enabled = false;
-            DTPFecha.Format = DateTimePickerFormat.Short;
-            DTPFecha.Location = new Point(399, 55);
-            DTPFecha.Name = "DTPFecha";
-            DTPFecha.Size = new Size(98, 23);
-            DTPFecha.TabIndex = 12;
-            DTPFecha.ValueChanged += DTPFecha_ValueChanged;
             // 
             // panel1
             // 
@@ -84,19 +81,17 @@
             panel1.Controls.Add(LCliente);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(DTPFecha);
             panel1.Controls.Add(LMNombre);
             panel1.Controls.Add(LMTelefono);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(LMEmail);
-            panel1.Controls.Add(LFecha);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(LMDni);
             panel1.Controls.Add(LMApellido);
             panel1.Controls.Add(LNombre);
-            panel1.Location = new Point(12, 22);
+            panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(776, 158);
+            panel1.Size = new Size(533, 151);
             panel1.TabIndex = 29;
             panel1.Paint += panel1_Paint;
             // 
@@ -117,7 +112,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(53, 108);
+            label1.Location = new Point(22, 107);
             label1.Name = "label1";
             label1.Size = new Size(71, 20);
             label1.TabIndex = 24;
@@ -128,7 +123,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(277, 108);
+            label2.Location = new Point(217, 55);
             label2.Name = "label2";
             label2.Size = new Size(41, 20);
             label2.TabIndex = 23;
@@ -139,7 +134,7 @@
             LMNombre.AutoSize = true;
             LMNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMNombre.ForeColor = Color.White;
-            LMNombre.Location = new Point(123, 56);
+            LMNombre.Location = new Point(92, 55);
             LMNombre.Name = "LMNombre";
             LMNombre.Size = new Size(64, 20);
             LMNombre.TabIndex = 22;
@@ -150,7 +145,7 @@
             LMTelefono.AutoSize = true;
             LMTelefono.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMTelefono.ForeColor = Color.White;
-            LMTelefono.Location = new Point(644, 55);
+            LMTelefono.Location = new Point(420, 55);
             LMTelefono.Name = "LMTelefono";
             LMTelefono.Size = new Size(67, 20);
             LMTelefono.TabIndex = 20;
@@ -161,7 +156,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(550, 55);
+            label5.Location = new Point(349, 55);
             label5.Name = "label5";
             label5.Size = new Size(74, 20);
             label5.TabIndex = 19;
@@ -172,7 +167,7 @@
             LMEmail.AutoSize = true;
             LMEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMEmail.ForeColor = Color.White;
-            LMEmail.Location = new Point(503, 109);
+            LMEmail.Location = new Point(264, 107);
             LMEmail.Name = "LMEmail";
             LMEmail.Size = new Size(46, 20);
             LMEmail.TabIndex = 18;
@@ -183,7 +178,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(446, 108);
+            label7.Location = new Point(207, 107);
             label7.Name = "label7";
             label7.Size = new Size(51, 20);
             label7.TabIndex = 17;
@@ -194,7 +189,7 @@
             LMDni.AutoSize = true;
             LMDni.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMDni.ForeColor = Color.White;
-            LMDni.Location = new Point(334, 108);
+            LMDni.Location = new Point(264, 55);
             LMDni.Name = "LMDni";
             LMDni.Size = new Size(35, 20);
             LMDni.TabIndex = 16;
@@ -205,7 +200,7 @@
             LMApellido.AutoSize = true;
             LMApellido.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             LMApellido.ForeColor = Color.White;
-            LMApellido.Location = new Point(123, 108);
+            LMApellido.Location = new Point(92, 107);
             LMApellido.Name = "LMApellido";
             LMApellido.Size = new Size(66, 20);
             LMApellido.TabIndex = 15;
@@ -216,48 +211,11 @@
             LNombre.AutoSize = true;
             LNombre.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             LNombre.ForeColor = Color.White;
-            LNombre.Location = new Point(53, 56);
+            LNombre.Location = new Point(22, 55);
             LNombre.Name = "LNombre";
             LNombre.Size = new Size(71, 20);
             LNombre.TabIndex = 14;
             LNombre.Text = "Nombre:";
-            // 
-            // panel2
-            // 
-            panel2.Anchor = AnchorStyles.None;
-            panel2.BackColor = Color.FromArgb(26, 32, 40);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(LMeses);
-            panel2.Controls.Add(LValorVentas);
-            panel2.Controls.Add(LTotalVentas);
-            panel2.Controls.Add(LCantVentas);
-            panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(12, 197);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(776, 309);
-            panel2.TabIndex = 30;
-            // 
-            // LValorVentas
-            // 
-            LValorVentas.AutoSize = true;
-            LValorVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LValorVentas.ForeColor = Color.White;
-            LValorVentas.Location = new Point(645, 122);
-            LValorVentas.Name = "LValorVentas";
-            LValorVentas.Size = new Size(27, 20);
-            LValorVentas.TabIndex = 31;
-            LValorVentas.Text = "45";
-            // 
-            // LTotalVentas
-            // 
-            LTotalVentas.AutoSize = true;
-            LTotalVentas.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            LTotalVentas.ForeColor = Color.White;
-            LTotalVentas.Location = new Point(562, 90);
-            LTotalVentas.Name = "LTotalVentas";
-            LTotalVentas.Size = new Size(186, 20);
-            LTotalVentas.TabIndex = 30;
-            LTotalVentas.Text = "Total de ventas en el año:";
             // 
             // LCantVentas
             // 
@@ -272,41 +230,277 @@
             LCantVentas.Text = "Cantidad de ventas realizadas por el vendedor:";
             LCantVentas.Click += LCantVentas_Click;
             // 
-            // pictureBox1
+            // LTotalVentasCat
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(243, 44);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(282, 240);
-            pictureBox1.TabIndex = 26;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            LTotalVentasCat.AutoSize = true;
+            LTotalVentasCat.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTotalVentasCat.ForeColor = Color.White;
+            LTotalVentasCat.Location = new Point(681, 115);
+            LTotalVentasCat.Name = "LTotalVentasCat";
+            LTotalVentasCat.Size = new Size(216, 20);
+            LTotalVentasCat.TabIndex = 30;
+            LTotalVentasCat.Text = "Total de ventas por categoría:";
             // 
-            // LMeses
+            // LValorVentasCat
             // 
-            LMeses.AutoSize = true;
-            LMeses.ForeColor = Color.White;
-            LMeses.Location = new Point(334, 287);
-            LMeses.Name = "LMeses";
-            LMeses.Size = new Size(118, 15);
-            LMeses.TabIndex = 32;
-            LMeses.Text = "Meses del Año (1-12)";
+            LValorVentasCat.AutoSize = true;
+            LValorVentasCat.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LValorVentasCat.ForeColor = Color.White;
+            LValorVentasCat.Location = new Point(780, 147);
+            LValorVentasCat.Name = "LValorVentasCat";
+            LValorVentasCat.Size = new Size(27, 20);
+            LValorVentasCat.TabIndex = 31;
+            LValorVentasCat.Text = "45";
+            // 
+            // CBCategorias
+            // 
+            CBCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
+            CBCategorias.FormattingEnabled = true;
+            CBCategorias.Location = new Point(707, 48);
+            CBCategorias.Name = "CBCategorias";
+            CBCategorias.Size = new Size(166, 23);
+            CBCategorias.TabIndex = 42;
+            CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
+            // 
+            // CProducts
+            // 
+            CProducts.BackColor = Color.Transparent;
+            chartArea1.BackColor = Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            CProducts.ChartAreas.Add(chartArea1);
+            legend1.BackColor = Color.Transparent;
+            legend1.ForeColor = Color.White;
+            legend1.Name = "Legend1";
+            legend1.TitleForeColor = Color.White;
+            legend1.TitleSeparatorColor = Color.White;
+            CProducts.Legends.Add(legend1);
+            CProducts.Location = new Point(82, 48);
+            CProducts.Name = "CProducts";
+            CProducts.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 2;
+            CProducts.Series.Add(series1);
+            CProducts.Size = new Size(451, 233);
+            CProducts.TabIndex = 43;
+            CProducts.Text = "chart1";
+            CProducts.Click += CProducts_Click;
+            // 
+            // panel2
+            // 
+            panel2.Anchor = AnchorStyles.None;
+            panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(BGeneral);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(LValorVentasTot);
+            panel2.Controls.Add(LTotalVentasTot);
+            panel2.Controls.Add(CProducts);
+            panel2.Controls.Add(CBCategorias);
+            panel2.Controls.Add(LValorVentasCat);
+            panel2.Controls.Add(LTotalVentasCat);
+            panel2.Controls.Add(LCantVentas);
+            panel2.Location = new Point(12, 169);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1035, 318);
+            panel2.TabIndex = 30;
+            panel2.Paint += panel2_Paint;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.FromArgb(26, 32, 40);
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(139, 143);
+            label3.Location = new Point(150, 284);
             label3.Name = "label3";
-            label3.Size = new Size(98, 15);
-            label3.TabIndex = 33;
-            label3.Text = "Ventas Realizadas";
+            label3.Size = new Size(241, 21);
+            label3.TabIndex = 45;
+            label3.Text = "Top 5 productos más vendidos";
+            // 
+            // LValorVentasTot
+            // 
+            LValorVentasTot.AutoSize = true;
+            LValorVentasTot.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LValorVentasTot.ForeColor = Color.White;
+            LValorVentasTot.Location = new Point(780, 215);
+            LValorVentasTot.Name = "LValorVentasTot";
+            LValorVentasTot.Size = new Size(27, 20);
+            LValorVentasTot.TabIndex = 45;
+            LValorVentasTot.Text = "45";
+            // 
+            // LTotalVentasTot
+            // 
+            LTotalVentasTot.AutoSize = true;
+            LTotalVentasTot.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LTotalVentasTot.ForeColor = Color.White;
+            LTotalVentasTot.Location = new Point(696, 183);
+            LTotalVentasTot.Name = "LTotalVentasTot";
+            LTotalVentasTot.Size = new Size(192, 20);
+            LTotalVentasTot.TabIndex = 44;
+            LTotalVentasTot.Text = "Total de ventas realizadas:";
+            // 
+            // PReporte
+            // 
+            PReporte.Anchor = AnchorStyles.None;
+            PReporte.BackColor = Color.FromArgb(26, 32, 40);
+            PReporte.Controls.Add(BReporte);
+            PReporte.Controls.Add(LHasta);
+            PReporte.Controls.Add(label4);
+            PReporte.Controls.Add(DTPHasta);
+            PReporte.Controls.Add(DTPDesde);
+            PReporte.Location = new Point(551, 12);
+            PReporte.Name = "PReporte";
+            PReporte.Size = new Size(496, 151);
+            PReporte.TabIndex = 31;
+            // 
+            // BReporte
+            // 
+            BReporte.Location = new Point(131, 82);
+            BReporte.Name = "BReporte";
+            BReporte.Size = new Size(236, 44);
+            BReporte.TabIndex = 4;
+            BReporte.Text = "Generar Reporte";
+            BReporte.UseVisualStyleBackColor = true;
+            BReporte.Click += BReporte_Click;
+            // 
+            // LHasta
+            // 
+            LHasta.AutoSize = true;
+            LHasta.Font = new Font("MV Boli", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LHasta.ForeColor = Color.White;
+            LHasta.Location = new Point(332, 5);
+            LHasta.Name = "LHasta";
+            LHasta.Size = new Size(75, 25);
+            LHasta.TabIndex = 3;
+            LHasta.Text = "Hasta:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("MV Boli", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(109, 5);
+            label4.Name = "label4";
+            label4.Size = new Size(74, 25);
+            label4.TabIndex = 2;
+            label4.Text = "Desde:";
+            // 
+            // DTPHasta
+            // 
+            DTPHasta.Format = DateTimePickerFormat.Short;
+            DTPHasta.Location = new Point(256, 44);
+            DTPHasta.Name = "DTPHasta";
+            DTPHasta.Size = new Size(202, 23);
+            DTPHasta.TabIndex = 1;
+            DTPHasta.ValueChanged += DTPHasta_ValueChanged;
+            // 
+            // DTPDesde
+            // 
+            DTPDesde.Format = DateTimePickerFormat.Short;
+            DTPDesde.Location = new Point(41, 44);
+            DTPDesde.Name = "DTPDesde";
+            DTPDesde.Size = new Size(202, 23);
+            DTPDesde.TabIndex = 0;
+            DTPDesde.ValueChanged += DTPDesde_ValueChanged;
+            // 
+            // panel4
+            // 
+            panel4.Anchor = AnchorStyles.None;
+            panel4.BackColor = Color.FromArgb(26, 32, 40);
+            panel4.Controls.Add(LRHasta);
+            panel4.Controls.Add(LRDesde);
+            panel4.Controls.Add(DTPGHasta);
+            panel4.Controls.Add(DTPGDesde);
+            panel4.Controls.Add(DGVReportes);
+            panel4.Controls.Add(LRProductos);
+            panel4.Location = new Point(12, 493);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(1035, 230);
+            panel4.TabIndex = 46;
+            // 
+            // LRHasta
+            // 
+            LRHasta.AutoSize = true;
+            LRHasta.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LRHasta.ForeColor = Color.White;
+            LRHasta.Location = new Point(537, 12);
+            LRHasta.Name = "LRHasta";
+            LRHasta.Size = new Size(67, 25);
+            LRHasta.TabIndex = 12;
+            LRHasta.Text = "Hasta:";
+            // 
+            // LRDesde
+            // 
+            LRDesde.AutoSize = true;
+            LRDesde.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LRDesde.ForeColor = Color.White;
+            LRDesde.Location = new Point(281, 12);
+            LRDesde.Name = "LRDesde";
+            LRDesde.Size = new Size(71, 25);
+            LRDesde.TabIndex = 11;
+            LRDesde.Text = "Desde:";
+            // 
+            // DTPGHasta
+            // 
+            DTPGHasta.Enabled = false;
+            DTPGHasta.Format = DateTimePickerFormat.Short;
+            DTPGHasta.Location = new Point(631, 14);
+            DTPGHasta.Name = "DTPGHasta";
+            DTPGHasta.Size = new Size(108, 23);
+            DTPGHasta.TabIndex = 10;
+            // 
+            // DTPGDesde
+            // 
+            DTPGDesde.Enabled = false;
+            DTPGDesde.Format = DateTimePickerFormat.Short;
+            DTPGDesde.Location = new Point(375, 14);
+            DTPGDesde.Name = "DTPGDesde";
+            DTPGDesde.Size = new Size(101, 23);
+            DTPGDesde.TabIndex = 9;
+            // 
+            // DGVReportes
+            // 
+            DGVReportes.Anchor = AnchorStyles.None;
+            DGVReportes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVReportes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVReportes.Location = new Point(43, 60);
+            DGVReportes.Name = "DGVReportes";
+            DGVReportes.RowTemplate.Height = 25;
+            DGVReportes.Size = new Size(953, 155);
+            DGVReportes.TabIndex = 8;
+            DGVReportes.CellContentClick += DGVReportes_CellContentClick;
+            // 
+            // LRProductos
+            // 
+            LRProductos.AutoSize = true;
+            LRProductos.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            LRProductos.ForeColor = Color.White;
+            LRProductos.Location = new Point(18, 12);
+            LRProductos.Name = "LRProductos";
+            LRProductos.Size = new Size(76, 25);
+            LRProductos.TabIndex = 5;
+            LRProductos.Text = "Ventas:";
+            // 
+            // BGeneral
+            // 
+            BGeneral.Location = new Point(679, 257);
+            BGeneral.Name = "BGeneral";
+            BGeneral.Size = new Size(227, 37);
+            BGeneral.TabIndex = 5;
+            BGeneral.Text = "Reporte General";
+            BGeneral.UseVisualStyleBackColor = true;
+            BGeneral.Click += BGeneral_Click;
             // 
             // FormInformeVendedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 515);
+            ClientSize = new Size(1058, 740);
+            Controls.Add(panel4);
+            Controls.Add(PReporte);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "FormInformeVendedor";
@@ -315,15 +509,18 @@
             Load += FormInformeVendedor_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)CProducts).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            PReporte.ResumeLayout(false);
+            PReporte.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVReportes).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Label LFecha;
-        private DateTimePicker DTPFecha;
         private Panel panel1;
         private Label LCliente;
         private Label label1;
@@ -336,12 +533,28 @@
         private Label LMDni;
         private Label LMApellido;
         private Label LNombre;
-        private Panel panel2;
-        private PictureBox pictureBox1;
         private Label LCantVentas;
-        private Label LValorVentas;
-        private Label LTotalVentas;
-        private Label LMeses;
+        private Label LTotalVentasCat;
+        private Label LValorVentasCat;
+        private ComboBox CBCategorias;
+        private System.Windows.Forms.DataVisualization.Charting.Chart CProducts;
+        private Panel panel2;
+        private Label LValorVentasTot;
+        private Label LTotalVentasTot;
         private Label label3;
+        private Panel PReporte;
+        private Button BReporte;
+        private Label LHasta;
+        private Label label4;
+        private DateTimePicker DTPHasta;
+        private DateTimePicker DTPDesde;
+        private Panel panel4;
+        private Label LRHasta;
+        private Label LRDesde;
+        private DateTimePicker DTPGHasta;
+        private DateTimePicker DTPGDesde;
+        private DataGridView DGVReportes;
+        private Label LRProductos;
+        private Button BGeneral;
     }
 }

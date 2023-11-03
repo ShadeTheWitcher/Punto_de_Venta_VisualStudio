@@ -266,6 +266,7 @@
             panelSubMenuReportes.Size = new Size(244, 100);
             panelSubMenuReportes.TabIndex = 18;
             panelSubMenuReportes.Visible = false;
+            panelSubMenuReportes.Paint += panelSubMenuReportes_Paint;
             // 
             // panel9
             // 

@@ -43,10 +43,11 @@ namespace CyberGear16
                     int perfilId = usuarioEncontrado.PerfilId;
                     string nombreUser = usuarioEncontrado.Nombre;
                     int dniUsuario = usuarioEncontrado.Dni;
+                    int idUsuario = usuarioEncontrado.Id;
 
 
                     // Crea una instancia del formulario GUI_Principal
-                    GUI_Principal form2 = new GUI_Principal(perfilId, nombreUser, usuario, dniUsuario, context);
+                    GUI_Principal form2 = new GUI_Principal(idUsuario, perfilId, nombreUser, usuario, dniUsuario, context);
 
                     string mensajeInicio = "¡Inicio de sesión exitoso!" + Environment.NewLine + "  Bienvenido: " + nombreUser;
 

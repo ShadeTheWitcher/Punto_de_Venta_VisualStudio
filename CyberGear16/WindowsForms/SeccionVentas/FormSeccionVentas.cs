@@ -293,6 +293,8 @@ namespace CyberGear16
         {
             // Crear un panel para contener el formulario formCrudCategoria
             panelCatalogo = new Panel();
+
+            //DockStyle.Fill llene completamente el espacio disponible del panel
             panelCatalogo.Dock = DockStyle.Fill;
 
             // Crear una instancia del formulario formCrudCategoria
@@ -562,8 +564,6 @@ namespace CyberGear16
                 {
                     // Aquí puedes acceder a la propiedad IdCliente de cliente
                     int idCliente = cliente.IdCliente;
-
-                    // Ahora puedes usar idCliente como sea necesario
                 }
                 else
                 {

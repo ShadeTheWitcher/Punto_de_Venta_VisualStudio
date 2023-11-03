@@ -34,11 +34,11 @@ namespace CyberGear16
                 Usuario vendedorOperando = context.Usuarios.FirstOrDefault(p => p.PerfilId == perfilIdUsuario && p.Dni == dniUsuario);
 
 
-                if (vendedorOperando != null)
-                {
-                    FormInformeVendedor informeVendedorOperando = new FormInformeVendedor(vendedorOperando, context);
-                    informeVendedorOperando.ShowDialog();
-                }
+                //if (vendedorOperando != null)
+                //{
+                //    FormInformeVendedor informeVendedorOperando = new FormInformeVendedor(vendedorOperando, context);
+                //    informeVendedorOperando.ShowDialog();
+                //}
 
             }
         }
