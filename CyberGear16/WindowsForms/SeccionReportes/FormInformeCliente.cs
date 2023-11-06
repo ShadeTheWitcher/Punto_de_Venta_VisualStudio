@@ -94,7 +94,7 @@ namespace CyberGear16
             int cantTotal = 0;
             using (var contexto = new BdCybergearContext())
             {
-
+                filtroFecha = true;
                 //Busqueda Gráfico
                 var graficoMasComprados = contexto.VentasCabeceras
                     .Where(ventaCabecera => ventaCabecera.IdCliente == usuarioClienteElegido.IdCliente && // Filtra por el Id del cliente

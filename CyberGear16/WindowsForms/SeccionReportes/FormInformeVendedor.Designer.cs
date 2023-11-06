@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             panel1 = new Panel();
             LCliente = new Label();
             label1 = new Label();
@@ -49,7 +49,8 @@
             CBCategorias = new ComboBox();
             CProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
             panel2 = new Panel();
-            label3 = new Label();
+            BGeneral = new Button();
+            LTop = new Label();
             LValorVentasTot = new Label();
             LTotalVentasTot = new Label();
             PReporte = new Panel();
@@ -65,7 +66,6 @@
             DTPGDesde = new DateTimePicker();
             DGVReportes = new DataGridView();
             LRProductos = new Label();
-            BGeneral = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CProducts).BeginInit();
             panel2.SuspendLayout();
@@ -265,25 +265,25 @@
             // CProducts
             // 
             CProducts.BackColor = Color.Transparent;
-            chartArea1.BackColor = Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            CProducts.ChartAreas.Add(chartArea1);
-            legend1.BackColor = Color.Transparent;
-            legend1.ForeColor = Color.White;
-            legend1.Name = "Legend1";
-            legend1.TitleForeColor = Color.White;
-            legend1.TitleSeparatorColor = Color.White;
-            CProducts.Legends.Add(legend1);
+            chartArea2.BackColor = Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            CProducts.ChartAreas.Add(chartArea2);
+            legend2.BackColor = Color.Transparent;
+            legend2.ForeColor = Color.White;
+            legend2.Name = "Legend1";
+            legend2.TitleForeColor = Color.White;
+            legend2.TitleSeparatorColor = Color.White;
+            CProducts.Legends.Add(legend2);
             CProducts.Location = new Point(82, 48);
             CProducts.Name = "CProducts";
             CProducts.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.IsValueShownAsLabel = true;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 2;
-            CProducts.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 2;
+            CProducts.Series.Add(series2);
             CProducts.Size = new Size(451, 233);
             CProducts.TabIndex = 43;
             CProducts.Text = "chart1";
@@ -294,7 +294,7 @@
             panel2.Anchor = AnchorStyles.None;
             panel2.BackColor = Color.FromArgb(26, 32, 40);
             panel2.Controls.Add(BGeneral);
-            panel2.Controls.Add(label3);
+            panel2.Controls.Add(LTop);
             panel2.Controls.Add(LValorVentasTot);
             panel2.Controls.Add(LTotalVentasTot);
             panel2.Controls.Add(CProducts);
@@ -308,17 +308,27 @@
             panel2.TabIndex = 30;
             panel2.Paint += panel2_Paint;
             // 
-            // label3
+            // BGeneral
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(26, 32, 40);
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(150, 284);
-            label3.Name = "label3";
-            label3.Size = new Size(241, 21);
-            label3.TabIndex = 45;
-            label3.Text = "Top 5 productos más vendidos";
+            BGeneral.Location = new Point(679, 257);
+            BGeneral.Name = "BGeneral";
+            BGeneral.Size = new Size(227, 37);
+            BGeneral.TabIndex = 5;
+            BGeneral.Text = "Reporte General";
+            BGeneral.UseVisualStyleBackColor = true;
+            BGeneral.Click += BGeneral_Click;
+            // 
+            // LTop
+            // 
+            LTop.AutoSize = true;
+            LTop.BackColor = Color.FromArgb(26, 32, 40);
+            LTop.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            LTop.ForeColor = Color.White;
+            LTop.Location = new Point(150, 284);
+            LTop.Name = "LTop";
+            LTop.Size = new Size(241, 21);
+            LTop.TabIndex = 45;
+            LTop.Text = "Top 5 productos más vendidos";
             // 
             // LValorVentasTot
             // 
@@ -484,16 +494,6 @@
             LRProductos.TabIndex = 5;
             LRProductos.Text = "Ventas:";
             // 
-            // BGeneral
-            // 
-            BGeneral.Location = new Point(679, 257);
-            BGeneral.Name = "BGeneral";
-            BGeneral.Size = new Size(227, 37);
-            BGeneral.TabIndex = 5;
-            BGeneral.Text = "Reporte General";
-            BGeneral.UseVisualStyleBackColor = true;
-            BGeneral.Click += BGeneral_Click;
-            // 
             // FormInformeVendedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -541,7 +541,7 @@
         private Panel panel2;
         private Label LValorVentasTot;
         private Label LTotalVentasTot;
-        private Label label3;
+        private Label LTop;
         private Panel PReporte;
         private Button BReporte;
         private Label LHasta;

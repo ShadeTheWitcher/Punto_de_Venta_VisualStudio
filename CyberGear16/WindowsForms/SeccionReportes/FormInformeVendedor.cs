@@ -17,6 +17,7 @@ namespace CyberGear16
 {
     public partial class FormInformeVendedor : Form
     {
+        private bool filtroFecha = false;
         private readonly BdCybergearContext _context;
         private Usuario usuarioVendedorElegido;
         int idPerfil;
@@ -78,14 +79,23 @@ namespace CyberGear16
             // Obtiene la categoría seleccionada en el ComboBox
             string categoriaSeleccionada = CBCategorias.SelectedItem.ToString();
 
-            // Llama al método para cargar la información según la categoría seleccionada
-            CargarProductosSinFiltro(categoriaSeleccionada);
+            if (filtroFecha == false)
+            {
+                CargarProductosSinFiltro(categoriaSeleccionada);
+
+            }
+            else
+            {
+                BReporte_Click(this, EventArgs.Empty);
+            }
         }
 
         //--------------Productos Con Filtro--------------
 
         private void CargarProductosConFiltroFecha(string categoriaCombo, DateOnly p_fechaDesde, DateOnly p_fechaHasta)
         {
+            filtroFecha = true;
+
             int cantTotalCat = 0;
             int cantTotal = 0;
             using (var contexto = new BdCybergearContext())
@@ -95,7 +105,7 @@ namespace CyberGear16
                 var graficoMasVendidos = contexto.VentasCabeceras
                     .Where(ventaCabecera => ventaCabecera.IdVendedor == usuarioVendedorElegido.Id &&
                     ventaCabecera.Fecha >= p_fechaDesde && ventaCabecera.Fecha <= p_fechaHasta) // Filtra por el Id del cliente
-                    //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
+                                                                                                //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
                     .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
                     .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo)
                     .GroupBy(detalle => detalle.ProductoId)
@@ -175,6 +185,8 @@ namespace CyberGear16
         //--------------Productos Sin Filtro--------------
         private void CargarProductosSinFiltro(string categoriaCombo)
         {
+            LTop.Text = "Top 5 productos más vendidos (General)";
+            filtroFecha = false;
             int cantTotalCat = 0;
             int cantTotal = 0;
             using (var contexto = new BdCybergearContext())
@@ -183,7 +195,7 @@ namespace CyberGear16
                 //Busqueda Gráfico
                 var graficoMasVendidos = contexto.VentasCabeceras
                     .Where(ventaCabecera => ventaCabecera.IdVendedor == usuarioVendedorElegido.Id) // Filtra por el Id del cliente
-                    //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
+                                                                                                   //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
                     .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
                     .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo)
                     .GroupBy(detalle => detalle.ProductoId)
@@ -209,7 +221,7 @@ namespace CyberGear16
                 //Busqueda TotalCategorias
                 var categoriaMasVendidos = contexto.VentasCabeceras
                    .Where(ventaCabecera => ventaCabecera.IdVendedor == usuarioVendedorElegido.Id) // Filtra por el Id del cliente
-                   //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
+                                                                                                  //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
                    .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
                    .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo)
                    .GroupBy(detalle => detalle.ProductoId)
@@ -230,7 +242,7 @@ namespace CyberGear16
                 //Busqueda TotalVentas
                 var cantProductsVendidos = contexto.VentasCabeceras
                     .Where(ventaCabecera => ventaCabecera.IdVendedor == usuarioVendedorElegido.Id) // Filtra por el Id del cliente
-                    //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
+                                                                                                   //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
                     .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
                     .ToList();
 
@@ -261,11 +273,10 @@ namespace CyberGear16
             DateOnly dateOnlyFechaDesde = new DateOnly(dateTimeFechaDesde.Year, dateTimeFechaDesde.Month, dateTimeFechaDesde.Day);
             DateOnly dateOnlyFechaHasta = new DateOnly(dateTimeFechaHasta.Year, dateTimeFechaHasta.Month, dateTimeFechaHasta.Day);
 
+            LTop.Text = "Top 5 productos más vendidos (Filtrado Por Fecha)";
+
             cargarFiltroDataGrid(dateOnlyFechaDesde, dateOnlyFechaHasta);
 
-            string categoriaSeleccionada = CBCategorias.SelectedItem.ToString();
-
-            CargarProductosConFiltroFecha(categoriaSeleccionada, dateOnlyFechaDesde, dateOnlyFechaHasta);
         }
 
         private void cargarFiltroDataGrid(DateOnly p_fechaDesde, DateOnly p_fechaHasta)
@@ -279,7 +290,7 @@ namespace CyberGear16
                                      select new
                                      {
                                          IdVenta = venta.Id,
-                                         ClientenNom = cliente.Nombre + " " + cliente.Apellido,
+                                         ClientesNombreYApellido = cliente.Nombre + " " + cliente.Apellido,
                                          FechaVenta = venta.Fecha,
                                          MontoVenta = venta.TotalVenta
                                      };
@@ -289,10 +300,11 @@ namespace CyberGear16
 
                 if (filtro.Count == 0)
                 {
-                    MessageBox.Show("No se han encontrado ventas en las fechas ingresadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //CargarProductosSinFiltro("VideoJuegos");
-                    CargarDatosEnDataGridView();
+                    string categoriaCombo = CBCategorias.SelectedItem.ToString();
 
+                    MessageBox.Show("No se han encontrado ventas en las fechas ingresadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CargarDatosEnDataGridView();
+                    CargarProductosSinFiltro(categoriaCombo);
                     DTPDesde.Value = DateTime.Now;
                     DTPHasta.Value = DateTime.Now;
                     DTPGDesde.Value = DateTime.Now;
@@ -301,7 +313,8 @@ namespace CyberGear16
                 else
                 {
                     DGVReportes.DataSource = filtro;
-
+                    string categoriaCombo = CBCategorias.SelectedItem.ToString();
+                    CargarProductosConFiltroFecha(categoriaCombo, p_fechaDesde, p_fechaHasta);
                 }
 
             }
@@ -318,7 +331,7 @@ namespace CyberGear16
                              select new
                              {
                                  IdVenta = venta.Id,
-                                 ClientenNom = cliente.Nombre + " " + cliente.Apellido,
+                                 ClientesNombreYApellido = cliente.Nombre + " " + cliente.Apellido,
                                  FechaVenta = venta.Fecha,
                                  MontoVenta = venta.TotalVenta
                              };
@@ -362,8 +375,9 @@ namespace CyberGear16
 
         private void BGeneral_Click(object sender, EventArgs e)
         {
+            string contenidoCombo = CBCategorias.SelectedItem.ToString();
             CargarDatosEnDataGridView();
-            CargarProductosSinFiltro(CBCategorias.SelectedItem.ToString());
+            CargarProductosSinFiltro(contenidoCombo);
         }
         private void label9_Click(object sender, EventArgs e)
         {
@@ -418,6 +432,6 @@ namespace CyberGear16
         {
         }
 
-        
+
     }
 }
