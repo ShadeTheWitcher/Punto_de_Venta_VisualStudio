@@ -17,7 +17,7 @@ namespace CyberGear16
 {
     public partial class FormSeccionVentas : Form
     {
-        public bool cierreCatalogo=false;
+        public bool cierreCatalogo = false;
         private Panel panelCatalogo;
         private List<Product> productosEnCarrito; // Declarar como un campo de clase
 
@@ -325,8 +325,8 @@ namespace CyberGear16
                 carritoLoad = true;
                 dataGridView1.Rows.Clear();
                 loadDataGridCarrito();
-                
-                
+
+
 
             };
         }
@@ -375,7 +375,7 @@ namespace CyberGear16
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+
             vaciarProducto();
             LimpiarCarrito();
 

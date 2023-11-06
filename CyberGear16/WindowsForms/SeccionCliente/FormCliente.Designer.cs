@@ -88,9 +88,9 @@
             PUsuarios.Controls.Add(LApellido);
             PUsuarios.Controls.Add(LNombre);
             PUsuarios.Controls.Add(LUsuarios);
-            PUsuarios.Location = new Point(21, 12);
+            PUsuarios.Location = new Point(20, 12);
             PUsuarios.Name = "PUsuarios";
-            PUsuarios.Size = new Size(982, 325);
+            PUsuarios.Size = new Size(1019, 333);
             PUsuarios.TabIndex = 1;
             // 
             // TNumeroDirec
@@ -308,7 +308,7 @@
             // TBuscar
             // 
             TBuscar.Anchor = AnchorStyles.None;
-            TBuscar.Location = new Point(603, 358);
+            TBuscar.Location = new Point(639, 389);
             TBuscar.Name = "TBuscar";
             TBuscar.Size = new Size(313, 23);
             TBuscar.TabIndex = 8;
@@ -321,10 +321,10 @@
             DGVClientes.Anchor = AnchorStyles.None;
             DGVClientes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DGVClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVClientes.Location = new Point(21, 392);
+            DGVClientes.Location = new Point(21, 430);
             DGVClientes.Name = "DGVClientes";
             DGVClientes.RowTemplate.Height = 25;
-            DGVClientes.Size = new Size(982, 213);
+            DGVClientes.Size = new Size(1019, 248);
             DGVClientes.TabIndex = 5;
             DGVClientes.CellContentClick += DGVClientes_CellContentClick;
             // 
@@ -332,7 +332,7 @@
             // 
             BBorrar.Anchor = AnchorStyles.None;
             BBorrar.Image = (Image)resources.GetObject("BBorrar.Image");
-            BBorrar.Location = new Point(965, 349);
+            BBorrar.Location = new Point(1001, 380);
             BBorrar.Name = "BBorrar";
             BBorrar.Size = new Size(38, 37);
             BBorrar.TabIndex = 32;
@@ -343,7 +343,7 @@
             // 
             BBuscar.Anchor = AnchorStyles.None;
             BBuscar.Image = Properties.Resources.lupa;
-            BBuscar.Location = new Point(921, 349);
+            BBuscar.Location = new Point(957, 380);
             BBuscar.Name = "BBuscar";
             BBuscar.Size = new Size(38, 37);
             BBuscar.TabIndex = 31;
@@ -353,7 +353,7 @@
             // BActivos
             // 
             BActivos.Anchor = AnchorStyles.None;
-            BActivos.Location = new Point(21, 354);
+            BActivos.Location = new Point(20, 384);
             BActivos.Name = "BActivos";
             BActivos.Size = new Size(113, 28);
             BActivos.TabIndex = 6;
@@ -364,7 +364,7 @@
             // BInactivo
             // 
             BInactivo.Anchor = AnchorStyles.None;
-            BInactivo.Location = new Point(159, 354);
+            BInactivo.Location = new Point(158, 384);
             BInactivo.Name = "BInactivo";
             BInactivo.Size = new Size(113, 28);
             BInactivo.TabIndex = 7;
@@ -376,7 +376,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1061, 629);
+            ClientSize = new Size(1061, 705);
             Controls.Add(BBorrar);
             Controls.Add(BBuscar);
             Controls.Add(TBuscar);

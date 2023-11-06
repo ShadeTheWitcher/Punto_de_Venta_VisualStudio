@@ -1,4 +1,4 @@
-﻿ using CyberGear16.Models;
+﻿using CyberGear16.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -533,7 +533,7 @@ namespace CyberGear16
                 else
                 {
                     MessageBox.Show("No hay elementos para buscar. Por favor escriba algo y vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    CargarDatosEnDGVActivos();                
+                    CargarDatosEnDGVActivos();
                 }
             }
         }

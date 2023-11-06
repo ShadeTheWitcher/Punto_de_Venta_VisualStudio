@@ -82,7 +82,7 @@ namespace CyberGear16
             CargarProductosSinFiltro(categoriaSeleccionada);
         }
 
-        //--------------Productos Sin Filtro--------------
+        //--------------Productos Con Filtro--------------
 
         private void CargarProductosConFiltroFecha(string categoriaCombo, DateOnly p_fechaDesde, DateOnly p_fechaHasta)
         {
@@ -112,9 +112,18 @@ namespace CyberGear16
                 CProducts.Series["Series1"].Points.Clear();
 
                 // Agrega los datos al gráfico
-                foreach (var producto in graficoMasVendidos)
+                if (graficoMasVendidos.Count == 0)
                 {
-                    CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
+                    MessageBox.Show("No se han encontrado ventas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CargarProductosSinFiltro(categoriaCombo);
+                }
+                else
+                {
+                    // Agrega los datos al gráfico
+                    foreach (var producto in graficoMasVendidos)
+                    {
+                        CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
+                    }
                 }
                 //-----------------------
 
@@ -239,6 +248,123 @@ namespace CyberGear16
             }
         }
         //------------------------------------------------
+
+        private void BReporte_Click(object sender, EventArgs e)
+        {
+            DateTime dateTimeFechaDesde = DTPDesde.Value;
+            DateTime dateTimeFechaHasta = DTPHasta.Value;
+
+            DTPGDesde.Value = dateTimeFechaDesde;
+            DTPGHasta.Value = dateTimeFechaHasta;
+
+
+            DateOnly dateOnlyFechaDesde = new DateOnly(dateTimeFechaDesde.Year, dateTimeFechaDesde.Month, dateTimeFechaDesde.Day);
+            DateOnly dateOnlyFechaHasta = new DateOnly(dateTimeFechaHasta.Year, dateTimeFechaHasta.Month, dateTimeFechaHasta.Day);
+
+            cargarFiltroDataGrid(dateOnlyFechaDesde, dateOnlyFechaHasta);
+
+            string categoriaSeleccionada = CBCategorias.SelectedItem.ToString();
+
+            CargarProductosConFiltroFecha(categoriaSeleccionada, dateOnlyFechaDesde, dateOnlyFechaHasta);
+        }
+
+        private void cargarFiltroDataGrid(DateOnly p_fechaDesde, DateOnly p_fechaHasta)
+        {
+            using (var contexto = new BdCybergearContext())
+            {
+                var datosFiltrados = from venta in contexto.VentasCabeceras
+                                     join cliente in contexto.Clientes on venta.IdCliente equals cliente.IdCliente
+                                     join usuario in contexto.Usuarios on venta.IdVendedor equals usuario.Id
+                                     where usuario.Id == usuarioVendedorElegido.Id
+                                     select new
+                                     {
+                                         IdVenta = venta.Id,
+                                         ClientenNom = cliente.Nombre + " " + cliente.Apellido,
+                                         FechaVenta = venta.Fecha,
+                                         MontoVenta = venta.TotalVenta
+                                     };
+
+                //// Asigna los productos a la fuente de datos del DataGridView
+                var filtro = datosFiltrados.Where(e => e.FechaVenta >= p_fechaDesde && e.FechaVenta <= p_fechaHasta).ToList();
+
+                if (filtro.Count == 0)
+                {
+                    MessageBox.Show("No se han encontrado ventas en las fechas ingresadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //CargarProductosSinFiltro("VideoJuegos");
+                    CargarDatosEnDataGridView();
+
+                    DTPDesde.Value = DateTime.Now;
+                    DTPHasta.Value = DateTime.Now;
+                    DTPGDesde.Value = DateTime.Now;
+                    DTPGHasta.Value = DateTime.Now;
+                }
+                else
+                {
+                    DGVReportes.DataSource = filtro;
+
+                }
+
+            }
+        }
+
+        private void CargarDatosEnDataGridView()
+        {
+            using (var context = new BdCybergearContext()) // se lo engloba en un using para q se cierre la conexion
+            {
+                var ventas = from venta in context.VentasCabeceras
+                             join cliente in context.Clientes on venta.IdCliente equals cliente.IdCliente
+                             join usuario in context.Usuarios on venta.IdVendedor equals usuario.Id
+                             where usuario.Id == usuarioVendedorElegido.Id
+                             select new
+                             {
+                                 IdVenta = venta.Id,
+                                 ClientenNom = cliente.Nombre + " " + cliente.Apellido,
+                                 FechaVenta = venta.Fecha,
+                                 MontoVenta = venta.TotalVenta
+                             };
+
+                //// Asigna los productos a la fuente de datos del DataGridView
+                DGVReportes.DataSource = ventas.ToList();
+            }
+        }
+
+        private void DGVReportes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == DGVReportes.Columns["Acciones"].Index)
+            {
+                using (var contexto = new BdCybergearContext())
+                {
+                    // Obtén la venta seleccionada
+                    DataGridViewRow row = DGVReportes.Rows[e.RowIndex];
+                    int ventaId = Convert.ToInt32(row.Cells["IdVenta"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
+
+                    VentasCabecera ventaSeleccionada = contexto.VentasCabeceras.FirstOrDefault(p => p.Id == ventaId);
+
+                    Cliente clienteVenta = contexto.Clientes.FirstOrDefault(p => p.IdCliente == ventaSeleccionada.IdCliente);
+
+
+
+                    FormFactura facturaForm = new FormFactura();
+
+                    facturaForm.IdVenta = ventaSeleccionada.Id; // Puedes agregar más información según tus necesidades
+                    facturaForm.FechaVenta = ventaSeleccionada.Fecha;
+                    facturaForm.ClienteNombre = clienteVenta.Nombre; // Suponiendo que cliente tiene una propiedad "Nombre"
+                    facturaForm.Apellido = clienteVenta.Apellido;
+                    facturaForm.dniCliente = clienteVenta.Dni;
+
+                    // Muestra el formulario de la factura
+                    facturaForm.Show();
+
+
+                }
+            }
+        }
+
+        private void BGeneral_Click(object sender, EventArgs e)
+        {
+            CargarDatosEnDataGridView();
+            CargarProductosSinFiltro(CBCategorias.SelectedItem.ToString());
+        }
         private void label9_Click(object sender, EventArgs e)
         {
 
@@ -292,123 +418,6 @@ namespace CyberGear16
         {
         }
 
-        private void BReporte_Click(object sender, EventArgs e)
-        {
-            DateTime dateTimeFechaDesde = DTPDesde.Value;
-            DateTime dateTimeFechaHasta = DTPHasta.Value;
-
-            DTPGDesde.Value = dateTimeFechaDesde;
-            DTPGHasta.Value = dateTimeFechaHasta;
-
-
-            DateOnly dateOnlyFechaDesde = new DateOnly(dateTimeFechaDesde.Year, dateTimeFechaDesde.Month, dateTimeFechaDesde.Day);
-            DateOnly dateOnlyFechaHasta = new DateOnly(dateTimeFechaHasta.Year, dateTimeFechaHasta.Month, dateTimeFechaHasta.Day);
-
-            cargarFiltroDataGrid(dateOnlyFechaDesde, dateOnlyFechaHasta);
-
-            string categoriaSeleccionada = CBCategorias.SelectedItem.ToString();
-
-            CargarProductosConFiltroFecha(categoriaSeleccionada, dateOnlyFechaDesde, dateOnlyFechaHasta);
-        }
-
-        private void cargarFiltroDataGrid(DateOnly p_fechaDesde, DateOnly p_fechaHasta)
-        {
-            using (var contexto = new BdCybergearContext())
-            {
-                var datosFiltrados = from venta in contexto.VentasCabeceras
-                                     join cliente in contexto.Clientes on venta.IdCliente equals cliente.IdCliente
-                                     join usuario in contexto.Usuarios on venta.IdVendedor equals usuario.Id
-                                     where usuario.Id == usuarioVendedorElegido.Id
-                                     select new
-                                     {
-                                         IdVenta = venta.Id,
-                                         ClientenNom = cliente.Nombre + " " + cliente.Apellido,
-                                         VendedorNombre = usuario.Nombre + " " + usuario.Apellido,
-                                         FechaVenta = venta.Fecha,
-                                         MontoVenta = venta.TotalVenta
-                                     };
-
-                //// Asigna los productos a la fuente de datos del DataGridView
-                var filtro = datosFiltrados.Where(e => e.FechaVenta >= p_fechaDesde && e.FechaVenta <= p_fechaHasta).ToList();
-
-                if (filtro.Count == 0)
-                {
-                    MessageBox.Show("No se han encontrado ventas en las fechas ingresadas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //CargarProductosSinFiltro("VideoJuegos");
-                    CargarDatosEnDataGridView();
-                    
-                    DTPDesde.Value = DateTime.Now;
-                    DTPHasta.Value = DateTime.Now;
-                    DTPGDesde.Value = DateTime.Now;
-                    DTPGHasta.Value = DateTime.Now;
-                }
-                else
-                {
-                    DGVReportes.DataSource = filtro;
-
-                }
-
-            }
-        }
-
-        private void CargarDatosEnDataGridView()
-        {
-            using (var context = new BdCybergearContext()) // se lo engloba en un using para q se cierre la conexion
-            {
-                var ventas = from venta in context.VentasCabeceras
-                             join cliente in context.Clientes on venta.IdCliente equals cliente.IdCliente
-                             join usuario in context.Usuarios on venta.IdVendedor equals usuario.Id
-                             where usuario.Id == usuarioVendedorElegido.Id
-                             select new
-                             {
-                                 IdVenta = venta.Id,
-                                 ClientenNom = cliente.Nombre + " " + cliente.Apellido,
-                                 VendedorNombre = usuario.Nombre + " " + usuario.Apellido,
-                                 FechaVenta = venta.Fecha,
-                                 MontoVenta = venta.TotalVenta
-                             };
-
-                //// Asigna los productos a la fuente de datos del DataGridView
-                DGVReportes.DataSource = ventas.ToList();
-            }
-        }
-
-        private void DGVReportes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == DGVReportes.Columns["Acciones"].Index)
-            {
-                using (var contexto = new BdCybergearContext())
-                {
-                    // Obtén la venta seleccionada
-                    DataGridViewRow row = DGVReportes.Rows[e.RowIndex];
-                    int ventaId = Convert.ToInt32(row.Cells["IdVenta"].Value); // Asegúrate de tener una columna "IdProducto" para identificar el producto
-
-                    VentasCabecera ventaSeleccionada = contexto.VentasCabeceras.FirstOrDefault(p => p.Id == ventaId);
-
-                    Cliente clienteVenta = contexto.Clientes.FirstOrDefault(p => p.IdCliente == ventaSeleccionada.IdCliente);
-
-
-
-                    FormFactura facturaForm = new FormFactura();
-
-                    facturaForm.IdVenta = ventaSeleccionada.Id; // Puedes agregar más información según tus necesidades
-                    facturaForm.FechaVenta = ventaSeleccionada.Fecha;
-                    facturaForm.ClienteNombre = clienteVenta.Nombre; // Suponiendo que cliente tiene una propiedad "Nombre"
-                    facturaForm.Apellido = clienteVenta.Apellido;
-                    facturaForm.dniCliente = clienteVenta.Dni;
-
-                    // Muestra el formulario de la factura
-                    facturaForm.Show();
-                    
-
-                }
-            }
-        }
-
-        private void BGeneral_Click(object sender, EventArgs e)
-        {
-            CargarDatosEnDataGridView();
-            CargarProductosSinFiltro(CBCategorias.SelectedItem.ToString());
-        }
+        
     }
 }
