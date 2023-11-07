@@ -38,9 +38,14 @@
             label2 = new Label();
             label1 = new Label();
             pictureBox2 = new PictureBox();
+            bManual = new PictureBox();
+            panelManual = new Panel();
+            CerrarManual = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bManual).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)CerrarManual).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -147,13 +152,54 @@
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
+            // bManual
+            // 
+            bManual.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            bManual.BackColor = Color.Transparent;
+            bManual.Cursor = Cursors.Hand;
+            bManual.Image = (Image)resources.GetObject("bManual.Image");
+            bManual.Location = new Point(12, 664);
+            bManual.Name = "bManual";
+            bManual.Size = new Size(71, 73);
+            bManual.SizeMode = PictureBoxSizeMode.StretchImage;
+            bManual.TabIndex = 2;
+            bManual.TabStop = false;
+            bManual.Click += pictureBox3_Click;
+            // 
+            // panelManual
+            // 
+            panelManual.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            panelManual.Location = new Point(119, 1);
+            panelManual.Name = "panelManual";
+            panelManual.Size = new Size(1052, 748);
+            panelManual.TabIndex = 3;
+            panelManual.Visible = false;
+            // 
+            // CerrarManual
+            // 
+            CerrarManual.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            CerrarManual.BackColor = Color.Transparent;
+            CerrarManual.Image = (Image)resources.GetObject("CerrarManual.Image");
+            CerrarManual.Location = new Point(12, 568);
+            CerrarManual.Name = "CerrarManual";
+            CerrarManual.Size = new Size(71, 68);
+            CerrarManual.SizeMode = PictureBoxSizeMode.StretchImage;
+            CerrarManual.TabIndex = 4;
+            CerrarManual.TabStop = false;
+            CerrarManual.Visible = false;
+            CerrarManual.Click += pictureBox3_Click_1;
+            // 
             // formLogin
             // 
             AcceptButton = button1;
             AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.White;
             BackgroundImage = Properties.Resources._1092728;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1364, 749);
+            Controls.Add(CerrarManual);
+            Controls.Add(panelManual);
+            Controls.Add(bManual);
             Controls.Add(pictureBox2);
             Controls.Add(panel1);
             DoubleBuffered = true;
@@ -164,10 +210,13 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inicio Sesión";
             WindowState = FormWindowState.Maximized;
+            Load += formLogin_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bManual).EndInit();
+            ((System.ComponentModel.ISupportInitialize)CerrarManual).EndInit();
             ResumeLayout(false);
         }
 
@@ -182,5 +231,8 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private Button BOcultar;
+        private PictureBox bManual;
+        private Panel panelManual;
+        private PictureBox CerrarManual;
     }
 }

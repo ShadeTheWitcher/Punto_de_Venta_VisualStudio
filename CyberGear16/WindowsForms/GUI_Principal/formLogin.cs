@@ -12,6 +12,9 @@ using static System.Windows.Forms.DataFormats;
 using MySqlConnector;
 using Microsoft.EntityFrameworkCore;
 using CyberGear16.Models;
+using System.Diagnostics;
+using PdfiumViewer;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CyberGear16
 {
@@ -107,6 +110,75 @@ namespace CyberGear16
                 // Ocultar la contraseña
                 textBox2.PasswordChar = '*'; // Carácter de contraseña
             }
+        }
+
+        private void formLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+        private PdfViewer pdfViewer;
+
+
+
+
+
+
+        private void MostrarManualPDF()
+        {
+
+        }
+
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            int numeroPagina = 3;
+            CerrarManual.Visible = true;
+            panelManual.Visible = true;
+            // Nombre del archivo del manual PDF
+            string nombreManualPDF = "manual.pdf";
+
+            // Obtiene la ruta del directorio de inicio de la aplicación
+            string directorioBase = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Combina la ruta base con el nombre del manual PDF
+            string rutaManualPDF = Path.Combine(directorioBase, nombreManualPDF);
+
+            // Verifica si el archivo existe
+            if (File.Exists(rutaManualPDF))
+            {
+                // Crea la URL del archivo local
+                string urlArchivoLocal = new Uri(rutaManualPDF).AbsoluteUri;
+
+                // Agrega el número de página como fragmento a la URL
+                string urlConPagina = urlArchivoLocal + "#page=" + numeroPagina;
+
+                // Crea una instancia de WebBrowser
+                WebBrowser webBrowser = new WebBrowser();
+                webBrowser.Dock = DockStyle.Fill;
+
+                // Agrega el control WebBrowser al panel
+                panelManual.Controls.Add(webBrowser);
+
+                // Carga la URL con el fragmento de la página en el control WebBrowser
+                webBrowser.Navigate(urlConPagina);
+            }
+            else
+            {
+                // El archivo no existe, muestra un mensaje de error
+                MessageBox.Show("El manual no se encuentra en la ubicación especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pictureBox3_Click_1(object sender, EventArgs e)
+        {
+            panelManual.Visible = false;
+            //panelManual.Enabled = false;
+            CerrarManual.Visible = false;
         }
     }
 }
