@@ -97,7 +97,7 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(textBox2);
             panel1.Controls.Add(textBox1);
-            panel1.Location = new Point(92, 30);
+            panel1.Location = new Point(104, 36);
             panel1.Name = "panel1";
             panel1.Size = new Size(371, 143);
             panel1.TabIndex = 0;
@@ -184,7 +184,7 @@
             panel2.Controls.Add(button3);
             panel2.Controls.Add(textBox3);
             panel2.Controls.Add(textBox4);
-            panel2.Location = new Point(504, 33);
+            panel2.Location = new Point(505, 39);
             panel2.Name = "panel2";
             panel2.Size = new Size(433, 140);
             panel2.TabIndex = 1;
@@ -277,7 +277,7 @@
             panel3.BorderStyle = BorderStyle.FixedSingle;
             panel3.Controls.Add(button4);
             panel3.Controls.Add(label6);
-            panel3.Location = new Point(92, 189);
+            panel3.Location = new Point(104, 195);
             panel3.Name = "panel3";
             panel3.Size = new Size(371, 118);
             panel3.TabIndex = 2;
@@ -359,7 +359,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(92, 370);
+            dataGridView1.Location = new Point(104, 376);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect;
@@ -438,7 +438,7 @@
             // 
             textBox9.Anchor = AnchorStyles.None;
             textBox9.Enabled = false;
-            textBox9.Location = new Point(851, 624);
+            textBox9.Location = new Point(863, 630);
             textBox9.Name = "textBox9";
             textBox9.ReadOnly = true;
             textBox9.Size = new Size(86, 23);
@@ -453,7 +453,7 @@
             label16.BackColor = Color.FromArgb(26, 32, 40);
             label16.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             label16.ForeColor = Color.White;
-            label16.Location = new Point(754, 627);
+            label16.Location = new Point(766, 633);
             label16.Name = "label16";
             label16.Size = new Size(81, 17);
             label16.TabIndex = 10;
@@ -477,7 +477,7 @@
             label5.BackColor = Color.FromArgb(26, 32, 40);
             label5.Font = new Font("Sylfaen", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(118, 324);
+            label5.Location = new Point(130, 330);
             label5.Name = "label5";
             label5.Size = new Size(206, 27);
             label5.TabIndex = 11;
@@ -485,6 +485,7 @@
             // 
             // panel6
             // 
+            panel6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             panel6.BackColor = Color.FromArgb(26, 32, 40);
             panel6.Controls.Add(label16);
             panel6.Controls.Add(panel5);
@@ -495,13 +496,14 @@
             panel6.Controls.Add(panel1);
             panel6.Controls.Add(panel2);
             panel6.Controls.Add(panel3);
-            panel6.Location = new Point(14, 12);
+            panel6.Location = new Point(12, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1030, 693);
+            panel6.Size = new Size(1055, 705);
             panel6.TabIndex = 12;
             // 
             // panel5
             // 
+            panel5.Anchor = AnchorStyles.None;
             panel5.BackColor = Color.SteelBlue;
             panel5.Controls.Add(label4);
             panel5.Controls.Add(dateTimePicker1);
@@ -509,6 +511,7 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(207, 120);
             panel5.TabIndex = 16;
+            panel5.Visible = false;
             // 
             // label4
             // 
@@ -523,6 +526,7 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Enabled = false;
             dateTimePicker1.Format = DateTimePickerFormat.Short;
             dateTimePicker1.Location = new Point(51, 52);
             dateTimePicker1.Name = "dateTimePicker1";
@@ -531,6 +535,7 @@
             // 
             // panel7
             // 
+            panel7.Anchor = AnchorStyles.None;
             panel7.BackColor = Color.SteelBlue;
             panel7.Controls.Add(comboBox2);
             panel7.Controls.Add(label13);
@@ -539,6 +544,7 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(206, 118);
             panel7.TabIndex = 15;
+            panel7.Visible = false;
             // 
             // comboBox2
             // 

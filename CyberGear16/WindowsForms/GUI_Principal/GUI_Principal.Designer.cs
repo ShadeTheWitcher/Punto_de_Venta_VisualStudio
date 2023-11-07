@@ -40,6 +40,7 @@
             btnMin = new PictureBox();
             btnSalir = new PictureBox();
             panel2 = new Panel();
+            pictureBox2 = new PictureBox();
             panelSubMenuReportes = new Panel();
             panel9 = new Panel();
             btnReportVendedor = new Button();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)btnMin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnSalir).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panelSubMenuReportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnCerrarSesion).BeginInit();
             ((System.ComponentModel.ISupportInitialize)botonSalir).BeginInit();
@@ -229,6 +231,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(26, 32, 40);
+            panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(panelSubMenuReportes);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(panel7);
@@ -254,6 +257,18 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(294, 704);
             panel2.TabIndex = 1;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
+            pictureBox2.Location = new Point(4, 575);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(76, 41);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox2.TabIndex = 19;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // panelSubMenuReportes
             // 
@@ -535,6 +550,7 @@
             ((System.ComponentModel.ISupportInitialize)btnSalir).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panelSubMenuReportes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)btnCerrarSesion).EndInit();
             ((System.ComponentModel.ISupportInitialize)botonSalir).EndInit();
@@ -575,5 +591,6 @@
         private Button btnReportClient;
         private Panel panel9;
         private Button btnReportVendedor;
+        private PictureBox pictureBox2;
     }
 }

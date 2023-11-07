@@ -7,12 +7,13 @@ using MySqlConnector;
 using CyberGear16.Models;
 using CyberGear16.WindowsForms.Seccion_Catalogo;
 using CyberGear16.WindowsForms.SeccionReportes;
+using CyberGear16.WindowsForms.Manual;
 
 namespace CyberGear16
 {
     public partial class GUI_Principal : Form
     {
-
+        int pagManual;
         int perfil_idUsuario;
         string nombreUser;
         string usuario;
@@ -113,7 +114,7 @@ namespace CyberGear16
             btnRestaurar.Visible = true;
         }
 
-        private void btnRestaurar_Click(object sender, EventArgs e)
+        public void btnRestaurar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
             btnRestaurar.Visible = false;
@@ -128,7 +129,7 @@ namespace CyberGear16
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new adminUsers(_context));
+            abrirSectorUsuarios();
         }
 
 
@@ -185,7 +186,7 @@ namespace CyberGear16
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new formProductos(_context));
+            abrirSectorProductos();
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
@@ -220,17 +221,18 @@ namespace CyberGear16
 
         private void btnBackUp_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormBackUp(_context, usuario));
+            abrirSectorBackup();
         }
+
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormSeccionVentas(_context, dniUsuario));
+            abrirSectorVentas();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            AbrirFormHija(new FormClientes(_context));
+            abrirSectorClientes();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -243,25 +245,70 @@ namespace CyberGear16
             }
             else if (perfil_idUsuario == 2)
             {
-                AbrirFormHija(new FormReporteSuper());
+                abrirReportSuper();
                 //panelSubMenuReportes.Visible = true;
 
             }
             else
             {
-                using (var contexto = new BdCybergearContext()) {
-                    Usuario usuarioVendedor = contexto.Usuarios
-                    .Where(usuario => usuario.Id == id_Usuario)
-                    .FirstOrDefault();
-
-                    AbrirFormHija(new FormInformeVendedor(perfil_idUsuario, usuarioVendedor, contexto));
-
-                }
+                abrirReporteVendedor();
 
                 //AbrirFormHija(new FormReporteVendedor(perfil_idUsuario, dniUsuario));
             }
-
         }
+
+
+        public void abrirSectorBackup()
+        {
+            pagManual = 10;
+            AbrirFormHija(new FormBackUp(_context, usuario));
+        }
+
+        public void abrirSectorVentas()
+        {
+            pagManual = 7;
+            AbrirFormHija(new FormSeccionVentas(_context, dniUsuario));
+        }
+
+        public void abrirSectorClientes()
+        {
+            pagManual = 9;
+            AbrirFormHija(new FormClientes(_context));
+        }
+
+        public void abrirSectorProductos()
+        {
+            pagManual = 5;
+            AbrirFormHija(new formProductos(_context));
+        }
+
+        public void abrirSectorUsuarios()
+        {
+            pagManual = 7;
+            AbrirFormHija(new adminUsers(_context));
+        }
+
+        public void abrirReportSuper()
+        {
+            pagManual = 11;
+            AbrirFormHija(new FormReporteSuper());
+        }
+
+        public void abrirReporteVendedor()
+        {
+            pagManual = 11;
+            using (var contexto = new BdCybergearContext())
+            {
+                Usuario usuarioVendedor = contexto.Usuarios
+                .Where(usuario => usuario.Id == id_Usuario)
+                .FirstOrDefault();
+
+                AbrirFormHija(new FormInformeVendedor(perfil_idUsuario, usuarioVendedor, contexto));
+
+            }
+        }
+
+
 
         private void panelContenedor_Paint(object sender, PaintEventArgs e)
         {
@@ -295,21 +342,42 @@ namespace CyberGear16
 
         private void btnReportClient_Click(object sender, EventArgs e)
         {
+            abrirReporteCliente();
+        }
+
+        public void abrirReporteCliente()
+        {
+            pagManual = 11;
+
             string tipoReporte = "Cliente";
             panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
             AbrirFormHija(new FormReporteSubMenu(perfil_idUsuario, tipoReporte));
         }
 
+
+
         private void btnReportVendedor_Click(object sender, EventArgs e)
         {
+            abrirReporteVendedores();
+        }
+
+        public void abrirReporteVendedores()
+        {
+            pagManual = 9;
             string tipoReporte = "Vendedor";
             panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
             AbrirFormHija(new FormReporteSubMenu(perfil_idUsuario, tipoReporte));
         }
 
+
         private void panelSubMenuReportes_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new formManual(pagManual));
         }
     }
 }
