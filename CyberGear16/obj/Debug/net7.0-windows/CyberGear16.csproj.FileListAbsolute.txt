@@ -349,3 +349,4 @@ E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\PdfiumViewer.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\nl\PdfiumViewer.resources.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.WindowsForms.Manual.formManual.resources
+E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.WindowsForms.SeccionBackUp.FormEspera.resources

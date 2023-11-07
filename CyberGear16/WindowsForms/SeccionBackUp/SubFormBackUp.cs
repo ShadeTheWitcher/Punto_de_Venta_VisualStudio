@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using CyberGear16.WindowsForms.SeccionBackUp;
 
 namespace CyberGear16
 {
@@ -42,48 +43,71 @@ namespace CyberGear16
 
         private void btnRestaurarBase_Click(object sender, EventArgs e)
         {
+            // Confirmar con el usuario antes de proceder con la restauración
+            DialogResult result = MessageBox.Show("¿Estás seguro de que deseas restaurar la base de datos? Esto sobrescribirá los datos actuales.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-
-
-            try
+            if (result == DialogResult.Yes)
             {
-                // Verificar si se ha seleccionado un archivo
-                if (string.IsNullOrEmpty(selectedFilePath))
+                // Muestra el cuadro de diálogo de "Cargando"
+                var loadingForm = new FormEspera(); // Reemplaza con el nombre de tu formulario de "Cargando"
+                loadingForm.Shown += async (senderForm, eForm) =>
                 {
-                    MessageBox.Show("Por favor, selecciona un archivo de respaldo antes de restaurar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-                // Confirmar con el usuario antes de proceder con la restauración
-                DialogResult result = MessageBox.Show("¿Estás seguro de que deseas restaurar la base de datos? Esto sobrescribirá los datos actuales.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result == DialogResult.Yes)
-                {
-                    string connectionString = ConfigurationManager.ConnectionStrings["MiConexionMySQL"].ConnectionString;
-
-                    using (MySqlConnection conn = new MySqlConnection(connectionString))
+                    await Task.Run(() =>
                     {
-                        conn.Open();
-
-                        using (MySqlCommand cmd = new MySqlCommand())
+                        try
                         {
-                            cmd.Connection = conn;
-
-                            using (MySqlBackup mb = new MySqlBackup(cmd))
+                            // Verificar si se ha seleccionado un archivo
+                            if (string.IsNullOrEmpty(selectedFilePath))
                             {
-                                mb.ImportFromFile(selectedFilePath);
+                                loadingForm.Invoke((Action)(() => loadingForm.Close())); // Cierra el cuadro de diálogo de "Cargando"
+                                MessageBox.Show("Por favor, selecciona un archivo de respaldo antes de restaurar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+
+                            string connectionString = ConfigurationManager.ConnectionStrings["MiConexionMySQL"].ConnectionString;
+
+                            using (MySqlConnection conn = new MySqlConnection(connectionString))
+                            {
+                                conn.Open();
+
+                                using (MySqlCommand cmd = new MySqlCommand())
+                                {
+                                    cmd.Connection = conn;
+
+                                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                                    {
+                                        mb.ImportFromFile(selectedFilePath);
+                                    }
+                                }
+
+                                loadingForm.Invoke((Action)(() => loadingForm.Close())); // Cierra el cuadro de diálogo de "Cargando"
+                                MessageBox.Show("Restauración exitosa.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
+                        catch (Exception ex)
+                        {
+                            loadingForm.Invoke((Action)(() => loadingForm.Close())); // Cierra el cuadro de diálogo de "Cargando"
+                            MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    });
+                };
 
-                        MessageBox.Show("Restauración exitosa.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                loadingForm.ShowDialog();
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

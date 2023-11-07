@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
+using CyberGear16.WindowsForms.SeccionBackUp;
 
 namespace CyberGear16
 {
@@ -46,57 +47,50 @@ namespace CyberGear16
 
         private void btnRespaldar_Click(object sender, EventArgs e)
         {
-            try
+
+            // Muestra el cuadro de diálogo de "Cargando"
+            var loadingForm = new FormEspera(); // Reemplaza con el nombre de tu formulario de "Cargando"
+            loadingForm.Shown += async (senderForm, eForm) =>
             {
+                // Este código se ejecutará después de que se muestre el formulario de "Cargando"
 
-
-
-
-
-                // Verificar si se ha seleccionado una carpeta
-                if (string.IsNullOrEmpty(selectedFolderPath))
+                await Task.Run(() =>
                 {
-                    MessageBox.Show("Por favor, selecciona una carpeta antes de respaldar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;  // Salir del método si no hay una carpeta seleccionada
-                }
-
-                // Nombre del archivo de respaldo
-                string backupFileName = $"backup_{DateTime.Now:yyyy-MM-dd_HHmmss}.sql";
-
-                // Ruta completa al archivo de respaldo
-                string backupFilePath = Path.Combine(selectedFolderPath, backupFileName);
-
-                // Cadena de conexión para el respaldo
-                string connectionString = ConfigurationManager.ConnectionStrings["MiConexionMySQL"].ConnectionString; // Reemplaza con tu propia cadena de conexión
-
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open(); // Abre la conexión aquí
-
-                    // Ahora creamos un comando y le asignamos la conexión
-                    using (MySqlCommand cmd = conn.CreateCommand())
+                    try
                     {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        // Tu código de respaldo aquí
+
+                        // Nombre del archivo de respaldo
+                        string backupFileName = $"backup_{DateTime.Now:yyyy-MM-dd_HHmmss}.sql";
+                        string backupFilePath = Path.Combine(selectedFolderPath, backupFileName);
+                        string connectionString = ConfigurationManager.ConnectionStrings["MiConexionMySQL"].ConnectionString;
+
+                        using (MySqlConnection conn = new MySqlConnection(connectionString))
                         {
-                            // No se necesita abrir la conexión aquí, ya que se abre arriba
-
-                            mb.ExportToFile(backupFilePath);
+                            conn.Open();
+                            using (MySqlCommand cmd = conn.CreateCommand())
+                            {
+                                using (MySqlBackup mb = new MySqlBackup(cmd))
+                                {
+                                    mb.ExportToFile(backupFilePath);
+                                }
+                            }
                         }
+
+                        loadingForm.Invoke((Action)(() => loadingForm.Close())); // Cierra el cuadro de diálogo de "Cargando"
+
+                        MessageBox.Show($"Respaldo exitoso en: {backupFilePath}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    catch (Exception ex)
+                    {
+                        loadingForm.Invoke((Action)(() => loadingForm.Close())); // Cierra el cuadro de diálogo de "Cargando"
 
-                    MessageBox.Show($"Respaldo exitoso en: {backupFilePath}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Error durante el respaldo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                });
+            };
 
-                    
-                }
-
-
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            loadingForm.ShowDialog();
 
         }
 

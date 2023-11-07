@@ -4,6 +4,9 @@
     <Compile Update="WindowsForms\Manual\formManual.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="WindowsForms\SeccionBackUp\FormEspera.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="WindowsForms\SeccionCliente\FormEditorCliente.cs">
       <SubType>Form</SubType>
     </Compile>
