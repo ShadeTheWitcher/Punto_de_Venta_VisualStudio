@@ -258,21 +258,17 @@ namespace CyberGear16
         }
 
 
-        public void abrirSectorBackup()
-        {
-            pagManual = 10;
-            AbrirFormHija(new FormBackUp(_context, usuario));
-        }
+        
 
         public void abrirSectorVentas()
         {
-            pagManual = 7;
+            pagManual = 11;
             AbrirFormHija(new FormSeccionVentas(_context, dniUsuario));
         }
 
         public void abrirSectorClientes()
         {
-            pagManual = 9;
+            pagManual = 13;
             AbrirFormHija(new FormClientes(_context));
         }
 
@@ -288,15 +284,11 @@ namespace CyberGear16
             AbrirFormHija(new adminUsers(_context));
         }
 
-        public void abrirReportSuper()
-        {
-            pagManual = 11;
-            AbrirFormHija(new FormReporteSuper());
-        }
+        
 
         public void abrirReporteVendedor()
         {
-            pagManual = 11;
+            pagManual = 14;
             using (var contexto = new BdCybergearContext())
             {
                 Usuario usuarioVendedor = contexto.Usuarios
@@ -308,6 +300,16 @@ namespace CyberGear16
             }
         }
 
+        public void abrirSectorBackup()
+        {
+            pagManual = 15;
+            AbrirFormHija(new FormBackUp(_context, usuario));
+        }
+        public void abrirReportSuper()
+        {
+            pagManual = 17;
+            AbrirFormHija(new FormReporteSuper());
+        }
 
 
         private void panelContenedor_Paint(object sender, PaintEventArgs e)
@@ -342,12 +344,13 @@ namespace CyberGear16
 
         private void btnReportClient_Click(object sender, EventArgs e)
         {
+            pagManual = 9;
             abrirReporteCliente();
         }
 
         public void abrirReporteCliente()
         {
-            pagManual = 11;
+            pagManual = 9;
 
             string tipoReporte = "Cliente";
             panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
@@ -358,12 +361,13 @@ namespace CyberGear16
 
         private void btnReportVendedor_Click(object sender, EventArgs e)
         {
+            
             abrirReporteVendedores();
         }
 
         public void abrirReporteVendedores()
         {
-            pagManual = 9;
+            pagManual = 10;
             string tipoReporte = "Vendedor";
             panelSubMenuReportes.Visible = false; //desaparece el submenu despues de dar click
             AbrirFormHija(new FormReporteSubMenu(perfil_idUsuario, tipoReporte));

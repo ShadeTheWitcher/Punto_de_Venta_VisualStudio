@@ -91,6 +91,11 @@ namespace CyberGear16.WindowsForms.Manual
                 
                 if (numeroPagina == 9)
                 {
+                    guiPrincipal.abrirReporteCliente();
+                }
+
+                if (numeroPagina == 10)
+                {
                     guiPrincipal.abrirReporteVendedores();
                 }
 
