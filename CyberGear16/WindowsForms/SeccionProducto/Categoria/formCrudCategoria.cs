@@ -36,7 +36,7 @@ namespace CyberGear16.WindowsForms.SeccionProducto.Categoria
                         Categorium nuevaCategoria = new Categorium
                         {
                             CategoriaNombre = nombre,
-
+                            Activo = "SI" // Asigna el valor por defecto "SI"
                         };
 
                         // Agrega el producto al contexto.
@@ -53,7 +53,13 @@ namespace CyberGear16.WindowsForms.SeccionProducto.Categoria
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al agregar el categoria: " + ex.Message);
+                    // Muestra el mensaje de la excepción y, si existe, el mensaje de la excepción interna
+                    string errorMessage = "Error al agregar el producto: " + ex.Message;
+                    if (ex.InnerException != null)
+                    {
+                        errorMessage += "\nInner Exception: " + ex.InnerException.Message;
+                    }
+                    MessageBox.Show(errorMessage);
                 }
             }
             else
