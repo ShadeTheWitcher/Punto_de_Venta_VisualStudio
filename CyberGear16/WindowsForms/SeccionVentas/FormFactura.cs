@@ -9,12 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.EntityFrameworkCore;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Reflection.Metadata;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
+using iText.Kernel.Pdf.Xobject;
+using iText.Kernel.Geom;
+using System.IO;
+using iText.Commons.Actions;
+using iText.Layout.Properties;
+using iText.IO.Image;
 
 
 namespace CyberGear16.WindowsForms.SeccionVentas
@@ -154,66 +157,228 @@ namespace CyberGear16.WindowsForms.SeccionVentas
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
+
+        
+
+
+
+        MemoryStream memoryStream;
         private void button1_Click(object sender, EventArgs e)
         {
-            // Obtén la ruta del directorio del programa y crea una carpeta "Facturas"
-            string rutaFacturas = Path.Combine(Application.StartupPath, "Facturas");
+            generarPDFprueba1();
 
-            // Si la carpeta no existe, créala
+        }
+
+        void generarPDFprueba1() //funciona con itex7 y bouncy adapter
+        {
+            string rutaFacturas = System.IO.Path.Combine(Application.StartupPath, "Facturas");
+
             if (!Directory.Exists(rutaFacturas))
             {
                 Directory.CreateDirectory(rutaFacturas);
             }
 
-            // Crea un documento PDF en la carpeta "Facturas"
-            string rutaPDF = Path.Combine(rutaFacturas, $"Factura_{IdVenta}.pdf");
+            string rutaPDF = System.IO.Path.Combine(rutaFacturas, $"Factura_{IdVenta}.pdf");
 
-            using (var writer = new PdfWriter(rutaPDF))
-            {
-                using (var pdf = new PdfDocument(writer))
-                {
-                    var document = new iText.Layout.Document(pdf);
-                    try
-                    {
+            MemoryStream memoryStream = new MemoryStream();
 
-                        // Agregar contenido al PDF
-                        AgregarContenidoPDF(document);
-
-                        MessageBox.Show($"PDF generado exitosamente. Guardado en: {rutaPDF}", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    finally
-                    {
-                        document.Close();
-                    }
+            PdfDocument pdf = new PdfDocument(new PdfWriter(memoryStream));
 
 
+            
+            Document document = new Document(pdf);
+            Div header = new Div();
+                
 
-                }
-            }
+            header.Add(new Paragraph($"Factura #{IdVenta} - Fecha: {FechaVenta.ToString("yyyy-MM-dd")}").SetFontSize(20)  );
 
-        }
+            // Cliente
+            Div cliente = new Div();
 
-        private void AgregarContenidoPDF(iText.Layout.Document document)
-        {
-            // Agregar información del encabezado
-            document.Add(new Paragraph($"Factura #{IdVenta} - Fecha: {FechaVenta.ToString("yyyy-MM-dd")}"));
+            cliente.Add(new Paragraph($"Cliente: {ClienteNombre} {Apellido}"));
+            cliente.Add(new Paragraph($"Dirección: {lbDireccion.Text}"));
+            // Texto al lado
+            Paragraph pagaATexto = new Paragraph("Paga a: CyberGear");
 
-            document.Add(new Paragraph($"Cliente: {ClienteNombre} {Apellido}"));
-            document.Add(new Paragraph($"Dirección: {lbDireccion.Text}"));
 
-            // Agregar detalles de la venta desde el DataGridView
+
+            Div detalle = new Div();
+            detalle.Add(new Paragraph("Productos Comprados:"));
+
+            // Tabla
+            Table table = new Table(4);
+            
+
+            table.AddHeaderCell("Descripcion");
+            table.AddHeaderCell("Precio");
+            table.AddHeaderCell("Cantidad");
+            table.AddHeaderCell("SubTotal");
+            // llenar con datos
+
+            
+
+            // Agregar detalles de la venta
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 string descripcion = row.Cells[0].Value.ToString();
                 string precio = row.Cells[1].Value.ToString();
                 string cantidad = row.Cells[2].Value.ToString();
                 string subtotal = row.Cells[3].Value.ToString();
+                // otros campos
 
-                document.Add(new Paragraph($"{descripcion} - Precio: {precio}, Cantidad: {cantidad}, Subtotal: {subtotal}"));
+                string[] cells = {
+                    descripcion,
+                    precio,
+                    cantidad,
+                    subtotal
+                    // otras celdas
+                  };
+
+                table.AddCell(new Paragraph(descripcion));
+                table.AddCell(new Paragraph(precio));
+                table.AddCell(new Paragraph(cantidad));
+                table.AddCell(new Paragraph(subtotal));
+                //table.AddCell(new Paragraph(""));
+
             }
 
-            // Agregar el total al final del documento
-            document.Add(new Paragraph($"Total: {label13.Text}"));
+            // Total
+            Div total = new Div();
+
+            total.Add(new Paragraph($"Total: {label13.Text}"));
+
+            Div content = new Div();
+            // Agregar total
+            //content.Add(new Paragraph($"Total: {label13.Text}"));
+
+            content.Add(new Paragraph($"Gracias por su compra!"));
+
+            
+
+
+            
+            
+
+
+
+
+            document.Add(header);
+            document.Add(cliente);
+            document.Add(table);
+            document.Add(total);
+            document.Add(content);
+            
+            document.Close();
+
+            pdf.Close();
+
+            // Guardar archivo
+            byte[] bytes = memoryStream.ToArray();
+
+            File.WriteAllBytes(rutaPDF, bytes);
+            // Mostrar mensaje
+            MessageBox.Show($"PDF guardado en: {rutaPDF}");
+        }
+
+
+
+        void generarPDFprueba() //funciona con itex7 y bouncy adapter
+        {
+            string rutaFacturas = System.IO.Path.Combine(Application.StartupPath, "Facturas");
+
+            if (!Directory.Exists(rutaFacturas))
+            {
+                Directory.CreateDirectory(rutaFacturas);
+            }
+
+            string rutaPDF = System.IO.Path.Combine(rutaFacturas, $"Factura_{IdVenta}.pdf");
+
+            MemoryStream memoryStream = new MemoryStream();
+
+            PdfDocument pdf = new PdfDocument(new PdfWriter(memoryStream));
+
+            Document document = new Document(pdf);
+
+            //document.Add(new Paragraph("Hello world"));
+
+            Div content = new Div();
+
+            // Agregar información del encabezado
+            content.Add(new Paragraph($"Factura #{IdVenta} - Fecha: {FechaVenta.ToString("yyyy-MM-dd")}"));
+
+            content.Add(new Paragraph($"Cliente: {ClienteNombre} {Apellido}"));
+            content.Add(new Paragraph($"Dirección: {lbDireccion.Text}"));
+
+            content.Add(new Paragraph($"Productos Adquiridos:"));
+
+            // Agregar detalles de la venta
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                string descripcion = row.Cells[0].Value.ToString();
+                // otros campos
+
+                content.Add(new Paragraph(descripcion));
+            }
+
+            // Agregar total
+            content.Add(new Paragraph($"Total: {label13.Text}"));
+
+            content.Add(new Paragraph($"Gracias por su compra!"));
+
+            document.Add(content);
+            document.Close();
+
+            pdf.Close();
+
+            // Guardar archivo
+            byte[] bytes = memoryStream.ToArray();
+
+            File.WriteAllBytes(rutaPDF, bytes);
+            // Mostrar mensaje
+            MessageBox.Show($"PDF guardado en: {rutaPDF}");
+        }
+
+        private void AgregarContenidoPDF(PdfDocument pdfDoc)
+        {
+            try
+            {
+                PdfWriter writer = pdfDoc.GetWriter();
+
+                Div content = new Div();
+
+                // Agregar información del encabezado
+                content.Add(new Paragraph($"Factura #{IdVenta} - Fecha: {FechaVenta.ToString("yyyy-MM-dd")}"));
+
+                content.Add(new Paragraph($"Cliente: {ClienteNombre} {Apellido}"));
+                content.Add(new Paragraph($"Dirección: {lbDireccion.Text}"));
+
+                // Agregar detalles de la venta
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    string descripcion = row.Cells[0].Value.ToString();
+                    // otros campos
+
+                    content.Add(new Paragraph(descripcion));
+                }
+
+                // Agregar total
+                content.Add(new Paragraph($"Total: {label13.Text}"));
+
+
+                // Agregar contenido al Div
+
+                //PdfPage firstPage = pdfDoc.GetFirstPage();
+                //PdfPageContent pageContent = firstPage.GetContent();
+
+                //pageContent.Add(content);
+
+                pdfDoc.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void lbNomyApellido_Click(object sender, EventArgs e)

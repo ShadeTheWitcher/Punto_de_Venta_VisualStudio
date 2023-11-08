@@ -2,13 +2,17 @@
   "version": 3,
   "targets": {
     "net7.0-windows7.0": {
-      "BouncyCastle/1.8.9": {
+      "BouncyCastle.Cryptography/2.2.1": {
         "type": "package",
         "compile": {
-          "lib/BouncyCastle.Crypto.dll": {}
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/BouncyCastle.Crypto.dll": {}
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
         }
       },
       "BouncyCastle.NetCore/1.8.10": {
@@ -50,7 +54,7 @@
           }
         }
       },
-      "itext/8.0.1": {
+      "itext/8.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.DotNet.PlatformAbstractions": "1.1.0",
@@ -67,7 +71,7 @@
           "System.Threading.Thread": "4.3.0",
           "System.Threading.ThreadPool": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0",
-          "itext.commons": "8.0.1"
+          "itext.commons": "8.0.2"
         },
         "compile": {
           "lib/netstandard2.0/itext.barcodes.dll": {
@@ -134,7 +138,24 @@
           }
         }
       },
-      "itext.commons/8.0.1": {
+      "itext.bouncy-castle-adapter/8.0.2": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.2.1",
+          "itext.commons": "8.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/itext.bouncy-castle-adapter.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/itext.bouncy-castle-adapter.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "itext.commons/8.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Logging": "5.0.0",
@@ -151,22 +172,16 @@
           }
         }
       },
-      "itext7/8.0.1": {
+      "itext7/8.0.2": {
         "type": "package",
         "dependencies": {
-          "itext": "8.0.1"
+          "itext": "8.0.2"
         }
       },
-      "iTextSharp/5.5.13.3": {
+      "itext7.bouncy-castle-adapter/8.0.2": {
         "type": "package",
         "dependencies": {
-          "BouncyCastle": "1.8.9"
-        },
-        "compile": {
-          "lib/itextsharp.dll": {}
-        },
-        "runtime": {
-          "lib/itextsharp.dll": {}
+          "itext.bouncy-castle-adapter": "8.0.2"
         }
       },
       "K4os.Compression.LZ4/1.3.5": {
@@ -1956,17 +1971,24 @@
     }
   },
   "libraries": {
-    "BouncyCastle/1.8.9": {
-      "sha512": "axnBgvdD5n+FnEG6efk/tfKuMFru7R/EoISH9zjh319yb3HD24TEHSAbNN/lTRT2ulOGRxDgOsCjkuk08iwWPg==",
+    "BouncyCastle.Cryptography/2.2.1": {
+      "sha512": "A6Zr52zVqJKt18ZBsTnX0qhG0kwIQftVAjLmszmkiR/trSp8H+xj1gUOzk7XHwaKgyREMSV1v9XaKrBUeIOdvQ==",
       "type": "package",
-      "path": "bouncycastle/1.8.9",
+      "path": "bouncycastle.cryptography/2.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENSE.md",
         "README.md",
-        "bouncycastle.1.8.9.nupkg.sha512",
-        "bouncycastle.nuspec",
-        "lib/BouncyCastle.Crypto.dll"
+        "bouncycastle.cryptography.2.2.1.nupkg.sha512",
+        "bouncycastle.cryptography.nuspec",
+        "lib/net461/BouncyCastle.Cryptography.dll",
+        "lib/net461/BouncyCastle.Cryptography.xml",
+        "lib/net6.0/BouncyCastle.Cryptography.dll",
+        "lib/net6.0/BouncyCastle.Cryptography.xml",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
+        "packageIcon.png"
       ]
     },
     "BouncyCastle.NetCore/1.8.10": {
@@ -2035,17 +2057,17 @@
         "logo.png"
       ]
     },
-    "itext/8.0.1": {
-      "sha512": "qr0dr6va+/ZAkA9FR95ofpoPO8/yvjs0J+8Zo03KJWuqX3bjO/hTUVNvqKVtDFZPlGYwDrtOAb3Irv1VgSmO3Q==",
+    "itext/8.0.2": {
+      "sha512": "79IRTeZZirzRDEtB1PtUMSpsxaJiFz5rAXY4/VtSipsi0qlQpJ/88jxd2SsfX0IggH+wlrsiAc0Y8X2et2T+Bg==",
       "type": "package",
-      "path": "itext/8.0.1",
+      "path": "itext/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ITSC-avatar.png",
         "LICENSE.md",
         "gnu-agpl-v3.0.md",
-        "itext.8.0.1.nupkg.sha512",
+        "itext.8.0.2.nupkg.sha512",
         "itext.nuspec",
         "lib/net461/itext.barcodes.dll",
         "lib/net461/itext.barcodes.xml",
@@ -2089,15 +2111,31 @@
         "lib/netstandard2.0/itext.svg.xml"
       ]
     },
-    "itext.commons/8.0.1": {
-      "sha512": "v1lcTrZzD906fJ8owf81X3DIuMtf9uL8Jvf9TdI5xi7E0AuBR4YGxVKdAxXSzgczbquBabRhRtz2jlxbX5bzwQ==",
+    "itext.bouncy-castle-adapter/8.0.2": {
+      "sha512": "djCnycEdSBcpRxPOm0vAwGiOBZRT6GX7kyg/Jezk0AsMuq2d6Qd4md8AzTcgnEaTLwc717QK6QVmzbT30wdG7w==",
       "type": "package",
-      "path": "itext.commons/8.0.1",
+      "path": "itext.bouncy-castle-adapter/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ITSC-avatar.png",
-        "itext.commons.8.0.1.nupkg.sha512",
+        "itext.bouncy-castle-adapter.8.0.2.nupkg.sha512",
+        "itext.bouncy-castle-adapter.nuspec",
+        "lib/net461/itext.bouncy-castle-adapter.dll",
+        "lib/net461/itext.bouncy-castle-adapter.xml",
+        "lib/netstandard2.0/itext.bouncy-castle-adapter.dll",
+        "lib/netstandard2.0/itext.bouncy-castle-adapter.xml"
+      ]
+    },
+    "itext.commons/8.0.2": {
+      "sha512": "/F7j7XERA84XgIXDb4j/so1GagAToraVKZIRAdk/ibkvYoU1uwuILU2Ly28sSFf12NN7WIBQHKSk7njJl7Nk8g==",
+      "type": "package",
+      "path": "itext.commons/8.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ITSC-avatar.png",
+        "itext.commons.8.0.2.nupkg.sha512",
         "itext.commons.nuspec",
         "lib/net461/itext.commons.dll",
         "lib/net461/itext.commons.xml",
@@ -2105,34 +2143,32 @@
         "lib/netstandard2.0/itext.commons.xml"
       ]
     },
-    "itext7/8.0.1": {
-      "sha512": "g41tWb7Le4CT4hqkI1xVUBI/R95fyOp3hTZ0L1VkNRUfbrly0lPBIKWujXqk1BIHU8Jz9uaNfOiRyp9fTosEEw==",
+    "itext7/8.0.2": {
+      "sha512": "IuFfSlMSTLqVGCIsxpcDL9kCtEfppSBjq4V+RgfrxnqEC+iNF4tCHiIdl8quyzTDbaHF4vNufxe2NXMJMkPlSw==",
       "type": "package",
-      "path": "itext7/8.0.1",
+      "path": "itext7/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "ITSC-avatar.png",
         "LICENSE.md",
         "gnu-agpl-v3.0.md",
-        "itext7.8.0.1.nupkg.sha512",
+        "itext7.8.0.2.nupkg.sha512",
         "itext7.nuspec"
       ]
     },
-    "iTextSharp/5.5.13.3": {
-      "sha512": "vtnMhTEJdZFCkLqaQLjD8aqTBIVKHPrSFuSXnxbLEJlvE/j/l88fvG9wtsejXTmhtErMo0lA9T2LdfdfbwplYw==",
+    "itext7.bouncy-castle-adapter/8.0.2": {
+      "sha512": "cNtEkxFStPblWys1uhafXkUuSGFAH9vFqZ4H09IZPMo5TzJbjbeklgmBGrFu7IPHtOym03+1RHzVEKzfcd1deQ==",
       "type": "package",
-      "path": "itextsharp/5.5.13.3",
+      "path": "itext7.bouncy-castle-adapter/8.0.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "ITSC-avatar.png",
         "LICENSE.md",
         "gnu-agpl-v3.0.md",
-        "itextsharp.5.5.13.3.nupkg.sha512",
-        "itextsharp.nuspec",
-        "lib/iTextSharp.xml",
-        "lib/itextsharp.dll",
-        "notice.txt"
+        "itext7.bouncy-castle-adapter.8.0.2.nupkg.sha512",
+        "itext7.bouncy-castle-adapter.nuspec"
       ]
     },
     "K4os.Compression.LZ4/1.3.5": {
@@ -6056,8 +6092,8 @@
       "PdfiumViewer >= 2.13.0",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0",
       "WinForms.DataVisualization >= 1.8.0",
-      "iTextSharp >= 5.5.13.3",
-      "itext7 >= 8.0.1"
+      "itext7 >= 8.0.2",
+      "itext7.bouncy-castle-adapter >= 8.0.2"
     ]
   },
   "packageFolders": {
@@ -6155,13 +6191,13 @@
             "target": "Package",
             "version": "[1.8.0, )"
           },
-          "iTextSharp": {
-            "target": "Package",
-            "version": "[5.5.13.3, )"
-          },
           "itext7": {
             "target": "Package",
-            "version": "[8.0.1, )"
+            "version": "[8.0.2, )"
+          },
+          "itext7.bouncy-castle-adapter": {
+            "target": "Package",
+            "version": "[8.0.2, )"
           }
         },
         "imports": [
@@ -6188,26 +6224,6 @@
     }
   },
   "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "El paquete \"BouncyCastle 1.8.9\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net7.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
-      "libraryId": "BouncyCastle",
-      "targetGraphs": [
-        "net7.0-windows7.0"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "El paquete \"iTextSharp 5.5.13.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\" en lugar de la plataforma de destino del proyecto \"net7.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
-      "libraryId": "iTextSharp",
-      "targetGraphs": [
-        "net7.0-windows7.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",

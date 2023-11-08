@@ -31,6 +31,13 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            panel4 = new Panel();
+            label9 = new Label();
+            label8 = new Label();
+            lbDireccion = new Label();
+            lbNomyApellido = new Label();
+            label5 = new Label();
+            label4 = new Label();
             label13 = new Label();
             label12 = new Label();
             dataGridView1 = new DataGridView();
@@ -41,25 +48,18 @@
             panel3 = new Panel();
             label11 = new Label();
             label10 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            lbDireccion = new Label();
-            lbNomyApellido = new Label();
-            label5 = new Label();
-            label4 = new Label();
             panel2 = new Panel();
             lbFecha = new Label();
             lbIdVenta = new Label();
             label1 = new Label();
             button1 = new Button();
             panelPDF = new Panel();
-            panel4 = new Panel();
             panel1.SuspendLayout();
+            panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             panelPDF.SuspendLayout();
-            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -75,6 +75,80 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(705, 640);
             panel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(label9);
+            panel4.Controls.Add(label8);
+            panel4.Controls.Add(lbDireccion);
+            panel4.Controls.Add(lbNomyApellido);
+            panel4.Controls.Add(label5);
+            panel4.Controls.Add(label4);
+            panel4.Location = new Point(29, 130);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(649, 88);
+            panel4.TabIndex = 11;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(409, 61);
+            label9.Name = "label9";
+            label9.Size = new Size(146, 14);
+            label9.TabIndex = 6;
+            label9.Text = "cybergear.21@gmail.com";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(409, 37);
+            label8.Name = "label8";
+            label8.Size = new Size(65, 14);
+            label8.TabIndex = 5;
+            label8.Text = "CyberGear";
+            // 
+            // lbDireccion
+            // 
+            lbDireccion.AutoSize = true;
+            lbDireccion.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbDireccion.Location = new Point(23, 61);
+            lbDireccion.Name = "lbDireccion";
+            lbDireccion.Size = new Size(60, 14);
+            lbDireccion.TabIndex = 4;
+            lbDireccion.Text = "Direccion";
+            // 
+            // lbNomyApellido
+            // 
+            lbNomyApellido.AutoSize = true;
+            lbNomyApellido.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lbNomyApellido.Location = new Point(23, 37);
+            lbNomyApellido.Name = "lbNomyApellido";
+            lbNomyApellido.Size = new Size(111, 14);
+            lbNomyApellido.TabIndex = 3;
+            lbNomyApellido.Text = "Nombre y Apellido";
+            lbNomyApellido.Click += lbNomyApellido_Click;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Sitka Small", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(409, 11);
+            label5.Name = "label5";
+            label5.Size = new Size(57, 18);
+            label5.TabIndex = 2;
+            label5.Text = "PAGA A:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Sitka Small", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(23, 11);
+            label4.Name = "label4";
+            label4.Size = new Size(68, 18);
+            label4.TabIndex = 1;
+            label4.Text = "CLIENTE:";
             // 
             // label13
             // 
@@ -177,67 +251,6 @@
             label10.TabIndex = 0;
             label10.Text = "¡Gracias por su compra!";
             // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(409, 61);
-            label9.Name = "label9";
-            label9.Size = new Size(146, 14);
-            label9.TabIndex = 6;
-            label9.Text = "cybergear.21@gmail.com";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(409, 37);
-            label8.Name = "label8";
-            label8.Size = new Size(65, 14);
-            label8.TabIndex = 5;
-            label8.Text = "CyberGear";
-            // 
-            // lbDireccion
-            // 
-            lbDireccion.AutoSize = true;
-            lbDireccion.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbDireccion.Location = new Point(23, 61);
-            lbDireccion.Name = "lbDireccion";
-            lbDireccion.Size = new Size(60, 14);
-            lbDireccion.TabIndex = 4;
-            lbDireccion.Text = "Direccion";
-            // 
-            // lbNomyApellido
-            // 
-            lbNomyApellido.AutoSize = true;
-            lbNomyApellido.Font = new Font("Mongolian Baiti", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lbNomyApellido.Location = new Point(23, 37);
-            lbNomyApellido.Name = "lbNomyApellido";
-            lbNomyApellido.Size = new Size(111, 14);
-            lbNomyApellido.TabIndex = 3;
-            lbNomyApellido.Text = "Nombre y Apellido";
-            lbNomyApellido.Click += lbNomyApellido_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Sitka Small", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(409, 11);
-            label5.Name = "label5";
-            label5.Size = new Size(57, 18);
-            label5.TabIndex = 2;
-            label5.Text = "PAGA A:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Sitka Small", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(23, 11);
-            label4.Name = "label4";
-            label4.Size = new Size(68, 18);
-            label4.TabIndex = 1;
-            label4.Text = "CLIENTE:";
-            // 
             // panel2
             // 
             panel2.BackColor = Color.MediumPurple;
@@ -288,7 +301,6 @@
             button1.TabIndex = 0;
             button1.Text = "Generar PDF";
             button1.UseVisualStyleBackColor = true;
-            button1.Visible = false;
             button1.Click += button1_Click;
             // 
             // panelPDF
@@ -299,19 +311,6 @@
             panelPDF.Name = "panelPDF";
             panelPDF.Size = new Size(705, 45);
             panelPDF.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(label9);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(lbDireccion);
-            panel4.Controls.Add(lbNomyApellido);
-            panel4.Controls.Add(label5);
-            panel4.Controls.Add(label4);
-            panel4.Location = new Point(29, 130);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(649, 88);
-            panel4.TabIndex = 11;
             // 
             // FormFactura
             // 
@@ -328,14 +327,14 @@
             Load += FormFactura_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panelPDF.ResumeLayout(false);
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             ResumeLayout(false);
         }
 

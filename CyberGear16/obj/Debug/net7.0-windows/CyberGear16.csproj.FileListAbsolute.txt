@@ -253,7 +253,6 @@ E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.styledxmlparser.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.svg.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.commons.dll
-E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itextsharp.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Compression.LZ4.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Compression.LZ4.Streams.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\K4os.Hash.xxHash.dll
@@ -350,3 +349,5 @@ E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\nl\PdfiumViewer.resources.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.WindowsForms.Manual.formManual.resources
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.WindowsForms.SeccionBackUp.FormEspera.resources
+E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\BouncyCastle.Cryptography.dll
+E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.bouncy-castle-adapter.dll
