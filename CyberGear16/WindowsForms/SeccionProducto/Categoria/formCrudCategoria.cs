@@ -53,7 +53,7 @@ namespace CyberGear16.WindowsForms.SeccionProducto.Categoria
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error al agregar el producto: " + ex.Message);
+                    MessageBox.Show("Error al agregar el categoria: " + ex.Message);
                 }
             }
             else
