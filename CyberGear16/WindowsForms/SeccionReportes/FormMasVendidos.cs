@@ -37,16 +37,26 @@ namespace CyberGear16
             // Suscribe el evento SelectedIndexChanged del ComboBox
             CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
 
-            // Llena el ComboBox con categorías (puedes adaptar esto a tu propio código)
-            CBCategorias.Items.Add("VideoJuegos");
-            CBCategorias.Items.Add("PC-Componentes");
-            CBCategorias.Items.Add("Netbooks");
+            using (var context = new BdCybergearContext())
+            {
+                // Obtén todas las categorías desde la base de datos que no tengan la IdCategoria igual a 1
+                var categorias = context.Categoria
+                    .Where(c => c.IdCategoria != 1)
+                    .Select(c => c.CategoriaNombre)
+                    .ToList();
 
-            // Establece una categoría predeterminada
-            CBCategorias.SelectedIndex = 0;
+                // Llena el ComboBox con las categorías
+                foreach (var categoria in categorias)
+                {
+                    CBCategorias.Items.Add(categoria);
+                }
 
-            // Llama al manejador de eventos para cargar la información inicial
-            CargarProductosSinFiltro("VideoJuegos");
+                // Establece una categoría predeterminada
+                CBCategorias.SelectedIndex = 0;
+
+                // Llama al manejador de eventos para cargar la información inicial
+                CargarProductosSinFiltro(CBCategorias.SelectedItem.ToString());
+            }
 
         }
 
