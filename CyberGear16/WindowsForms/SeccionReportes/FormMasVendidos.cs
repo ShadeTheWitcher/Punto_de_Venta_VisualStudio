@@ -1,4 +1,5 @@
 ﻿using CyberGear16.Models;
+using iText.Commons.Actions.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -51,11 +52,14 @@ namespace CyberGear16
                     CBCategorias.Items.Add(categoria);
                 }
 
+                CargarDatosEnDataGridView();
+
                 // Establece una categoría predeterminada
                 CBCategorias.SelectedIndex = 0;
 
                 // Llama al manejador de eventos para cargar la información inicial
-                CargarProductosSinFiltro(CBCategorias.SelectedItem.ToString());
+
+                //CargarProductosSinFiltro(CBCategorias.SelectedItem.ToString());
             }
 
         }
@@ -121,7 +125,7 @@ namespace CyberGear16
                     .ToList();
 
                 // Limpia los puntos de datos existentes en el gráfico
-                CProducts.Series["Series1"].Points.Clear();
+                //CProducts.Series["Series1"].Points.Clear();
 
                 if (graficoMasVendidos.Count == 0)
                 {
@@ -131,10 +135,10 @@ namespace CyberGear16
                 else
                 {
                     // Agrega los datos al gráfico
-                    foreach (var producto in graficoMasVendidos)
-                    {
-                        CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
-                    }
+                    //foreach (var producto in graficoMasVendidos)
+                    //{
+                    //    CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
+                    //}
                 }
 
                 //-----------------------
@@ -181,7 +185,7 @@ namespace CyberGear16
                     .ToList();
 
                 // Limpia los puntos de datos existentes en el gráfico
-                CProducts.Series["Series1"].Points.Clear();
+                //CProducts.Series["Series1"].Points.Clear();
 
                 if (productosMasVendidos.Count == 0)
                 {
@@ -190,10 +194,10 @@ namespace CyberGear16
                 else
                 {
                     // Agrega los datos al gráfico
-                    foreach (var producto in productosMasVendidos)
-                    {
-                        CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
-                    }
+                    //foreach (var producto in productosMasVendidos)
+                    //{
+                    //    CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
+                    //}
                 }
 
                 //Busqueda TotalVentas
@@ -215,6 +219,29 @@ namespace CyberGear16
         {
             string contenidoCombo = CBCategorias.SelectedItem.ToString();
             CargarProductosSinFiltro(contenidoCombo);
+        }
+
+        private void CargarDatosEnDataGridView()
+        {
+            using (var contexto = new BdCybergearContext())
+            {
+
+                // Consulta para obtener la información necesaria
+                var cantProductsVendidos = from ventaDetalle in contexto.VentasDetalles
+                                           join ventaCabecera in contexto.VentasCabeceras on ventaDetalle.VentaId equals ventaCabecera.Id
+                                           join producto in contexto.Products on ventaDetalle.ProductoId equals producto.Id
+                                           group new { ventaDetalle, producto } by new { producto.Id, producto.NombreProducto } into g
+                                           select new
+                                           {
+                                               IdProducto = g.Key.Id,
+                                               NombreProducto = g.Key.NombreProducto,
+                                               TotalVentas = g.Sum(x => x.ventaDetalle.CantidadVenta)
+                                           };
+
+                //// Convierte la consulta en una lista y carga los datos en el DataGridView
+                //List<cantProductsVendidos> listaProductos = cantProductsVendidos.ToList();
+                DGVProductos.DataSource = cantProductsVendidos.ToList();
+            }
         }
     }
 

@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             panel1 = new Panel();
+            DGVProductos = new DataGridView();
             BGeneral = new Button();
             LValorVentasTot = new Label();
             PReporte = new Panel();
@@ -42,24 +40,23 @@
             DTPDesde = new DateTimePicker();
             LTotalVentasTot = new Label();
             LTop = new Label();
-            CProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
             CBCategorias = new ComboBox();
             LUsuarios = new Label();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVProductos).BeginInit();
             PReporte.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)CProducts).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.FromArgb(26, 32, 40);
+            panel1.Controls.Add(DGVProductos);
             panel1.Controls.Add(BGeneral);
             panel1.Controls.Add(LValorVentasTot);
             panel1.Controls.Add(PReporte);
             panel1.Controls.Add(LTotalVentasTot);
             panel1.Controls.Add(LTop);
-            panel1.Controls.Add(CProducts);
             panel1.Controls.Add(CBCategorias);
             panel1.Controls.Add(LUsuarios);
             panel1.Location = new Point(12, 20);
@@ -67,9 +64,19 @@
             panel1.Size = new Size(776, 669);
             panel1.TabIndex = 0;
             // 
+            // DGVProductos
+            // 
+            DGVProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGVProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVProductos.Location = new Point(43, 336);
+            DGVProductos.Name = "DGVProductos";
+            DGVProductos.RowTemplate.Height = 25;
+            DGVProductos.Size = new Size(422, 254);
+            DGVProductos.TabIndex = 49;
+            // 
             // BGeneral
             // 
-            BGeneral.Location = new Point(517, 553);
+            BGeneral.Location = new Point(526, 504);
             BGeneral.Name = "BGeneral";
             BGeneral.Size = new Size(227, 37);
             BGeneral.TabIndex = 48;
@@ -82,7 +89,7 @@
             LValorVentasTot.AutoSize = true;
             LValorVentasTot.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             LValorVentasTot.ForeColor = Color.White;
-            LValorVentasTot.Location = new Point(620, 516);
+            LValorVentasTot.Location = new Point(629, 467);
             LValorVentasTot.Name = "LValorVentasTot";
             LValorVentasTot.Size = new Size(27, 20);
             LValorVentasTot.TabIndex = 47;
@@ -155,7 +162,7 @@
             LTotalVentasTot.AutoSize = true;
             LTotalVentasTot.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             LTotalVentasTot.ForeColor = Color.White;
-            LTotalVentasTot.Location = new Point(536, 484);
+            LTotalVentasTot.Location = new Point(545, 435);
             LTotalVentasTot.Name = "LTotalVentasTot";
             LTotalVentasTot.Size = new Size(192, 20);
             LTotalVentasTot.TabIndex = 46;
@@ -166,44 +173,17 @@
             LTop.AutoSize = true;
             LTop.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LTop.ForeColor = Color.White;
-            LTop.Location = new Point(67, 624);
+            LTop.Location = new Point(110, 614);
             LTop.Name = "LTop";
-            LTop.Size = new Size(351, 21);
+            LTop.Size = new Size(261, 21);
             LTop.TabIndex = 40;
-            LTop.Text = "Top 5 productos más vendidos en la empresa";
-            // 
-            // CProducts
-            // 
-            CProducts.BackColor = Color.Transparent;
-            chartArea2.BackColor = Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            CProducts.ChartAreas.Add(chartArea2);
-            legend2.BackColor = Color.Transparent;
-            legend2.ForeColor = Color.White;
-            legend2.Name = "Legend1";
-            legend2.TitleForeColor = Color.White;
-            legend2.TitleSeparatorColor = Color.White;
-            CProducts.Legends.Add(legend2);
-            CProducts.Location = new Point(0, 345);
-            CProducts.Name = "CProducts";
-            CProducts.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 2;
-            CProducts.Series.Add(series2);
-            CProducts.Size = new Size(511, 245);
-            CProducts.TabIndex = 39;
-            CProducts.Text = "chart1";
-            CProducts.Click += CProducts_Click;
+            LTop.Text = "Cantidad de productos vendidos:";
             // 
             // CBCategorias
             // 
             CBCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
             CBCategorias.FormattingEnabled = true;
-            CBCategorias.Location = new Point(550, 354);
+            CBCategorias.Location = new Point(562, 336);
             CBCategorias.Name = "CBCategorias";
             CBCategorias.Size = new Size(166, 23);
             CBCategorias.TabIndex = 3;
@@ -232,9 +212,9 @@
             Load += FormMasVendidos_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DGVProductos).EndInit();
             PReporte.ResumeLayout(false);
             PReporte.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)CProducts).EndInit();
             ResumeLayout(false);
         }
 
@@ -243,7 +223,6 @@
         private Panel panel1;
         private ComboBox CBCategorias;
         private Label LUsuarios;
-        private System.Windows.Forms.DataVisualization.Charting.Chart CProducts;
         private Label LTop;
         private Panel PReporte;
         private Button BReporte;
@@ -254,5 +233,6 @@
         private Label LValorVentasTot;
         private Label LTotalVentasTot;
         private Button BGeneral;
+        private DataGridView DGVProductos;
     }
 }
