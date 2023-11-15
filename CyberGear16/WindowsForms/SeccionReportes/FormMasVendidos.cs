@@ -2,6 +2,7 @@
 using iText.Commons.Actions.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,12 +32,12 @@ namespace CyberGear16
 
         }
 
-
-
         private void FormMasVendidos_Load(object sender, EventArgs e)
         {
             // Suscribe el evento SelectedIndexChanged del ComboBox
             CBCategorias.SelectedIndexChanged += CBCategorias_SelectedIndexChanged;
+
+            CBCategorias.Items.Add("Todos");
 
             using (var context = new BdCybergearContext())
             {
@@ -52,16 +53,13 @@ namespace CyberGear16
                     CBCategorias.Items.Add(categoria);
                 }
 
-                CargarDatosEnDataGridView();
 
                 // Establece una categoría predeterminada
                 CBCategorias.SelectedIndex = 0;
 
-                // Llama al manejador de eventos para cargar la información inicial
-
-                //CargarProductosSinFiltro(CBCategorias.SelectedItem.ToString());
             }
 
+            CargarDatosVentas("Todos");
         }
 
         private void CBCategorias_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,7 +69,7 @@ namespace CyberGear16
 
             if (filtroFecha == false)
             {
-                CargarProductosSinFiltro(categoriaSeleccionada);
+                CargarDatosVentas(categoriaSeleccionada);
 
             }
             else
@@ -93,59 +91,75 @@ namespace CyberGear16
 
             string categoriaSeleccionada = CBCategorias.SelectedItem.ToString();
 
-            LTop.Text = "Top 5 productos más vendidos en la empresa (Filtrado Por Fecha)";
+            LTop.Text = "Cantidad de productos vendidos (Filtrado Por Fecha)";
 
-            CargarProductosConFiltroFecha(categoriaSeleccionada, dateOnlyFechaDesde, dateOnlyFechaHasta);
+            CargarDatosVentasFecha(categoriaSeleccionada, dateOnlyFechaDesde, dateOnlyFechaHasta);
 
         }
 
-        //--------------Productos Con Filtro--------------
-
-        private void CargarProductosConFiltroFecha(string categoriaCombo, DateOnly p_fechaDesde, DateOnly p_fechaHasta)
+        //--------------Productos Con Filtro Fecha --------------
+        private void CargarDatosVentasFecha(string categoriaTipoFecha, DateOnly fechaDesde, DateOnly fechaHasta)
         {
             cantTotal = 0;
+
             using (var contexto = new BdCybergearContext())
             {
-
-                //Busqueda Gráfico
-                var graficoMasVendidos = contexto.VentasCabeceras
-                    .Where(ventaCabecera => ventaCabecera.Fecha >= p_fechaDesde && ventaCabecera.Fecha <= p_fechaHasta) // Filtra por el Id del cliente
-                                                                                                                        //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
-                    .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
-                    .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo) // Filtra por la categoría seleccionada
-                    .GroupBy(detalle => detalle.ProductoId)
-                    .OrderByDescending(g => g.Count())
-                    .Take(5) // Puedes ajustar este número según la cantidad de productos que deseas mostrar
-                    .Select(g => new
-                    {
-                        //Key: Clave del grupo de consulta (GroupBy)
-                        NombreProducto = contexto.Products.FirstOrDefault(p => p.Id == g.Key).NombreProducto,
-                        CantidadVendida = g.Sum(detalle => detalle.CantidadVenta)
-                    })
-                    .ToList();
-
-                // Limpia los puntos de datos existentes en el gráfico
-                //CProducts.Series["Series1"].Points.Clear();
-
-                if (graficoMasVendidos.Count == 0)
+                if (categoriaTipoFecha == "Todos")
                 {
-                    MessageBox.Show("No se han encontrado ventas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    CargarProductosSinFiltro(categoriaCombo);
+                    // Consulta para obtener la información necesaria
+                    var cantProductsVendidos = from ventaDetalle in contexto.VentasDetalles
+                                               join ventaCabecera in contexto.VentasCabeceras on ventaDetalle.VentaId equals ventaCabecera.Id
+                                               join producto in contexto.Products on ventaDetalle.ProductoId equals producto.Id
+                                               where ventaCabecera.Fecha >= fechaDesde && ventaCabecera.Fecha <= fechaHasta
+                                               group ventaDetalle by new { producto.NombreProducto, producto.Cantidad} into g
+                                               select new
+                                               {
+                                                   NombreProducto = g.Key.NombreProducto,
+                                                   Stock = g.Key.Cantidad,
+                                                   TotalVentas = g.Sum(x => x.CantidadVenta)
+                                               };
+
+                    // Verifica si la variable cantProductsVendidos no tiene elementos
+                    if (!cantProductsVendidos.Any())
+                    {
+                        MessageBox.Show("No se han encontrado ventas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CargarDatosVentas("Todos");
+                    }
+
+                    // Convierte la consulta en una lista y carga los datos en el DataGridView
+                    DGVProductos.DataSource = cantProductsVendidos.ToList();
                 }
                 else
                 {
-                    // Agrega los datos al gráfico
-                    //foreach (var producto in graficoMasVendidos)
-                    //{
-                    //    CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
-                    //}
-                }
+                    // Consulta para obtener la información necesaria
+                    var cantProductsVendidos = from ventaDetalle in contexto.VentasDetalles
+                                               join ventaCabecera in contexto.VentasCabeceras on ventaDetalle.VentaId equals ventaCabecera.Id
+                                               join producto in contexto.Products on ventaDetalle.ProductoId equals producto.Id
+                                               where ventaDetalle.Producto.Categoria.CategoriaNombre == categoriaTipoFecha &&
+                                               ventaCabecera.Fecha >= fechaDesde && ventaCabecera.Fecha <= fechaHasta
+                                               group ventaDetalle by new { producto.NombreProducto, producto.Cantidad} into g
+                                               select new
+                                               {
+                                                   NombreProducto = g.Key.NombreProducto,
+                                                   Stock = g.Key.Cantidad,
+                                                   TotalVentas = g.Sum(x => x.CantidadVenta)
+                                               };
 
-                //-----------------------
+                    // Verifica si la variable cantProductsVendidos no tiene elementos
+                    if (!cantProductsVendidos.Any())
+                    {
+                        MessageBox.Show("No se han encontrado ventas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CargarDatosVentas("Todos");
+                    }
+
+                    // Convierte la consulta en una lista y carga los datos en el DataGridView
+                    DGVProductos.DataSource = cantProductsVendidos.ToList();
+
+                }
 
                 //Busqueda TotalVentas
                 var cantProductsComprados = contexto.VentasCabeceras
-                    .Where(ventaCabecera => ventaCabecera.Fecha >= p_fechaDesde && ventaCabecera.Fecha <= p_fechaHasta)
+                    .Where(ventaCabecera => ventaCabecera.Fecha >= fechaDesde && ventaCabecera.Fecha <= fechaHasta)
                     //SelectedMany sirve para traer todos los elementos asociados a venta detalles en este caso
                     .SelectMany(ventaCabecera => ventaCabecera.VentasDetalles)
                     .ToList();
@@ -160,44 +174,67 @@ namespace CyberGear16
 
                 //Asignación a Labels
                 LValorVentasTot.Text = cantTotal.ToString();
+
             }
         }
-        //------------------------------------------
-        private void CargarProductosSinFiltro(string categoriaCombo)
+
+
+        //-----------------------------------------------------
+
+
+
+
+        //--------------Productos Sin Filtro--------------
+        private void CargarDatosVentas(string categoriaTipo)
         {
             cantTotal = 0;
             filtroFecha = false;
-            LTop.Text = "Top 5 productos más vendidos en la empresa (General)";
+            LTop.Text = "Cantidad de productos vendidos (Sin Filtro)";
 
             using (var contexto = new BdCybergearContext())
             {
-                var productosMasVendidos = contexto.VentasDetalles
-                    .Where(detalle => detalle.Producto.Categoria.CategoriaNombre == categoriaCombo) // Filtra por la categoría seleccionada
-                    .GroupBy(detalle => detalle.ProductoId)
-                    .OrderByDescending(g => g.Count())
-                    .Take(5) // Puedes ajustar este número según la cantidad de productos que deseas mostrar
-                    .Select(g => new
-                    {
-                        //Key: Clave del grupo de consulta (GroupBy)
-                        NombreProducto = contexto.Products.FirstOrDefault(p => p.Id == g.Key).NombreProducto,
-                        CantidadVendida = g.Sum(detalle => detalle.CantidadVenta)
-                    })
-                    .ToList();
 
-                // Limpia los puntos de datos existentes en el gráfico
-                //CProducts.Series["Series1"].Points.Clear();
-
-                if (productosMasVendidos.Count == 0)
+                if (categoriaTipo == "Todos")
                 {
-                    MessageBox.Show("No se han encontrado ventas para esta categoría", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Consulta para obtener la información necesaria
+                    var cantProductsVendidos = from ventaDetalle in contexto.VentasDetalles
+                                               join ventaCabecera in contexto.VentasCabeceras on ventaDetalle.VentaId equals ventaCabecera.Id
+                                               join producto in contexto.Products on ventaDetalle.ProductoId equals producto.Id
+                                               group ventaDetalle by new { producto.NombreProducto, producto.Cantidad} into g
+                                               select new
+                                               {
+                                                   NombreProducto = g.Key.NombreProducto,
+                                                   Stock = g.Key.Cantidad,
+                                                   TotalVentas = g.Sum(x => x.CantidadVenta)
+                                               };
+
+                    // Convierte la consulta en una lista y carga los datos en el DataGridView
+                    DGVProductos.DataSource = cantProductsVendidos.ToList();
                 }
                 else
                 {
-                    // Agrega los datos al gráfico
-                    //foreach (var producto in productosMasVendidos)
-                    //{
-                    //    CProducts.Series["Series1"].Points.AddXY(producto.NombreProducto, producto.CantidadVendida);
-                    //}
+                    // Consulta para obtener la información necesaria
+                    var cantProductsVendidos = from ventaDetalle in contexto.VentasDetalles
+                                               join ventaCabecera in contexto.VentasCabeceras on ventaDetalle.VentaId equals ventaCabecera.Id
+                                               join producto in contexto.Products on ventaDetalle.ProductoId equals producto.Id
+                                               where ventaDetalle.Producto.Categoria.CategoriaNombre == categoriaTipo
+                                               group ventaDetalle by new { producto.NombreProducto, producto.Cantidad} into g
+                                               select new
+                                               {
+                                                   NombreProducto = g.Key.NombreProducto,
+                                                   Stock = g.Key.Cantidad,
+                                                   TotalVentas = g.Sum(x => x.CantidadVenta)
+                                               };
+                    // Verifica si la variable cantProductsVendidos no tiene elementos
+                    if (!cantProductsVendidos.Any())
+                    {
+                        MessageBox.Show("No se han encontrado ventas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CargarDatosVentas("Todos");
+                    }
+
+                    // Convierte la consulta en una lista y carga los datos en el DataGridView
+                    DGVProductos.DataSource = cantProductsVendidos.ToList();
+
                 }
 
                 //Busqueda TotalVentas
@@ -215,34 +252,15 @@ namespace CyberGear16
             }
         }
 
+
+        //------------------------------------------------
+
+
         private void BGeneral_Click(object sender, EventArgs e)
         {
             string contenidoCombo = CBCategorias.SelectedItem.ToString();
-            CargarProductosSinFiltro(contenidoCombo);
+            CargarDatosVentas(contenidoCombo);
         }
 
-        private void CargarDatosEnDataGridView()
-        {
-            using (var contexto = new BdCybergearContext())
-            {
-
-                // Consulta para obtener la información necesaria
-                var cantProductsVendidos = from ventaDetalle in contexto.VentasDetalles
-                                           join ventaCabecera in contexto.VentasCabeceras on ventaDetalle.VentaId equals ventaCabecera.Id
-                                           join producto in contexto.Products on ventaDetalle.ProductoId equals producto.Id
-                                           group new { ventaDetalle, producto } by new { producto.Id, producto.NombreProducto } into g
-                                           select new
-                                           {
-                                               IdProducto = g.Key.Id,
-                                               NombreProducto = g.Key.NombreProducto,
-                                               TotalVentas = g.Sum(x => x.ventaDetalle.CantidadVenta)
-                                           };
-
-                //// Convierte la consulta en una lista y carga los datos en el DataGridView
-                //List<cantProductsVendidos> listaProductos = cantProductsVendidos.ToList();
-                DGVProductos.DataSource = cantProductsVendidos.ToList();
-            }
-        }
     }
-
 }

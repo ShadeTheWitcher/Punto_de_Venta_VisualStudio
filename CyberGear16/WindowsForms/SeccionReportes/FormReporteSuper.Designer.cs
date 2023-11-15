@@ -130,6 +130,7 @@
             DGVReportes.RowTemplate.Height = 25;
             DGVReportes.Size = new Size(953, 155);
             DGVReportes.TabIndex = 8;
+            DGVReportes.CellContentClick += DGVReportes_CellContentClick;
             // 
             // LRVendedores
             // 

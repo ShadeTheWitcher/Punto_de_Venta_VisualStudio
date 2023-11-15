@@ -71,7 +71,7 @@
             DGVProductos.Location = new Point(43, 336);
             DGVProductos.Name = "DGVProductos";
             DGVProductos.RowTemplate.Height = 25;
-            DGVProductos.Size = new Size(422, 254);
+            DGVProductos.Size = new Size(436, 254);
             DGVProductos.TabIndex = 49;
             // 
             // BGeneral

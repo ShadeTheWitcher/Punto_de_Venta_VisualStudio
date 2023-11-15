@@ -61,7 +61,7 @@ namespace CyberGear16
                 else
                 {
                     // Manejar el caso en el que el vendedor no se encuentra
-                    MessageBox.Show("Vendedor no encontrado");
+                    MessageBox.Show("Vendedor no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return; // Salir del evento si no se encuentra el vendedor
                 }
 
@@ -202,7 +202,7 @@ namespace CyberGear16
                 }
                 else
                 {
-                    MessageBox.Show("No hay suficiente stock disponible.");
+                    MessageBox.Show("No hay suficiente stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -273,7 +273,7 @@ namespace CyberGear16
                     else
                     {
                         // Cliente no encontrado en la base de datos
-                        MessageBox.Show("Cliente no encontrado");
+                        MessageBox.Show("Cliente no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         // Restablece los campos y el estado del cliente
                         textBox4.Text = string.Empty;
@@ -285,7 +285,7 @@ namespace CyberGear16
             }
             else
             {
-                MessageBox.Show("Ingrese un DNI válido (número entero).");
+                MessageBox.Show("Ingrese un DNI válido (número completo).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -432,11 +432,10 @@ namespace CyberGear16
                     }
                     else
                     {
-                        MessageBox.Show("No hay suficiente stock disponible para incrementar la cantidad.");
+                        MessageBox.Show("No hay suficiente stock disponible para incrementar la cantidad.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
-
 
 
                 sumarProductoDeCarrito(id_producto); //incrementa globa
@@ -539,14 +538,14 @@ namespace CyberGear16
             // Verifica si hay un cliente asignado
             if (string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text))
             {
-                MessageBox.Show("No hay un cliente asignado. Asigne un cliente antes de guardar la venta.");
+                MessageBox.Show("No hay un cliente asignado. Asigne un cliente antes de guardar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Verifica que haya productos en el carrito antes de intentar guardar la venta
             if (dataGridView1.Rows.Count == 0)
             {
-                MessageBox.Show("No hay productos en el carrito. Añada productos antes de guardar la venta.");
+                MessageBox.Show("No hay productos en el carrito. Añada productos antes de guardar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -568,7 +567,7 @@ namespace CyberGear16
                 else
                 {
                     // Manejar el caso en el que el cliente no se encuentra
-                    MessageBox.Show("Cliente no encontrado");
+                    MessageBox.Show("Cliente no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 // Recupera la instancia del usuario (vendedor) por su ID
@@ -576,7 +575,7 @@ namespace CyberGear16
 
                 if (vendedor == null)
                 {
-                    MessageBox.Show("Vendedor no encontrado. No se puede guardar la venta.");
+                    MessageBox.Show("Vendedor no encontrado. No se puede guardar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -607,7 +606,7 @@ namespace CyberGear16
                     Product producto = context.Products.FirstOrDefault(p => p.Id == productoId);
                     if (producto == null)
                     {
-                        MessageBox.Show($"Producto con ID {productoId} no encontrado. No se puede guardar la venta.");
+                        MessageBox.Show($"Producto con ID {productoId} no encontrado. No se puede guardar la venta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -649,7 +648,7 @@ namespace CyberGear16
                 }
 
 
-                MessageBox.Show("Venta guardada exitosamente.");
+                MessageBox.Show("Venta guardada exitosamente.", "Venta Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Limpia el carrito después de guardar la venta
                 LimpiarCarrito();
