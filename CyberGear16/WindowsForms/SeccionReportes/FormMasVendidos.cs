@@ -126,8 +126,15 @@ namespace CyberGear16
                         CargarDatosVentas("Todos");
                     }
 
+
+                    var productosOrdenados = cantProductsVendidos.OrderByDescending(p => p.TotalVentas).ToList();
+                    DGVProductos.DataSource = productosOrdenados;
+
+
+
                     // Convierte la consulta en una lista y carga los datos en el DataGridView
-                    DGVProductos.DataSource = cantProductsVendidos.ToList();
+                    //DGVProductos.DataSource = cantProductsVendidos.ToList();
+
                 }
                 else
                 {
@@ -152,9 +159,11 @@ namespace CyberGear16
                         CargarDatosVentas("Todos");
                     }
 
-                    // Convierte la consulta en una lista y carga los datos en el DataGridView
-                    DGVProductos.DataSource = cantProductsVendidos.ToList();
+                    var productosOrdenados = cantProductsVendidos.OrderByDescending(p => p.TotalVentas).ToList();
+                    DGVProductos.DataSource = productosOrdenados;
 
+                    // Convierte la consulta en una lista y carga los datos en el DataGridView
+                    //DGVProductos.DataSource = cantProductsVendidos.ToList();
                 }
 
                 //Busqueda TotalVentas
@@ -208,8 +217,11 @@ namespace CyberGear16
                                                    TotalVentas = g.Sum(x => x.CantidadVenta)
                                                };
 
+                    var productosOrdenados = cantProductsVendidos.OrderByDescending(p => p.TotalVentas).ToList();
+                    DGVProductos.DataSource = productosOrdenados;
+
                     // Convierte la consulta en una lista y carga los datos en el DataGridView
-                    DGVProductos.DataSource = cantProductsVendidos.ToList();
+                    //DGVProductos.DataSource = cantProductsVendidos.ToList();
                 }
                 else
                 {
@@ -232,9 +244,12 @@ namespace CyberGear16
                         CargarDatosVentas("Todos");
                     }
 
-                    // Convierte la consulta en una lista y carga los datos en el DataGridView
-                    DGVProductos.DataSource = cantProductsVendidos.ToList();
+                    var productosOrdenados = cantProductsVendidos.OrderByDescending(p => p.TotalVentas).ToList();
+                    DGVProductos.DataSource = productosOrdenados;
 
+
+                    // Convierte la consulta en una lista y carga los datos en el DataGridView
+                    //DGVProductos.DataSource = cantProductsVendidos.ToList();
                 }
 
                 //Busqueda TotalVentas
