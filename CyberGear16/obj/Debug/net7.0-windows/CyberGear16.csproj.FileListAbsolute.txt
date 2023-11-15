@@ -339,7 +339,6 @@ C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.styledxmlparser.dll
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.svg.dll
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.commons.dll
-C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itextsharp.dll
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
 C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.WindowsForms.SeccionVentas.FormFactura.resources
@@ -351,3 +350,9 @@ E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.WindowsForms.SeccionBackUp.FormEspera.resources
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\BouncyCastle.Cryptography.dll
 E:\bibliotecas\Documents\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.bouncy-castle-adapter.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\BouncyCastle.Cryptography.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\itext.bouncy-castle-adapter.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\PdfiumViewer.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\bin\Debug\net7.0-windows\nl\PdfiumViewer.resources.dll
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.WindowsForms.Manual.formManual.resources
+C:\Users\matum\OneDrive\Documentos\GitHub\Trabajo_Integrador_Grupo15\CyberGear16\obj\Debug\net7.0-windows\CyberGear16.WindowsForms.SeccionBackUp.FormEspera.resources

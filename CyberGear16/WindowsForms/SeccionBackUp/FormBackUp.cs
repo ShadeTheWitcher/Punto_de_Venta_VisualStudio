@@ -27,7 +27,7 @@ namespace CyberGear16
             userIniciado = user;
             _context = context;
             
-    }
+        }
 
 
         private string selectedFolderPath; // Variable para almacenar la carpeta seleccionada
@@ -58,8 +58,6 @@ namespace CyberGear16
                 {
                     try
                     {
-                        // Tu código de respaldo aquí
-
                         // Nombre del archivo de respaldo
                         string backupFileName = $"backup_{DateTime.Now:yyyy-MM-dd_HHmmss}.sql";
                         string backupFilePath = Path.Combine(selectedFolderPath, backupFileName);

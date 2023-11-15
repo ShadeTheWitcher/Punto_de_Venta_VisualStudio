@@ -1,4 +1,5 @@
 ﻿using CyberGear16.Models;
+using CyberGear16.WindowsForms.SeccionVentas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,49 @@ namespace CyberGear16
             InitializeComponent();
         }
 
+        private void FormReporteSuper_Load(object sender, EventArgs e)
+        {
+            CargarDatosEnDataGridView();
+            //Agregamos Columna de Acciones en el Data Grid View
+            DataGridViewButtonColumn modificarButtonColumn = new DataGridViewButtonColumn();
+            modificarButtonColumn.Name = "Acciones";
+            modificarButtonColumn.Text = "Factura";
+            modificarButtonColumn.Width = 150;
+            modificarButtonColumn.UseColumnTextForButtonValue = true;
+            DGVReportes.Columns.Add(modificarButtonColumn);
+        }
+
+        private void DGVReportes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == DGVReportes.Columns["Acciones"].Index)
+            {
+                using (var contexto = new BdCybergearContext())
+                {
+                    // Obtén la venta seleccionada
+                    DataGridViewRow row = DGVReportes.Rows[e.RowIndex];
+                    int ventaId = Convert.ToInt32(row.Cells["IdVenta"].Value);
+
+                    VentasCabecera ventaSeleccionada = contexto.VentasCabeceras.FirstOrDefault(p => p.Id == ventaId);
+
+                    Cliente clienteVenta = contexto.Clientes.FirstOrDefault(p => p.IdCliente == ventaSeleccionada.IdCliente);
+
+
+
+                    FormFactura facturaForm = new FormFactura();
+
+                    facturaForm.IdVenta = ventaSeleccionada.Id; // Puedes agregar más información según tus necesidades
+                    facturaForm.FechaVenta = ventaSeleccionada.Fecha;
+                    facturaForm.ClienteNombre = clienteVenta.Nombre; // Suponiendo que cliente tiene una propiedad "Nombre"
+                    facturaForm.Apellido = clienteVenta.Apellido;
+                    facturaForm.dniCliente = clienteVenta.Dni;
+
+                    // Muestra el formulario de la factura
+                    facturaForm.Show();
+
+
+                }
+            }
+        }
         private void BReporte_Click(object sender, EventArgs e)
         {
             DateTime dateTimeFechaDesde = DTPDesde.Value;
@@ -44,6 +88,7 @@ namespace CyberGear16
                                      join usuario in contexto.Usuarios on venta.IdVendedor equals usuario.Id
                                      select new
                                      {
+                                         IdVenta = venta.Id,
                                          ClientenNom = cliente.Nombre + " " + cliente.Apellido,
                                          VendedorNombre = usuario.Nombre + " " + usuario.Apellido,
                                          //Campos de VentaCabecera
@@ -51,7 +96,8 @@ namespace CyberGear16
                                          MontoVenta = venta.TotalVenta
                                      };
 
-                //// Asigna los productos a la fuente de datos del DataGridView
+                
+                // Asigna los productos a la fuente de datos del DataGridView
                 var filtro = datosFiltrados.Where(e => e.FechaVenta >= p_fechaDesde && e.FechaVenta <= p_fechaHasta).ToList();
 
                 if (filtro.Count == 0)
@@ -70,6 +116,13 @@ namespace CyberGear16
                 }
 
             }
+
+            // Busca la columna por nombre y ocúltala
+            var idVentaColumna = DGVReportes.Columns["IdVenta"];
+            if (idVentaColumna != null)
+            {
+                idVentaColumna.Visible = false;
+            }
         }
 
         private void CargarDatosEnDataGridView()
@@ -81,58 +134,34 @@ namespace CyberGear16
                              join usuario in context.Usuarios on venta.IdVendedor equals usuario.Id
                              select new
                              {
+                                 IdVenta = venta.Id,
                                  ClientenNom = cliente.Nombre + " " + cliente.Apellido,
                                  VendedorNombre = usuario.Nombre + " " + usuario.Apellido,
                                  //Campos de VentaCabecera
                                  FechaVenta = venta.Fecha,
-                                 MontoVenta = venta.TotalVenta
+                                 MontoVenta = venta.TotalVenta,
+
                              };
+
 
                 //// Asigna los productos a la fuente de datos del DataGridView
                 DGVReportes.DataSource = ventas.ToList();
+            }
 
-                
-                //// Configura el estilo y columnas del DataGridView
-                //// (asegúrate de que las propiedades de Product se correspondan con las columnas)
-
-                ////DGVReportes.Columns["Id"].Width = 40;
-                ////DGVReportes.Columns["NombreProducto"].Width = 150;
-                ////DGVReportes.Columns["PrecioProducto"].Width = 100;
-                ////DGVReportes.Columns["Descripcion"].Width = 200;
-                ////DGVReportes.Columns["Cantidad"].Width = 100;
-                ////DGVReportes.Columns["CategoriaId"].Width = 100;
-                ////DGVReportes.Columns["Activo"].Width = 100;
-
-
-
-                //// Cambia el color de fuente a negro para todas las celdas del DataGridView
-                //DGVReportes.DefaultCellStyle.ForeColor = Color.Black;
-
-                //// Oculta las columnas no deseadas (en este caso, ocultamos todas las demás)
-                //foreach (DataGridViewColumn column in DGVReportes.Columns)
-                //{
-                //    if (column.Name != "ClienteDNI" && column.Name != "VendedorDNI" && column.Name != "FechaVenta" && column.Name != "MontoVenta")
-                //    //column.Name != "Cantidad" && column.Name != "Acciones" && column.Name != "CategoriaId" &&
-                //    //column.Name != "Activo")
-                //    {
-                //        column.Visible = false;
-                //    }
-                //}
+            // Busca la columna por nombre y ocúltala
+            var idVentaColumna = DGVReportes.Columns["IdVenta"];
+            if (idVentaColumna != null)
+            {
+                idVentaColumna.Visible = false;
             }
         }
 
-
-        private void FormReporteSuper_Load(object sender, EventArgs e)
-        {
-            CargarDatosEnDataGridView();
-        }
-         
         private void BRVendedores_Click(object sender, EventArgs e)
         {
             FormMasVendidos masVendidos = new FormMasVendidos(/*_context*/);
             masVendidos.ShowDialog();
         }
 
-
+        
     }
 }

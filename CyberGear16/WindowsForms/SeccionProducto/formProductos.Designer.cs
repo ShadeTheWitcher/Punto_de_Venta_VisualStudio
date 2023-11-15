@@ -35,33 +35,33 @@
             openFileDialog1 = new OpenFileDialog();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            label6 = new Label();
-            button1 = new Button();
-            label1 = new Label();
-            comboBoxCategorias = new ComboBox();
-            txtFoto = new TextBox();
-            label7 = new Label();
-            textBox5 = new TextBox();
-            BCancelar = new Button();
-            button2 = new Button();
             button3 = new Button();
+            button2 = new Button();
+            BCancelar = new Button();
+            textBox5 = new TextBox();
+            label7 = new Label();
+            txtFoto = new TextBox();
+            comboBoxCategorias = new ComboBox();
+            label1 = new Label();
+            button1 = new Button();
+            label6 = new Label();
+            textBox4 = new TextBox();
+            textBox3 = new TextBox();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
             dataGridView1 = new DataGridView();
-            Column6 = new DataGridViewButtonColumn();
-            Column5 = new DataGridViewImageColumn();
-            Column8 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
             Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewImageColumn();
+            Column6 = new DataGridViewButtonColumn();
             BActivos = new Button();
             BInactivo = new Button();
             TBuscar = new TextBox();
@@ -112,148 +112,33 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
-            panel1.Location = new Point(89, 37);
+            panel1.Location = new Point(77, 37);
             panel1.Name = "panel1";
-            panel1.Size = new Size(630, 309);
+            panel1.Size = new Size(642, 309);
             panel1.TabIndex = 2;
             // 
-            // label2
+            // button3
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(23, 56);
-            label2.Name = "label2";
-            label2.Size = new Size(126, 15);
-            label2.TabIndex = 0;
-            label2.Text = "Nombre Del Producto:";
+            button3.Anchor = AnchorStyles.None;
+            button3.ForeColor = SystemColors.ActiveCaptionText;
+            button3.Location = new Point(280, 257);
+            button3.Name = "button3";
+            button3.Size = new Size(111, 30);
+            button3.TabIndex = 29;
+            button3.Text = "Nueva Categoria";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
-            // label3
+            // button2
             // 
-            label3.AutoSize = true;
-            label3.ForeColor = SystemColors.ButtonFace;
-            label3.Location = new Point(354, 53);
-            label3.Name = "label3";
-            label3.Size = new Size(72, 15);
-            label3.TabIndex = 1;
-            label3.Text = "Descripción:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.ForeColor = SystemColors.ButtonFace;
-            label4.Location = new Point(23, 93);
-            label4.Name = "label4";
-            label4.Size = new Size(43, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Precio:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.ForeColor = SystemColors.ButtonFace;
-            label5.Location = new Point(23, 132);
-            label5.Name = "label5";
-            label5.Size = new Size(39, 15);
-            label5.TabIndex = 3;
-            label5.Text = "Stock:";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(152, 53);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(167, 23);
-            textBox1.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(152, 90);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(167, 23);
-            textBox2.TabIndex = 5;
-            textBox2.TextChanged += textBox2_TextChanged;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(152, 129);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(75, 23);
-            textBox3.TabIndex = 6;
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(428, 53);
-            textBox4.Multiline = true;
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(174, 64);
-            textBox4.TabIndex = 7;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.ForeColor = SystemColors.ButtonFace;
-            label6.Location = new Point(23, 208);
-            label6.Name = "label6";
-            label6.Size = new Size(58, 15);
-            label6.TabIndex = 8;
-            label6.Text = "Categoria";
-            // 
-            // button1
-            // 
-            button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(96, 257);
-            button1.Name = "button1";
-            button1.Size = new Size(131, 30);
-            button1.TabIndex = 9;
-            button1.Text = "Agregar Producto";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(4, 0);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(119, 30);
-            label1.TabIndex = 0;
-            label1.Text = "Productos:";
-            label1.Click += label1_Click;
-            // 
-            // comboBoxCategorias
-            // 
-            comboBoxCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxCategorias.FormattingEnabled = true;
-            comboBoxCategorias.Location = new Point(152, 208);
-            comboBoxCategorias.Name = "comboBoxCategorias";
-            comboBoxCategorias.Size = new Size(167, 23);
-            comboBoxCategorias.TabIndex = 11;
-            // 
-            // txtFoto
-            // 
-            txtFoto.Anchor = AnchorStyles.None;
-            txtFoto.Location = new Point(425, 145);
-            txtFoto.Name = "txtFoto";
-            txtFoto.ReadOnly = true;
-            txtFoto.Size = new Size(177, 23);
-            txtFoto.TabIndex = 12;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(23, 172);
-            label7.Name = "label7";
-            label7.Size = new Size(84, 15);
-            label7.TabIndex = 13;
-            label7.Text = "Stock Mínimo:";
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(152, 169);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(75, 23);
-            textBox5.TabIndex = 14;
+            button2.ForeColor = SystemColors.ActiveCaptionText;
+            button2.Location = new Point(474, 188);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 28;
+            button2.Text = "Subir foto";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // BCancelar
             // 
@@ -270,28 +155,143 @@
             BCancelar.UseVisualStyleBackColor = true;
             BCancelar.Click += BCancelar_Click;
             // 
-            // button2
+            // textBox5
             // 
-            button2.ForeColor = SystemColors.ActiveCaptionText;
-            button2.Location = new Point(474, 188);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 28;
-            button2.Text = "Subir foto";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            textBox5.Location = new Point(152, 169);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(75, 23);
+            textBox5.TabIndex = 14;
             // 
-            // button3
+            // label7
             // 
-            button3.Anchor = AnchorStyles.None;
-            button3.ForeColor = SystemColors.ActiveCaptionText;
-            button3.Location = new Point(274, 257);
-            button3.Name = "button3";
-            button3.Size = new Size(111, 30);
-            button3.TabIndex = 29;
-            button3.Text = "Nueva Categoria";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            label7.AutoSize = true;
+            label7.ForeColor = SystemColors.ButtonFace;
+            label7.Location = new Point(23, 172);
+            label7.Name = "label7";
+            label7.Size = new Size(84, 15);
+            label7.TabIndex = 13;
+            label7.Text = "Stock Mínimo:";
+            // 
+            // txtFoto
+            // 
+            txtFoto.Anchor = AnchorStyles.None;
+            txtFoto.Location = new Point(431, 145);
+            txtFoto.Name = "txtFoto";
+            txtFoto.ReadOnly = true;
+            txtFoto.Size = new Size(177, 23);
+            txtFoto.TabIndex = 12;
+            // 
+            // comboBoxCategorias
+            // 
+            comboBoxCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxCategorias.FormattingEnabled = true;
+            comboBoxCategorias.Location = new Point(152, 208);
+            comboBoxCategorias.Name = "comboBoxCategorias";
+            comboBoxCategorias.Size = new Size(167, 23);
+            comboBoxCategorias.TabIndex = 11;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(4, 0);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(119, 30);
+            label1.TabIndex = 0;
+            label1.Text = "Productos:";
+            label1.Click += label1_Click;
+            // 
+            // button1
+            // 
+            button1.ForeColor = SystemColors.ActiveCaptionText;
+            button1.Location = new Point(96, 257);
+            button1.Name = "button1";
+            button1.Size = new Size(131, 30);
+            button1.TabIndex = 9;
+            button1.Text = "Agregar Producto";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = SystemColors.ButtonFace;
+            label6.Location = new Point(23, 208);
+            label6.Name = "label6";
+            label6.Size = new Size(58, 15);
+            label6.TabIndex = 8;
+            label6.Text = "Categoria";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(428, 53);
+            textBox4.Multiline = true;
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(174, 64);
+            textBox4.TabIndex = 7;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(152, 129);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(75, 23);
+            textBox3.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(152, 90);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(167, 23);
+            textBox2.TabIndex = 5;
+            textBox2.TextChanged += textBox2_TextChanged;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(152, 53);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(167, 23);
+            textBox1.TabIndex = 4;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = SystemColors.ButtonFace;
+            label5.Location = new Point(23, 132);
+            label5.Name = "label5";
+            label5.Size = new Size(39, 15);
+            label5.TabIndex = 3;
+            label5.Text = "Stock:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = SystemColors.ButtonFace;
+            label4.Location = new Point(23, 93);
+            label4.Name = "label4";
+            label4.Size = new Size(43, 15);
+            label4.TabIndex = 2;
+            label4.Text = "Precio:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = SystemColors.ButtonFace;
+            label3.Location = new Point(354, 53);
+            label3.Name = "label3";
+            label3.Size = new Size(72, 15);
+            label3.TabIndex = 1;
+            label3.Text = "Descripción:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.ButtonFace;
+            label2.Location = new Point(23, 56);
+            label2.Name = "label2";
+            label2.Size = new Size(126, 15);
+            label2.TabIndex = 0;
+            label2.Text = "Nombre Del Producto:";
             // 
             // dataGridView1
             // 
@@ -326,15 +326,39 @@
             dataGridView1.TabIndex = 3;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
-            // Column6
+            // Column1
             // 
-            Column6.FillWeight = 107.817253F;
-            Column6.HeaderText = "Acciones";
-            Column6.Name = "Column6";
-            Column6.Resizable = DataGridViewTriState.True;
-            Column6.SortMode = DataGridViewColumnSortMode.Automatic;
-            Column6.Text = "Edit-Baja-Alta";
-            Column6.UseColumnTextForButtonValue = true;
+            Column1.FillWeight = 60.9137039F;
+            Column1.HeaderText = "id";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.FillWeight = 107.817253F;
+            Column2.HeaderText = "Nombre_producto";
+            Column2.Name = "Column2";
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "Descripcion";
+            Column7.Name = "Column7";
+            // 
+            // Column3
+            // 
+            Column3.FillWeight = 107.817253F;
+            Column3.HeaderText = "Precio";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.FillWeight = 107.817253F;
+            Column4.HeaderText = "Stock";
+            Column4.Name = "Column4";
+            // 
+            // Column8
+            // 
+            Column8.HeaderText = "Categoria";
+            Column8.Name = "Column8";
             // 
             // Column5
             // 
@@ -344,39 +368,15 @@
             Column5.Resizable = DataGridViewTriState.True;
             Column5.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
-            // Column8
+            // Column6
             // 
-            Column8.HeaderText = "Categoria";
-            Column8.Name = "Column8";
-            // 
-            // Column4
-            // 
-            Column4.FillWeight = 107.817253F;
-            Column4.HeaderText = "Stock";
-            Column4.Name = "Column4";
-            // 
-            // Column3
-            // 
-            Column3.FillWeight = 107.817253F;
-            Column3.HeaderText = "Precio";
-            Column3.Name = "Column3";
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Descripcion";
-            Column7.Name = "Column7";
-            // 
-            // Column2
-            // 
-            Column2.FillWeight = 107.817253F;
-            Column2.HeaderText = "Nombre_producto";
-            Column2.Name = "Column2";
-            // 
-            // Column1
-            // 
-            Column1.FillWeight = 60.9137039F;
-            Column1.HeaderText = "id";
-            Column1.Name = "Column1";
+            Column6.FillWeight = 107.817253F;
+            Column6.HeaderText = "Acciones";
+            Column6.Name = "Column6";
+            Column6.Resizable = DataGridViewTriState.True;
+            Column6.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column6.Text = "Edit-Baja-Alta";
+            Column6.UseColumnTextForButtonValue = true;
             // 
             // BActivos
             // 

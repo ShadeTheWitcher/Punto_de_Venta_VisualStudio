@@ -321,6 +321,13 @@ namespace CyberGear16
                 }
 
             }
+
+            // Busca la columna por nombre y ocúltala
+            var idVentaColumna = DGVReportes.Columns["IdVenta"];
+            if (idVentaColumna != null)
+            {
+                idVentaColumna.Visible = false;
+            }
         }
 
         private void CargarDatosEnDataGridView()
@@ -341,6 +348,13 @@ namespace CyberGear16
 
                 //// Asigna los productos a la fuente de datos del DataGridView
                 DGVReportes.DataSource = ventas.ToList();
+            }
+
+            // Busca la columna por nombre y ocúltala
+            var idVentaColumna = DGVReportes.Columns["IdVenta"];
+            if (idVentaColumna != null)
+            {
+                idVentaColumna.Visible = false;
             }
         }
 
